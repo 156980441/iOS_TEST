@@ -15,8 +15,8 @@
 		8D942C2621F99FCB00C56406 /* TestRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D942C2521F99FCB00C56406 /* TestRootVC.m */; };
 		8D942C2921F9A01700C56406 /* DataUtilRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D942C2821F9A01700C56406 /* DataUtilRootVC.m */; };
 		8D942C2C21F9A02D00C56406 /* ViewUtilRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D942C2B21F9A02D00C56406 /* ViewUtilRootVC.m */; };
-		8D942C3021F9A30D00C56406 /* YLTableViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D942C2F21F9A30D00C56406 /* YLTableViewUtil.m */; };
 		8D942C3821F9A48A00C56406 /* YL2LabelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D942C3721F9A48A00C56406 /* YL2LabelsView.m */; };
+		8D942C4021F9A91500C56406 /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D942C3F21F9A91500C56406 /* UIFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,13 +33,13 @@
 		8D942C2821F9A01700C56406 /* DataUtilRootVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataUtilRootVC.m; sourceTree = "<group>"; };
 		8D942C2A21F9A02D00C56406 /* ViewUtilRootVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewUtilRootVC.h; sourceTree = "<group>"; };
 		8D942C2B21F9A02D00C56406 /* ViewUtilRootVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewUtilRootVC.m; sourceTree = "<group>"; };
-		8D942C2E21F9A30D00C56406 /* YLTableViewUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YLTableViewUtil.h; sourceTree = "<group>"; };
-		8D942C2F21F9A30D00C56406 /* YLTableViewUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YLTableViewUtil.m; sourceTree = "<group>"; };
 		8D942C3621F9A48A00C56406 /* YL2LabelsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YL2LabelsView.h; sourceTree = "<group>"; };
 		8D942C3721F9A48A00C56406 /* YL2LabelsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YL2LabelsView.m; sourceTree = "<group>"; };
 		8D942C3B21F9A4BD00C56406 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
 		8D942C3C21F9A55700C56406 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8D942C3D21F9A58200C56406 /* micros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = micros.h; sourceTree = "<group>"; };
+		8D942C3E21F9A91500C56406 /* UIFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIFactory.h; sourceTree = "<group>"; };
+		8D942C3F21F9A91500C56406 /* UIFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIFactory.m; sourceTree = "<group>"; };
 		BD48A4B59F025FAA1F597EE2 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEAFAE58CD36F719D63E87FA /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		CC56AB5C9451C9077ACB6DFC /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
@@ -108,9 +108,10 @@
 			children = (
 				8D942C3521F9A43E00C56406 /* labels */,
 				8D942C3121F9A41500C56406 /* tableviewcell */,
-				8D942C2D21F9A2DE00C56406 /* tableview */,
 				8D942C2A21F9A02D00C56406 /* ViewUtilRootVC.h */,
 				8D942C2B21F9A02D00C56406 /* ViewUtilRootVC.m */,
+				8D942C3E21F9A91500C56406 /* UIFactory.h */,
+				8D942C3F21F9A91500C56406 /* UIFactory.m */,
 			);
 			path = ViewUtil;
 			sourceTree = "<group>";
@@ -139,15 +140,6 @@
 			children = (
 			);
 			path = layoutSubViews_test;
-			sourceTree = "<group>";
-		};
-		8D942C2D21F9A2DE00C56406 /* tableview */ = {
-			isa = PBXGroup;
-			children = (
-				8D942C2E21F9A30D00C56406 /* YLTableViewUtil.h */,
-				8D942C2F21F9A30D00C56406 /* YLTableViewUtil.m */,
-			);
-			path = tableview;
 			sourceTree = "<group>";
 		};
 		8D942C3121F9A41500C56406 /* tableviewcell */ = {
@@ -322,8 +314,8 @@
 				8D942C2921F9A01700C56406 /* DataUtilRootVC.m in Sources */,
 				8D942C2621F99FCB00C56406 /* TestRootVC.m in Sources */,
 				8D942C2C21F9A02D00C56406 /* ViewUtilRootVC.m in Sources */,
+				8D942C4021F9A91500C56406 /* UIFactory.m in Sources */,
 				8D942C1A21F99ED500C56406 /* main.m in Sources */,
-				8D942C3021F9A30D00C56406 /* YLTableViewUtil.m in Sources */,
 				8D942C0C21F99ED400C56406 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

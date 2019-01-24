@@ -13,7 +13,7 @@
 #import <UIKit/UIKit.h>
 
 /**
- 两个 Label 水平或者竖直
+ Label 水平或者竖直
  */
 typedef NS_ENUM(NSInteger, YLLabelsViewLayoutDirection) {
     YLLabelsViewLayoutDirection_horizontal = 1, // 水平
@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, YLLabelsViewLayoutDirection) {
 
 
 /**
- 两个 Label 的吸附方式
+ Label 的吸附方式
  */
 typedef NS_ENUM(NSInteger, YLLabelsViewLayoutAlignment) {
     YLLabelsViewLayoutAlignmentLeft      = 0, // 左吸附
