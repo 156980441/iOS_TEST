@@ -17,3 +17,5 @@
 @property (nonatomic, assign) YLLabelsViewLayoutDirection layoutDirection; // default OKBLabelsViewLayoutDirection_horizontal
 
 @end
+
+YL2LabelsView* get2LabelsView(void);

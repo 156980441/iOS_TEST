@@ -17,6 +17,8 @@
 		8D942C2C21F9A02D00C56406 /* ViewUtilRootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D942C2B21F9A02D00C56406 /* ViewUtilRootVC.m */; };
 		8D942C3821F9A48A00C56406 /* YL2LabelsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D942C3721F9A48A00C56406 /* YL2LabelsView.m */; };
 		8D942C4021F9A91500C56406 /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D942C3F21F9A91500C56406 /* UIFactory.m */; };
+		8D942C4321F9ACCA00C56406 /* YL2LabelsViewTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D942C4121F9ACC900C56406 /* YL2LabelsViewTVCell.m */; };
+		8D942C4921F9ADE800C56406 /* LayoutSubViewsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D942C4821F9ADE800C56406 /* LayoutSubViewsVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,10 @@
 		8D942C3D21F9A58200C56406 /* micros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = micros.h; sourceTree = "<group>"; };
 		8D942C3E21F9A91500C56406 /* UIFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIFactory.h; sourceTree = "<group>"; };
 		8D942C3F21F9A91500C56406 /* UIFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIFactory.m; sourceTree = "<group>"; };
+		8D942C4121F9ACC900C56406 /* YL2LabelsViewTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YL2LabelsViewTVCell.m; sourceTree = "<group>"; };
+		8D942C4221F9ACC900C56406 /* YL2LabelsViewTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YL2LabelsViewTVCell.h; sourceTree = "<group>"; };
+		8D942C4721F9ADE800C56406 /* LayoutSubViewsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayoutSubViewsVC.h; sourceTree = "<group>"; };
+		8D942C4821F9ADE800C56406 /* LayoutSubViewsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LayoutSubViewsVC.m; sourceTree = "<group>"; };
 		BD48A4B59F025FAA1F597EE2 /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEAFAE58CD36F719D63E87FA /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		CC56AB5C9451C9077ACB6DFC /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +144,8 @@
 		8D942C2321F99F9D00C56406 /* layoutSubViews_test */ = {
 			isa = PBXGroup;
 			children = (
+				8D942C4721F9ADE800C56406 /* LayoutSubViewsVC.h */,
+				8D942C4821F9ADE800C56406 /* LayoutSubViewsVC.m */,
 			);
 			path = layoutSubViews_test;
 			sourceTree = "<group>";
@@ -145,6 +153,8 @@
 		8D942C3121F9A41500C56406 /* tableviewcell */ = {
 			isa = PBXGroup;
 			children = (
+				8D942C4221F9ACC900C56406 /* YL2LabelsViewTVCell.h */,
+				8D942C4121F9ACC900C56406 /* YL2LabelsViewTVCell.m */,
 			);
 			path = tableviewcell;
 			sourceTree = "<group>";
@@ -276,6 +286,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Demo/Pods-Demo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/JKCategories/JKCategories.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
@@ -289,6 +300,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKCategories.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
@@ -310,8 +322,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D942C4321F9ACCA00C56406 /* YL2LabelsViewTVCell.m in Sources */,
 				8D942C3821F9A48A00C56406 /* YL2LabelsView.m in Sources */,
 				8D942C2921F9A01700C56406 /* DataUtilRootVC.m in Sources */,
+				8D942C4921F9ADE800C56406 /* LayoutSubViewsVC.m in Sources */,
 				8D942C2621F99FCB00C56406 /* TestRootVC.m in Sources */,
 				8D942C2C21F9A02D00C56406 /* ViewUtilRootVC.m in Sources */,
 				8D942C4021F9A91500C56406 /* UIFactory.m in Sources */,
@@ -454,10 +468,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Demo/PrefixHeader.pch";
 				INFOPLIST_FILE = Demo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fanyl.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -474,10 +485,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Demo/PrefixHeader.pch";
 				INFOPLIST_FILE = Demo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fanyl.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

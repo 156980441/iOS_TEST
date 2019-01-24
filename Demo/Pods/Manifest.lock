@@ -20,6 +20,7 @@ PODS:
   - CocoaLumberjack/Default (3.4.2)
   - CocoaLumberjack/Extensions (3.4.2):
     - CocoaLumberjack/Default
+  - DZNEmptyDataSet (1.8.1)
   - JKCategories (1.8):
     - JKCategories/CoreData (= 1.8)
     - JKCategories/CoreLocation (= 1.8)
@@ -176,6 +177,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - CocoaLumberjack
+  - DZNEmptyDataSet (= 1.8.1)
   - JKCategories
   - Masonry
   - MJExtension
@@ -189,6 +191,7 @@ SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - CocoaLumberjack
+    - DZNEmptyDataSet
     - JKCategories
     - Masonry
     - MJExtension
@@ -201,6 +204,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   JKCategories: b62b30694ebe6d9fe5520b54ba250015dabd6dae
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
@@ -210,6 +214,6 @@ SPEC CHECKSUMS:
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: d433803f576eb33a416802603d0b86957fcf8c5e
+PODFILE CHECKSUM: 606189350127ac4317adda5349375b9e1e996f2b
 
 COCOAPODS: 1.5.0.beta.1

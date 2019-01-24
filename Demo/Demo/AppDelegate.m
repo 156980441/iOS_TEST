@@ -29,6 +29,8 @@
     UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:ViewUtilRootVC.new];
     UINavigationController *nav3 = [[UINavigationController alloc] initWithRootViewController:DataUtilRootVC.new];
     [tabBarVC setViewControllers:@[nav1, nav2, nav3]];
+    
+    self.window.rootViewController = tabBarVC;
     return YES;
 }
 

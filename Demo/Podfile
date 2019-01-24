@@ -22,5 +22,6 @@ pod 'MJExtension'
 pod 'CocoaLumberjack'
 pod 'JKCategories'
 pod 'OpenUDID'
+pod 'DZNEmptyDataSet',        '1.8.1',          :inhibit_warnings => true
 
 end
