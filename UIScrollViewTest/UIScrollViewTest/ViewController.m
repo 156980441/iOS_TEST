@@ -92,13 +92,15 @@
     NSLog(@"拖动结束");
 }
 
+// called on finger up as we are moving
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
     NSLog(@"将要开始减速");
-}   // called on finger up as we are moving
+}
 
+// called when scroll view grinds to a halt
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSLog(@"减速结束"); // 停止滚动
-}      // called when scroll view grinds to a halt
+}
 
 // called when setContentOffset/scrollRectVisible:animated: finishes. not called if not animating
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
@@ -119,15 +121,17 @@
     NSLog(@"view:%@,scale:%f", view,scale); // 输出放缩后的视图信息和放缩系数
 }
 
+// return a yes if you want to scroll to the top. if not defined, assumes YES
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView{
     // scrollToTop = YES,才会调用该方法
     // 返回YES，可以滚动到顶部；NO 不可以
     return YES;
-}   // return a yes if you want to scroll to the top. if not defined, assumes YES
+}
 
+// called when scrolling animation finished. may be called immediately if already at top
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView{
     NSLog(@"滚动到顶部");
-}      // called when scrolling animation finished. may be called immediately if already at top
+}
 
 
 @end
