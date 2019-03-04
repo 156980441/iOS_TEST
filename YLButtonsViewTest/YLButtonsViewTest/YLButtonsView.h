@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  点击不同 Button 不同响应
  */
-@property (nonatomic, copy) void (^block)(UIButton* btn, NSInteger index);
+@property (nonatomic, copy, nullable) void (^block)(UIButton* btn, NSInteger index);
 
 
 /**
@@ -67,6 +67,15 @@ NS_ASSUME_NONNULL_BEGIN
  @param state Button 状态
  */
 - (void)setButtonTitle:(NSString*)title index:(NSUInteger)index forState:(UIControlState)state;
+
+
+/**
+ 获取指定下标的 Button
+
+ @param index 索引
+ @return UIButton
+ */
+- (UIButton*)buttonOfIndex:(NSInteger)index;
 
 @end
 

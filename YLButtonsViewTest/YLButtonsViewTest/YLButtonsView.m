@@ -143,6 +143,16 @@
     }
 }
 
+- (UIButton*)buttonOfIndex:(NSInteger)index {
+    NSAssert(index < self.buttons.count, @"ERROR:index out of array");
+    if (index < self.buttons.count) {
+        return self.buttons[index];
+    }
+    else {
+        return nil;
+    }
+}
+
 - (void)dealloc {
 #ifdef DEBUG
     NSLog(@"%s", __func__);

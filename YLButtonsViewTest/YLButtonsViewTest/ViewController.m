@@ -20,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    YLButtonsView *buttonsView, *buttonsView1, *buttonsView2;
+    YLButtonsView *buttonsView, *buttonsView1, *buttonsView2, *buttonsView3;
     buttonsView = [[YLButtonsView alloc] initWithButtons:5];
     buttonsView.frame = CGRectMake(50, 100, 300, 20);
     [self.view addSubview:buttonsView];
@@ -70,6 +70,16 @@
             
         }
     };
+    
+    buttonsView3 = YLButtonsView.new;
+    [self.view addSubview:buttonsView3];
+    [buttonsView3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(buttonsView2.mas_left);
+        make.right.equalTo(buttonsView2.mas_right);
+        make.top.equalTo(buttonsView2.mas_bottom).offset(5);
+    }];
+    UIButton *btn = [buttonsView3 buttonOfIndex:0];
+    btn.backgroundColor = [UIColor orangeColor];
 }
 
 - (YLButtonsView*)getButtonsView {
