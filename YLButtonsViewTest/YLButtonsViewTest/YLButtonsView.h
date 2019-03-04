@@ -51,6 +51,21 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, copy) void (^block)(UIButton* btn, NSInteger index);
 
+
+/**
+ 竖直排列显示，默认横向排列显示
+ */
+@property (nonatomic, assign) BOOL verticalDisplay;
+
+
+
+/**
+ 更新 Button 的显示文案
+
+ @param title 文案
+ @param index 索引
+ @param state Button 状态
+ */
 - (void)setButtonTitle:(NSString*)title index:(NSUInteger)index forState:(UIControlState)state;
 
 @end

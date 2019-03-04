@@ -33,6 +33,7 @@
     if (self) {
         _space = space;
         _buttons = buttons;
+        _verticalDisplay = NO;
         [self configUI];
     }
     return self;
@@ -40,35 +41,69 @@
 }
 
 - (void)configUI {
-    // 第一个
-    UIButton *lastBtn = self.buttons.firstObject;
-    lastBtn.tag = 0;
-    [lastBtn addTarget:self action:@selector(p_btnPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:lastBtn];
-    [lastBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.mas_left).offset(0);
-        make.bottom.and.top.equalTo(self).offset(0);
-    }];
-    
-    CGFloat space = self.space;
-    
-    for (NSInteger i = 1; i < self.buttons.count; i++ ) {
-        UIButton* bt = self.buttons[i];
-        bt.tag = i;
-        [bt addTarget:self action:@selector(p_btnPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:bt];
-        [bt mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(lastBtn.mas_right).mas_offset(space);
-            make.top.and.bottom.equalTo(lastBtn);
-            make.width.equalTo(lastBtn.mas_width);
+    if (self.verticalDisplay == NO) {
+        // 第一个
+        UIButton *lastBtn = self.buttons.firstObject;
+        lastBtn.tag = 0;
+        [lastBtn addTarget:self action:@selector(p_btnPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:lastBtn];
+        [lastBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.mas_left).offset(0);
+            make.bottom.and.top.equalTo(self).offset(0);
         }];
-        lastBtn = bt;
+        
+        CGFloat space = self.space;
+        
+        for (NSInteger i = 1; i < self.buttons.count; i++ ) {
+            UIButton* bt = self.buttons[i];
+            bt.tag = i;
+            [bt addTarget:self action:@selector(p_btnPressed:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:bt];
+            [bt mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(lastBtn.mas_right).mas_offset(space);
+                make.top.and.bottom.equalTo(lastBtn);
+                make.width.equalTo(lastBtn.mas_width);
+            }];
+            lastBtn = bt;
+        }
+        
+        // 最后一个
+        [lastBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.mas_right).offset(0);
+        }];
     }
-    
-    // 最后一个
-    [lastBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.mas_right).offset(0);
-    }];
+    else {
+        // 第一个
+        UIButton *lastBtn = self.buttons.firstObject;
+        lastBtn.tag = 0;
+        [lastBtn addTarget:self action:@selector(p_btnPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:lastBtn];
+        [lastBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.and.right.equalTo(self).offset(0).priority(300); // 设置优先级，防止出现 Masonry 警告
+            make.right.equalTo(self).offset(0).priority(300);
+            make.top.equalTo(self).offset(0).priority(300);
+        }];
+        
+        CGFloat space = self.space;
+        
+        for (NSInteger i = 1; i < self.buttons.count; i++ ) {
+            UIButton* bt = self.buttons[i];
+            bt.tag = i;
+            [bt addTarget:self action:@selector(p_btnPressed:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:bt];
+            [bt mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(lastBtn.mas_bottom).mas_offset(space).priority(300);
+                make.left.and.right.equalTo(lastBtn).priority(300);
+                make.width.equalTo(lastBtn.mas_width).priority(300);
+            }];
+            lastBtn = bt;
+        }
+        
+        // 最后一个，注意这里是 mas_makeConstraints，或者 mas_updateConstraints，表示添加
+        [lastBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.mas_bottom).offset(0).priority(300);
+        }];
+    }
 }
 
 - (instancetype)initWithFrame:(CGRect)frame titles:(const NSArray<NSString*>*)titles images:(nullable NSArray<UIImage*>*)images internalSpace:(CGFloat)space {
@@ -98,6 +133,13 @@
 - (void)p_btnPressed:(UIButton*)sender {
     if (self.block) {
         self.block(sender, sender.tag);
+    }
+}
+
+- (void)setVerticalDisplay:(BOOL)verticalDisplay {
+    if (_verticalDisplay != verticalDisplay) {
+        _verticalDisplay = verticalDisplay;
+        [self configUI];
     }
 }
 

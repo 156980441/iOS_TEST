@@ -54,6 +54,10 @@
     buttonsView2.block = ^(UIButton * _Nonnull btn, NSInteger index) {
         NSLog(@"%zd", index);
         NSLog(@"%@", btn.titleLabel.text);
+        
+        if (index == 0) {
+            buttonsView2.verticalDisplay = !buttonsView2.verticalDisplay;
+        }
     };
 }
 
