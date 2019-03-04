@@ -1,0 +1,105 @@
+//
+//  YLButtonsView.m
+//  YLButtonsViewTest
+//
+//  Created by fanyl on 2019/3/4.
+//  Copyright © 2019 fanyl. All rights reserved.
+//
+
+#import "YLButtonsView.h"
+#import <Masonry/Masonry.h>
+
+@interface YLButtonsView ()
+@property (nonatomic, assign) CGFloat space;
+@property (nonatomic, strong) const NSArray<UIButton*> *buttons;
+@end
+
+@implementation YLButtonsView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    return [self initWithButtons:1];
+}
+
+- (instancetype)initWithButtons:(NSUInteger)buttonNums {
+    NSMutableArray* titles = [NSMutableArray arrayWithCapacity:buttonNums];
+    for (int i = 0; i < buttonNums; i++) {
+        [titles addObject:[NSString stringWithFormat:@"%d", i]];
+    }
+    return [self initWithFrame:CGRectZero titles:titles images:nil internalSpace:0];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame buttons:(const NSArray<UIButton*>*)buttons internalSpace:(CGFloat)space {
+    self = [super initWithFrame:frame];
+    if (self) {
+        _space = space;
+        _buttons = buttons;
+        [self configUI];
+    }
+    return self;
+    
+}
+
+- (void)configUI {
+    // 第一个
+    UIButton *lastBtn = self.buttons.firstObject;
+    lastBtn.tag = 0;
+    [lastBtn addTarget:self action:@selector(p_btnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:lastBtn];
+    [lastBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.mas_left).offset(0);
+        make.bottom.and.top.equalTo(self).offset(0);
+    }];
+    
+    CGFloat space = self.space;
+    
+    for (NSInteger i = 1; i < self.buttons.count; i++ ) {
+        UIButton* bt = self.buttons[i];
+        bt.tag = i;
+        [bt addTarget:self action:@selector(p_btnPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:bt];
+        [bt mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(lastBtn.mas_right).mas_offset(space);
+            make.top.and.bottom.equalTo(lastBtn);
+            make.width.equalTo(lastBtn.mas_width);
+        }];
+        lastBtn = bt;
+    }
+    
+    // 最后一个
+    [lastBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.mas_right).offset(0);
+    }];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame titles:(const NSArray<NSString*>*)titles images:(nullable NSArray<UIImage*>*)images internalSpace:(CGFloat)space {
+    NSMutableArray* bts = [NSMutableArray arrayWithCapacity:titles.count];
+    for (int i = 0; i < titles.count; i++) {
+        UIButton* bt = [UIButton buttonWithType:UIButtonTypeCustom];
+        [bt setTitle:titles[i] forState:UIControlStateNormal];
+        if (images.count > 0) {
+            NSAssert(titles.count == images.count, @"ERROR:titles.count != images.count");
+            [bt setImage:images[i] forState:UIControlStateNormal];
+        }
+        [bt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        bt.titleLabel.font = [UIFont systemFontOfSize:14];
+        [bts addObject:bt];
+    }
+    return [self initWithFrame:frame buttons:bts internalSpace:space];
+}
+
+- (void)setButtonTitle:(NSString*)title index:(NSUInteger)index forState:(UIControlState)state {
+    NSAssert(index < self.buttons.count, @"ERROR:index out of array");
+    if (index < self.buttons.count) {
+        [self.buttons[index] setTitle:title forState:state];
+    }
+}
+
+
+- (void)p_btnPressed:(UIButton*)sender {
+    if (self.block) {
+        self.block(sender, sender.tag);
+    }
+}
+
+
+@end
