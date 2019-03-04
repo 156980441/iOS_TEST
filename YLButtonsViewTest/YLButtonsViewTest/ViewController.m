@@ -11,7 +11,7 @@
 #import "YLButtonsView.h"
 
 @interface ViewController ()
-
+@property (nonatomic, strong) YLButtonsView *btnsView;
 @end
 
 @implementation ViewController
@@ -25,24 +25,54 @@
     buttonsView.frame = CGRectMake(50, 100, 300, 20);
     [self.view addSubview:buttonsView];
     
-    buttonsView1 = [[YLButtonsView alloc] initWithFrame:CGRectZero titles:@[@"删除", @"增加"] images:nil internalSpace:5];
+    buttonsView1 = [[YLButtonsView alloc] initWithFrame:CGRectZero titles:@[@"删除 UI，应该 dealloc", @"增加 UI"] images:nil internalSpace:5];
     [self.view addSubview:buttonsView1];
     [buttonsView1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(buttonsView.mas_left);
         make.right.equalTo(buttonsView.mas_right);
         make.top.equalTo(buttonsView.mas_bottom).offset(5);
     }];
+    
+    
+    
+    buttonsView2 = [self getButtonsView];
+    [self.view addSubview:buttonsView2];
+    [buttonsView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(buttonsView1.mas_left);
+        make.right.equalTo(buttonsView1.mas_right);
+        make.top.equalTo(buttonsView1.mas_bottom).offset(5);
+    }];
+    
+    self.btnsView = buttonsView2;
+    
+    __weak __typeof(YLButtonsView*)tmp = buttonsView1;
     __weak __typeof(ViewController*)ws = self;
-    __weak __typeof(YLButtonsView*)w_btns = buttonsView2;
+    
+    
+    
     buttonsView1.block = ^(UIButton * _Nonnull btn, NSInteger index) {
         if (index == 0) {
-            [w_btns removeFromSuperview];
+            [ws.btnsView removeFromSuperview];
+            ws.btnsView = nil;
         }
         else if (index == 1) {
-            [ws.view addSubview:w_btns];
+            if (ws.btnsView) {
+                [ws.btnsView removeFromSuperview]; // 防止多次添加内存泄漏
+                ws.btnsView = nil;
+            }
+            ws.btnsView = [self getButtonsView];
+            [ws.view addSubview:ws.btnsView];
+            [ws.btnsView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(tmp.mas_left);
+                make.right.equalTo(tmp.mas_right);
+                make.top.equalTo(tmp.mas_bottom).offset(5);
+            }];
+            
         }
     };
-    
+}
+
+- (YLButtonsView*)getButtonsView {
     UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
     bt.backgroundColor = [UIColor blueColor];
     [bt setTitle:@"动漫" forState:UIControlStateNormal];
@@ -55,23 +85,19 @@
     UIButton *bt3 = [UIButton buttonWithType:UIButtonTypeCustom];
     bt3.backgroundColor = [UIColor grayColor];
     [bt3 setTitle:@"综艺" forState:UIControlStateNormal];
-    buttonsView2 = [[YLButtonsView alloc] initWithFrame:CGRectZero buttons:@[bt, bt1, bt2, bt3] internalSpace:10];
-    [self.view addSubview:buttonsView2];
-    [buttonsView2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(buttonsView1.mas_left);
-        make.right.equalTo(buttonsView1.mas_right);
-        make.top.equalTo(buttonsView1.mas_bottom).offset(5);
-    }];
     
-    __weak __typeof(YLButtonsView*)tmp = buttonsView2;
-    buttonsView2.block = ^(UIButton * _Nonnull btn, NSInteger index) {
+    YLButtonsView *tmp = [[YLButtonsView alloc] initWithFrame:CGRectZero buttons:@[bt, bt1, bt2, bt3] internalSpace:10];
+    __weak __typeof(YLButtonsView*)w_tmp = tmp;
+    tmp.block = ^(UIButton * _Nonnull btn, NSInteger index) {
+        
         NSLog(@"%zd", index);
         NSLog(@"%@", btn.titleLabel.text);
         
         if (index == 0) {
-            tmp.verticalDisplay = !tmp.verticalDisplay;
+            w_tmp.verticalDisplay = !w_tmp.verticalDisplay;
         }
     };
+    return tmp;
 }
 
 

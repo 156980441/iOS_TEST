@@ -34,18 +34,18 @@
         _space = space;
         _buttons = buttons;
         _verticalDisplay = NO;
-        [self configUI];
+        [self yl_configUI];
     }
     return self;
     
 }
 
-- (void)configUI {
+- (void)yl_configUI {
     if (self.verticalDisplay == NO) {
         // 第一个
         UIButton *lastBtn = self.buttons.firstObject;
         lastBtn.tag = 0;
-        [lastBtn addTarget:self action:@selector(p_btnPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [lastBtn addTarget:self action:@selector(yl_btnPressed:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:lastBtn];
         [lastBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.mas_left).offset(0);
@@ -57,7 +57,7 @@
         for (NSInteger i = 1; i < self.buttons.count; i++ ) {
             UIButton* bt = self.buttons[i];
             bt.tag = i;
-            [bt addTarget:self action:@selector(p_btnPressed:) forControlEvents:UIControlEventTouchUpInside];
+            [bt addTarget:self action:@selector(yl_btnPressed:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:bt];
             [bt mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(lastBtn.mas_right).mas_offset(space);
@@ -76,7 +76,7 @@
         // 第一个
         UIButton *lastBtn = self.buttons.firstObject;
         lastBtn.tag = 0;
-        [lastBtn addTarget:self action:@selector(p_btnPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [lastBtn addTarget:self action:@selector(yl_btnPressed:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:lastBtn];
         [lastBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.and.right.equalTo(self).offset(0).priority(300); // 设置优先级，防止出现 Masonry 警告
@@ -89,7 +89,7 @@
         for (NSInteger i = 1; i < self.buttons.count; i++ ) {
             UIButton* bt = self.buttons[i];
             bt.tag = i;
-            [bt addTarget:self action:@selector(p_btnPressed:) forControlEvents:UIControlEventTouchUpInside];
+            [bt addTarget:self action:@selector(yl_btnPressed:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:bt];
             [bt mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.top.equalTo(lastBtn.mas_bottom).mas_offset(space).priority(300);
@@ -130,7 +130,7 @@
 }
 
 
-- (void)p_btnPressed:(UIButton*)sender {
+- (void)yl_btnPressed:(UIButton*)sender {
     if (self.block) {
         self.block(sender, sender.tag);
     }
@@ -139,7 +139,7 @@
 - (void)setVerticalDisplay:(BOOL)verticalDisplay {
     if (_verticalDisplay != verticalDisplay) {
         _verticalDisplay = verticalDisplay;
-        [self configUI];
+        [self yl_configUI];
     }
 }
 
