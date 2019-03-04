@@ -143,5 +143,10 @@
     }
 }
 
+- (void)dealloc {
+#ifdef DEBUG
+    NSLog(@"%s", __func__);
+#endif
+}
 
 @end
