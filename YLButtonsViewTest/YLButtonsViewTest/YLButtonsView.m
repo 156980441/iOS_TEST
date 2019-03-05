@@ -161,6 +161,10 @@
     [self yl_configUI];
 }
 
+- (NSArray<UIButton*>* const)buttonsArr {
+    return self.buttons;
+}
+
 - (void)dealloc {
 #ifdef DEBUG
     NSLog(@"%s", __func__);

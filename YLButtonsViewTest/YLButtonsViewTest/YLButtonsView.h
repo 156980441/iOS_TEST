@@ -66,7 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) BOOL verticalDisplay;
 
-
+@property (nonatomic, strong, readonly) NSArray<UIButton*> *const buttonsArr;
 
 /**
  更新 Button 的显示文案

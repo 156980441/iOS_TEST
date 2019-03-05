@@ -77,7 +77,7 @@
                 UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
                 bt.backgroundColor = [UIColor blueColor];
                 [bt setTitle:@"体育" forState:UIControlStateNormal];
-                [ws.btnsView insertButton:bt atIndex:2];
+                [ws.btnsView insertButton:bt atIndex:ws.btnsView.buttonsArr.count];
             }
         }
     };
