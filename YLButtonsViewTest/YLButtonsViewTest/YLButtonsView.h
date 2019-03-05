@@ -66,6 +66,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) BOOL verticalDisplay;
 
+
+/**
+ 视图所包含的按钮
+ */
 @property (nonatomic, strong, readonly) NSArray<UIButton*> *const buttonsArr;
 
 /**
@@ -86,6 +90,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (UIButton*)buttonOfIndex:(NSUInteger)index;
 
+
+/**
+ 在原有视图上增加按钮
+
+ @param button 新按钮
+ @param index 新按钮位置
+ */
 - (void)insertButton:(UIButton*)button atIndex:(NSUInteger)index;
 
 @end
