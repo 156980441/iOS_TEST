@@ -11,7 +11,7 @@
 
 @interface YLButtonsView ()
 @property (nonatomic, assign) CGFloat space;
-@property (nonatomic, strong) const NSArray<UIButton*> *buttons;
+@property (nonatomic, strong) NSArray<UIButton*>* buttons;
 @end
 
 @implementation YLButtonsView
@@ -28,7 +28,7 @@
     return [self initWithFrame:CGRectZero titles:titles images:nil internalSpace:0];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame buttons:(const NSArray<UIButton*>*)buttons internalSpace:(CGFloat)space {
+- (instancetype)initWithFrame:(CGRect)frame buttons:(NSArray<UIButton*>* const)buttons internalSpace:(CGFloat)space {
     self = [super initWithFrame:frame];
     if (self) {
         _space = space;
@@ -106,7 +106,7 @@
     }
 }
 
-- (instancetype)initWithFrame:(CGRect)frame titles:(const NSArray<NSString*>*)titles images:(nullable NSArray<UIImage*>*)images internalSpace:(CGFloat)space {
+- (instancetype)initWithFrame:(CGRect)frame titles:(NSArray<NSString*>* const)titles images:(nullable NSArray<UIImage*>*)images internalSpace:(CGFloat)space {
     NSMutableArray* bts = [NSMutableArray arrayWithCapacity:titles.count];
     for (int i = 0; i < titles.count; i++) {
         UIButton* bt = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -143,7 +143,7 @@
     }
 }
 
-- (UIButton*)buttonOfIndex:(NSInteger)index {
+- (UIButton*)buttonOfIndex:(NSUInteger)index {
     NSAssert(index < self.buttons.count, @"ERROR:index out of array");
     if (index < self.buttons.count) {
         return self.buttons[index];
@@ -151,6 +151,14 @@
     else {
         return nil;
     }
+}
+
+- (void)insertButton:(UIButton*)button atIndex:(NSUInteger)index {
+    NSAssert(index <= self.buttons.count, @"ERROR:index greater than array count");
+    NSMutableArray *tmp = [NSMutableArray arrayWithArray:self.buttons];
+    [tmp insertObject:button atIndex:index];
+    self.buttons = [NSArray arrayWithArray:tmp];
+    [self yl_configUI];
 }
 
 - (void)dealloc {

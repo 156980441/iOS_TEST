@@ -25,7 +25,7 @@
     buttonsView.frame = CGRectMake(50, 100, 300, 20);
     [self.view addSubview:buttonsView];
     
-    buttonsView1 = [[YLButtonsView alloc] initWithFrame:CGRectZero titles:@[@"删除 UI，应该 dealloc", @"增加 UI"] images:nil internalSpace:5];
+    buttonsView1 = [[YLButtonsView alloc] initWithFrame:CGRectZero titles:@[@"删除 UI，应该 dealloc", @"增加 UI", @"增加 Button"] images:nil internalSpace:5];
     [self.view addSubview:buttonsView1];
     [buttonsView1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(buttonsView.mas_left);
@@ -54,6 +54,11 @@
         if (index == 0) {
             [ws.btnsView removeFromSuperview];
             ws.btnsView = nil;
+            
+//            [UIView animateWithDuration:0.5 animations:^{
+//                // 强制刷新布局
+//                [ws.view layoutIfNeeded];
+//            }];
         }
         else if (index == 1) {
             if (ws.btnsView) {
@@ -67,7 +72,13 @@
                 make.right.equalTo(tmp.mas_right);
                 make.top.equalTo(tmp.mas_bottom).offset(5);
             }];
-            
+        } else if (index == 2) {
+            if (ws.btnsView) {
+                UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
+                bt.backgroundColor = [UIColor blueColor];
+                [bt setTitle:@"体育" forState:UIControlStateNormal];
+                [ws.btnsView insertButton:bt atIndex:2];
+            }
         }
     };
     
@@ -77,6 +88,9 @@
         make.left.equalTo(buttonsView2.mas_left);
         make.right.equalTo(buttonsView2.mas_right);
         make.top.equalTo(buttonsView2.mas_bottom).offset(5);
+//        make.top.equalTo(buttonsView1.mas_bottom).offset(5).priority(300);
+//        make.left.equalTo(buttonsView1.mas_left).priority(300);
+//        make.right.equalTo(buttonsView1.mas_right).priority(300);
     }];
     UIButton *btn = [buttonsView3 buttonOfIndex:0];
     btn.backgroundColor = [UIColor orangeColor];

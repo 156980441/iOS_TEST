@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ 1.NSString const *firstString = @"xxx"; // const修饰 *firstString，指针本身不可修改
+ 2.const NSString *firstString = @"xxx"; // const修饰 *firstString，指针本身不可修改
+ 3.NSString* const firstString = @"xxx"; // const修饰 firstString, 即*firstString指针值可变,firstString指针指向的内容不可修改
+ 
+ 三者的作用都是使 firstString 只可读不可写
+
+ **/
+
 NS_ASSUME_NONNULL_BEGIN
 
 
@@ -32,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param space 按钮之间的间隙
  @return 多按钮视图
  */
-- (instancetype)initWithFrame:(CGRect)frame buttons:(const NSArray<UIButton*>*)buttons internalSpace:(CGFloat)space;
+- (instancetype)initWithFrame:(CGRect)frame buttons:(NSArray<UIButton*>* const)buttons internalSpace:(CGFloat)space;
 
 /**
  构造多个 Button
@@ -43,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param space 按钮之间的间隙
  @return 多按钮视图
  */
-- (instancetype)initWithFrame:(CGRect)frame titles:(const NSArray<NSString*>*)titles images:(nullable NSArray<UIImage*>*)images internalSpace:(CGFloat)space;
+- (instancetype)initWithFrame:(CGRect)frame titles:(NSArray<NSString*>* const)titles images:(nullable NSArray<UIImage*>*)images internalSpace:(CGFloat)space;
 
 
 /**
@@ -75,7 +84,9 @@ NS_ASSUME_NONNULL_BEGIN
  @param index 索引
  @return UIButton
  */
-- (UIButton*)buttonOfIndex:(NSInteger)index;
+- (UIButton*)buttonOfIndex:(NSUInteger)index;
+
+- (void)insertButton:(UIButton*)button atIndex:(NSUInteger)index;
 
 @end
 
