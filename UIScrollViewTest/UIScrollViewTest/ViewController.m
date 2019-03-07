@@ -93,10 +93,8 @@
     NSLog(@"==== 将要结束拖动 speed %f, velocity.y %f, contentOffset.y %f", speed, velocity.y, scrollView.contentOffset.y);
 }
 
-- (void)stopOnTop:(UIScrollView *)scrollView {// 在顶部停止滚动
-    
+- (void)stopOnTop:(UIScrollView *)scrollView { // 在顶部停止滚动
     [scrollView setContentOffset:CGPointZero animated:YES];
-    
 }
 
 
