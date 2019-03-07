@@ -8,6 +8,7 @@
 
 // https://www.jianshu.com/p/6f99981d99dd scroll view 使用
 // https://www.jianshu.com/p/9091e5f34df5 contentoffset 图解
+// https://www.jianshu.com/p/4a50794fe2fe 取消UIScrollView的惯性滑动
 
 #import <UIKit/UIKit.h>
 

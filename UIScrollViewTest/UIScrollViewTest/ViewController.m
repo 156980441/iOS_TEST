@@ -64,27 +64,48 @@
 
 #pragma mark - UIScrollViewDelegate
 
+// called on start of dragging (may require some time and or distance to move)
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    NSLog(@"开始拖动");
+}
+
 // 只要发生滚动，就会调用该方法 any offset changes
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSLog(@"滚动 contentoffset.y = %f", scrollView.contentOffset.y);
 }
+
+// called on finger up if the user dragged. velocity is in points/millisecond. targetContentOffset may be changed to adjust where the scroll view comes to rest
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    // 取消UIScrollView的惯性滑动
+    CGFloat speed = fabs(velocity.y); // 滚动速度的绝对值，也可以根据 velocity.y 的正负判读滚动方向 假如为0 说明手动拖动停止 没有惯性滑动
+    CGFloat offsetY = scrollView.contentOffset.y;
+    CGFloat maxSpeed = 2.7; // 超过这个最大速度要做的操作
+    if(velocity.y < 0) { // 手向下滑动
+        if (speed > maxSpeed && offsetY > 0) { // 从顶部往下滑
+            [self performSelectorOnMainThread:@selector(stopOnTop:) withObject:scrollView waitUntilDone:NO];//一定要在主线程立即执行 和 runLoop有关
+            
+        }
+    }
+    else { // 手向上滑动
+        
+    }
+    
+    NSLog(@"==== 将要结束拖动 speed %f, velocity.y %f, contentOffset.y %f", speed, velocity.y, scrollView.contentOffset.y);
+}
+
+- (void)stopOnTop:(UIScrollView *)scrollView {// 在顶部停止滚动
+    
+    [scrollView setContentOffset:CGPointZero animated:YES];
+    
+}
+
+
 
 // 只要zoomScale发生变化，就会调用该方法 any zoom scale changes
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView {
     NSLog(@"缩放");
 }
 
-// called on start of dragging (may require some time and or distance to move)
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    NSLog(@"开始拖动");
-}
-
-// called on finger up if the user dragged. velocity is in points/millisecond. targetContentOffset may be changed to adjust where the scroll view comes to rest
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
-                     withVelocity:(CGPoint)velocity
-              targetContentOffset:(inout CGPoint *)targetContentOffset {
-    NSLog(@"将要结束拖动");
-}
 
 // called on finger up if the user dragged. decelerate is true if it will continue moving afterwards
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
