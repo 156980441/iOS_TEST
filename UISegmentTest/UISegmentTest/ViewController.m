@@ -23,13 +23,11 @@
     temp.clipsToBounds = YES;
     temp.layer.borderWidth = 0.5f;
     temp.layer.borderColor = [UIColor redColor].CGColor;
-    [temp setDividerImage:nil
+    [temp setDividerImage:imageWithColorSize([UIColor whiteColor], CGSizeMake(5, 50))
       forLeftSegmentState:UIControlStateNormal
         rightSegmentState:UIControlStateNormal
                barMetrics:UIBarMetricsDefault];
-    [temp addTarget:self
-             action:@selector(actionSegmentChanged:)
-   forControlEvents:UIControlEventValueChanged];
+    [temp addTarget:self action:@selector(actionSegmentChanged:) forControlEvents:UIControlEventValueChanged];
     NSDictionary *normal = @{NSFontAttributeName:[UIFont systemFontOfSize:12],
                              NSForegroundColorAttributeName:[UIColor blueColor]};
     NSDictionary *select = @{NSFontAttributeName:[UIFont systemFontOfSize:15],
@@ -44,5 +42,18 @@
     NSLog(@"seg index: %zd", segmentedControl.selectedSegmentIndex);
 }
 
+UIImage *imageWithColorSize(UIColor *color, CGSize size)
+{
+    if (!color || size.width <= 0 || size.height <= 0) return nil;
+    
+    CGRect rect = CGRectMake(0.0f, 0.0f, size.width, size.height);
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, color.CGColor);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
 
 @end
