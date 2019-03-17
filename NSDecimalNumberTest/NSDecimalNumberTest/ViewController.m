@@ -19,8 +19,8 @@
 @implementation ViewController
 
 - (void)testDecimalNumber {
-    double d1 = 0.01;
-    double d2 = 999999;
+    double d1 = 0.0001;
+    double d2 = 9999.99;
     double d3 = d1 * d2;
     NSLog(@"%f * %f = %f", d1, d2, d3);
 }
@@ -28,15 +28,15 @@
 - (void)test {
     double t_double = 123456789.987654321;
     NSString *t_str = [NSString stringWithFormat:@"%f", t_double];
-    NSLog(@"double %f", t_double);
-    NSLog(@"str %@", t_str);
+    NSLog(@"origin double 123456789.987654321 fomart %f", t_double);
+    NSLog(@"origin double 123456789.987654321 to string %@", t_str);
     
     NSDecimalNumber *t_dec = [NSDecimalNumber decimalNumberWithString:@"123456789.987654321"];
-    NSLog(@"dec %@", t_dec.stringValue);
+    NSLog(@"origin string 123456789.987654321 to decimal %@", t_dec.stringValue);
     
     NSNumber *t_num = [NSNumber numberWithDouble:t_double];
     NSDecimalNumber *t_double_num_dec = [NSDecimalNumber decimalNumberWithString:t_num.stringValue];
-    NSLog(@"t_double_num_dec %@", t_double_num_dec.stringValue);
+    NSLog(@"origin double to number to decimal %@", t_double_num_dec.stringValue);
     NSLog(@"只能直接调用 decimalNumberWithString ");
 }
 
