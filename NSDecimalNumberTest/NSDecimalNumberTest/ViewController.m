@@ -49,6 +49,8 @@
     [self testDecimalNumber];
     [self test];
     
+    float tmp = convert2Unit(3);
+    
     // mantissa：长整形；exponent：指数；flag：正负数
     NSDecimalNumber * amount0 = [[NSDecimalNumber alloc] initWithMantissa:42
                                                                  exponent:-2
@@ -112,7 +114,18 @@ NSString* doubleByMultiplyingBy(NSString *num1, NSString *num2, int scale, NSRou
     return nil;
 }
 
-// char const *ptr 和 const char *ptr 等价，*ptr 的值为 const，不能修改
+float convert2Unit(int num)
+{
+    float tmp = 1.0f;
+    for (int i = 0; i < num; i++) {
+        tmp = tmp / 10;
+    }
+    return tmp;
+}
+
+// char const *ptr 和 const char *ptr 等价，*ptr 的值为 const，不能修改。
+// 但是 ptr 的声明并不意味着它指向的值实际上就是一个常量，而只是意味着对 ptr 而言，这个值是常量。
+// 实验如下：ptr 指向 str，而 str 不是 const，可以直接通过 str 变量来修改 str 的值，但是确不能通过 ptr 指针来修改。所以为什么 NSString 要是 copy 的
 // char * const ptr 即 const 指针，不能修改ptr指针，但是可以修改该指针指向的内容
 int getDecimalDigits(const char *chars)
 {
