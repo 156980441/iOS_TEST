@@ -27,12 +27,14 @@
 
 - (void)test {
     double t_double = 123456789.987654321;
-    NSString *t_str = [NSString stringWithFormat:@"%f", t_double];
-    NSLog(@"origin double 123456789.987654321 fomart %f", t_double);
-    NSLog(@"origin double 123456789.987654321 to string %@", t_str);
+    NSString *t_str = @"123456789.987654321";
+    NSLog(@"%@ has decimal digit %d", t_str, getDecimalDigits([t_str cStringUsingEncoding:NSUTF8StringEncoding]));
+    NSString *t_double_str = [NSString stringWithFormat:@"%f", t_double];
+    NSLog(@"origin double %@ to double %f", t_str, t_double);
+    NSLog(@"origin double %@ to string %@", t_str, t_double_str);
     
-    NSDecimalNumber *t_dec = [NSDecimalNumber decimalNumberWithString:@"123456789.987654321"];
-    NSLog(@"origin string 123456789.987654321 to decimal %@", t_dec.stringValue);
+    NSDecimalNumber *t_dec = [NSDecimalNumber decimalNumberWithString:t_str];
+    NSLog(@"origin string %@ to decimal %@", t_str, t_dec.stringValue);
     
     NSNumber *t_num = [NSNumber numberWithDouble:t_double];
     NSDecimalNumber *t_double_num_dec = [NSDecimalNumber decimalNumberWithString:t_num.stringValue];
@@ -110,16 +112,23 @@ NSString* doubleByMultiplyingBy(NSString *num1, NSString *num2, int scale, NSRou
     return nil;
 }
 
-int getDecimalDigits(char * const chars)
+// char const *ptr 和 const char *ptr 等价，*ptr 的值为 const，不能修改
+// char * const ptr 即 const 指针，不能修改ptr指针，但是可以修改该指针指向的内容
+int getDecimalDigits(const char *chars)
 {
+    int value = 0;
     char *tmp = NULL;
-    tmp = strstr(chars,".")
-    if(tmp != NULL) {
-        return strlen(tmp + 1);
+    
+    if (chars == NULL) {
+        return value;
     }
     else {
-        return 0;
+        tmp = strstr(chars,".");
+        if(tmp != NULL) {
+            value = (int)strlen(tmp + 1);
+        }
     }
+    return value;
 }
 
 @end
