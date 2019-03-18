@@ -106,5 +106,20 @@
     
 }
 
+NSString* doubleByMultiplyingBy(NSString *num1, NSString *num2, int scale, NSRoundingMode roundingMode) {
+    return nil;
+}
+
+int getDecimalDigits(char * const chars)
+{
+    char *tmp = NULL;
+    tmp = strstr(chars,".")
+    if(tmp != NULL) {
+        return strlen(tmp + 1);
+    }
+    else {
+        return 0;
+    }
+}
 
 @end
