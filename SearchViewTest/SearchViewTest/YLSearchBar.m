@@ -31,10 +31,12 @@
     if (nightMode) {
         UIImage* image = [UIImage imageNamed:@"rect_circle_corner_gray_night"];
         self.searchBarTF.background = [image resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch];
+        [self setCursorColor:[UIColor whiteColor]];
     }
     else {
         UIImage* image = [UIImage imageNamed:@"rect_circle_corner_gray"];
         self.searchBarTF.background = [image resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch];
+        [self setCursorColor:[UIColor blueColor]];
     }
 }
 
@@ -43,8 +45,14 @@
         UITextField *tmp = UITextField.new;
         tmp.keyboardType = UIKeyboardTypeDefault;
         tmp.returnKeyType = UIReturnKeySearch;
+        tmp.backgroundColor = [UIColor clearColor];
+        tmp.clearButtonMode = UITextFieldViewModeWhileEditing;
+        tmp.borderStyle = UITextBorderStyleNone;
+        tmp.font = [UIFont systemFontOfSize:13];
+        tmp.placeholder = @"search something";
         UIImage* image = [UIImage imageNamed:@"rect_circle_corner_gray"];
         tmp.background = [image resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch]; // 设置背景的好处是排除了系统差异造成的样式改变
+        
         
         UIImage *search = [UIImage imageNamed:@"icon_search_black_night"];
         UIImageView *left = [[UIImageView alloc] initWithImage:search];

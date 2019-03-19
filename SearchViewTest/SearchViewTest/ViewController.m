@@ -33,19 +33,20 @@ static NSString *identifier = @"cellId";
     [super viewDidAppear:animated];
     
     UIEdgeInsets insets = yl_safeAreaInset(self.view);
+    CGFloat inset = 5.0f;
     
-    YLSearchBar *searchBar = [[YLSearchBar alloc] initWithFrame:CGRectMake(0, insets.top, CGRectGetWidth(self.view.frame), 50)];
-    searchBar.nightMode = YES;
+    YLSearchBar *searchBar = [[YLSearchBar alloc] initWithFrame:CGRectMake(inset, insets.top, CGRectGetWidth(self.view.frame) - inset * 2, 30)];
+//    searchBar.nightMode = YES;
     [self.view addSubview:searchBar];
     
     UITableView* tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:identifier];
-    tableView.backgroundColor = [UIColor grayColor];; // 背景黑夜模式白色
+//    tableView.backgroundColor = [UIColor grayColor];
     tableView.tableFooterView = UIView.new; // 去掉 cell 或者 section 的多余线
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone; // 去掉 cell 分割线
     tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     tableView.separatorInset = UIEdgeInsetsMake(0, 10, 0, 10);
-    tableView.separatorColor = [UIColor yellowColor];
+    tableView.separatorColor = [UIColor grayColor];
     tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag; // 滑动后让键盘消失
     tableView.frame = CGRectMake(0, searchBar.frame.origin.y + CGRectGetHeight(searchBar.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
     tableView.delegate = self;

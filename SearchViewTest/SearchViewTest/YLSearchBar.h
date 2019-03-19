@@ -10,6 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ 自定义搜索栏
+ */
 @interface YLSearchBar : UIView
 // 搜索框
 @property(nonatomic, strong) UITextField *searchBarTF;
