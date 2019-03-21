@@ -10,6 +10,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class YLSearchBar;
+
+@protocol YLSearchBarDelegate <NSObject>
+
+@optional
+
+- (void)yl_searchBarDidBeginEditing:(YLSearchBar*)searchBar;
+
+- (void)yl_searchBarDidEndEditing:(YLSearchBar*)searchBar;
+
+@end
+
 /**
  自定义搜索栏
  */
@@ -20,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) UIColor *cursorColor;
 // 黑夜模式，默认关闭 NO
 @property(nonatomic, assign) BOOL nightMode;
+// 搜索框代理
+@property(nonatomic, weak) id<YLSearchBarDelegate> delegate;
 
 @end
 

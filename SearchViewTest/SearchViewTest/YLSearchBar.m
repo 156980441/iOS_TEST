@@ -8,6 +8,10 @@
 
 #import "YLSearchBar.h"
 
+@interface YLSearchBar () <UITextFieldDelegate>
+
+@end
+
 @implementation YLSearchBar
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -49,7 +53,10 @@
         tmp.clearButtonMode = UITextFieldViewModeWhileEditing;
         tmp.borderStyle = UITextBorderStyleNone;
         tmp.font = [UIFont systemFontOfSize:13];
-        tmp.placeholder = @"search something";
+        tmp.clipsToBounds = YES;
+        tmp.layer.cornerRadius  = 2.f;
+        tmp.delegate = self;
+        tmp.placeholder = @"please input key words";
         UIImage* image = [UIImage imageNamed:@"rect_circle_corner_gray"];
         tmp.background = [image resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch]; // 设置背景的好处是排除了系统差异造成的样式改变
         
@@ -61,6 +68,39 @@
         _searchBarTF = tmp;
     }
     return _searchBarTF;
+}
+
+#pragma mark -
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(yl_searchBarDidBeginEditing:)]) {
+        [self.delegate yl_searchBarDidBeginEditing:self];
+    }
+}
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(yl_searchBarDidEndEditing:)]) {
+        [self.delegate yl_searchBarDidEndEditing:self];
+    }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    return YES;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField {
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    return YES;
 }
 
 @end
