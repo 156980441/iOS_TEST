@@ -18,6 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    
+    // 创建一个线程
     NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(run1:) object:nil];
     thread.name = @"subThread_001";
     [thread start];
@@ -33,11 +35,11 @@
     dispatch_queue_t g_queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0); // 系统并行队列
     
     /*
-     dispatch_sync 后的 block 在主线程执行，也没有卡死主线程，虽然我的 g_queue 是并行队列
+     dispatch_sync 后的 block 在主线程执行，也没有卡死主线程，虽然我的 g_queue 是并行队列，如果是 main_queue 则卡死
      As an optimization, this function invokes the block on the current thread when possible.
      */
     dispatch_sync(g_queue, ^(void){
-        NSLog(@"this also execute in main thread ? %d",[NSThread isMainThread]);  // via [NSThread isMainThread]
+        NSLog(@"this also execute in main thread ? %d", [NSThread isMainThread]);  // via [NSThread isMainThread]
     });
     
     /*
@@ -57,7 +59,7 @@
     //1.创建NSBlockOperation对象
     NSBlockOperation *b_operation = [NSBlockOperation blockOperationWithBlock:^{
         [NSThread currentThread].name = @"subThread_005";
-        NSLog(@"%@,%s,is Main %d",[NSThread currentThread].name ,__FUNCTION__,[NSThread isMainThread]);
+        NSLog(@"main thread ? %d, %@, %s", [NSThread isMainThread], [NSThread currentThread].name , __FUNCTION__);
     }];
     
     //2.开始任务
@@ -66,18 +68,19 @@
 
 -(void)run1:(id)userdata
 {
-    NSLog(@"%@,%s",[NSThread currentThread].name ,__FUNCTION__);
+    NSLog(@"main thread ? %d, %@, %s", [NSThread isMainThread], [NSThread currentThread].name , __FUNCTION__);
 }
+
 -(void)run2:(id)userdata
 {
     [NSThread currentThread].name = @"subThread_002";
-    NSLog(@"%@,%s",[NSThread currentThread].name ,__FUNCTION__);
+    NSLog(@"main thread ? %d, %@, %s", [NSThread isMainThread], [NSThread currentThread].name , __FUNCTION__);
     
     CFRunLoopRun();
     
-    for (int i = 1000; i > 0; i--) {
+    for (int i = 3; i > 0; i--) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            NSLog(@" --- %d %p",[NSThread isMainThread],[NSThread currentThread]);
+            NSLog(@"main thread ? %d, %p", [NSThread isMainThread], [NSThread currentThread]);
         });
     }
     
@@ -86,12 +89,13 @@
 -(void)run3:(id)userdata
 {
     [NSThread currentThread].name = @"subThread_003";
-    NSLog(@"%@,%s",[NSThread currentThread].name ,__FUNCTION__);
+    NSLog(@"main thread ? %d, %@, %s", [NSThread isMainThread], [NSThread currentThread].name , __FUNCTION__);
 }
+
 -(void)run4:(id)userdata
 {
     [NSThread currentThread].name = @"subThread_004";
-    NSLog(@"%@,%s,is Main %d",[NSThread currentThread].name ,__FUNCTION__,[NSThread isMainThread]);
+    NSLog(@"main thread ? %d, %@, %s", [NSThread isMainThread], [NSThread currentThread].name , __FUNCTION__);
 }
 
 -(void)lockMainThread
@@ -107,6 +111,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 @end
