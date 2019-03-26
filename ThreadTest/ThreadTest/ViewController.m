@@ -8,6 +8,12 @@
 
 #import "ViewController.h"
 
+/**
+ 进程：
+ 系统中正在运行的一个程序，进程之间是相互独立的，每个进程都有属于自己的内存空间。
+ 线程：
+ 进程内部执行任务所需要的执行路径。
+ **/
 @interface ViewController ()
 
 @end
@@ -28,6 +34,12 @@
     
     [self performSelectorInBackground:@selector(run3:) withObject:nil];
     
+    
+    /**
+     GCD会自动管理线程的生命周期（创建线程、调度任务、销毁线程）。
+     程序员只需要告诉GCD想要执行什么任务，不需要编写任何线程管理代码。
+     GCD会自动利用更多的CPU内核。
+     **/
     dispatch_queue_t main_queue = dispatch_get_main_queue(); // 串行主队列
     dispatch_queue_t s_queue0 = dispatch_queue_create("tk.bourne.testQueue", NULL); // 串行自定义队列
     dispatch_queue_t s_queue1 = dispatch_queue_create("tk.bourne.testQueue", DISPATCH_QUEUE_SERIAL); // 串行自定义队列
