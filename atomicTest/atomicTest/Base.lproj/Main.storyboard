@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y8W-FD-2ta">
+                                <rect key="frame" x="161" y="64" width="52" height="30"/>
+                                <state key="normal" title="测试 int"/>
+                                <connections>
+                                    <action selector="intTest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6RR-0J-zLU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0c-j0-Uzo">
+                                <rect key="frame" x="142" y="136" width="91" height="30"/>
+                                <state key="normal" title="测试 memory"/>
+                                <connections>
+                                    <action selector="memoryTest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IfS-LP-h0Z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ycy-yF-5n8">
+                                <rect key="frame" x="125" y="202" width="124" height="30"/>
+                                <state key="normal" title="测试 memory safe"/>
+                                <connections>
+                                    <action selector="memorySafeTest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xmw-nk-MjX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ycy-yF-5n8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HsO-SV-9oY"/>
+                            <constraint firstItem="y8W-FD-2ta" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="44" id="RSp-if-cCQ"/>
+                            <constraint firstItem="O0c-j0-Uzo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fYJ-V7-3Z1"/>
+                            <constraint firstItem="O0c-j0-Uzo" firstAttribute="top" secondItem="y8W-FD-2ta" secondAttribute="bottom" constant="42" id="lPb-kE-Xkc"/>
+                            <constraint firstItem="O0c-j0-Uzo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oGa-pA-J2y"/>
+                            <constraint firstItem="y8W-FD-2ta" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sDn-Mn-B04"/>
+                            <constraint firstItem="Ycy-yF-5n8" firstAttribute="top" secondItem="O0c-j0-Uzo" secondAttribute="bottom" constant="36" id="uoU-r0-Mbw"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
