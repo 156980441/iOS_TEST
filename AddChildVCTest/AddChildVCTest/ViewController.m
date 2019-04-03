@@ -29,6 +29,10 @@
  *  didMoveToParentViewController:
  */
 
+/**
+ https://blog.csdn.net/morris_/article/details/80252610
+ */
+
 @interface ViewController ()
 
 @property (nonatomic, strong) RedVC *red;
@@ -44,7 +48,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     BlueVC *blue = BlueVC.new;
     blue.view.frame = CGRectMake(100, 200, 200, 300); // 触发 BlueVC 的 viewDidLoad
-    [self addChildViewController:blue];
+    [self addChildViewController:blue]; // 当要添加的子视图控制器已经包含在视图控制器容器中，那么，相当于先从父视图控制器中删除，然后重新添加到父视图控制器中。
     self.blue = blue;
     
     RedVC *red = RedVC.new;
