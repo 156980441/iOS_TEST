@@ -10,7 +10,6 @@
 
 @implementation YLBezierCurveView
 
-// 初始化画布
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -25,12 +24,13 @@
 /**
  *  画坐标轴
  */
--(void)drawXYLine:(NSMutableArray *)x_names{
+-(void)drawXYLine:(NSMutableArray *)x_names {
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     CGRect frame = self.frame;
+    // 使用 UIKit 坐标系
     
-    // 1.Y轴、X轴的直线
+    // 1.Y 轴、X 轴的坐标直线
     [path moveToPoint:CGPointMake(MARGIN, CGRectGetHeight(frame) - MARGIN)];
     [path addLineToPoint:CGPointMake(MARGIN, MARGIN)];
     
@@ -38,25 +38,27 @@
     [path addLineToPoint:CGPointMake(MARGIN+CGRectGetWidth(frame)-2*MARGIN, CGRectGetHeight(frame)-MARGIN)];
     
     // 2.添加箭头
+    // X 轴箭头
     [path moveToPoint:CGPointMake(MARGIN, MARGIN)];
     [path addLineToPoint:CGPointMake(MARGIN-5, MARGIN+5)];
     [path moveToPoint:CGPointMake(MARGIN, MARGIN)];
     [path addLineToPoint:CGPointMake(MARGIN+5, MARGIN+5)];
     
+    // Y 轴箭头
     [path moveToPoint:CGPointMake(MARGIN+CGRectGetWidth(frame)-2*MARGIN, CGRectGetHeight(frame)-MARGIN)];
     [path addLineToPoint:CGPointMake(MARGIN+CGRectGetWidth(frame)-2*MARGIN-5, CGRectGetHeight(frame)-MARGIN-5)];
     [path moveToPoint:CGPointMake(MARGIN+CGRectGetWidth(frame)-2*MARGIN, CGRectGetHeight(frame)-MARGIN)];
     [path addLineToPoint:CGPointMake(MARGIN+CGRectGetWidth(frame)-2*MARGIN-5, CGRectGetHeight(frame)-MARGIN+5)];
     
-    //3.添加索引格
-    //X轴
-    for (int i=0; i<x_names.count; i++) {
-        CGFloat X = MARGIN + MARGIN*(i+1);
-        CGPoint point = CGPointMake(X,CGRectGetHeight(frame)-MARGIN);
+    // 3.添加索引格
+    // X 轴索引
+    for (int i = 0; i < x_names.count; i++) {
+        CGFloat X = MARGIN + MARGIN * ( i + 1 );
+        CGPoint point = CGPointMake(X, CGRectGetHeight(frame) - MARGIN);
         [path moveToPoint:point];
         [path addLineToPoint:CGPointMake(point.x, point.y-3)];
     }
-    //Y轴（实际长度为200,此处比例缩小一倍使用）
+    // Y 轴（实际长度为200,此处比例缩小一倍使用），啥意思？
     for (int i=0; i<11; i++) {
         CGFloat Y = CGRectGetHeight(frame)-MARGIN-Y_EVERY_MARGIN*i;
         CGPoint point = CGPointMake(MARGIN,Y);

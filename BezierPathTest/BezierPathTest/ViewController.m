@@ -56,7 +56,7 @@
     //    [self drawBaseChart];
     
     //4.饼状图
-    //    [self drawPieChart];
+//        [self drawPieChart];
     
 }
 

@@ -29,7 +29,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface YLBezierCurveView : UIView
 
-// 初始化画布
+
+/**
+ 初始化贝塞尔曲线视图
+
+ @param frame 画布大小
+ @return 实例
+ */
 - (instancetype)initWithFrame:(CGRect)frame;
 
 
