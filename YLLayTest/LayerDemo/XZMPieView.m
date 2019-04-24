@@ -11,9 +11,9 @@
 ///////////////////////////////////////////////////
 @interface XZMLayer : CAShapeLayer
 
-@property (nonatomic,assign)CGFloat startAngle;
-@property (nonatomic,assign)CGFloat endAngle;
-@property (nonatomic,assign)BOOL    isSelected;
+@property (nonatomic, assign) CGFloat startAngle;
+@property (nonatomic, assign) CGFloat endAngle;
+@property (nonatomic, assign) BOOL    isSelected;
 
 @end
 
@@ -30,33 +30,37 @@
 
 ///////////////////////////////////////////////////
 
-@interface XZMPieView (){
-    
+@interface XZMPieView ()
+{
     CAShapeLayer *_maskLayer;
     CGFloat _radius;
     CGPoint _center;
-    
 }
 
 @end
 
 @implementation XZMPieView
 
-- (instancetype)initWithFrame:(CGRect)frame{
-    
+- (instancetype)initWithFrame:(CGRect)frame
+{
     self = [super initWithFrame:frame];
     if (self) {
         
-        //线的半径为扇形半径的一半，线宽是扇形半径->半径+线宽的一半=真实半径，这样就能画出圆形了
-        _radius = (frame.size.width - KMargin*2)/4.f;
+        // 线的半径为扇形半径的一半，线宽是扇形半径->半径+线宽的一半=真实半径，这样就能画出圆形了
+        
+        _radius = (frame.size.width - KMargin * 2) / 4.f;
         _center = CGPointMake(_radius*2 + KMargin, _radius*2 + KMargin);
         _sectorSpace = 0;
         
         
         
-        //通过mask来控制显示区域
+        // 通过mask来控制显示区域
         _maskLayer = [CAShapeLayer layer];
-        UIBezierPath *maskPath = [UIBezierPath bezierPathWithArcCenter:_center radius:self.bounds.size.width/4.f startAngle:-M_PI_2 endAngle:M_PI_2*3 clockwise:YES];
+        UIBezierPath *maskPath = [UIBezierPath bezierPathWithArcCenter:_center
+                                                                radius:self.bounds.size.width/4.f
+                                                            startAngle:-M_PI_2
+                                                              endAngle:M_PI_2*3
+                                                             clockwise:YES];
         //设置边框颜色为不透明，则可以通过边框的绘制来显示整个view
         _maskLayer.strokeColor = [UIColor greenColor].CGColor;
         _maskLayer.lineWidth = self.bounds.size.width/2.f;

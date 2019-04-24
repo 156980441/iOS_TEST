@@ -199,7 +199,7 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
 - (UILabel *)titleLabel
 {
     if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, TitleLabelW, TitleLabelH)];
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, TitleLabelW, TitleLabelH)];
         _titleLabel.font = [UIFont systemFontOfSize:13];
         _titleLabel.textAlignment = 1;
         _titleLabel.text = @"0%";
@@ -207,26 +207,28 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
     return _titleLabel;
 }
 
-- (NSArray *)getLocations{
+- (NSArray *)getLocations
+{
     if (_gradientCGColors.count == 0)
         return nil;
     
     NSMutableArray *locations = [NSMutableArray array];
-    CGFloat present = 1.f/_gradientCGColors.count;
+    CGFloat present = 1.f / _gradientCGColors.count;
     for (int i = 0; i < _gradientCGColors.count; i ++) {
-        [locations addObject:@(present*(i+1))];
+        [locations addObject:@(present * ( i + 1 ))];
     }
     return locations;
 }
 
 
 #pragma mark -- Setter
-- (void)setGradientCGColors:(NSArray *)gradientCGColors{
-    
+- (void)setGradientCGColors:(NSArray *)gradientCGColors
+{
     _gradientCGColors = gradientCGColors;
     self.gradientLayer.colors = _gradientCGColors;
     self.gradientLayer.locations = [self getLocations];
-    if(_showTitle){
+    if (_showTitle)
+    {
         self.gradientTitleLayer.colors = _gradientCGColors;
         self.gradientTitleLayer.locations = self.gradientLayer.locations;
     }
@@ -241,7 +243,9 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
 
 
 #pragma mark -- Animation
-- (CABasicAnimation *)basicAnimationWithKey:(NSString *)key toValue:(NSValue *)toValue{
+
+- (CABasicAnimation *)basicAnimationWithKey:(NSString *)key toValue:(NSValue *)toValue
+{
     
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:key];
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -272,8 +276,12 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
             
             if ( _timer) [self revokeTimer];
             _titlePrecent = 0;
-            _timer= [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(changeTitleText) userInfo:nil repeats:YES];
-            [[NSRunLoop mainRunLoop]addTimer:_timer forMode:NSRunLoopCommonModes];
+            _timer = [NSTimer scheduledTimerWithTimeInterval:0.1
+                                                     target:self
+                                                   selector:@selector(changeTitleText)
+                                                   userInfo:nil
+                                                    repeats:YES];
+            [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
         }
         
         [self.maskLayer addAnimation:[self basicAnimationWithKey:@"strokeEnd"
@@ -284,8 +292,10 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
         self.maskLayer.strokeEnd = _progress;
         
         if (_showTitle) {
-            if(_style == XZMGradientProgressStyleLine)self.titleLabel.center = CGPointMake(centerX, ProgressH/2.f);
-            self.titleLabel.text = [NSString stringWithFormat:@"%.0f%%",_progress*100];
+            if(_style == XZMGradientProgressStyleLine) {
+                self.titleLabel.center = CGPointMake(centerX, ProgressH/2.f);
+            }
+            self.titleLabel.text = [NSString stringWithFormat:@"%.0f%%", _progress*100];
         }
     }
 }
