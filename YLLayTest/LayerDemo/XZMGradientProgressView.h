@@ -9,19 +9,23 @@
 #import <UIKit/UIKit.h>
 
 typedef enum : NSUInteger {
-    XZMGradientProgressStyleLine,
-    XZMGradientProgressStyleCircle,
+    XZMGradientProgressStyleLine, // 线
+    XZMGradientProgressStyleCircle, // 圆
 } XZMGradientProgressStyle;
 
+
+/**
+ 渐变进度条
+ */
 @interface XZMGradientProgressView : UIView
 
-+(instancetype)gradientProgressViewWithFrame:(CGRect)frame
++ (instancetype)gradientProgressViewWithFrame:(CGRect)frame
                                           style:(XZMGradientProgressStyle)style
                                       showTitle:(BOOL)showTitle
                                       animation:(BOOL)animation;
 
-@property (nonatomic,assign)CGFloat progress;
-@property (nonatomic,strong)NSArray *gradientCGColors;
+@property (nonatomic,assign) CGFloat progress;
+@property (nonatomic,strong) NSArray *gradientCGColors;
 
 - (void)startRendering;
 

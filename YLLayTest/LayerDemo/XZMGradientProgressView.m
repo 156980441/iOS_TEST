@@ -43,12 +43,14 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
                                    showTitle:(BOOL)showTitle
                                    animation:(BOOL)animation
 {
-    XZMGradientProgressView *progressView = [[XZMGradientProgressView alloc]initWithFrame:frame];
-    if(Height(progressView) > TitleLabelH + 10)
-        progressView ->_style = style;
+    XZMGradientProgressView *progressView = [[XZMGradientProgressView alloc] initWithFrame:frame];
     
-    progressView ->_showTitle = showTitle;
-    progressView ->_animation = animation;
+    if (Height(progressView) > TitleLabelH + 10) {
+        progressView->_style = style;
+    }
+    
+    progressView->_showTitle = showTitle;
+    progressView->_animation = animation;
     progressView.gradientCGColors = @[(id)[UIColor greenColor].CGColor,
                                       (id)[UIColor yellowColor].CGColor,
                                       (id)[UIColor orangeColor].CGColor,
@@ -56,19 +58,26 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
     progressView.progress = 0;
     
     [progressView setup];
+    
     return progressView;
     
 }
 
 #pragma mark -- Private Methods
-- (void)setup{
-    
+
+- (void)setup {
+
     [self.layer addSublayer:self.bgLayer];
     [self.layer addSublayer:self.gradientLayer];
-    if (_showTitle) {
-        if (_style == XZMGradientProgressStyleLine) {
-            [self.layer addSublayer:self.gradientTitleLayer];
-        }else{
+    
+    if (_showTitle)
+    {
+        if (_style == XZMGradientProgressStyleLine)
+        {
+            [self.layer addSublayer:self.gradientTitleLayer]; // 如果是线，加上标题
+        }
+        else
+        {
             [self addSubview:self.titleLabel];
             self.titleLabel.center = CGPointMake(Width(self)/2.f, Height(self)/2.f);
         }
@@ -89,22 +98,31 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
 }
 
 
-#pragma mark -- Lazzy
-- (CAShapeLayer *)bgLayer{
-    
-    if(!_bgLayer){
+#pragma mark -- Lazy load
+
+- (CAShapeLayer *)bgLayer
+{
+    if(!_bgLayer)
+    {
         _bgLayer = [CAShapeLayer layer];
         _bgLayer.lineWidth = ProgressH;
         _bgLayer.strokeColor = RGB(243, 243, 243).CGColor;
         _bgLayer.fillColor = [UIColor clearColor].CGColor;
         _bgLayer.lineCap = kCALineCapRound;
         UIBezierPath *path = [UIBezierPath bezierPath];
-        if (_style == XZMGradientProgressStyleLine) {
-            CGFloat topSpace = _showTitle?TitleLabelH:(Height(self) - ProgressH)/2.f;
+        if (_style == XZMGradientProgressStyleLine)
+        {
+            CGFloat topSpace = _showTitle ? TitleLabelH :(Height(self) - ProgressH)/2.f;
             [path moveToPoint:CGPointMake(ProgressH/2.f, topSpace + ProgressH/2.f)];
             [path addLineToPoint:CGPointMake(Width(self) - ProgressH/2.f, topSpace + ProgressH/2.f)];
-        }else{
-            [path addArcWithCenter:CGPointMake(Width(self)/2.f, Height(self)/2.f) radius:(MIN(Width(self), Height(self)) - ProgressH)/2.f startAngle:-M_PI_2 endAngle:M_PI_2*3 clockwise:YES];
+        }
+        else
+        {
+            [path addArcWithCenter:CGPointMake(Width(self)/2.f, Height(self)/2.f)
+                            radius:(MIN(Width(self), Height(self)) - ProgressH)/2.f
+                        startAngle:-M_PI_2
+                          endAngle:M_PI_2 * 3
+                         clockwise:YES];
         }
         _bgLayer.path = [path CGPath];
     }
