@@ -84,7 +84,7 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
     }
 }
 
-- (void)changeTitleText{
+- (void)changeTitleText {
     
     if (!self.progress) [self revokeTimer];
     
@@ -106,20 +106,20 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
     {
         _bgLayer = [CAShapeLayer layer];
         _bgLayer.lineWidth = ProgressH;
-        _bgLayer.strokeColor = RGB(243, 243, 243).CGColor;
-        _bgLayer.fillColor = [UIColor clearColor].CGColor;
-        _bgLayer.lineCap = kCALineCapRound;
+        _bgLayer.strokeColor = RGB(243, 243, 243).CGColor; // 灰色底
+        _bgLayer.fillColor = [UIColor clearColor].CGColor; // 填充色
+        _bgLayer.lineCap = kCALineCapRound; // 线的头部是圆形
         UIBezierPath *path = [UIBezierPath bezierPath];
         if (_style == XZMGradientProgressStyleLine)
         {
-            CGFloat topSpace = _showTitle ? TitleLabelH :(Height(self) - ProgressH)/2.f;
+            CGFloat topSpace = _showTitle ? TitleLabelH : (Height(self) - ProgressH) / 2.f;
             [path moveToPoint:CGPointMake(ProgressH/2.f, topSpace + ProgressH/2.f)];
             [path addLineToPoint:CGPointMake(Width(self) - ProgressH/2.f, topSpace + ProgressH/2.f)];
         }
         else
         {
             [path addArcWithCenter:CGPointMake(Width(self)/2.f, Height(self)/2.f)
-                            radius:(MIN(Width(self), Height(self)) - ProgressH)/2.f
+                            radius:(MIN(Width(self), Height(self)) - ProgressH) / 2.f
                         startAngle:-M_PI_2
                           endAngle:M_PI_2 * 3
                          clockwise:YES];
@@ -129,8 +129,8 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
     return _bgLayer;
 }
 
-- (CAShapeLayer *)maskLayer{
-    
+- (CAShapeLayer *)maskLayer
+{
     if(!_maskLayer){
         _maskLayer = [CAShapeLayer layer];
         _maskLayer.fillColor = [UIColor clearColor].CGColor;
@@ -139,10 +139,16 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
         _maskLayer.lineCap = kCALineCapRound;
         UIBezierPath *path = [UIBezierPath bezierPath];
         if (_style == XZMGradientProgressStyleLine) {
-            [path moveToPoint:CGPointMake(0, ProgressH/2.f)];
-            [path addLineToPoint:CGPointMake(Width(_gradientLayer), ProgressH/2.f)];
-        }else{
-            [path addArcWithCenter:CGPointMake(Width(_gradientLayer)/2.f, Height(_gradientLayer)/2.f) radius:(MIN(Width(self), Height(self)) - ProgressH)/2.f startAngle:-M_PI_2 endAngle:M_PI_2*3 clockwise:YES];
+            [path moveToPoint:CGPointMake(0, ProgressH / 2.f)];
+            [path addLineToPoint:CGPointMake(Width(_gradientLayer), ProgressH / 2.f)];
+        }
+        else
+        {
+            [path addArcWithCenter:CGPointMake(Width(_gradientLayer) / 2.f, Height(_gradientLayer) / 2.f)
+                            radius:(MIN(Width(self), Height(self)) - ProgressH) / 2.f
+                        startAngle:-M_PI_2
+                          endAngle:M_PI_2 * 3
+                         clockwise:YES];
         }
         _maskLayer.path = [path CGPath];
         _maskLayer.strokeEnd = 0;
@@ -150,18 +156,20 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
     return _maskLayer;
 }
 
-- (CAGradientLayer *)gradientLayer{
-    
+- (CAGradientLayer *)gradientLayer
+{
     if (!_gradientLayer) {
         _gradientLayer = [CAGradientLayer layer];
         CGRect rect;
         if (_style == XZMGradientProgressStyleLine) {
-            rect = CGRectMake(0, _showTitle?TitleLabelH:(Height(self) - ProgressH)/2.f, Width(self), ProgressH);
-        }else{
-            CGFloat width = MIN(Width(self), Height(self));
-            rect = CGRectMake((Width(self)-width)/2.f, (Height(self)-width)/2.f, width, width);
+            rect = CGRectMake(0, _showTitle ? TitleLabelH : (Height(self) - ProgressH) / 2.f, Width(self), ProgressH);
         }
-        _gradientLayer.frame = rect;
+        else
+        {
+            CGFloat width = MIN(Width(self), Height(self));
+            rect = CGRectMake((Width(self) - width) / 2.f, (Height(self) - width) / 2.f, width, width);
+        }
+        _gradientLayer.frame = rect; // 这里是不支持自动布局的
         _gradientLayer.cornerRadius = Height(_gradientLayer)/2.f;
         _gradientLayer.masksToBounds = YES;
         _gradientLayer.colors = self.gradientCGColors;
@@ -173,10 +181,10 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
     return _gradientLayer;
 }
 
-- (CAGradientLayer *)gradientTitleLayer{
-    
+- (CAGradientLayer *)gradientTitleLayer
+{
     if (!_gradientTitleLayer) {
-        _gradientTitleLayer = [[CAGradientLayer alloc]init];
+        _gradientTitleLayer = [[CAGradientLayer alloc] init];
         _gradientTitleLayer.frame = CGRectMake(0, 0, Width(self), TitleLabelH);
         _gradientTitleLayer.colors = self.gradientCGColors;
         _gradientTitleLayer.locations = [self getLocations];
@@ -188,15 +196,14 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
     return _gradientTitleLayer;
 }
 
-- (UILabel *)titleLabel{
-    
+- (UILabel *)titleLabel
+{
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, TitleLabelW, TitleLabelH)];
         _titleLabel.font = [UIFont systemFontOfSize:13];
         _titleLabel.textAlignment = 1;
         _titleLabel.text = @"0%";
     }
-    
     return _titleLabel;
 }
 
@@ -253,14 +260,15 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
 
 
 #pragma mark -- Publish Methods
-- (void)startRendering{
-    
-    CGFloat centerX = MIN(Width(_gradientLayer)-TitleLabelW/2.f, MAX(Width(_gradientLayer)*_progress, TitleLabelW/2.f)) ;
+- (void)startRendering
+{
+    CGFloat centerX = MIN(Width(_gradientLayer) - TitleLabelW / 2.f, MAX(Width(_gradientLayer) * _progress, TitleLabelW / 2.f)) ;
     if (_animation) {
         if (_showTitle) {
-            if(_style == XZMGradientProgressStyleLine)[self.titleLabel.layer addAnimation:[self basicAnimationWithKey:@"position"
-                                                                    toValue:[NSValue valueWithCGPoint:CGPointMake(centerX, ProgressH/2.f)]]
-                                         forKey:@"position"];
+            if(_style == XZMGradientProgressStyleLine)
+            {
+                [self.titleLabel.layer addAnimation:[self basicAnimationWithKey:@"position" toValue:[NSValue valueWithCGPoint:CGPointMake(centerX, ProgressH/2.f)]] forKey:@"position"];
+            }
             
             if ( _timer) [self revokeTimer];
             _titlePrecent = 0;
