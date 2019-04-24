@@ -24,9 +24,9 @@
 
 #define kPieRandColor [UIColor colorWithRed:arc4random() % 255 / 255.0f green:arc4random() % 255 / 255.0f blue:arc4random() % 255 / 255.0f alpha:1.0f]
 
-#define Hollow_Circle_Radius 0 //中间空心圆半径，默认为0实心
-#define KOffsetRadius 10 //偏移距离
-#define KMargin 20 //边缘间距
+#define Hollow_Circle_Radius 0 // 中间空心圆半径，默认为0实心
+#define KOffsetRadius 10 // 偏移距离
+#define KMargin 20 // 边缘间距
 
 ///////////////////////////////////////////////////
 
@@ -75,13 +75,13 @@
 }
 
 #pragma mark -- Publish Methods
-- (void)setDatas:(NSArray <NSNumber *>*)datas
-          colors:(NSArray <UIColor *>*)colors{
+
+- (void)setDatas:(NSArray <NSNumber*>*)datas colors:(NSArray <UIColor*>*)colors {
     
     NSArray *newDatas = [self getPersentArraysWithDataArray:datas];
     
     /*
-     //方法一：每个layer公用一个圆形path，通过数据比例来控制strokeStart，strokeEnd，从而绘制对应区域；优点：性能相对较好；缺点：不容易通过touch来获取相应的layer。
+     // 方法一：每个layer公用一个圆形path，通过数据比例来控制strokeStart，strokeEnd，从而绘制对应区域；优点：性能相对较好；缺点：不容易通过touch来获取相应的layer。
      UIBezierPath *piePath = [UIBezierPath bezierPathWithArcCenter:_center radius:_radius + Hollow_Circle_Radius startAngle:-M_PI_2 endAngle:M_PI_2*3 clockwise:YES];
      CGFloat start = 0.f;
      CGFloat end = 0.f;
@@ -101,65 +101,71 @@
      }
      */
     
-    //方法二:每个layer对应一个path，通过数据比例来计算起始角点跟结束角点；相对第一种方法，创建的path较多；但是可以通过path来找到对应的layer，方便做后期操作
+    // 方法二: 每个 layer 对应一个path，通过数据比例来计算起始角点跟结束角点；相对第一种方法，创建的 path 较多；但是可以通过 path 来找到对应的layer，方便做后期操作
     CGFloat start = -M_PI_2;
     CGFloat end = start;
     
+    // 创建多个 layer
     while (newDatas.count > self.layer.sublayers.count) {
-        
         XZMLayer *pieLayer = [XZMLayer layer];
         pieLayer.strokeColor = NULL;
         [self.layer addSublayer:pieLayer];
     }
+    
     _sectorSpace = newDatas.count < 3 ? 0 : _sectorSpace;
+    
+    // 每个 layer 创建一个 path
     for (int i = 0; i < self.layer.sublayers.count; i ++) {
         
         XZMLayer *pieLayer = (XZMLayer *)self.layer.sublayers[i];
         if (i < newDatas.count) {
             pieLayer.hidden = NO;
-            end =  start + (M_PI*2 - _sectorSpace*newDatas.count) *[newDatas[i] floatValue];
+            end =  start + (M_PI*2 - _sectorSpace * newDatas.count) * [newDatas[i] floatValue];
             
             UIBezierPath *piePath = [UIBezierPath bezierPath];
             [piePath moveToPoint:_center];
             [piePath addArcWithCenter:_center radius:_radius*2 startAngle:start endAngle:end clockwise:YES];
-            
             pieLayer.fillColor = [colors.count > i?colors[i]:kPieRandColor CGColor];
             pieLayer.startAngle = start;
             pieLayer.endAngle = end;
             pieLayer.path = piePath.CGPath;
-            
             start = end + _sectorSpace;
-        }else{
+        }
+        else
+        {
             pieLayer.hidden = YES;
         }
     }
 }
 
-- (void)stroke{
-    
+- (void)stroke
+{
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     animation.duration = 1.f;
     animation.fromValue = [NSNumber numberWithFloat:0.f];
     animation.toValue = [NSNumber numberWithFloat:1.f];
-    //禁止还原
+    // 禁止还原
     animation.autoreverses = NO;
-    //禁止完成即移除
+    // 禁止完成即移除
     animation.removedOnCompletion = NO;
-    //让动画保持在最后状态
+    // 让动画保持在最后状态
     animation.fillMode = kCAFillModeForwards;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [_maskLayer addAnimation:animation forKey:@"strokeEnd"];
 }
 
 #pragma mark -- Privite Methods
-- (NSArray *)getPersentArraysWithDataArray:(NSArray *)datas{
+
+- (NSArray *)getPersentArraysWithDataArray:(NSArray *)datas {
     
     NSArray *newDatas = [datas sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         if ([obj1 floatValue] < [obj2 floatValue]) {
             return NSOrderedDescending;
-        }else if ([obj1 floatValue] > [obj2 floatValue]){
+        }
+        else if ([obj1 floatValue] > [obj2 floatValue]) {
             return NSOrderedAscending;
-        }else{
+        }
+        else {
             return NSOrderedSame;
         }
     }];
@@ -173,31 +179,29 @@
     return persentArray;
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
     CGPoint point = [touches.anyObject locationInView:self];
-    
-    [self upDateLayersWithPoint:point];
-    
-    NSLog(@"%@",NSStringFromCGPoint(point));
+    [self p_updateLayersWithPoint:point];
 }
 
-- (void)upDateLayersWithPoint:(CGPoint)point{
-    
-    //如需做点击效果，则应采用第二种方法较好
+- (void)p_updateLayersWithPoint:(CGPoint)point
+{
+    // 如需做点击效果，则应采用第二种方法较好
     for (XZMLayer *layer in self.layer.sublayers) {
         
         if (CGPathContainsPoint(layer.path, &CGAffineTransformIdentity, point, 0) && !layer.isSelected) {
             layer.isSelected = YES;
             
-            //原始中心点为（0，0），扇形所在圆心、原始中心点、偏移点三者是在一条直线，通过三角函数即可得到偏移点的对应x，y。
+            // 原始中心点为（0，0），扇形所在圆心、原始中心点、偏移点三者是在一条直线，通过三角函数即可得到偏移点的对应x，y。
             CGPoint currPos = layer.position;
             double middleAngle = (layer.startAngle + layer.endAngle)/2.0;
             CGPoint newPos = CGPointMake(currPos.x + KOffsetRadius*cos(middleAngle), currPos.y + KOffsetRadius*sin(middleAngle));
             layer.position = newPos;
             
-        }else{
-            
+        }
+        else
+        {
             layer.position = CGPointMake(0, 0);
             layer.isSelected = NO;
         }

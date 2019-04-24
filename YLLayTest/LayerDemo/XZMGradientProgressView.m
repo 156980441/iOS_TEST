@@ -102,7 +102,7 @@ static const CGFloat AnimationTime = 1.f; // 动画时间
 
 - (CAShapeLayer *)bgLayer
 {
-    if(!_bgLayer)
+    if (!_bgLayer)
     {
         _bgLayer = [CAShapeLayer layer];
         _bgLayer.lineWidth = ProgressH;
