@@ -38,6 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, weak) id<YLSearchBarDelegate> delegate;
 // 取消按钮
 @property(nonatomic, strong) UIButton *cancel;
+// 是否显示取消按钮
+@property(nonatomic, assign) BOOL showCancel;
 
 @end
 

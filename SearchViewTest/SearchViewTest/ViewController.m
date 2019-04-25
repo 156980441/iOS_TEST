@@ -38,12 +38,14 @@ static NSString *identifier = @"cellId";
     [super viewDidAppear:animated];
     
     UIEdgeInsets insets = yl_safeAreaInset(self.view);
+    NSLog(@"%@", NSStringFromUIEdgeInsets(insets));
     
     YLSearchBar *searchBar = [[YLSearchBar alloc] initWithFrame:CGRectZero];
     searchBar.backgroundColor = YLRandColor;
     searchBar.searchBarTF.backgroundColor = YLRandColor;
     searchBar.cancel.backgroundColor = YLRandColor;
     searchBar.nightMode = NO;
+    searchBar.showCancel = YES;
     [self.view addSubview:searchBar];
     [searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
         if (@available(iOS 11.0, *)) {
@@ -53,7 +55,7 @@ static NSString *identifier = @"cellId";
             make.height.mas_equalTo(44);
         }
         else {
-            make.top.equalTo(self.view.mas_top);
+            make.top.equalTo(self.view.mas_top); // iOS 11 View full screen
             make.left.equalTo(self.view.mas_left);
             make.right.equalTo(self.view.mas_right);
             make.height.mas_equalTo(44);

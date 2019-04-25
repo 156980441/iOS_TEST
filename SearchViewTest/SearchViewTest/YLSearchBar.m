@@ -128,7 +128,9 @@
 #pragma mark -
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    [self p_showCancelAnimation];
+    if (self.showCancel) {
+        [self p_showCancelAnimation];
+    }
     return YES;
 }
 
@@ -138,7 +140,9 @@
     }
 }
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    [self p_hideCancelAnimation];
+    if (self.showCancel) {
+        [self p_hideCancelAnimation];
+    }
     return YES;
 }
 
