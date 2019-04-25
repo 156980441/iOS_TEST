@@ -25,8 +25,48 @@
 
 - (void)configUI {
     [self addSubview:self.searchBarTF];
+    [self addSubview:self.cancel];
     [self.searchBarTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self).insets(UIEdgeInsetsMake(7, 15, 7, 15));
+        make.top.equalTo(self.mas_top).offset(7);
+        make.left.equalTo(self.mas_left).offset(15);
+        make.right.equalTo(self.mas_right).offset(-15).priority(300);
+        make.bottom.equalTo(self.mas_bottom).offset(-7);
+    }];
+    [self.cancel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.and.bottom.equalTo(self.searchBarTF);
+        make.right.equalTo(self.mas_right).offset(-15);
+        make.left.equalTo(self.searchBarTF.mas_right).offset(5);
+        make.width.mas_equalTo(0);
+    }];
+}
+
+- (void)p_showCancelAnimation {
+    // 告知需要更改约束，若需要则更新，下面添加动画效果才起作用
+    [self.cancel.superview setNeedsUpdateConstraints];
+    [UIView animateWithDuration:YLAnimationTime animations:^{
+        [self.cancel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(80);
+        }];
+        [self.searchBarTF mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.cancel.mas_left).offset(-5);
+        }];
+        // 告知父类控件绘制，不添加注释的这两行的代码无法生效
+        [self.cancel.superview layoutIfNeeded];
+    }];
+}
+
+- (void)p_hideCancelAnimation {
+    // 告知需要更改约束
+    [self.cancel.superview setNeedsUpdateConstraints];
+    [UIView animateWithDuration:YLAnimationTime animations:^{
+        [self.cancel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(0);
+        }];
+        [self.searchBarTF mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.mas_right).offset(-15).priority(300);
+        }];
+        // 告知父类控件绘制，不添加注释的这两行的代码无法生效
+        [self.cancel.superview layoutIfNeeded];
     }];
 }
 
@@ -75,9 +115,19 @@
     return _searchBarTF;
 }
 
+- (UIButton*)cancel {
+    if (!_cancel) {
+        UIButton *tmp = [UIButton buttonWithType:UIButtonTypeCustom];
+        [tmp setTitle:@"Cancel" forState:UIControlStateNormal];
+        _cancel = tmp;
+    }
+    return _cancel;
+}
+
 #pragma mark -
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    [self p_showCancelAnimation];
     return YES;
 }
 
@@ -87,6 +137,7 @@
     }
 }
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    [self p_hideCancelAnimation];
     return YES;
 }
 

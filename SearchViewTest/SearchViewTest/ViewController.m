@@ -42,7 +42,8 @@ static NSString *identifier = @"cellId";
     YLSearchBar *searchBar = [[YLSearchBar alloc] initWithFrame:CGRectZero];
     searchBar.backgroundColor = YLRandColor;
     searchBar.searchBarTF.backgroundColor = YLRandColor;
-    searchBar.nightMode = YES;
+    searchBar.cancel.backgroundColor = YLRandColor;
+    searchBar.nightMode = NO;
     [self.view addSubview:searchBar];
     [searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
         if (@available(iOS 11.0, *)) {
@@ -68,7 +69,6 @@ static NSString *identifier = @"cellId";
     tableView.separatorInset = UIEdgeInsetsMake(0, 10, 0, 10);
     tableView.separatorColor = [UIColor grayColor];
     tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag; // 滑动后让键盘消失
-    tableView.frame = CGRectMake(0, searchBar.frame.origin.y + CGRectGetHeight(searchBar.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -106,6 +106,10 @@ static NSString *identifier = @"cellId";
     UITableViewCell* cell  = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     cell.textLabel.text = self.dataSource[indexPath.row];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.view endEditing:YES];
 }
 
 @end

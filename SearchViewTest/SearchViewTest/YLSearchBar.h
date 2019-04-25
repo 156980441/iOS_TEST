@@ -10,6 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#define YLAnimationTime 0.5
+
 @class YLSearchBar;
 
 @protocol YLSearchBarDelegate <NSObject>
@@ -34,6 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign) BOOL nightMode;
 // 搜索框代理
 @property(nonatomic, weak) id<YLSearchBarDelegate> delegate;
+// 取消按钮
+@property(nonatomic, strong) UIButton *cancel;
 
 @end
 
