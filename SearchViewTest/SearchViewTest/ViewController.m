@@ -31,6 +31,7 @@ static NSString *identifier = @"cellId";
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    // iOS 11 View full screen
     self.view.backgroundColor = YLRandColor;
 }
 
@@ -55,7 +56,7 @@ static NSString *identifier = @"cellId";
             make.height.mas_equalTo(44);
         }
         else {
-            make.top.equalTo(self.view.mas_top); // iOS 11 View full screen
+            make.top.equalTo(self.view.mas_top); // iOS 8 need offset, but iOS 11 not
             make.left.equalTo(self.view.mas_left);
             make.right.equalTo(self.view.mas_right);
             make.height.mas_equalTo(44);
