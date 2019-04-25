@@ -59,6 +59,7 @@
     // 告知需要更改约束
     [self.cancel.superview setNeedsUpdateConstraints];
     [UIView animateWithDuration:YLAnimationTime animations:^{
+        // 使用 Masonry 这样放入到动画的 block 中不能直接让动画生效，frame 则可以直接生效
         [self.cancel mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(0);
         }];
