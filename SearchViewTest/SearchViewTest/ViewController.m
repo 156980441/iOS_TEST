@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 #import "YLSearchBar.h"
+#import <Masonry/Masonry.h>
+
+#define YLRandColor [UIColor colorWithRed:arc4random() % 255 / 255.0f green:arc4random() % 255 / 255.0f blue:arc4random() % 255 / 255.0f alpha:1.0f]
 
 static inline UIEdgeInsets yl_safeAreaInset(UIView *view) {
     if (@available(iOS 11.0, *)) {
@@ -27,21 +30,38 @@ static NSString *identifier = @"cellId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    self.view.backgroundColor = YLRandColor;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
     UIEdgeInsets insets = yl_safeAreaInset(self.view);
-    CGFloat inset = 5.0f;
     
-    YLSearchBar *searchBar = [[YLSearchBar alloc] initWithFrame:CGRectMake(inset, insets.top, CGRectGetWidth(self.view.frame) - inset * 2, 30)];
-//    searchBar.nightMode = YES;
+    YLSearchBar *searchBar = [[YLSearchBar alloc] initWithFrame:CGRectZero];
+    searchBar.backgroundColor = YLRandColor;
+    searchBar.searchBarTF.backgroundColor = YLRandColor;
+    searchBar.nightMode = YES;
     [self.view addSubview:searchBar];
+    [searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        if (@available(iOS 11.0, *)) {
+            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
+            make.left.equalTo(self.view.mas_safeAreaLayoutGuideLeft);
+            make.right.equalTo(self.view.mas_safeAreaLayoutGuideRight);
+            make.height.mas_equalTo(44);
+        }
+        else {
+            make.top.equalTo(self.view.mas_top);
+            make.left.equalTo(self.view.mas_left);
+            make.right.equalTo(self.view.mas_right);
+            make.height.mas_equalTo(44);
+        }
+    }];
     
     UITableView* tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:identifier];
-//    tableView.backgroundColor = [UIColor grayColor];
+    tableView.backgroundColor = [UIColor grayColor];
     tableView.tableFooterView = UIView.new; // 去掉 cell 或者 section 的多余线
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone; // 去掉 cell 分割线
     tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -52,6 +72,21 @@ static NSString *identifier = @"cellId";
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
+    
+    [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        if (@available(iOS 11.0, *)) {
+            make.top.equalTo(searchBar.mas_bottom).offset(10);
+            make.left.equalTo(self.view.mas_safeAreaLayoutGuideLeft);
+            make.right.equalTo(self.view.mas_safeAreaLayoutGuideRight);
+            make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
+        }
+        else {
+            make.top.equalTo(searchBar.mas_bottom).offset(10);
+            make.left.equalTo(self.view.mas_left);
+            make.right.equalTo(self.view.mas_right);
+            make.bottom.equalTo(self.view.mas_bottom);
+        }
+    }];
     
     self.dataSource = @[@"Jerry", @"Tom"];
 }

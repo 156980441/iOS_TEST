@@ -7,6 +7,7 @@
 //
 
 #import "YLSearchBar.h"
+#import <Masonry/Masonry.h>
 
 @interface YLSearchBar () <UITextFieldDelegate>
 
@@ -24,7 +25,9 @@
 
 - (void)configUI {
     [self addSubview:self.searchBarTF];
-    self.searchBarTF.frame = CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
+    [self.searchBarTF mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self).insets(UIEdgeInsetsMake(7, 15, 7, 15));
+    }];
 }
 
 - (void)setCursorColor:(UIColor *)cursorColor {
@@ -36,11 +39,13 @@
         UIImage* image = [UIImage imageNamed:@"rect_circle_corner_gray_night"];
         self.searchBarTF.background = [image resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch];
         [self setCursorColor:[UIColor whiteColor]];
+        self.searchBarTF.textColor = [UIColor whiteColor];
     }
     else {
         UIImage* image = [UIImage imageNamed:@"rect_circle_corner_gray"];
         self.searchBarTF.background = [image resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5) resizingMode:UIImageResizingModeStretch];
         [self setCursorColor:[UIColor blueColor]];
+        self.searchBarTF.textColor = [UIColor blackColor];
     }
 }
 
