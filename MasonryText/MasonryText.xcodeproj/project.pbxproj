@@ -24,6 +24,8 @@
 		8D1DAAEF2287CE5C007EDF61 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1DAAE32287CE5C007EDF61 /* MASViewAttribute.m */; };
 		8D1DAAF02287CE5C007EDF61 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8D1DAAE42287CE5C007EDF61 /* README.md */; };
 		8D1DAAF32287D06B007EDF61 /* ListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1DAAF22287D06B007EDF61 /* ListTableViewController.m */; };
+		8D1DAAF62287D466007EDF61 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1DAAF52287D466007EDF61 /* BaseViewController.m */; };
+		8D1DAAF922884EDC007EDF61 /* AdvanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1DAAF822884EDC007EDF61 /* AdvanceViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,10 @@
 		8D1DAAE42287CE5C007EDF61 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8D1DAAF12287D06B007EDF61 /* ListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListTableViewController.h; sourceTree = "<group>"; };
 		8D1DAAF22287D06B007EDF61 /* ListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListTableViewController.m; sourceTree = "<group>"; };
+		8D1DAAF42287D466007EDF61 /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		8D1DAAF52287D466007EDF61 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		8D1DAAF722884EDC007EDF61 /* AdvanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvanceViewController.h; sourceTree = "<group>"; };
+		8D1DAAF822884EDC007EDF61 /* AdvanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvanceViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,10 @@
 				8D1DAAB32287CDCE007EDF61 /* AppDelegate.m */,
 				8D1DAAF12287D06B007EDF61 /* ListTableViewController.h */,
 				8D1DAAF22287D06B007EDF61 /* ListTableViewController.m */,
+				8D1DAAF42287D466007EDF61 /* BaseViewController.h */,
+				8D1DAAF52287D466007EDF61 /* BaseViewController.m */,
+				8D1DAAF722884EDC007EDF61 /* AdvanceViewController.h */,
+				8D1DAAF822884EDC007EDF61 /* AdvanceViewController.m */,
 				8D1DAABB2287CDD1007EDF61 /* Assets.xcassets */,
 				8D1DAABD2287CDD1007EDF61 /* LaunchScreen.storyboard */,
 				8D1DAAC02287CDD1007EDF61 /* Info.plist */,
@@ -226,9 +236,11 @@
 				8D1DAAF32287D06B007EDF61 /* ListTableViewController.m in Sources */,
 				8D1DAAEE2287CE5C007EDF61 /* MASViewConstraint.m in Sources */,
 				8D1DAAC22287CDD1007EDF61 /* main.m in Sources */,
+				8D1DAAF62287D466007EDF61 /* BaseViewController.m in Sources */,
 				8D1DAAEA2287CE5C007EDF61 /* MASLayoutConstraint.m in Sources */,
 				8D1DAAED2287CE5C007EDF61 /* MASConstraint.m in Sources */,
 				8D1DAAEB2287CE5C007EDF61 /* NSArray+MASAdditions.m in Sources */,
+				8D1DAAF922884EDC007EDF61 /* AdvanceViewController.m in Sources */,
 				8D1DAAB42287CDCE007EDF61 /* AppDelegate.m in Sources */,
 				8D1DAAE82287CE5C007EDF61 /* MASCompositeConstraint.m in Sources */,
 				8D1DAAEC2287CE5C007EDF61 /* View+MASAdditions.m in Sources */,

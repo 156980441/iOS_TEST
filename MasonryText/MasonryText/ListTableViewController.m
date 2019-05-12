@@ -7,6 +7,8 @@
 //
 
 #import "ListTableViewController.h"
+#import "BaseViewController.h"
+#import "AdvanceViewController.h"
 
 static NSString* identifier = @"cell_identifier";
 
@@ -42,7 +44,16 @@ static NSString* identifier = @"cell_identifier";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    UIViewController* vc;
+    if (indexPath.row == 0) {
+        BaseViewController* tmp = BaseViewController.new;
+        vc = tmp;
+    }
+    else if (indexPath.row == 1) {
+        AdvanceViewController* tmp = AdvanceViewController.new;
+        vc = tmp;
+    }
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
