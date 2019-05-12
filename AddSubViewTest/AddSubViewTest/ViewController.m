@@ -18,11 +18,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    CustomView *tmp = CustomView.new;
-//    tmp.backgroundColor = [UIColor redColor];
-//    tmp.frame = CGRectMake(100, 100, 100, 100);
+    [self p_2times];
     
-    UIView *v1 = UIView.new;
+}
+
+- (void)p_2times {
+    CustomView *tmp = [[CustomView alloc] initWithFrame:CGRectZero];
+    //    tmp.backgroundColor = [UIColor redColor];
+    //    tmp.frame = CGRectMake(100, 100, 100, 100);
+    
+    UIView *v1 = [[UIView alloc] initWithFrame:CGRectZero];
     [tmp addSubview:v1];
     
     [self.view addSubview:tmp];
