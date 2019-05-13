@@ -26,6 +26,7 @@
 		8D1DAAF32287D06B007EDF61 /* ListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1DAAF22287D06B007EDF61 /* ListTableViewController.m */; };
 		8D1DAAF62287D466007EDF61 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1DAAF52287D466007EDF61 /* BaseViewController.m */; };
 		8D1DAAF922884EDC007EDF61 /* AdvanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1DAAF822884EDC007EDF61 /* AdvanceViewController.m */; };
+		8D1DAAFF22886036007EDF61 /* UIView+YLLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1DAAFE22886036007EDF61 /* UIView+YLLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,8 @@
 		8D1DAAF52287D466007EDF61 /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		8D1DAAF722884EDC007EDF61 /* AdvanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvanceViewController.h; sourceTree = "<group>"; };
 		8D1DAAF822884EDC007EDF61 /* AdvanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvanceViewController.m; sourceTree = "<group>"; };
+		8D1DAAFD22886036007EDF61 /* UIView+YLLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+YLLayout.h"; sourceTree = "<group>"; };
+		8D1DAAFE22886036007EDF61 /* UIView+YLLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+YLLayout.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				8D1DAAF52287D466007EDF61 /* BaseViewController.m */,
 				8D1DAAF722884EDC007EDF61 /* AdvanceViewController.h */,
 				8D1DAAF822884EDC007EDF61 /* AdvanceViewController.m */,
+				8D1DAAFD22886036007EDF61 /* UIView+YLLayout.h */,
+				8D1DAAFE22886036007EDF61 /* UIView+YLLayout.m */,
 				8D1DAABB2287CDD1007EDF61 /* Assets.xcassets */,
 				8D1DAABD2287CDD1007EDF61 /* LaunchScreen.storyboard */,
 				8D1DAAC02287CDD1007EDF61 /* Info.plist */,
@@ -234,6 +239,7 @@
 				8D1DAAE92287CE5C007EDF61 /* MASConstraintMaker.m in Sources */,
 				8D1DAAE72287CE5C007EDF61 /* ViewController+MASAdditions.m in Sources */,
 				8D1DAAF32287D06B007EDF61 /* ListTableViewController.m in Sources */,
+				8D1DAAFF22886036007EDF61 /* UIView+YLLayout.m in Sources */,
 				8D1DAAEE2287CE5C007EDF61 /* MASViewConstraint.m in Sources */,
 				8D1DAAC22287CDD1007EDF61 /* main.m in Sources */,
 				8D1DAAF62287D466007EDF61 /* BaseViewController.m in Sources */,
