@@ -14,30 +14,26 @@
 #define DOUBLE_VALUE_COMPARE_ZERO(__VALUE__) ((fabs(__VALUE__) < 0.000000000000001)?0:(__VALUE__ > 0.0f?1:-1))
 
 @interface YASimpleGraphView() <UIGestureRecognizerDelegate> {
-    NSMutableArray *YAxisLabels;
-    NSMutableArray *XAxisLabels;
+    NSMutableArray *YAxisLabels; // Y 轴索引
+    NSMutableArray *XAxisLabels; // X 轴索引
     
-    CAShapeLayer *lineLayer;
-    CAShapeLayer *dashLayer;
+    CAShapeLayer *dashLayer; // 虚线图层
     
-    CGFloat valueOfYAxis;
-    CGFloat vHeight;
-    CGFloat vWidth;
-    CGFloat spaceY;  // 垂直间隔
-    CGFloat spaceX;  // 水平间隔
+    CGFloat valueOfYAxis; // Y 值
+    CGFloat vHeight; // 当前视图高
+    CGFloat vWidth; // 当前视图宽
+    CGFloat spaceY; // 垂直间隔
+    CGFloat spaceX; // 水平间隔
     NSInteger numberOfYAxis; // Y 轴坐标点数目
 }
 
-//Y轴显示坐标值
-@property (nonatomic,strong) NSMutableArray *YAxisValues;
+@property (nonatomic,strong) NSMutableArray *YAxisValues; // Y 轴显示坐标值
 @property (nonatomic,strong) NSMutableArray *points;
-
-
-@property (nonatomic, strong) UIView       *panGestureView;
+@property (nonatomic, strong) UIView *panGestureView;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @property (nonatomic, strong) NSMutableArray *dotViews;
-@property (strong, nonatomic) UIView *popUpView;
+@property (nonatomic, strong) UIView *popUpView;
 
 @end
 
@@ -45,9 +41,9 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        XAxisLabels = [[NSMutableArray alloc] init]; // X轴索引
-        YAxisLabels = [[NSMutableArray alloc] init]; // Y轴索引
-        self.YAxisValues = [[NSMutableArray alloc] init]; // Y 值
+        XAxisLabels = [[NSMutableArray alloc] init];
+        YAxisLabels = [[NSMutableArray alloc] init];
+        self.YAxisValues = [[NSMutableArray alloc] init];
         
         _dashLineColor = [UIColor orangeColor]; // 黄色虚线
         _dashLineWidth = 1.0/[UIScreen mainScreen].scale;
