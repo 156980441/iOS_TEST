@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+// https://blog.csdn.net/yixiangboy/article/details/50485250
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CAShapeLayer (ViewMask)
