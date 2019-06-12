@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+// https://blog.csdn.net/sqz316/article/details/52945625
+
 @interface ViewController ()
 
 @end
@@ -22,6 +24,9 @@
     [self changeBounds]; // 拉伸动画 (改变bounds)
     [self changeCenter]; // 中心
     [self changeTransform]; // 旋转
+    [self timerTransform]; // 不停旋转
+    [self changeBackground];
+    [self springAnimation]; // spring 动画类型
 }
 
 - (void)changeFrame {
@@ -89,7 +94,7 @@
 
 - (void)changeTransform {
     UIView* view = UIView.new;
-    CGRect originalFrame = CGRectMake(0, 450, 100, 100);
+    CGRect originalFrame = CGRectMake(0, 450, 10, 10);
     view.backgroundColor = [UIColor grayColor];
     view.frame = originalFrame;
     [self.view addSubview:view];
@@ -98,15 +103,102 @@
 //        view.transform = CGAffineTransformMakeScale(0.6, 0.6); // 缩放
 //        view.transform = CGAffineTransformMakeTranslation(60, -60); // 位置移动 dis_x, dis_y
         view.transform = CGAffineTransformMakeRotation(4.0f); // 旋转，angle 是弧度 M_PI 是3.1415926，会顺时针旋转180。
-        
+        view.alpha = 0.1;
     } completion:^(BOOL finished) {
         if (finished) {
             [UIView animateWithDuration:2 animations:^{
                 view.transform = originalTran;
+                view.alpha = 1;
             }];
         }
     }];
 }
 
+- (void)timerTransform {
+    UIView* view = UIView.new;
+    CGRect originalFrame = CGRectMake(10, 500, 10, 10);
+    view.backgroundColor = [UIColor greenColor];
+    view.frame = originalFrame;
+    [self.view addSubview:view];
+    [NSTimer scheduledTimerWithTimeInterval:0.01
+                                     target:self
+                                   selector:@selector(p_transformAction:)
+                                   userInfo:view
+                                    repeats:YES];
+}
+
+CGFloat g_angle = 0;
+
+- (void)p_transformAction:(NSTimer*)timer {
+    UIView* view = timer.userInfo;
+    g_angle = g_angle + 0.01; // angle 角度 double angle;
+    if (g_angle > 6.28) {//大于 M_PI*2(360度) 角度再次从0开始
+        g_angle = 0;
+    }
+    CGAffineTransform transform = CGAffineTransformMakeRotation(g_angle);
+    view.transform = transform;
+}
+
+- (void)changeBackground {
+    UIView* view = UIView.new;
+    CGRect originalFrame = CGRectMake(30, 500, 10, 10);
+    view.backgroundColor = [UIColor greenColor];
+    view.frame = originalFrame;
+    [self.view addSubview:view];
+    
+    [UIView animateKeyframesWithDuration:9.0 delay:0.f options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0.f relativeDuration:1.0 / 4 animations:^{
+            view.backgroundColor = [UIColor colorWithRed:0.9475 green:0.1921 blue:0.1746 alpha:1.0];
+        }];
+        [UIView addKeyframeWithRelativeStartTime:1.0 / 4 relativeDuration:1.0 / 4 animations:^{
+            view.backgroundColor = [UIColor colorWithRed:0.1064 green:0.6052 blue:0.0334 alpha:1.0];
+        }];
+        [UIView addKeyframeWithRelativeStartTime:2.0 / 4 relativeDuration:1.0 / 4 animations:^{
+            view.backgroundColor = [UIColor colorWithRed:0.1366 green:0.3017 blue:0.8411 alpha:1.0];
+        }];
+        [UIView addKeyframeWithRelativeStartTime:3.0 / 4 relativeDuration:1.0 / 4 animations:^{
+            view.backgroundColor = [UIColor colorWithRed:0.619 green:0.037 blue:0.6719 alpha:1.0];
+        }];
+        [UIView addKeyframeWithRelativeStartTime:3.0 / 4 relativeDuration:1.0 / 4 animations:^{
+            view.backgroundColor = [UIColor blackColor];
+        }];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            NSLog(@"动画结束");
+        }
+        else {
+            NSLog(@"动画未结束");
+        }
+    }];
+}
+
+- (void)springAnimation {
+    UIView* view = UIView.new;
+    CGRect originalFrame = CGRectMake(50, 500, 10, 10);
+    view.backgroundColor = [UIColor orangeColor];
+    view.frame = originalFrame;
+    [self.view addSubview:view];
+    
+    CGRect rect = CGRectMake(originalFrame.origin.x - 30, originalFrame.origin.y, 50, 50);
+    
+    [UIView animateWithDuration:0.4 // 动画时长
+                          delay:0   // 动画延迟
+         usingSpringWithDamping:0.5 // 类似弹簧的震动效果 0~1
+          initialSpringVelocity:4   // 初始速度
+                        options:UIViewAnimationOptionCurveLinear // 动画过度效果
+                     animations:^{
+                         
+                         view.frame = rect;
+                         
+                     } completion:^(BOOL finished) {
+                         if (finished) {
+                             [UIView animateWithDuration:1 delay:1 usingSpringWithDamping:0.5 initialSpringVelocity:4 options:UIViewAnimationOptionCurveLinear animations:^{
+                                 view.frame = originalFrame;
+                             } completion:^(BOOL finished) {
+                                 
+                             }];
+                         }
+                     }];
+}
 
 @end
