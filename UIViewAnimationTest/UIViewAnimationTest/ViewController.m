@@ -20,7 +20,8 @@
     
     [self changeFrame]; // 大小动画（改变frame）
     [self changeBounds]; // 拉伸动画 (改变bounds)
-    [self changeCenter];
+    [self changeCenter]; // 中心
+    [self changeTransform]; // 旋转
 }
 
 - (void)changeFrame {
@@ -81,6 +82,27 @@
         if (finished) {
             [UIView animateWithDuration:1 animations:^{
                 view.center = originalP;
+            }];
+        }
+    }];
+}
+
+- (void)changeTransform {
+    UIView* view = UIView.new;
+    CGRect originalFrame = CGRectMake(0, 450, 100, 100);
+    view.backgroundColor = [UIColor grayColor];
+    view.frame = originalFrame;
+    [self.view addSubview:view];
+    CGAffineTransform originalTran = view.transform;
+    [UIView animateWithDuration:2 animations:^{
+//        view.transform = CGAffineTransformMakeScale(0.6, 0.6); // 缩放
+//        view.transform = CGAffineTransformMakeTranslation(60, -60); // 位置移动 dis_x, dis_y
+        view.transform = CGAffineTransformMakeRotation(4.0f); // 旋转，angle 是弧度 M_PI 是3.1415926，会顺时针旋转180。
+        
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [UIView animateWithDuration:2 animations:^{
+                view.transform = originalTran;
             }];
         }
     }];
