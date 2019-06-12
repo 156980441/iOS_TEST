@@ -27,6 +27,7 @@
     [self timerTransform]; // 不停旋转
     [self changeBackground];
     [self springAnimation]; // spring 动画类型
+    [self transitionAnimation]; // 转场动画
 }
 
 - (void)changeFrame {
@@ -146,8 +147,16 @@ CGFloat g_angle = 0;
     view.frame = originalFrame;
     [self.view addSubview:view];
     
-    [UIView animateKeyframesWithDuration:9.0 delay:0.f options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
-        [UIView addKeyframeWithRelativeStartTime:0.f relativeDuration:1.0 / 4 animations:^{
+    // 关键帧动画
+    [UIView animateKeyframesWithDuration:9.0 // 动画时长
+                                   delay:0.f // 动画延迟
+                                 options:UIViewKeyframeAnimationOptionCalculationModeLinear // 动画效果选项
+                              animations:^{ // 动画执行代码
+                                 
+                                  // 添加关键帧
+        [UIView addKeyframeWithRelativeStartTime:0.f     // 动画相对开始时间
+                                relativeDuration:1.0 / 4 // 动画相对持续时间
+                                      animations:^{      // 动画执行代码
             view.backgroundColor = [UIColor colorWithRed:0.9475 green:0.1921 blue:0.1746 alpha:1.0];
         }];
         [UIView addKeyframeWithRelativeStartTime:1.0 / 4 relativeDuration:1.0 / 4 animations:^{
@@ -162,7 +171,7 @@ CGFloat g_angle = 0;
         [UIView addKeyframeWithRelativeStartTime:3.0 / 4 relativeDuration:1.0 / 4 animations:^{
             view.backgroundColor = [UIColor blackColor];
         }];
-    } completion:^(BOOL finished) {
+    } completion:^(BOOL finished) { // 动画结束执行代码
         if (finished) {
             NSLog(@"动画结束");
         }
@@ -172,19 +181,20 @@ CGFloat g_angle = 0;
     }];
 }
 
+// Spring Animation 本质上是一种特殊的动画曲线，自从 iOS 7开始被广泛应用在系统动画中。此外，Spring Animation不只能对位置使用，它适用于所有可被添加动画效果的属性。
 - (void)springAnimation {
     UIView* view = UIView.new;
-    CGRect originalFrame = CGRectMake(50, 500, 10, 10);
+    CGRect originalFrame = CGRectMake(50, 520, 10, 10);
     view.backgroundColor = [UIColor orangeColor];
     view.frame = originalFrame;
     [self.view addSubview:view];
     
-    CGRect rect = CGRectMake(originalFrame.origin.x - 30, originalFrame.origin.y, 50, 50);
+    CGRect rect = CGRectMake(originalFrame.origin.x - 30, originalFrame.origin.y, 20, 20);
     
     [UIView animateWithDuration:0.4 // 动画时长
                           delay:0   // 动画延迟
-         usingSpringWithDamping:0.5 // 类似弹簧的震动效果 0~1
-          initialSpringVelocity:4   // 初始速度
+         usingSpringWithDamping:0.5 // 类似弹簧的震动效果 0~1，数值越小「弹簧」的振动效果越明显.
+          initialSpringVelocity:4   // 初始速度，数值越大一开始移动越快。值得注意的是，初始速度取值较高而时间较短时，也会出现反弹情况。
                         options:UIViewAnimationOptionCurveLinear // 动画过度效果
                      animations:^{
                          
@@ -199,6 +209,31 @@ CGFloat g_angle = 0;
                              }];
                          }
                      }];
+}
+
+- (void)transitionAnimation {
+    UIView* view = UIView.new;
+    CGRect originalFrame = CGRectMake(70, 500, 10, 10);
+    view.backgroundColor = [UIColor purpleColor];
+    view.frame = originalFrame;
+    [self.view addSubview:view];
+    
+    [UIView transitionWithView:view
+                      duration:2.0
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:^{
+        view.backgroundColor = [UIColor brownColor];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [UIView transitionWithView:view
+                              duration:2.0
+                               options:UIViewAnimationOptionTransitionFlipFromRight
+                            animations:^{
+                view.backgroundColor = [UIColor purpleColor];
+            } completion:^(BOOL finished) {
+            }];
+        }
+    }];
 }
 
 @end
