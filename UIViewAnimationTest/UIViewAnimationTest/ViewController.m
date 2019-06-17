@@ -219,14 +219,14 @@ CGFloat g_angle = 0;
     [self.view addSubview:view];
     
     [UIView transitionWithView:view
-                      duration:2.0
+                      duration:3.0
                        options:UIViewAnimationOptionTransitionFlipFromLeft
                     animations:^{
-        view.backgroundColor = [UIColor brownColor];
+        view.backgroundColor = [UIColor cyanColor];
     } completion:^(BOOL finished) {
         if (finished) {
             [UIView transitionWithView:view
-                              duration:2.0
+                              duration:3.0
                                options:UIViewAnimationOptionTransitionFlipFromRight
                             animations:^{
                 view.backgroundColor = [UIColor purpleColor];
