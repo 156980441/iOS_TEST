@@ -45,6 +45,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"%s", __func__);
+    
     // Do any additional setup after loading the view, typically from a nib.
     BlueVC *blue = BlueVC.new;
     blue.view.frame = CGRectMake(100, 200, 200, 300); // 触发 BlueVC 的 viewDidLoad
@@ -56,7 +59,7 @@
     [self addChildViewController:red];
     self.red = red;
     
-    [self.view addSubview:self.blue.view]; // 默认,第一个视图(你会发现,全程就这一个用了addSubview)，触发 BlueVC 的 viewWillAppear
+    [self.view addSubview:self.blue.view]; // 默认,第一个视图 (你会发现,全程就这一个用了addSubview)，触发 BlueVC 的 viewWillAppear
     self.currentVC = self.blue;
     
     UIButton *bt = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -95,6 +98,16 @@
                                 }];
     }
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSLog(@"%s", __func__);
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    NSLog(@"%s", __func__);
 }
 
 
