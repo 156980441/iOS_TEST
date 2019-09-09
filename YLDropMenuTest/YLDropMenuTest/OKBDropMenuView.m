@@ -15,6 +15,7 @@
 {
     NSArray<OKBDropMenuItemView *> *_itemViewArr;
     NSInteger _num;
+    UIView *_showView;
 }
 @end
 
@@ -59,11 +60,15 @@
         height = [self.dataSource dropMenuView:self heightForViewAtIndexPath:tap.view.tag];
     }
     if (tmp && height) {
+        
+        [_showView removeFromSuperview];
+        
         CGRect frame = CGRectZero;
-        frame.origin = CGPointMake(self.frame.origin.x, self.frame.origin.y + CGRectGetHeight(self.frame));
+        frame.origin = CGPointMake(self.frame.origin.x, CGRectGetMaxY(self.frame));
         frame.size = CGSizeMake(CGRectGetWidth(self.frame), height);
         tmp.frame = frame;
-        [super addSubview:tmp];
+        [self.superview addSubview:tmp];
+        _showView = tmp;
     }
     if ([self.delegate respondsToSelector:@selector(dropMenuView:didSelectItemAtIndexPath:)]) {
         [self.delegate dropMenuView:self didSelectItemAtIndexPath:tap.view.tag];

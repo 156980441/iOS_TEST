@@ -46,7 +46,12 @@
 
 - (UIView *)dropMenuView:(OKBDropMenuView *)dropMenuView viewInItemAtIndex:(NSInteger)index {
     UIView *tmp  = [[UIView alloc] initWithFrame:CGRectZero];
-    tmp.backgroundColor = [UIColor redColor];
+    if (index == 0) {
+        tmp.backgroundColor = [UIColor redColor];
+    }
+    else {
+        tmp.backgroundColor = [UIColor yellowColor];
+    }
     return tmp;
 }
 
