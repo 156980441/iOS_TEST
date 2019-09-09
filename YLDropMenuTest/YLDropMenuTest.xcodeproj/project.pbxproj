@@ -1,0 +1,430 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D8437B023262F7800D39438 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437AF23262F7800D39438 /* AppDelegate.m */; };
+		8D8437B323262F7800D39438 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437B223262F7800D39438 /* ViewController.m */; };
+		8D8437B623262F7800D39438 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D8437B423262F7800D39438 /* Main.storyboard */; };
+		8D8437B823262F7F00D39438 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D8437B723262F7F00D39438 /* Assets.xcassets */; };
+		8D8437BB23262F7F00D39438 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D8437B923262F7F00D39438 /* LaunchScreen.storyboard */; };
+		8D8437BE23262F7F00D39438 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437BD23262F7F00D39438 /* main.m */; };
+		8D8437C92326490D00D39438 /* OKBDropMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437C82326490D00D39438 /* OKBDropMenuView.m */; };
+		8D8437CC23264A6B00D39438 /* OKBDropMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437CB23264A6B00D39438 /* OKBDropMenuItemView.m */; };
+		8D8437CF2326581E00D39438 /* LabelImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437CE2326581E00D39438 /* LabelImageView.m */; };
+		B505FF60C943600A107C67FE /* Pods_YLDropMenuTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3BDEDE25FCAF55840F1053 /* Pods_YLDropMenuTest.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		004C5BBA5C88088EE950F51B /* Pods-YLDropMenuTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YLDropMenuTest.release.xcconfig"; path = "Target Support Files/Pods-YLDropMenuTest/Pods-YLDropMenuTest.release.xcconfig"; sourceTree = "<group>"; };
+		07E70D828BF8FF11D3795D36 /* Pods-YLDropMenuTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YLDropMenuTest.debug.xcconfig"; path = "Target Support Files/Pods-YLDropMenuTest/Pods-YLDropMenuTest.debug.xcconfig"; sourceTree = "<group>"; };
+		8D8437AB23262F7800D39438 /* YLDropMenuTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YLDropMenuTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D8437AE23262F7800D39438 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8D8437AF23262F7800D39438 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8D8437B123262F7800D39438 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8D8437B223262F7800D39438 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8D8437B523262F7800D39438 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8D8437B723262F7F00D39438 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8D8437BA23262F7F00D39438 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8D8437BC23262F7F00D39438 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D8437BD23262F7F00D39438 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8D8437C72326490D00D39438 /* OKBDropMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKBDropMenuView.h; sourceTree = "<group>"; };
+		8D8437C82326490D00D39438 /* OKBDropMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OKBDropMenuView.m; sourceTree = "<group>"; };
+		8D8437CA23264A6B00D39438 /* OKBDropMenuItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKBDropMenuItemView.h; sourceTree = "<group>"; };
+		8D8437CB23264A6B00D39438 /* OKBDropMenuItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OKBDropMenuItemView.m; sourceTree = "<group>"; };
+		8D8437CD2326581E00D39438 /* LabelImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LabelImageView.h; sourceTree = "<group>"; };
+		8D8437CE2326581E00D39438 /* LabelImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LabelImageView.m; sourceTree = "<group>"; };
+		AD3BDEDE25FCAF55840F1053 /* Pods_YLDropMenuTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YLDropMenuTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D8437A823262F7800D39438 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B505FF60C943600A107C67FE /* Pods_YLDropMenuTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		84D438D3F42A3B002027AB70 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD3BDEDE25FCAF55840F1053 /* Pods_YLDropMenuTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8D8437A223262F7800D39438 = {
+			isa = PBXGroup;
+			children = (
+				8D8437AD23262F7800D39438 /* YLDropMenuTest */,
+				8D8437AC23262F7800D39438 /* Products */,
+				937E60ED9196DB2476457822 /* Pods */,
+				84D438D3F42A3B002027AB70 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8D8437AC23262F7800D39438 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D8437AB23262F7800D39438 /* YLDropMenuTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8D8437AD23262F7800D39438 /* YLDropMenuTest */ = {
+			isa = PBXGroup;
+			children = (
+				8D8437AE23262F7800D39438 /* AppDelegate.h */,
+				8D8437AF23262F7800D39438 /* AppDelegate.m */,
+				8D8437B123262F7800D39438 /* ViewController.h */,
+				8D8437B223262F7800D39438 /* ViewController.m */,
+				8D8437C72326490D00D39438 /* OKBDropMenuView.h */,
+				8D8437C82326490D00D39438 /* OKBDropMenuView.m */,
+				8D8437CA23264A6B00D39438 /* OKBDropMenuItemView.h */,
+				8D8437CB23264A6B00D39438 /* OKBDropMenuItemView.m */,
+				8D8437CD2326581E00D39438 /* LabelImageView.h */,
+				8D8437CE2326581E00D39438 /* LabelImageView.m */,
+				8D8437B423262F7800D39438 /* Main.storyboard */,
+				8D8437B723262F7F00D39438 /* Assets.xcassets */,
+				8D8437B923262F7F00D39438 /* LaunchScreen.storyboard */,
+				8D8437BC23262F7F00D39438 /* Info.plist */,
+				8D8437BD23262F7F00D39438 /* main.m */,
+			);
+			path = YLDropMenuTest;
+			sourceTree = "<group>";
+		};
+		937E60ED9196DB2476457822 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				07E70D828BF8FF11D3795D36 /* Pods-YLDropMenuTest.debug.xcconfig */,
+				004C5BBA5C88088EE950F51B /* Pods-YLDropMenuTest.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D8437AA23262F7800D39438 /* YLDropMenuTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D8437C123262F7F00D39438 /* Build configuration list for PBXNativeTarget "YLDropMenuTest" */;
+			buildPhases = (
+				D7AA1C93EAA29F999E8541E0 /* [CP] Check Pods Manifest.lock */,
+				8D8437A723262F7800D39438 /* Sources */,
+				8D8437A823262F7800D39438 /* Frameworks */,
+				8D8437A923262F7800D39438 /* Resources */,
+				212286A9002E5612AE9018FA /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YLDropMenuTest;
+			productName = YLDropMenuTest;
+			productReference = 8D8437AB23262F7800D39438 /* YLDropMenuTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8D8437A323262F7800D39438 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = fanyl;
+				TargetAttributes = {
+					8D8437AA23262F7800D39438 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+				};
+			};
+			buildConfigurationList = 8D8437A623262F7800D39438 /* Build configuration list for PBXProject "YLDropMenuTest" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8D8437A223262F7800D39438;
+			productRefGroup = 8D8437AC23262F7800D39438 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D8437AA23262F7800D39438 /* YLDropMenuTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D8437A923262F7800D39438 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D8437BB23262F7F00D39438 /* LaunchScreen.storyboard in Resources */,
+				8D8437B823262F7F00D39438 /* Assets.xcassets in Resources */,
+				8D8437B623262F7800D39438 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		212286A9002E5612AE9018FA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YLDropMenuTest/Pods-YLDropMenuTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YLDropMenuTest/Pods-YLDropMenuTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YLDropMenuTest/Pods-YLDropMenuTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7AA1C93EAA29F999E8541E0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YLDropMenuTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D8437A723262F7800D39438 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D8437B323262F7800D39438 /* ViewController.m in Sources */,
+				8D8437C92326490D00D39438 /* OKBDropMenuView.m in Sources */,
+				8D8437CC23264A6B00D39438 /* OKBDropMenuItemView.m in Sources */,
+				8D8437CF2326581E00D39438 /* LabelImageView.m in Sources */,
+				8D8437BE23262F7F00D39438 /* main.m in Sources */,
+				8D8437B023262F7800D39438 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8D8437B423262F7800D39438 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D8437B523262F7800D39438 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8D8437B923262F7F00D39438 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D8437BA23262F7F00D39438 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8D8437BF23262F7F00D39438 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8D8437C023262F7F00D39438 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8D8437C223262F7F00D39438 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07E70D828BF8FF11D3795D36 /* Pods-YLDropMenuTest.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CUT8ZP87C2;
+				INFOPLIST_FILE = YLDropMenuTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fanyl.YLDropMenuTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8D8437C323262F7F00D39438 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 004C5BBA5C88088EE950F51B /* Pods-YLDropMenuTest.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CUT8ZP87C2;
+				INFOPLIST_FILE = YLDropMenuTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fanyl.YLDropMenuTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8D8437A623262F7800D39438 /* Build configuration list for PBXProject "YLDropMenuTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D8437BF23262F7F00D39438 /* Debug */,
+				8D8437C023262F7F00D39438 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8D8437C123262F7F00D39438 /* Build configuration list for PBXNativeTarget "YLDropMenuTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D8437C223262F7F00D39438 /* Debug */,
+				8D8437C323262F7F00D39438 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8D8437A323262F7800D39438 /* Project object */;
+}
