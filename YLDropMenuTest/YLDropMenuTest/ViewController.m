@@ -49,8 +49,12 @@
     if (index == 0) {
         tmp.backgroundColor = [UIColor redColor];
     }
-    else {
+    else if (index == 1) {
         tmp.backgroundColor = [UIColor yellowColor];
+    } else if (index == 2) {
+        tmp.backgroundColor = [UIColor greenColor];
+    } else if (index == 3) {
+        tmp.backgroundColor = [UIColor blueColor];
     }
     return tmp;
 }
