@@ -16,6 +16,7 @@
     NSArray<OKBDropMenuItemView *> *_itemViewArr;
     NSInteger _num;
     UIView *_showView;
+    OKBDropMenuItemView *_lastSelectedItemView;
 }
 @end
 
@@ -51,25 +52,40 @@
 }
 
 - (void)p_tapInView:(UITapGestureRecognizer *)tap {
-    UIView *tmp = nil;
-    CGFloat height = 0.f;
-    if ([self.dataSource respondsToSelector:@selector(dropMenuView:viewInItemAtIndex:)]) {
-        tmp = [self.dataSource dropMenuView:self viewInItemAtIndex:tap.view.tag];
-    }
-    if ([self.dataSource respondsToSelector:@selector(dropMenuView:heightForViewAtIndexPath:)]) {
-        height = [self.dataSource dropMenuView:self heightForViewAtIndexPath:tap.view.tag];
-    }
-    if (tmp && height) {
-        
+    
+    OKBDropMenuItemView *itemView = (OKBDropMenuItemView *)tap.view;
+    
+    if (_lastSelectedItemView == itemView && itemView.selected) { // 同一个，并且已经选中，删除视图
         [_showView removeFromSuperview];
-        
-        CGRect frame = CGRectZero;
-        frame.origin = CGPointMake(self.frame.origin.x, CGRectGetMaxY(self.frame));
-        frame.size = CGSizeMake(CGRectGetWidth(self.frame), height);
-        tmp.frame = frame;
-        [self.superview addSubview:tmp];
-        _showView = tmp;
     }
+    else {
+        UIView *tmp = nil;
+        CGFloat height = 0.f;
+        
+        if ([self.dataSource respondsToSelector:@selector(dropMenuView:viewInItemAtIndex:)]) {
+            tmp = [self.dataSource dropMenuView:self viewInItemAtIndex:tap.view.tag];
+        }
+        if ([self.dataSource respondsToSelector:@selector(dropMenuView:heightForViewAtIndexPath:)]) {
+            height = [self.dataSource dropMenuView:self heightForViewAtIndexPath:tap.view.tag];
+        }
+        if (tmp && height) {
+            
+            [_showView removeFromSuperview];
+            
+            CGRect frame = CGRectZero;
+            frame.origin = CGPointMake(self.frame.origin.x, CGRectGetMaxY(self.frame));
+            frame.size = CGSizeMake(CGRectGetWidth(self.frame), height);
+            tmp.frame = frame;
+            [self.superview addSubview:tmp];
+            _showView = tmp;
+        }
+        
+        _lastSelectedItemView.selected = NO;
+        _lastSelectedItemView = itemView;
+    }
+    
+    itemView.selected = !itemView.selected;
+    
     if ([self.delegate respondsToSelector:@selector(dropMenuView:didSelectItemAtIndexPath:)]) {
         [self.delegate dropMenuView:self didSelectItemAtIndexPath:tap.view.tag];
     }

@@ -60,7 +60,7 @@
 }
 
 - (void)dropMenuView:(OKBDropMenuView *)dropMenuView didSelectItemAtIndexPath:(NSInteger)index {
-    
+    NSLog(@"select index %d", index);
 }
 
 - (OKBDropMenuView *)dropDownMenu {

@@ -20,6 +20,8 @@
             make.edges.equalTo(self).insets(UIEdgeInsetsZero);
         }];
         _contentView = tmp;
+        
+        _selected = NO;
     }
     return self;
 }
