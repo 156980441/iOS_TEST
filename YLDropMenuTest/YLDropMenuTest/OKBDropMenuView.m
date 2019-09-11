@@ -56,7 +56,17 @@
     OKBDropMenuItemView *itemView = (OKBDropMenuItemView *)tap.view;
     
     if (_lastSelectedItemView == itemView && itemView.selected) { // 同一个，并且已经选中，删除视图
-        [_showView removeFromSuperview];
+        
+        __weak typeof(self) wSelf = self; // typeof() 一元运算 可以根据（）内的变量自动识别并返回其数据类型。
+        _showView.alpha = 1.0f;
+        [UIView animateWithDuration:0.2f animations:^{
+            __strong typeof(self) sSelf = wSelf;
+            sSelf->_showView.alpha = 0.0f;
+        } completion:^(BOOL finished) {
+            __strong typeof(self) sSelf = wSelf;
+            [sSelf->_showView removeFromSuperview];
+        }];
+        
     }
     else {
         UIView *tmp = nil;
@@ -76,7 +86,15 @@
             frame.origin = CGPointMake(self.frame.origin.x, CGRectGetMaxY(self.frame));
             frame.size = CGSizeMake(CGRectGetWidth(self.frame), height);
             tmp.frame = frame;
+            
+            tmp.alpha = 0.0f;
+            
             [self.superview addSubview:tmp];
+            
+            [UIView animateWithDuration:0.2f animations:^{
+                tmp.alpha = 1.0f;
+            }];
+            
             _showView = tmp;
         }
         
