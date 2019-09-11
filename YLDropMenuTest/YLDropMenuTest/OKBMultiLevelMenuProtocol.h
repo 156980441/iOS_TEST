@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger parentId;
 @property (nonatomic, copy) NSString *nodeName;
 
+@property (nonatomic, strong) NSArray<id<OKBMultiLevelMenuProtocol>> *array;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8D791F722328DD700005EC80 /* OKBMultiLevelDropDownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D791F712328DD700005EC80 /* OKBMultiLevelDropDownMenuView.m */; };
+		8D791F7523290A990005EC80 /* PersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D791F7423290A990005EC80 /* PersonModel.m */; };
 		8D8437B023262F7800D39438 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437AF23262F7800D39438 /* AppDelegate.m */; };
 		8D8437B323262F7800D39438 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437B223262F7800D39438 /* ViewController.m */; };
 		8D8437B623262F7800D39438 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D8437B423262F7800D39438 /* Main.storyboard */; };
@@ -26,6 +27,8 @@
 		8D5B07CF2327993A00F48D91 /* OKBMultiLevelMenuProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKBMultiLevelMenuProtocol.h; sourceTree = "<group>"; };
 		8D791F702328DD700005EC80 /* OKBMultiLevelDropDownMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKBMultiLevelDropDownMenuView.h; sourceTree = "<group>"; };
 		8D791F712328DD700005EC80 /* OKBMultiLevelDropDownMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OKBMultiLevelDropDownMenuView.m; sourceTree = "<group>"; };
+		8D791F7323290A990005EC80 /* PersonModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonModel.h; sourceTree = "<group>"; };
+		8D791F7423290A990005EC80 /* PersonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonModel.m; sourceTree = "<group>"; };
 		8D8437AB23262F7800D39438 /* YLDropMenuTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YLDropMenuTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D8437AE23262F7800D39438 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8D8437AF23262F7800D39438 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 				8D8437B223262F7800D39438 /* ViewController.m */,
 				8D8437CD2326581E00D39438 /* LabelImageView.h */,
 				8D8437CE2326581E00D39438 /* LabelImageView.m */,
+				8D791F7323290A990005EC80 /* PersonModel.h */,
+				8D791F7423290A990005EC80 /* PersonModel.m */,
 				8D8437B423262F7800D39438 /* Main.storyboard */,
 				8D8437B723262F7F00D39438 /* Assets.xcassets */,
 				8D8437B923262F7F00D39438 /* LaunchScreen.storyboard */,
@@ -248,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D8437B323262F7800D39438 /* ViewController.m in Sources */,
+				8D791F7523290A990005EC80 /* PersonModel.m in Sources */,
 				8D791F722328DD700005EC80 /* OKBMultiLevelDropDownMenuView.m in Sources */,
 				8D8437C92326490D00D39438 /* OKBDropMenuView.m in Sources */,
 				8D8437CC23264A6B00D39438 /* OKBDropMenuItemView.m in Sources */,

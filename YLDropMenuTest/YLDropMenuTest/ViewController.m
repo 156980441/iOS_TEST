@@ -10,6 +10,8 @@
 #import "OKBDropMenuView.h"
 #import "OKBDropMenuItemView.h"
 #import "LabelImageView.h"
+#import "PersonModel.h"
+#import "OKBMultiLevelDropDownMenuView.h"
 #import <Masonry/Masonry.h>
 
 @interface ViewController () <OKBDropMenuViewDataSource, OKBDropMenuViewDelegate>
@@ -30,6 +32,11 @@
         make.height.mas_equalTo(30);
     }];
     
+    
+
+    
+    
+    
 }
 
 - (NSInteger)numberOfItemsInDropView:(OKBDropMenuView *)dropMenuView {
@@ -47,7 +54,40 @@
 - (UIView *)dropMenuView:(OKBDropMenuView *)dropMenuView viewInItemAtIndex:(NSInteger)index {
     UIView *tmp  = [[UIView alloc] initWithFrame:CGRectZero];
     if (index == 0) {
-        tmp.backgroundColor = [UIColor redColor];
+        
+        
+        NSMutableArray *persons = NSMutableArray.new;
+        for (int i = 0; i < 10; i++) {
+            PersonModel *tmp = [[PersonModel alloc] init];
+            tmp.address = @"BeiJing";
+            tmp.nodeName = tmp.address;
+            [persons addObject:tmp];
+        }
+        
+        NSMutableArray *companies = NSMutableArray.new;
+        for (int i = 0; i < 3; i++) {
+            CompanyModel *tmp = [[CompanyModel alloc] init];
+            tmp.bossName = @"MaYun";
+            tmp.array = persons;
+            tmp.nodeName = tmp.bossName;
+            [companies addObject:tmp];
+        }
+        
+        NSMutableArray<DistrictModel *> *district = NSMutableArray.new;
+        for (int i = 0; i < 5; i++) {
+            DistrictModel *tmp = [[DistrictModel alloc] init];
+            tmp.district = @"HaiDian";
+            tmp.array = companies;
+            tmp.nodeName = tmp.district;
+            [district addObject:tmp];
+        }
+        
+        PersonModel *p = [[PersonModel alloc] init];
+        p.array = district;
+        
+        OKBMultiLevelDropDownMenuView *view = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:3];
+        [view reloadDataWithDataSource:p];
+        return view;
     }
     else if (index == 1) {
         tmp.backgroundColor = [UIColor yellowColor];
