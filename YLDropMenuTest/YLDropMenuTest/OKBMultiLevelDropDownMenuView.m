@@ -13,6 +13,7 @@
 {
     NSInteger _tableViewNum;
     id<OKBMultiLevelMenuProtocol> _dataSource;
+    NSInteger _selectedRow[3];
 }
 @property (nonatomic, strong) NSArray<UITableView *> *tableViewArr;
 
@@ -77,6 +78,16 @@
     return height;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.delegate respondsToSelector:@selector(multiLevelDropDownMenu:didSelectInTableView:atIndex:row:)]) {
+        NSInteger index = [_tableViewArr indexOfObject:tableView];
+        for (NSInteger i = index + 1; i < _tableViewNum; i++) {
+            [[_tableViewArr objectAtIndex:i] reloadData];
+        }
+        [self.delegate multiLevelDropDownMenu:self didSelectInTableView:tableView atIndex:index row:indexPath.row];
+    }
+}
+
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *view = nil;
     if ([self.delegate respondsToSelector:@selector(multiLevelDropDownMenu:viewForHeaderInTableView:atIndex:)]) {
@@ -105,12 +116,15 @@
             count = _dataSource.array.count;
         }
         else if (tableView == _tableViewArr[1]) {
-            NSArray<id<OKBMultiLevelMenuProtocol>> *arr = _dataSource.array[0].array;
+            NSInteger firstSelectRow = ((UITableView *)_tableViewArr[0]).indexPathForSelectedRow.row;
+            NSArray<id<OKBMultiLevelMenuProtocol>> *arr = _dataSource.array[firstSelectRow].array;
             count = arr.count;
         }
         else if (tableView == _tableViewArr[2]) {
-            NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel2 = _dataSource.array[0].array;
-            NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel3 = arrLevel2[0].array;
+            NSInteger firstSelectRow = ((UITableView *)_tableViewArr[0]).indexPathForSelectedRow.row;
+            NSInteger secondSelectRow = ((UITableView *)_tableViewArr[1]).indexPathForSelectedRow.row;
+            NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel2 = _dataSource.array[firstSelectRow].array;
+            NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel3 = arrLevel2[secondSelectRow].array;
             count = arrLevel3.count;
         }
     }
@@ -138,12 +152,17 @@
             cell.textLabel.text = _dataSource.array[indexPath.row].nodeName;
         }
         else if (tableView == _tableViewArr[1]) {
-            NSArray<id<OKBMultiLevelMenuProtocol>> *arr = _dataSource.array[0].array;
+            NSInteger firstSelectRow = ((UITableView *)_tableViewArr[0]).indexPathForSelectedRow.row;
+            NSArray<id<OKBMultiLevelMenuProtocol>> *arr = _dataSource.array[firstSelectRow].array;
             cell.textLabel.text = arr[indexPath.row].nodeName;
         }
         else if (tableView == _tableViewArr[2]) {
-            NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel2 = _dataSource.array[0].array;
-            NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel3 = arrLevel2[0].array;
+            
+            NSInteger firstSelectRow = ((UITableView *)_tableViewArr[0]).indexPathForSelectedRow.row;
+            NSInteger secondSelectRow = ((UITableView *)_tableViewArr[1]).indexPathForSelectedRow.row;
+            
+            NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel2 = _dataSource.array[firstSelectRow].array;
+            NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel3 = arrLevel2[secondSelectRow].array;
             cell.textLabel.text = arrLevel3[indexPath.row].nodeName;
         }
     }

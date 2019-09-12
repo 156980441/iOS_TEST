@@ -10,6 +10,10 @@
 
 #import "OKBMultiLevelMenuProtocol.h"
 
+
+NS_ASSUME_NONNULL_BEGIN
+
+
 @class OKBMultiLevelDropDownMenuView;
 
 @protocol OKBMultiLevelDropDownMenuViewDelegate <NSObject>
@@ -19,9 +23,9 @@
 
 - (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index;
 
-@end
+- (void)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu didSelectInTableView:(UITableView *)tableView atIndex:(NSInteger)index row:(NSInteger)row;
 
-NS_ASSUME_NONNULL_BEGIN
+@end
 
 @interface OKBMultiLevelDropDownMenuView : UIView
 - (instancetype)initWithFrame:(CGRect)frame tableViewNum:(NSInteger)num;

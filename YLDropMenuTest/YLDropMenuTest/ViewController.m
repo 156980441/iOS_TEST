@@ -16,6 +16,7 @@
 
 @interface ViewController () <OKBDropMenuViewDataSource, OKBDropMenuViewDelegate, OKBMultiLevelDropDownMenuViewDelegate>
 @property (nonatomic, strong) OKBDropMenuView *dropDownMenu;
+@property (nonatomic, strong) PersonModel *dataSource;
 @property (nonatomic, strong) OKBMultiLevelDropDownMenuView *eosDropDownMenu;
 @end
 
@@ -54,12 +55,33 @@
 
 - (CGFloat)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
     if (index == 0) {
-        return 10;
+        return 32;
     } else if (index == 1) {
-        return 20;
+        return 32;
     } else {
-        return 0;
+        return 32;
     }
+}
+
+- (void)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu didSelectInTableView:(UITableView *)tableView atIndex:(NSInteger)index row:(NSInteger)row {
+    if (index == 0) {
+        DistrictModel *tmp = self.dataSource.array[row];
+    }
+}
+
+- (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+    UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectZero];
+    tmp.textAlignment = NSTextAlignmentCenter;
+    tmp.font = [UIFont systemFontOfSize:12];
+    tmp.backgroundColor = [UIColor colorWithRed:153 green:153 blue:153 alpha:1];
+    if (index == 0) {
+        tmp.text = @"标的";
+    } else if (index == 1) {
+        tmp.text = @"到期时间";
+    } else {
+        tmp.text = @"价格";
+    }
+    return tmp;
 }
 
 - (UIView *)dropMenuView:(OKBDropMenuView *)dropMenuView viewInItemAtIndex:(NSInteger)index {
@@ -68,31 +90,60 @@
         NSMutableArray *persons = NSMutableArray.new;
         for (int i = 0; i < 10; i++) {
             PersonModel *tmp = [[PersonModel alloc] init];
-            tmp.address = @"BeiJing";
+            tmp.address = @"LIUQIANGDONG";
             tmp.nodeName = tmp.address;
             [persons addObject:tmp];
+        }
+        
+        NSMutableArray *persons2 = NSMutableArray.new;
+        for (int i = 0; i < 6; i++) {
+            PersonModel *tmp = [[PersonModel alloc] init];
+            tmp.address = @"LIYANHONG";
+            tmp.nodeName = tmp.address;
+            [persons2 addObject:tmp];
         }
         
         NSMutableArray *companies = NSMutableArray.new;
         for (int i = 0; i < 3; i++) {
             CompanyModel *tmp = [[CompanyModel alloc] init];
-            tmp.bossName = @"MaYun";
-            tmp.array = persons;
+            tmp.bossName = [NSString stringWithFormat:@"JINGDONG %zd", i];;
+            if (i == 0) {
+                tmp.array = persons;
+            }
+            else {
+                tmp.array = persons2;
+            }
             tmp.nodeName = tmp.bossName;
             [companies addObject:tmp];
         }
         
+        NSMutableArray *companies2 = NSMutableArray.new;
+        for (int i = 0; i < 1; i++) {
+            CompanyModel *tmp = [[CompanyModel alloc] init];
+            tmp.bossName = [NSString stringWithFormat:@"BAIDU %zd", i];;
+            tmp.array = persons2;
+            tmp.nodeName = tmp.bossName;
+            [companies2 addObject:tmp];
+        }
+        
         NSMutableArray<DistrictModel *> *district = NSMutableArray.new;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 2; i++) {
             DistrictModel *tmp = [[DistrictModel alloc] init];
-            tmp.district = @"HaiDian";
-            tmp.array = companies;
+            tmp.district = [NSString stringWithFormat:@"HAIDIAN %zd", i];
+            if (i == 0) {
+                tmp.array = companies;
+            }
+            else {
+                tmp.array = companies2;
+            }
             tmp.nodeName = tmp.district;
             [district addObject:tmp];
         }
         
         PersonModel *p = [[PersonModel alloc] init];
         p.array = district;
+        
+        self.dataSource = p;
         
         OKBMultiLevelDropDownMenuView *view = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:3];
         view.delegate = self;
