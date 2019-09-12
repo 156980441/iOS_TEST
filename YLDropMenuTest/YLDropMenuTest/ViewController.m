@@ -14,8 +14,9 @@
 #import "OKBMultiLevelDropDownMenuView.h"
 #import <Masonry/Masonry.h>
 
-@interface ViewController () <OKBDropMenuViewDataSource, OKBDropMenuViewDelegate>
+@interface ViewController () <OKBDropMenuViewDataSource, OKBDropMenuViewDelegate, OKBMultiLevelDropDownMenuViewDelegate>
 @property (nonatomic, strong) OKBDropMenuView *dropDownMenu;
+@property (nonatomic, strong) OKBMultiLevelDropDownMenuView *eosDropDownMenu;
 @end
 
 @implementation ViewController
@@ -51,11 +52,19 @@
     return tmp;
 }
 
+- (CGFloat)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+    if (index == 0) {
+        return 10;
+    } else if (index == 1) {
+        return 20;
+    } else {
+        return 0;
+    }
+}
+
 - (UIView *)dropMenuView:(OKBDropMenuView *)dropMenuView viewInItemAtIndex:(NSInteger)index {
     UIView *tmp = [[UIView alloc] initWithFrame:CGRectZero];
     if (index == 0) {
-        
-        
         NSMutableArray *persons = NSMutableArray.new;
         for (int i = 0; i < 10; i++) {
             PersonModel *tmp = [[PersonModel alloc] init];
@@ -86,7 +95,9 @@
         p.array = district;
         
         OKBMultiLevelDropDownMenuView *view = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:3];
+        view.delegate = self;
         [view reloadDataWithDataSource:p];
+        self.eosDropDownMenu = view;
         return view;
     }
     else if (index == 1) {

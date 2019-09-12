@@ -31,6 +31,11 @@
     return self;
 }
 
+- (UITableView *)tableViewAtIndex:(NSInteger)index {
+    NSAssert(index < _tableViewNum, @"Tableview do not exist.");
+    return [_tableViewArr objectAtIndex:index];
+}
+
 - (void)p_layoutUI {
     UITableView *cursor = self.tableViewArr.firstObject;
     [cursor mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -63,6 +68,23 @@
     _dataSource = dataSource;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    CGFloat height = 0;
+    if ([self.delegate respondsToSelector:@selector(multiLevelDropDownMenu:heightForHeaderInTableView:atIndex:)]) {
+        NSInteger index = [_tableViewArr indexOfObject:tableView];
+        height = [self.delegate multiLevelDropDownMenu:self heightForHeaderInTableView:tableView atIndex:index];
+    }
+    return height;
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *view = nil;
+    if ([self.delegate respondsToSelector:@selector(multiLevelDropDownMenu:viewForHeaderInTableView:atIndex:)]) {
+        NSInteger index = [_tableViewArr indexOfObject:tableView];
+        view = [self.delegate multiLevelDropDownMenu:self viewForHeaderInTableView:tableView atIndex:index];
+    }
+    return view;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
@@ -126,10 +148,7 @@
         }
     }
     
-    
     return cell;
-    
-    
 }
 
 - (NSArray<UITableView *> *)tableViewArr {
@@ -140,7 +159,7 @@
             [tmp registerClass:UITableViewCell.class forCellReuseIdentifier:NSStringFromClass(UITableViewCell.class)];
             tmp.dataSource = self;
             tmp.delegate = self;
-            tmp.rowHeight = 44.0f;
+            tmp.rowHeight = 44.0f; // 默认高度
             [arr addObject:tmp];
         }
         _tableViewArr = [NSArray arrayWithArray:arr];
