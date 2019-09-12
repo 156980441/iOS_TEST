@@ -110,7 +110,7 @@
             NSArray<id<OKBMultiLevelMenuProtocol>> *arr = _dataSource.array[0].array;
             cell.textLabel.text = arr[indexPath.row].nodeName;
         }
-    } else if (_tableViewNum ==3){
+    } else if (_tableViewNum == 3) {
         
         if (tableView == _tableViewArr[0]) {
             cell.textLabel.text = _dataSource.array[indexPath.row].nodeName;
@@ -140,6 +140,7 @@
             [tmp registerClass:UITableViewCell.class forCellReuseIdentifier:NSStringFromClass(UITableViewCell.class)];
             tmp.dataSource = self;
             tmp.delegate = self;
+            tmp.rowHeight = 44.0f;
             [arr addObject:tmp];
         }
         _tableViewArr = [NSArray arrayWithArray:arr];

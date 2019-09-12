@@ -52,7 +52,7 @@
 }
 
 - (UIView *)dropMenuView:(OKBDropMenuView *)dropMenuView viewInItemAtIndex:(NSInteger)index {
-    UIView *tmp  = [[UIView alloc] initWithFrame:CGRectZero];
+    UIView *tmp = [[UIView alloc] initWithFrame:CGRectZero];
     if (index == 0) {
         
         
@@ -90,9 +90,44 @@
         return view;
     }
     else if (index == 1) {
-        tmp.backgroundColor = [UIColor yellowColor];
+        NSMutableArray *persons = NSMutableArray.new;
+        for (int i = 0; i < 10; i++) {
+            PersonModel *tmp = [[PersonModel alloc] init];
+            tmp.address = @"BeiJing";
+            tmp.nodeName = tmp.address;
+            [persons addObject:tmp];
+        }
+        
+        NSMutableArray *companies = NSMutableArray.new;
+        for (int i = 0; i < 3; i++) {
+            CompanyModel *tmp = [[CompanyModel alloc] init];
+            tmp.bossName = @"MaYun";
+            tmp.array = persons;
+            tmp.nodeName = tmp.bossName;
+            [companies addObject:tmp];
+        }
+        
+        PersonModel *p = [[PersonModel alloc] init];
+        p.array = companies;
+        
+        OKBMultiLevelDropDownMenuView *view = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:2];
+        [view reloadDataWithDataSource:p];
+        return view;
     } else if (index == 2) {
-        tmp.backgroundColor = [UIColor greenColor];
+        NSMutableArray *persons = NSMutableArray.new;
+        for (int i = 0; i < 10; i++) {
+            PersonModel *tmp = [[PersonModel alloc] init];
+            tmp.address = @"BeiJing";
+            tmp.nodeName = tmp.address;
+            [persons addObject:tmp];
+        }
+        
+        PersonModel *p = [[PersonModel alloc] init];
+        p.array = persons;
+        
+        OKBMultiLevelDropDownMenuView *view = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:1];
+        [view reloadDataWithDataSource:p];
+        return view;
     } else if (index == 3) {
         tmp.backgroundColor = [UIColor blueColor];
     }
