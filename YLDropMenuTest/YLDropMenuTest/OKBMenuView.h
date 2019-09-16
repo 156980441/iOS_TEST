@@ -44,6 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (OKBMenuItemView *)menuItemViewAtIndex:(NSInteger)index;
 
+- (void)dismissSourceViewWithAnimation:(BOOL)animation;
+
 @end
 
 NS_ASSUME_NONNULL_END

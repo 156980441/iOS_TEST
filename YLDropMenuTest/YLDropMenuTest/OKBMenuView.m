@@ -15,7 +15,7 @@
 {
     NSArray<OKBMenuItemView *> *_itemViewArr;
     NSInteger _num;
-    UIView *_showView;
+    UIView *_sourceView;
     OKBMenuItemView *_lastSelectedItemView;
 }
 @end
@@ -51,22 +51,34 @@
     [self p_layoutUI];
 }
 
+- (void)dismissSourceViewWithAnimation:(BOOL)animation {
+    if (animation) {
+        __weak typeof(self) wSelf = self; // typeof() 一元运算 可以根据（）内的变量自动识别并返回其数据类型。
+        _sourceView.alpha = 1.0f;
+        [UIView animateWithDuration:0.2f animations:^{
+            __strong typeof(self) sSelf = wSelf;
+            sSelf->_sourceView.alpha = 0.0f;
+        } completion:^(BOOL finished) {
+            __strong typeof(self) sSelf = wSelf;
+            [sSelf->_sourceView removeFromSuperview];
+            sSelf->_sourceView = nil;
+        }];
+    }
+    else {
+        [_sourceView removeFromSuperview];
+        _sourceView = nil;
+    }
+    
+    _lastSelectedItemView.selected = NO;
+}
+
 - (void)p_tapInView:(UITapGestureRecognizer *)tap {
     
     OKBMenuItemView *itemView = (OKBMenuItemView *)tap.view;
+    itemView.selected = !itemView.selected;
     
-    if (_lastSelectedItemView == itemView && itemView.selected) { // 同一个，并且已经选中，删除视图
-        
-        __weak typeof(self) wSelf = self; // typeof() 一元运算 可以根据（）内的变量自动识别并返回其数据类型。
-        _showView.alpha = 1.0f;
-        [UIView animateWithDuration:0.2f animations:^{
-            __strong typeof(self) sSelf = wSelf;
-            sSelf->_showView.alpha = 0.0f;
-        } completion:^(BOOL finished) {
-            __strong typeof(self) sSelf = wSelf;
-            [sSelf->_showView removeFromSuperview];
-        }];
-        
+    if (_lastSelectedItemView == itemView && itemView.selected == NO) { // 同一个，并且已经选中，删除视图
+        [self dismissSourceViewWithAnimation:YES];
     }
     else {
         UIView *tmp = nil;
@@ -80,7 +92,9 @@
         }
         if (tmp && height) {
             
-            [_showView removeFromSuperview];
+            if (_sourceView) {
+                [self dismissSourceViewWithAnimation:NO];
+            }
             
             CGRect frame = CGRectZero;
             frame.origin = CGPointMake(self.frame.origin.x, CGRectGetMaxY(self.frame));
@@ -95,14 +109,11 @@
                 tmp.alpha = 1.0f;
             }];
             
-            _showView = tmp;
+            _sourceView = tmp;
         }
         
-        _lastSelectedItemView.selected = NO;
         _lastSelectedItemView = itemView;
     }
-    
-    itemView.selected = !itemView.selected;
     
     if ([self.delegate respondsToSelector:@selector(menuView:didSelectItemAtIndexPath:)]) {
         [self.delegate menuView:self didSelectItemAtIndexPath:tap.view.tag];

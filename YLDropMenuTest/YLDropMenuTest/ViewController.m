@@ -108,7 +108,12 @@
 }
 
 - (CGFloat)menuView:(OKBMenuView *)menuView heightForSourceViewAtIndexPath:(NSInteger)index {
-    return 160;
+    if (index == 0) {
+        return 260;
+    }
+    else {
+        return 160;
+    }
 }
 
 - (void)menuView:(OKBMenuView *)menuView didSelectItemAtIndexPath:(NSInteger)index {
@@ -130,7 +135,7 @@
 - (void)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu didSelectInTableView:(nonnull id<OKBMultiLevelMenuProtocol>)model {
     LabelImageView *tmp = (LabelImageView *)[self.dropDownMenu menuItemViewAtIndex:self.dropDownMenu.selectedItemIndex];
     tmp.textLbl.text = model.nodeName;
-    NSLog(@"%@", model.nodeName);
+    [self.dropDownMenu dismissSourceViewWithAnimation:YES];
 }
 
 - (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
