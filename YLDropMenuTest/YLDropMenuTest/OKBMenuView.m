@@ -109,6 +109,10 @@
     }
 }
 
+- (NSInteger)selectedItemIndex {
+    return [_itemViewArr indexOfObject:_lastSelectedItemView];
+}
+
 - (void)p_layoutUI {
     OKBMenuItemView *cursor = nil;
     OKBMenuItemView *firstView = _itemViewArr.firstObject;
@@ -132,6 +136,11 @@
     [cursor mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self);
     }];
+}
+
+- (OKBMenuItemView *)menuItemViewAtIndex:(NSInteger)index {
+    NSAssert(index < _num, @"The menu title to be updated is out of bounds");
+    return [_itemViewArr objectAtIndex:index];
 }
 
 @end

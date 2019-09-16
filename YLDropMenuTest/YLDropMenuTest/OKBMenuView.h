@@ -40,6 +40,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak, nullable) id <OKBMenuViewDataSource> dataSource;
 @property (nonatomic, weak, nullable) id <OKBMenuViewDelegate> delegate;
 
+@property (nonatomic, assign) NSInteger selectedItemIndex;
+
+- (OKBMenuItemView *)menuItemViewAtIndex:(NSInteger)index;
+
 @end
 
 NS_ASSUME_NONNULL_END

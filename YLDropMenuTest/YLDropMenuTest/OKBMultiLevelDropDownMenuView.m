@@ -85,8 +85,24 @@
     }
     
     if (tableView == _tableViewArr.lastObject) {
-        if ([self.delegate respondsToSelector:@selector(multiLevelDropDownMenu:didSelectInTableView:atIndex:row:)]) {
-            [self.delegate multiLevelDropDownMenu:self didSelectInTableView:tableView atIndex:index row:indexPath.row];
+        if ([self.delegate respondsToSelector:@selector(multiLevelDropDownMenu:didSelectInTableView:)]) {
+            id<OKBMultiLevelMenuProtocol> model = nil;
+            if (_tableViewNum == 1) {
+                model = _dataSource.array[indexPath.row];
+            } else if (_tableViewNum == 2) {
+               NSInteger firstSelectRow = ((UITableView *)_tableViewArr[0]).indexPathForSelectedRow.row;
+                    NSArray<id<OKBMultiLevelMenuProtocol>> *arr = _dataSource.array[firstSelectRow].array;
+                    model = arr[indexPath.row];
+            } else if (_tableViewNum == 3) {
+                
+                NSInteger firstSelectRow = ((UITableView *)_tableViewArr[0]).indexPathForSelectedRow.row;
+                NSInteger secondSelectRow = ((UITableView *)_tableViewArr[1]).indexPathForSelectedRow.row;
+                
+                NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel2 = _dataSource.array[firstSelectRow].array;
+                NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel3 = arrLevel2[secondSelectRow].array;
+                model = arrLevel3[indexPath.row];
+            }
+            [self.delegate multiLevelDropDownMenu:self didSelectInTableView:model];
         }
     }
 }
