@@ -58,7 +58,7 @@
         view.delegate = self;
         [view reloadDataWithDataSource:self.item1DataSource];
         UITableView *firstTableView = [view tableViewAtIndex:1];
-        firstTableView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
+        firstTableView.backgroundColor = [UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1];
         self.item1SoureView = view;
         return view;
     }
