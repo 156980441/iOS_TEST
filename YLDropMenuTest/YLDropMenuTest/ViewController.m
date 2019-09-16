@@ -57,8 +57,8 @@
         OKBMultiLevelDropDownMenuView *view = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:3];
         view.delegate = self;
         [view reloadDataWithDataSource:self.item1DataSource];
-        UITableView *firstTableView = [view tableViewAtIndex:0];
-        firstTableView.backgroundColor = [UIColor grayColor];
+        UITableView *firstTableView = [view tableViewAtIndex:1];
+        firstTableView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
         self.item1SoureView = view;
         return view;
     }
@@ -142,8 +142,8 @@
     UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectZero];
     tmp.textAlignment = NSTextAlignmentCenter;
     tmp.font = [UIFont systemFontOfSize:12];
-    tmp.textColor = [UIColor colorWithRed:153 green:153 blue:153 alpha:1];
-    tmp.backgroundColor = [UIColor colorWithRed:247 green:248 blue:250 alpha:1];
+    tmp.textColor = [UIColor colorWithRed:153/255.f green:153/255.f blue:153/255.f alpha:1];
+    tmp.backgroundColor = [UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1];
     if (index == 0) {
         tmp.text = @"标的";
     } else if (index == 1) {

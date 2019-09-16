@@ -154,6 +154,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UITableViewCell.class) forIndexPath:indexPath];
+    cell.textLabel.textColor = [UIColor colorWithRed:102/255.f green:102/255.f blue:102/255.f alpha:1];
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
     
     if (_tableViewNum == 1) {
         cell.textLabel.text = _dataSource.array[indexPath.row].nodeName;

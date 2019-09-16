@@ -21,6 +21,7 @@
         UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectZero];
         tmp.text = @"BTC/USDT";
         tmp.font = [UIFont systemFontOfSize:11];
+        tmp.textColor = [UIColor colorWithRed:102/255.f green:102/255.f blue:102/255.f alpha:1];
         [self.contentView addSubview:tmp];
         UIView *superView = self.contentView;
         [tmp mas_makeConstraints:^(MASConstraintMaker *make) {
