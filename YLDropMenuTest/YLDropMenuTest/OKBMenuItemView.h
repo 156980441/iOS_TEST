@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OKBDropMenuItemView : UIView
+@interface OKBMenuItemView : UIView
 
 @property (nonatomic, readonly) UIView *contentView;
 @property (nonatomic, assign) BOOL selected;

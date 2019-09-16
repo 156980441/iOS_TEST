@@ -6,10 +6,10 @@
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import "OKBDropMenuItemView.h"
+#import "OKBMenuItemView.h"
 #import <Masonry/Masonry.h>
 
-@implementation OKBDropMenuItemView
+@implementation OKBMenuItemView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];

@@ -6,21 +6,21 @@
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import "OKBDropMenuView.h"
-#import "OKBDropMenuItemView.h"
+#import "OKBMenuView.h"
+#import "OKBMenuItemView.h"
 #import <Masonry/Masonry.h>
 
 
-@interface OKBDropMenuView ()
+@interface OKBMenuView ()
 {
-    NSArray<OKBDropMenuItemView *> *_itemViewArr;
+    NSArray<OKBMenuItemView *> *_itemViewArr;
     NSInteger _num;
     UIView *_showView;
-    OKBDropMenuItemView *_lastSelectedItemView;
+    OKBMenuItemView *_lastSelectedItemView;
 }
 @end
 
-@implementation OKBDropMenuView
+@implementation OKBMenuView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -32,13 +32,13 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    if ([self.dataSource respondsToSelector:@selector(numberOfItemsInDropView:)]) {
-        _num = [self.dataSource numberOfItemsInDropView:self];
+    if ([self.dataSource respondsToSelector:@selector(numberOfItemsInMenuView:)]) {
+        _num = [self.dataSource numberOfItemsInMenuView:self];
     }
-    NSMutableArray<OKBDropMenuItemView *> *tmp = [[NSMutableArray alloc] initWithCapacity:_num];
+    NSMutableArray<OKBMenuItemView *> *tmp = [[NSMutableArray alloc] initWithCapacity:_num];
     for (int i = 0; i < _num; i ++) {
-        if ([self.dataSource respondsToSelector:@selector(dropMenuView:viewForItemAtIndex:)]) {
-            OKBDropMenuItemView *itemView = [self.dataSource dropMenuView:self viewForItemAtIndex:i];
+        if ([self.dataSource respondsToSelector:@selector(menuView:viewForItemAtIndex:)]) {
+            OKBMenuItemView *itemView = [self.dataSource menuView:self viewForItemAtIndex:i];
             itemView.tag = i;
             [tmp addObject:itemView];
             [self addSubview:itemView];
@@ -53,7 +53,7 @@
 
 - (void)p_tapInView:(UITapGestureRecognizer *)tap {
     
-    OKBDropMenuItemView *itemView = (OKBDropMenuItemView *)tap.view;
+    OKBMenuItemView *itemView = (OKBMenuItemView *)tap.view;
     
     if (_lastSelectedItemView == itemView && itemView.selected) { // 同一个，并且已经选中，删除视图
         
@@ -72,11 +72,11 @@
         UIView *tmp = nil;
         CGFloat height = 0.f;
         
-        if ([self.dataSource respondsToSelector:@selector(dropMenuView:viewInItemAtIndex:)]) {
-            tmp = [self.dataSource dropMenuView:self viewInItemAtIndex:tap.view.tag];
+        if ([self.dataSource respondsToSelector:@selector(menuView:sourceViewInItemAtIndex:)]) {
+            tmp = [self.dataSource menuView:self sourceViewInItemAtIndex:tap.view.tag];
         }
-        if ([self.dataSource respondsToSelector:@selector(dropMenuView:heightForViewAtIndexPath:)]) {
-            height = [self.dataSource dropMenuView:self heightForViewAtIndexPath:tap.view.tag];
+        if ([self.dataSource respondsToSelector:@selector(menuView:heightForSourceViewAtIndexPath:)]) {
+            height = [self.dataSource menuView:self heightForSourceViewAtIndexPath:tap.view.tag];
         }
         if (tmp && height) {
             
@@ -104,14 +104,14 @@
     
     itemView.selected = !itemView.selected;
     
-    if ([self.delegate respondsToSelector:@selector(dropMenuView:didSelectItemAtIndexPath:)]) {
-        [self.delegate dropMenuView:self didSelectItemAtIndexPath:tap.view.tag];
+    if ([self.delegate respondsToSelector:@selector(menuView:didSelectItemAtIndexPath:)]) {
+        [self.delegate menuView:self didSelectItemAtIndexPath:tap.view.tag];
     }
 }
 
 - (void)p_layoutUI {
-    OKBDropMenuItemView *cursor = nil;
-    OKBDropMenuItemView *firstView = _itemViewArr.firstObject;
+    OKBMenuItemView *cursor = nil;
+    OKBMenuItemView *firstView = _itemViewArr.firstObject;
     [firstView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self);
         make.bottom.top.equalTo(self);
@@ -120,7 +120,7 @@
     cursor = firstView;
     
     for (int i = 1; i < _num; i++) {
-        OKBDropMenuItemView *tmp = _itemViewArr[i];
+        OKBMenuItemView *tmp = _itemViewArr[i];
         [tmp mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(cursor.mas_right);
             make.bottom.top.equalTo(self);

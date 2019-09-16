@@ -79,12 +79,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.delegate respondsToSelector:@selector(multiLevelDropDownMenu:didSelectInTableView:atIndex:row:)]) {
-        NSInteger index = [_tableViewArr indexOfObject:tableView];
-        for (NSInteger i = index + 1; i < _tableViewNum; i++) {
-            [[_tableViewArr objectAtIndex:i] reloadData];
+    NSInteger index = [_tableViewArr indexOfObject:tableView];
+    for (NSInteger i = index + 1; i < _tableViewNum; i++) {
+        [[_tableViewArr objectAtIndex:i] reloadData];
+    }
+    
+    if (tableView == _tableViewArr.lastObject) {
+        if ([self.delegate respondsToSelector:@selector(multiLevelDropDownMenu:didSelectInTableView:atIndex:row:)]) {
+            [self.delegate multiLevelDropDownMenu:self didSelectInTableView:tableView atIndex:index row:indexPath.row];
         }
-        [self.delegate multiLevelDropDownMenu:self didSelectInTableView:tableView atIndex:index row:indexPath.row];
     }
 }
 

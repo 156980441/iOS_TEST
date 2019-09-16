@@ -7,15 +7,15 @@
 //
 
 #import "ViewController.h"
-#import "OKBDropMenuView.h"
-#import "OKBDropMenuItemView.h"
+#import "OKBMenuView.h"
+#import "OKBMenuItemView.h"
 #import "LabelImageView.h"
 #import "PersonModel.h"
 #import "OKBMultiLevelDropDownMenuView.h"
 #import <Masonry/Masonry.h>
 
-@interface ViewController () <OKBDropMenuViewDataSource, OKBDropMenuViewDelegate, OKBMultiLevelDropDownMenuViewDelegate>
-@property (nonatomic, strong) OKBDropMenuView *dropDownMenu;
+@interface ViewController () <OKBMenuViewDataSource, OKBMenuViewDelegate, OKBMultiLevelDropDownMenuViewDelegate>
+@property (nonatomic, strong) OKBMenuView *dropDownMenu;
 @property (nonatomic, strong) PersonModel *dataSource;
 @property (nonatomic, strong) OKBMultiLevelDropDownMenuView *eosDropDownMenu;
 @end
@@ -34,18 +34,15 @@
         make.height.mas_equalTo(30);
     }];
     
-    
-
-    
-    
-    
 }
 
-- (NSInteger)numberOfItemsInDropView:(OKBDropMenuView *)dropMenuView {
+#pragma mark - OKBMenuViewDataSource && OKBMenuViewDelegate
+
+- (NSInteger)numberOfItemsInDropView:(OKBMenuView *)menuView {
     return 4;
 }
 
-- (nullable OKBDropMenuItemView *)dropMenuView:(OKBDropMenuView *)dropMenuView viewForItemAtIndex:(NSInteger)index {
+- (nullable OKBMenuItemView *)menuView:(OKBMenuView *)menuView viewForItemAtIndex:(NSInteger)index {
     LabelImageView *tmp = [[LabelImageView alloc] initWithFrame:CGRectZero];
     if (index == 3) {
         tmp.image = [UIImage imageNamed:@"icon_setting"];
@@ -53,38 +50,7 @@
     return tmp;
 }
 
-- (CGFloat)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
-    if (index == 0) {
-        return 32;
-    } else if (index == 1) {
-        return 32;
-    } else {
-        return 32;
-    }
-}
-
-- (void)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu didSelectInTableView:(UITableView *)tableView atIndex:(NSInteger)index row:(NSInteger)row {
-    if (index == 0) {
-        DistrictModel *tmp = self.dataSource.array[row];
-    }
-}
-
-- (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
-    UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectZero];
-    tmp.textAlignment = NSTextAlignmentCenter;
-    tmp.font = [UIFont systemFontOfSize:12];
-    tmp.backgroundColor = [UIColor colorWithRed:153 green:153 blue:153 alpha:1];
-    if (index == 0) {
-        tmp.text = @"标的";
-    } else if (index == 1) {
-        tmp.text = @"到期时间";
-    } else {
-        tmp.text = @"价格";
-    }
-    return tmp;
-}
-
-- (UIView *)dropMenuView:(OKBDropMenuView *)dropMenuView viewInItemAtIndex:(NSInteger)index {
+- (UIView *)menuView:(OKBMenuView *)menuView sourceViewInItemAtIndex:(NSInteger)index {
     UIView *tmp = [[UIView alloc] initWithFrame:CGRectZero];
     if (index == 0) {
         NSMutableArray *persons = NSMutableArray.new;
@@ -148,6 +114,8 @@
         OKBMultiLevelDropDownMenuView *view = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:3];
         view.delegate = self;
         [view reloadDataWithDataSource:p];
+        UITableView *firstTableView = [view tableViewAtIndex:0];
+        firstTableView.backgroundColor = [UIColor grayColor];
         self.eosDropDownMenu = view;
         return view;
     }
@@ -196,17 +164,53 @@
     return tmp;
 }
 
-- (CGFloat)dropMenuView:(OKBDropMenuView *)dropMenuView heightForViewAtIndexPath:(NSInteger)index {
+- (CGFloat)menuView:(OKBMenuView *)menuView heightForSourceViewAtIndexPath:(NSInteger)index {
     return 160;
 }
 
-- (void)dropMenuView:(OKBDropMenuView *)dropMenuView didSelectItemAtIndexPath:(NSInteger)index {
+- (void)menuView:(OKBMenuView *)menuView didSelectItemAtIndexPath:(NSInteger)index {
     NSLog(@"select index %d", index);
 }
 
-- (OKBDropMenuView *)dropDownMenu {
+#pragma mark - OKBMultiLevelDropDownMenuViewDelegate
+
+- (CGFloat)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+    if (index == 0) {
+        return 32;
+    } else if (index == 1) {
+        return 32;
+    } else {
+        return 32;
+    }
+}
+
+- (void)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu didSelectInTableView:(UITableView *)tableView atIndex:(NSInteger)index row:(NSInteger)row {
+    if (index == 0) {
+        DistrictModel *tmp = self.dataSource.array[row];
+    }
+}
+
+- (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+    UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectZero];
+    tmp.textAlignment = NSTextAlignmentCenter;
+    tmp.font = [UIFont systemFontOfSize:12];
+    tmp.textColor = [UIColor colorWithRed:153 green:153 blue:153 alpha:1];
+    tmp.backgroundColor = [UIColor colorWithRed:247 green:248 blue:250 alpha:1];
+    if (index == 0) {
+        tmp.text = @"标的";
+    } else if (index == 1) {
+        tmp.text = @"到期时间";
+    } else {
+        tmp.text = @"价格";
+    }
+    return tmp;
+}
+
+#pragma mark - lazy load
+
+- (OKBMenuView *)dropDownMenu {
     if (!_dropDownMenu) {
-        OKBDropMenuView *tmp = [[OKBDropMenuView alloc] initWithFrame:CGRectZero];
+        OKBMenuView *tmp = [[OKBMenuView alloc] initWithFrame:CGRectZero];
         tmp.delegate = self;
         tmp.dataSource = self;
         _dropDownMenu = tmp;
