@@ -117,7 +117,7 @@
 }
 
 - (void)menuView:(OKBMenuView *)menuView didSelectItemAtIndexPath:(NSInteger)index {
-    NSLog(@"select index %d", index);
+    NSLog(@"select index %ld", index);
 }
 
 #pragma mark - OKBMultiLevelDropDownMenuViewDelegate
@@ -169,8 +169,6 @@
 - (OKBMultiLevelDropDownMenuRootModel *)item1DataSource {
     if (!_item1DataSource) {
         OKBMultiLevelDropDownMenuRootModel *tmp = [OKBMultiLevelDropDownMenuRootModel defaultRootModel];
-        _item1DataSource = tmp;
-        
         
         NSMutableArray *persons = NSMutableArray.new;
         for (int i = 0; i < 10; i++) {
@@ -191,7 +189,7 @@
         NSMutableArray *companies = NSMutableArray.new;
         for (int i = 0; i < 3; i++) {
             CompanyModel *tmp = [[CompanyModel alloc] init];
-            tmp.bossName = [NSString stringWithFormat:@"JINGDONG %zd", i];;
+            tmp.bossName = [NSString stringWithFormat:@"JINGDONG %d", i];;
             if (i == 0) {
                 tmp.array = persons;
             }
@@ -205,7 +203,7 @@
         NSMutableArray *companies2 = NSMutableArray.new;
         for (int i = 0; i < 1; i++) {
             CompanyModel *tmp = [[CompanyModel alloc] init];
-            tmp.bossName = [NSString stringWithFormat:@"BAIDU %zd", i];;
+            tmp.bossName = [NSString stringWithFormat:@"BAIDU %d", i];;
             tmp.array = persons2;
             tmp.nodeName = tmp.bossName;
             [companies2 addObject:tmp];
@@ -214,7 +212,7 @@
         NSMutableArray<DistrictModel *> *district = NSMutableArray.new;
         for (int i = 0; i < 2; i++) {
             DistrictModel *tmp = [[DistrictModel alloc] init];
-            tmp.district = [NSString stringWithFormat:@"HAIDIAN %zd", i];
+            tmp.district = [NSString stringWithFormat:@"HAIDIAN %d", i];
             if (i == 0) {
                 tmp.array = companies;
             }
@@ -225,7 +223,9 @@
             [district addObject:tmp];
         }
         
-        _item1DataSource.array = district;
+        tmp.array = district;
+        
+        _item1DataSource = tmp;
     }
     return _item1DataSource;
 }

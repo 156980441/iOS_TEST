@@ -31,7 +31,7 @@
         }];
         _textLbl = tmp;
         
-        UIImage *image = [UIImage imageNamed:@"Icon"];
+        UIImage *image = [UIImage imageNamed:@"icon_packdown"];
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
         [self.contentView addSubview:imageView];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -46,6 +46,18 @@
 
 - (void)setImage:(UIImage *)image {
     _imageView.image = image;
+}
+
+- (void)setSelected:(BOOL)selected {
+    [super setSelected:selected];
+    if (selected) {
+        [self setImage:[UIImage imageNamed:@"icon_packup"]];
+        self.textLbl.textColor = [UIColor colorWithRed:48/255.f green:117/255.f blue:238/255.f alpha:1];
+    }
+    else {
+        [self setImage:[UIImage imageNamed:@"icon_packdown"]];
+        self.textLbl.textColor = [UIColor colorWithRed:102/255.f green:102/255.f blue:102/255.f alpha:1];
+    }
 }
 
 @end

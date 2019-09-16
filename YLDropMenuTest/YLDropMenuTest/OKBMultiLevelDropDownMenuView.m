@@ -33,7 +33,7 @@
 }
 
 - (UITableView *)tableViewAtIndex:(NSInteger)index {
-    NSAssert(index < _tableViewNum, @"Tableview do not exist.");
+    NSAssert(index < _tableViewNum, @"The tableview is out of bounds");
     return [_tableViewArr objectAtIndex:index];
 }
 
@@ -90,13 +90,13 @@
             if (_tableViewNum == 1) {
                 model = _dataSource.array[indexPath.row];
             } else if (_tableViewNum == 2) {
-               NSInteger firstSelectRow = ((UITableView *)_tableViewArr[0]).indexPathForSelectedRow.row;
+               NSInteger firstSelectRow = _tableViewArr[0].indexPathForSelectedRow.row;
                     NSArray<id<OKBMultiLevelMenuProtocol>> *arr = _dataSource.array[firstSelectRow].array;
                     model = arr[indexPath.row];
             } else if (_tableViewNum == 3) {
                 
-                NSInteger firstSelectRow = ((UITableView *)_tableViewArr[0]).indexPathForSelectedRow.row;
-                NSInteger secondSelectRow = ((UITableView *)_tableViewArr[1]).indexPathForSelectedRow.row;
+                NSInteger firstSelectRow = _tableViewArr[0].indexPathForSelectedRow.row;
+                NSInteger secondSelectRow = _tableViewArr[1].indexPathForSelectedRow.row;
                 
                 NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel2 = _dataSource.array[firstSelectRow].array;
                 NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel3 = arrLevel2[secondSelectRow].array;
@@ -135,13 +135,13 @@
             count = _dataSource.array.count;
         }
         else if (tableView == _tableViewArr[1]) {
-            NSInteger firstSelectRow = ((UITableView *)_tableViewArr[0]).indexPathForSelectedRow.row;
+            NSInteger firstSelectRow = _tableViewArr[0].indexPathForSelectedRow.row;
             NSArray<id<OKBMultiLevelMenuProtocol>> *arr = _dataSource.array[firstSelectRow].array;
             count = arr.count;
         }
         else if (tableView == _tableViewArr[2]) {
-            NSInteger firstSelectRow = ((UITableView *)_tableViewArr[0]).indexPathForSelectedRow.row;
-            NSInteger secondSelectRow = ((UITableView *)_tableViewArr[1]).indexPathForSelectedRow.row;
+            NSInteger firstSelectRow = _tableViewArr[0].indexPathForSelectedRow.row;
+            NSInteger secondSelectRow = _tableViewArr[1].indexPathForSelectedRow.row;
             NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel2 = _dataSource.array[firstSelectRow].array;
             NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel3 = arrLevel2[secondSelectRow].array;
             count = arrLevel3.count;
@@ -171,14 +171,14 @@
             cell.textLabel.text = _dataSource.array[indexPath.row].nodeName;
         }
         else if (tableView == _tableViewArr[1]) {
-            NSInteger firstSelectRow = ((UITableView *)_tableViewArr[0]).indexPathForSelectedRow.row;
+            NSInteger firstSelectRow = _tableViewArr[0].indexPathForSelectedRow.row;
             NSArray<id<OKBMultiLevelMenuProtocol>> *arr = _dataSource.array[firstSelectRow].array;
             cell.textLabel.text = arr[indexPath.row].nodeName;
         }
         else if (tableView == _tableViewArr[2]) {
             
-            NSInteger firstSelectRow = ((UITableView *)_tableViewArr[0]).indexPathForSelectedRow.row;
-            NSInteger secondSelectRow = ((UITableView *)_tableViewArr[1]).indexPathForSelectedRow.row;
+            NSInteger firstSelectRow = _tableViewArr[0].indexPathForSelectedRow.row;
+            NSInteger secondSelectRow = _tableViewArr[1].indexPathForSelectedRow.row;
             
             NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel2 = _dataSource.array[firstSelectRow].array;
             NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel3 = arrLevel2[secondSelectRow].array;
