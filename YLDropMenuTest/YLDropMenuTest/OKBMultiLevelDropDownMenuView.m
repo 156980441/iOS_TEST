@@ -23,12 +23,14 @@
 @implementation OKBMultiLevelDropDownMenuView
 
 - (instancetype)initWithFrame:(CGRect)frame tableViewNum:(NSInteger)num {
+    NSAssert(num < 4, @"OKBMultiLevelDropDownMenuView support 3 table views at most");
     self = [super initWithFrame:frame];
     if (self) {
         _tableViewNum = num;
         memset(_selectedRow, 0, 3);
         [self p_setupUI];
         [self p_layoutUI];
+        [self p_loadSelectedRow];
     }
     return self;
 }
@@ -89,7 +91,6 @@
 
 - (void)reloadDataWithDataSource:(id<OKBMultiLevelMenuProtocol>)dataSource {
     _dataSource = dataSource;
-    [self p_loadSelectedRow];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -104,7 +105,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger index = [_tableViewArr indexOfObject:tableView];
     for (NSInteger i = index + 1; i < _tableViewNum; i++) {
-        [[_tableViewArr objectAtIndex:i] reloadData];
+        UITableView *nextTV = [_tableViewArr objectAtIndex:i];
+        _selectedRow[i] = 0;
+        [nextTV selectRowAtIndexPath:[NSIndexPath indexPathForRow:_selectedRow[i] inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+        [nextTV reloadData];
     }
     
     [self p_saveSelectedRow];
@@ -181,53 +185,23 @@
     OKB1LabelTVCell *cell = [tableView dequeueReusableCellWithIdentifier:g_1LabelViewTVCellId forIndexPath:indexPath];
     if (_tableViewNum == 1) {
         cell.innerLbl.text = _dataSource.array[indexPath.row].nodeName;
-        if (_selectedRow[0] == indexPath.row) {
-            cell.selected = YES;
-        }
-        else {
-            cell.selected = NO;
-        }
     } else if (_tableViewNum == 2) {
         if (tableView == _tableViewArr[0]) {
             cell.innerLbl.text = _dataSource.array[indexPath.row].nodeName;
-            if (_selectedRow[0] == indexPath.row) {
-                cell.selected = YES;
-            }
-            else {
-                cell.selected = NO;
-            }
         }
         else if (tableView == _tableViewArr[1]) {
             NSArray<id<OKBMultiLevelMenuProtocol>> *arr = _dataSource.array[0].array;
             cell.innerLbl.text = arr[indexPath.row].nodeName;
-            if (_selectedRow[1] == indexPath.row) {
-                cell.selected = YES;
-            }
-            else {
-                cell.selected = NO;
-            }
         }
     } else if (_tableViewNum == 3) {
         
         if (tableView == _tableViewArr[0]) {
             cell.innerLbl.text = _dataSource.array[indexPath.row].nodeName;
-            if (_selectedRow[0] == indexPath.row) {
-                cell.selected = YES;
-            }
-            else {
-                cell.selected = NO;
-            }
         }
         else if (tableView == _tableViewArr[1]) {
             NSInteger firstSelectRow = _tableViewArr[0].indexPathForSelectedRow.row;
             NSArray<id<OKBMultiLevelMenuProtocol>> *arr = _dataSource.array[firstSelectRow].array;
             cell.innerLbl.text = arr[indexPath.row].nodeName;
-            if (_selectedRow[1] == indexPath.row) {
-                cell.selected = YES;
-            }
-            else {
-                cell.selected = NO;
-            }
         }
         else if (tableView == _tableViewArr[2]) {
             
@@ -237,12 +211,6 @@
             NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel2 = _dataSource.array[firstSelectRow].array;
             NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel3 = arrLevel2[secondSelectRow].array;
             cell.innerLbl.text = arrLevel3[indexPath.row].nodeName;
-            if (_selectedRow[2] == indexPath.row) {
-                cell.selected = YES;
-            }
-            else {
-                cell.selected = NO;
-            }
         }
     }
     

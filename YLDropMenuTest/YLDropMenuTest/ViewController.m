@@ -19,6 +19,8 @@
 @property (nonatomic, strong) OKBMenuView *dropDownMenu;
 @property (nonatomic, strong) OKBMultiLevelDropDownMenuView *item1SoureView;
 @property (nonatomic, strong) OKBMultiLevelDropDownMenuRootModel *item1DataSource;
+@property (nonatomic, strong) OKBMultiLevelDropDownMenuView *item3SoureView;
+@property (nonatomic, strong) OKBMultiLevelDropDownMenuRootModel *item3DataSource;
 @end
 
 @implementation ViewController
@@ -81,20 +83,7 @@
         [view reloadDataWithDataSource:p];
         return view;
     } else if (index == 2) {
-        NSMutableArray *persons = NSMutableArray.new;
-        for (int i = 0; i < 10; i++) {
-            PersonModel *tmp = [[PersonModel alloc] init];
-            tmp.address = @"BeiJing";
-            tmp.nodeName = tmp.address;
-            [persons addObject:tmp];
-        }
-        
-        PersonModel *p = [[PersonModel alloc] init];
-        p.array = persons;
-        
-        OKBMultiLevelDropDownMenuView *view = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:1];
-        [view reloadDataWithDataSource:p];
-        return view;
+        return self.item3SoureView;
     } else if (index == 3) {
         tmp.backgroundColor = [UIColor blueColor];
     }
@@ -111,7 +100,7 @@
 }
 
 - (void)menuView:(OKBMenuView *)menuView didSelectItemAtIndexPath:(NSInteger)index {
-    NSLog(@"select index %ld", index);
+    
 }
 
 #pragma mark - OKBMultiLevelDropDownMenuViewDelegate
@@ -234,6 +223,34 @@
         _item1DataSource = tmp;
     }
     return _item1DataSource;
+}
+
+- (OKBMultiLevelDropDownMenuView *)item3SoureView {
+    if (!_item3SoureView) {
+        OKBMultiLevelDropDownMenuView *tmp = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:1];
+        [tmp reloadDataWithDataSource:self.item3DataSource];
+        _item3SoureView = tmp;
+    }
+    return _item3SoureView;
+}
+
+- (OKBMultiLevelDropDownMenuRootModel *)item3DataSource {
+    if (!_item3DataSource) {
+        OKBMultiLevelDropDownMenuRootModel *tmp = [OKBMultiLevelDropDownMenuRootModel defaultRootModel];
+        
+        NSMutableArray *persons = NSMutableArray.new;
+        for (int i = 0; i < 2; i++) {
+            PersonModel *tmp = [[PersonModel alloc] init];
+            tmp.address = @"BeiJing";
+            tmp.nodeName = tmp.address;
+            [persons addObject:tmp];
+        }
+        
+        tmp.array = persons;
+        
+        _item3DataSource = tmp;
+    }
+    return _item3DataSource;
 }
 
 @end
