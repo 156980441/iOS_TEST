@@ -19,6 +19,7 @@
 		8D8437CC23264A6B00D39438 /* OKBMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437CB23264A6B00D39438 /* OKBMenuItemView.m */; };
 		8D8437CF2326581E00D39438 /* LabelImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437CE2326581E00D39438 /* LabelImageView.m */; };
 		8DAEF369232F693C00A70C79 /* OKBMultiLevelDropDownMenuRootModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAEF368232F693C00A70C79 /* OKBMultiLevelDropDownMenuRootModel.m */; };
+		8DAEF36C23308EA600A70C79 /* OKB1LabelTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAEF36B23308EA600A70C79 /* OKB1LabelTVCell.m */; };
 		B505FF60C943600A107C67FE /* Pods_YLDropMenuTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3BDEDE25FCAF55840F1053 /* Pods_YLDropMenuTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,8 @@
 		8D8437CE2326581E00D39438 /* LabelImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LabelImageView.m; sourceTree = "<group>"; };
 		8DAEF367232F693C00A70C79 /* OKBMultiLevelDropDownMenuRootModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKBMultiLevelDropDownMenuRootModel.h; sourceTree = "<group>"; };
 		8DAEF368232F693C00A70C79 /* OKBMultiLevelDropDownMenuRootModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OKBMultiLevelDropDownMenuRootModel.m; sourceTree = "<group>"; };
+		8DAEF36A23308EA600A70C79 /* OKB1LabelTVCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKB1LabelTVCell.h; sourceTree = "<group>"; };
+		8DAEF36B23308EA600A70C79 /* OKB1LabelTVCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OKB1LabelTVCell.m; sourceTree = "<group>"; };
 		AD3BDEDE25FCAF55840F1053 /* Pods_YLDropMenuTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YLDropMenuTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -90,6 +93,8 @@
 				8D791F712328DD700005EC80 /* OKBMultiLevelDropDownMenuView.m */,
 				8DAEF367232F693C00A70C79 /* OKBMultiLevelDropDownMenuRootModel.h */,
 				8DAEF368232F693C00A70C79 /* OKBMultiLevelDropDownMenuRootModel.m */,
+				8DAEF36A23308EA600A70C79 /* OKB1LabelTVCell.h */,
+				8DAEF36B23308EA600A70C79 /* OKB1LabelTVCell.m */,
 			);
 			name = multiLevelMenu;
 			sourceTree = "<group>";
@@ -266,6 +271,7 @@
 				8D8437CF2326581E00D39438 /* LabelImageView.m in Sources */,
 				8D8437BE23262F7F00D39438 /* main.m in Sources */,
 				8D8437B023262F7800D39438 /* AppDelegate.m in Sources */,
+				8DAEF36C23308EA600A70C79 /* OKB1LabelTVCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

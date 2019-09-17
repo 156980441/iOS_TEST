@@ -54,13 +54,7 @@
 - (UIView *)menuView:(OKBMenuView *)menuView sourceViewInItemAtIndex:(NSInteger)index {
     UIView *tmp = [[UIView alloc] initWithFrame:CGRectZero];
     if (index == 0) {
-        OKBMultiLevelDropDownMenuView *view = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:3];
-        view.delegate = self;
-        [view reloadDataWithDataSource:self.item1DataSource];
-        UITableView *firstTableView = [view tableViewAtIndex:1];
-        firstTableView.backgroundColor = [UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1];
-        self.item1SoureView = view;
-        return view;
+        return self.item1SoureView;
     }
     else if (index == 1) {
         NSMutableArray *persons = NSMutableArray.new;
@@ -164,6 +158,18 @@
         _dropDownMenu = tmp;
     }
     return _dropDownMenu;
+}
+
+- (OKBMultiLevelDropDownMenuView *)item1SoureView {
+    if (!_item1SoureView) {
+        OKBMultiLevelDropDownMenuView *tmp = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:3];
+        tmp.delegate = self;
+        [tmp reloadDataWithDataSource:self.item1DataSource];
+        UITableView *firstTableView = [tmp tableViewAtIndex:1];
+        firstTableView.backgroundColor = [UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1];
+        _item1SoureView = tmp;
+    }
+    return _item1SoureView;
 }
 
 - (OKBMultiLevelDropDownMenuRootModel *)item1DataSource {

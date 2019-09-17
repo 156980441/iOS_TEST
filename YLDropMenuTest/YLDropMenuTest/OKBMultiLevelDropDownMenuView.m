@@ -7,6 +7,7 @@
 //
 
 #import "OKBMultiLevelDropDownMenuView.h"
+#import "OKB1LabelTVCell.h"
 #import <Masonry/Masonry.h>
 
 @interface OKBMultiLevelDropDownMenuView () <UITableViewDelegate, UITableViewDataSource>
@@ -25,11 +26,15 @@
     self = [super initWithFrame:frame];
     if (self) {
         _tableViewNum = num;
-        
+        memset(_selectedRow, 0, 3);
         [self p_setupUI];
         [self p_layoutUI];
     }
     return self;
+}
+
+- (void)dealloc {
+    NSLog(@"%s",__func__);
 }
 
 - (UITableView *)tableViewAtIndex:(NSInteger)index {
@@ -65,8 +70,26 @@
     }
 }
 
+- (void)p_saveSelectedRow {
+    __weak typeof(self) weak_self = self;
+    [_tableViewArr enumerateObjectsUsingBlock:^(UITableView *tableView, NSUInteger idx, BOOL * _Nonnull stop) {
+        __strong typeof(self) strong_self = weak_self;
+        strong_self->_selectedRow[idx] = tableView.indexPathForSelectedRow.row;
+    }];
+}
+
+- (void)p_loadSelectedRow {
+    __weak typeof(self) weak_self = self;
+    [self.tableViewArr enumerateObjectsUsingBlock:^(UITableView *tableView, NSUInteger idx, BOOL * _Nonnull stop) {
+        __strong typeof(self) strong_self = weak_self;
+        [tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:strong_self->_selectedRow[idx] inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+        [tableView reloadData];
+    }];
+}
+
 - (void)reloadDataWithDataSource:(id<OKBMultiLevelMenuProtocol>)dataSource {
     _dataSource = dataSource;
+    [self p_loadSelectedRow];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -83,6 +106,8 @@
     for (NSInteger i = index + 1; i < _tableViewNum; i++) {
         [[_tableViewArr objectAtIndex:i] reloadData];
     }
+    
+    [self p_saveSelectedRow];
     
     if (tableView == _tableViewArr.lastObject) {
         if ([self.delegate respondsToSelector:@selector(multiLevelDropDownMenu:didSelectInTableView:)]) {
@@ -153,30 +178,56 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UITableViewCell.class) forIndexPath:indexPath];
-    cell.textLabel.textColor = [UIColor colorWithRed:102/255.f green:102/255.f blue:102/255.f alpha:1];
-    cell.textLabel.font = [UIFont systemFontOfSize:14];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    OKB1LabelTVCell *cell = [tableView dequeueReusableCellWithIdentifier:g_1LabelViewTVCellId forIndexPath:indexPath];
     if (_tableViewNum == 1) {
-        cell.textLabel.text = _dataSource.array[indexPath.row].nodeName;
+        cell.innerLbl.text = _dataSource.array[indexPath.row].nodeName;
+        if (_selectedRow[0] == indexPath.row) {
+            cell.selected = YES;
+        }
+        else {
+            cell.selected = NO;
+        }
     } else if (_tableViewNum == 2) {
         if (tableView == _tableViewArr[0]) {
-            cell.textLabel.text = _dataSource.array[indexPath.row].nodeName;
+            cell.innerLbl.text = _dataSource.array[indexPath.row].nodeName;
+            if (_selectedRow[0] == indexPath.row) {
+                cell.selected = YES;
+            }
+            else {
+                cell.selected = NO;
+            }
         }
         else if (tableView == _tableViewArr[1]) {
             NSArray<id<OKBMultiLevelMenuProtocol>> *arr = _dataSource.array[0].array;
-            cell.textLabel.text = arr[indexPath.row].nodeName;
+            cell.innerLbl.text = arr[indexPath.row].nodeName;
+            if (_selectedRow[1] == indexPath.row) {
+                cell.selected = YES;
+            }
+            else {
+                cell.selected = NO;
+            }
         }
     } else if (_tableViewNum == 3) {
         
         if (tableView == _tableViewArr[0]) {
-            cell.textLabel.text = _dataSource.array[indexPath.row].nodeName;
+            cell.innerLbl.text = _dataSource.array[indexPath.row].nodeName;
+            if (_selectedRow[0] == indexPath.row) {
+                cell.selected = YES;
+            }
+            else {
+                cell.selected = NO;
+            }
         }
         else if (tableView == _tableViewArr[1]) {
             NSInteger firstSelectRow = _tableViewArr[0].indexPathForSelectedRow.row;
             NSArray<id<OKBMultiLevelMenuProtocol>> *arr = _dataSource.array[firstSelectRow].array;
-            cell.textLabel.text = arr[indexPath.row].nodeName;
+            cell.innerLbl.text = arr[indexPath.row].nodeName;
+            if (_selectedRow[1] == indexPath.row) {
+                cell.selected = YES;
+            }
+            else {
+                cell.selected = NO;
+            }
         }
         else if (tableView == _tableViewArr[2]) {
             
@@ -185,7 +236,13 @@
             
             NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel2 = _dataSource.array[firstSelectRow].array;
             NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel3 = arrLevel2[secondSelectRow].array;
-            cell.textLabel.text = arrLevel3[indexPath.row].nodeName;
+            cell.innerLbl.text = arrLevel3[indexPath.row].nodeName;
+            if (_selectedRow[2] == indexPath.row) {
+                cell.selected = YES;
+            }
+            else {
+                cell.selected = NO;
+            }
         }
     }
     
@@ -198,7 +255,7 @@
         for (int i = 0; i < _tableViewNum; i++) {
             UITableView *tmp = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
             tmp.separatorStyle = UITableViewCellSeparatorStyleNone;
-            [tmp registerClass:UITableViewCell.class forCellReuseIdentifier:NSStringFromClass(UITableViewCell.class)];
+            [tmp registerClass:OKB1LabelTVCell.class forCellReuseIdentifier:g_1LabelViewTVCellId];
             tmp.dataSource = self;
             tmp.delegate = self;
             tmp.rowHeight = 44.0f; // 默认高度
