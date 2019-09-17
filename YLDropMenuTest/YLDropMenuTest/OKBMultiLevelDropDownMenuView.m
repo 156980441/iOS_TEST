@@ -85,7 +85,6 @@
     [self.tableViewArr enumerateObjectsUsingBlock:^(UITableView *tableView, NSUInteger idx, BOOL * _Nonnull stop) {
         __strong typeof(self) strong_self = weak_self;
         [tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:strong_self->_selectedRow[idx] inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
-        [tableView reloadData];
     }];
 }
 
