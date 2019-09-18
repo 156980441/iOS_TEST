@@ -92,8 +92,8 @@
     }];
 }
 
-- (void)reloadDataWithDataSource:(id<OKBMultiLevelMenuProtocol>)dataSource {
-    _dataSource = dataSource;
+- (void)reloadDataWithRootDataSource:(id<OKBMultiLevelMenuProtocol>)rootDataSource {
+    _dataSource = rootDataSource;
     [self p_resetSelectedRow];
     [self p_loadSelectedRow];
 }

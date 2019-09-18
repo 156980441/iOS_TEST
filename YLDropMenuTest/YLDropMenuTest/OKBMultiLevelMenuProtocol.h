@@ -12,10 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol OKBMultiLevelMenuProtocol <NSObject>
 
-@property (nonatomic, assign) NSInteger nodeId;
-@property (nonatomic, assign) NSInteger parentId;
-@property (nonatomic, copy) NSString *nodeName;
 
+@property (nonatomic, strong) id<OKBMultiLevelMenuProtocol> parent;
+@property (nonatomic, copy) NSString *nodeName;
+@property (nonatomic, assign) NSInteger nodeId;
 @property (nonatomic, strong) NSArray<id<OKBMultiLevelMenuProtocol>> *array;
 
 @end

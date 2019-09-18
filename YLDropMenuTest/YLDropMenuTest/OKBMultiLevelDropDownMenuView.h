@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) id<OKBMultiLevelDropDownMenuViewDelegate> delegate;
 
-- (void)reloadDataWithDataSource:(id<OKBMultiLevelMenuProtocol>)dataSource;
+- (void)reloadDataWithRootDataSource:(id<OKBMultiLevelMenuProtocol>)rootDataSource;
 
 - (UITableView *)tableViewAtIndex:(NSInteger)index;
 

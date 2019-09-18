@@ -80,7 +80,7 @@
         p.array = companies;
         
         OKBMultiLevelDropDownMenuView *view = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:2];
-        [view reloadDataWithDataSource:p];
+        [view reloadDataWithRootDataSource:p];
         return view;
     } else if (index == 2) {
         return self.item3SoureView;
@@ -119,6 +119,11 @@
     LabelImageView *tmp = (LabelImageView *)[self.dropDownMenu menuItemViewAtIndex:self.dropDownMenu.selectedItemIndex];
     tmp.textLbl.text = model.nodeName;
     [self.dropDownMenu dismissSourceViewWithAnimation:YES];
+    if (model.nodeId == 3) {
+        OKBMultiLevelDropDownMenuRootModel *root = self.item1DataSource;
+        id<OKBMultiLevelMenuProtocol> original = root.array[1];
+        original.array = self.item3DataSource.array;
+    }
 }
 
 - (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
@@ -153,7 +158,7 @@
     if (!_item1SoureView) {
         OKBMultiLevelDropDownMenuView *tmp = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:3];
         tmp.delegate = self;
-        [tmp reloadDataWithDataSource:self.item1DataSource];
+        [tmp reloadDataWithRootDataSource:self.item1DataSource];
         UITableView *firstTableView = [tmp tableViewAtIndex:1];
         firstTableView.backgroundColor = [UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1];
         _item1SoureView = tmp;
@@ -170,6 +175,7 @@
             PersonModel *tmp = [[PersonModel alloc] init];
             tmp.address = @"LIUQIANGDONG";
             tmp.nodeName = tmp.address;
+            tmp.nodeId = i;
             [persons addObject:tmp];
         }
         
@@ -228,7 +234,7 @@
 - (OKBMultiLevelDropDownMenuView *)item3SoureView {
     if (!_item3SoureView) {
         OKBMultiLevelDropDownMenuView *tmp = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:1];
-        [tmp reloadDataWithDataSource:self.item3DataSource];
+        [tmp reloadDataWithRootDataSource:self.item3DataSource];
         _item3SoureView = tmp;
     }
     return _item3SoureView;
