@@ -27,16 +27,19 @@
     self = [super initWithFrame:frame];
     if (self) {
         _tableViewNum = num;
-        memset(_selectedRow, 0, 3);
+        [self p_resetSelectedRow];
         [self p_setupUI];
         [self p_layoutUI];
-        [self p_loadSelectedRow];
     }
     return self;
 }
 
 - (void)dealloc {
     NSLog(@"%s",__func__);
+}
+
+- (void)p_resetSelectedRow {
+    memset(_selectedRow, 0, 3);
 }
 
 - (UITableView *)tableViewAtIndex:(NSInteger)index {
@@ -84,12 +87,15 @@
     __weak typeof(self) weak_self = self;
     [self.tableViewArr enumerateObjectsUsingBlock:^(UITableView *tableView, NSUInteger idx, BOOL * _Nonnull stop) {
         __strong typeof(self) strong_self = weak_self;
+        [tableView reloadData]; // 好奇怪，和下面的代码不能颠倒位置
         [tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:strong_self->_selectedRow[idx] inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
     }];
 }
 
 - (void)reloadDataWithDataSource:(id<OKBMultiLevelMenuProtocol>)dataSource {
     _dataSource = dataSource;
+    [self p_resetSelectedRow];
+    [self p_loadSelectedRow];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -106,8 +112,8 @@
     for (NSInteger i = index + 1; i < _tableViewNum; i++) {
         UITableView *nextTV = [_tableViewArr objectAtIndex:i];
         _selectedRow[i] = 0;
-        [nextTV selectRowAtIndexPath:[NSIndexPath indexPathForRow:_selectedRow[i] inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
         [nextTV reloadData];
+        [nextTV selectRowAtIndexPath:[NSIndexPath indexPathForRow:_selectedRow[i] inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
     }
     
     [self p_saveSelectedRow];
