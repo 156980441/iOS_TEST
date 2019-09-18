@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @required
 - (NSInteger)numberOfItemsInMenuView:(OKBMenuView *)menuView;
-- (nullable OKBMenuItemView *)menuView:(OKBMenuView *)menuView viewForItemAtIndex:(NSInteger)index;
+- (OKBMenuItemView *)menuView:(OKBMenuView *)menuView viewForItemAtIndex:(NSInteger)index;
 - (UIView *)menuView:(OKBMenuView *)menuView sourceViewInItemAtIndex:(NSInteger)index;
 - (CGFloat)menuView:(OKBMenuView *)menuView heightForSourceViewAtIndexPath:(NSInteger)index;
 
@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithFrame:(CGRect)frame;
 
-@property (nonatomic, weak, nullable) id <OKBMenuViewDataSource> dataSource;
+@property (nonatomic, weak) id <OKBMenuViewDataSource> dataSource;
 @property (nonatomic, weak, nullable) id <OKBMenuViewDelegate> delegate;
 
 @property (nonatomic, assign) NSInteger selectedItemIndex;

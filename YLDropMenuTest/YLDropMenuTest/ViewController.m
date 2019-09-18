@@ -15,12 +15,16 @@
 #import "OKBMultiLevelDropDownMenuRootModel.h"
 #import <Masonry/Masonry.h>
 
+#import "OKBMenuViewController.h"
+
 @interface ViewController () <OKBMenuViewDataSource, OKBMenuViewDelegate, OKBMultiLevelDropDownMenuViewDelegate>
 @property (nonatomic, strong) OKBMenuView *dropDownMenu;
 @property (nonatomic, strong) OKBMultiLevelDropDownMenuView *item1SoureView;
 @property (nonatomic, strong) OKBMultiLevelDropDownMenuRootModel *item1DataSource;
 @property (nonatomic, strong) OKBMultiLevelDropDownMenuView *item3SoureView;
 @property (nonatomic, strong) OKBMultiLevelDropDownMenuRootModel *item3DataSource;
+
+@property (nonatomic, strong) OKBMenuViewController *menuVC;
 @end
 
 @implementation ViewController
@@ -45,7 +49,7 @@
     return 4;
 }
 
-- (nullable OKBMenuItemView *)menuView:(OKBMenuView *)menuView viewForItemAtIndex:(NSInteger)index {
+- (OKBMenuItemView *)menuView:(OKBMenuView *)menuView viewForItemAtIndex:(NSInteger)index {
     LabelImageView *tmp = [[LabelImageView alloc] initWithFrame:CGRectZero];
     if (index == 3) {
         tmp.image = [UIImage imageNamed:@"icon_setting"];

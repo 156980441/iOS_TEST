@@ -39,6 +39,7 @@
     for (int i = 0; i < _num; i ++) {
         if ([self.dataSource respondsToSelector:@selector(menuView:viewForItemAtIndex:)]) {
             OKBMenuItemView *itemView = [self.dataSource menuView:self viewForItemAtIndex:i];
+            NSAssert(itemView != nil, @"Please implement OKBMenuViewDataSource");
             itemView.tag = i;
             [tmp addObject:itemView];
             [self addSubview:itemView];
