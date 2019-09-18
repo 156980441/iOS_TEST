@@ -16,6 +16,7 @@
 #import <Masonry/Masonry.h>
 
 #import "OKBMenuViewController.h"
+#import "OKBMultiLevelDropDownMenuVC.h"
 
 @interface ViewController () <OKBMenuViewDataSource, OKBMenuViewDelegate, OKBMultiLevelDropDownMenuViewDelegate>
 @property (nonatomic, strong) OKBMenuView *dropDownMenu;
@@ -37,6 +38,16 @@
     
     [self.dropDownMenu mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(44);
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(30);
+    }];
+    
+    
+    [self addChildViewController:self.menuVC];
+    [self.view addSubview:self.menuVC.view];
+    [self didMoveToParentViewController:self];
+    [self.menuVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(200);
         make.left.right.equalTo(self.view);
         make.height.mas_equalTo(30);
     }];
@@ -124,8 +135,7 @@
     tmp.textLbl.text = model.nodeName;
     [self.dropDownMenu dismissSourceViewWithAnimation:YES];
     if (model.nodeId == 3) {
-        OKBMultiLevelDropDownMenuRootModel *root = self.item1DataSource;
-        id<OKBMultiLevelMenuProtocol> original = root.array[1];
+        id<OKBMultiLevelMenuProtocol> original = model.parent.parent;
         original.array = self.item3DataSource.array;
     }
 }
@@ -174,61 +184,81 @@
     if (!_item1DataSource) {
         OKBMultiLevelDropDownMenuRootModel *tmp = [OKBMultiLevelDropDownMenuRootModel defaultRootModel];
         
-        NSMutableArray *persons = NSMutableArray.new;
-        for (int i = 0; i < 10; i++) {
+        NSMutableArray<PersonModel *> *personsLevel3 = NSMutableArray.new;
+        NSMutableArray<PersonModel *> *persons2Level3 = NSMutableArray.new;
+        NSMutableArray<CompanyModel *> *companiesLevel2 = NSMutableArray.new;
+        NSMutableArray<CompanyModel *> *companies2Level2 = NSMutableArray.new;
+        NSMutableArray<DistrictModel *> *districtLevel1 = NSMutableArray.new;
+        
+        for (int i = 0; i < 5; i++) {
             PersonModel *tmp = [[PersonModel alloc] init];
-            tmp.address = @"LIUQIANGDONG";
+            tmp.address = [NSString stringWithFormat:@"刘强东 %d", i];
             tmp.nodeName = tmp.address;
             tmp.nodeId = i;
-            [persons addObject:tmp];
+            [personsLevel3 addObject:tmp];
         }
         
-        NSMutableArray *persons2 = NSMutableArray.new;
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 2; i++) {
             PersonModel *tmp = [[PersonModel alloc] init];
-            tmp.address = @"LIYANHONG";
+            tmp.address = [NSString stringWithFormat:@"李彦宏 %d", i];
             tmp.nodeName = tmp.address;
-            [persons2 addObject:tmp];
+            [persons2Level3 addObject:tmp];
         }
         
-        NSMutableArray *companies = NSMutableArray.new;
+        
         for (int i = 0; i < 3; i++) {
             CompanyModel *tmp = [[CompanyModel alloc] init];
-            tmp.bossName = [NSString stringWithFormat:@"JINGDONG %d", i];;
+            tmp.bossName = [NSString stringWithFormat:@"京东 %d", i];;
             if (i == 0) {
-                tmp.array = persons;
+                tmp.array = personsLevel3;
+                for (PersonModel *person in tmp.array) {
+                    person.parent = tmp;
+                }
             }
             else {
-                tmp.array = persons2;
+                tmp.array = personsLevel3;
+                for (PersonModel *person in tmp.array) {
+                    person.parent = tmp;
+                }
             }
             tmp.nodeName = tmp.bossName;
-            [companies addObject:tmp];
+            [companiesLevel2 addObject:tmp];
         }
         
-        NSMutableArray *companies2 = NSMutableArray.new;
+        
         for (int i = 0; i < 1; i++) {
             CompanyModel *tmp = [[CompanyModel alloc] init];
-            tmp.bossName = [NSString stringWithFormat:@"BAIDU %d", i];;
-            tmp.array = persons2;
+            tmp.bossName = [NSString stringWithFormat:@"百度 %d", i];;
+            tmp.array = persons2Level3;
+            for (PersonModel *person in tmp.array) {
+                person.parent = tmp;
+            }
             tmp.nodeName = tmp.bossName;
-            [companies2 addObject:tmp];
+            [companies2Level2 addObject:tmp];
         }
         
-        NSMutableArray<DistrictModel *> *district = NSMutableArray.new;
+        
         for (int i = 0; i < 2; i++) {
             DistrictModel *tmp = [[DistrictModel alloc] init];
-            tmp.district = [NSString stringWithFormat:@"HAIDIAN %d", i];
             if (i == 0) {
-                tmp.array = companies;
+                tmp.district = [NSString stringWithFormat:@"亦庄 %d", i];
+                tmp.array = companiesLevel2;
+                for (CompanyModel *company in tmp.array) {
+                    company.parent = tmp;
+                }
             }
             else {
-                tmp.array = companies2;
+                tmp.district = [NSString stringWithFormat:@"海淀 %d", i];
+                tmp.array = companies2Level2;
+                for (CompanyModel *company in tmp.array) {
+                    company.parent = tmp;
+                }
             }
             tmp.nodeName = tmp.district;
-            [district addObject:tmp];
+            [districtLevel1 addObject:tmp];
         }
         
-        tmp.array = district;
+        tmp.array = districtLevel1;
         
         _item1DataSource = tmp;
     }
@@ -251,7 +281,7 @@
         NSMutableArray *persons = NSMutableArray.new;
         for (int i = 0; i < 2; i++) {
             PersonModel *tmp = [[PersonModel alloc] init];
-            tmp.address = @"BeiJing";
+            tmp.address = @"马云";
             tmp.nodeName = tmp.address;
             [persons addObject:tmp];
         }
@@ -261,6 +291,17 @@
         _item3DataSource = tmp;
     }
     return _item3DataSource;
+}
+
+
+- (OKBMenuViewController *)menuVC {
+    if (!_menuVC) {
+        OKBMultiLevelDropDownMenuVC *vc1 = [[OKBMultiLevelDropDownMenuVC alloc] initWithMultiLevel:1];
+        OKBMultiLevelDropDownMenuVC *vc2 = [[OKBMultiLevelDropDownMenuVC alloc] initWithMultiLevel:2];
+        OKBMenuViewController *tmp = [[OKBMenuViewController alloc] initWithMenuItemControllers:@[vc1, vc2]];
+        _menuVC = tmp;
+    }
+    return _menuVC;
 }
 
 @end

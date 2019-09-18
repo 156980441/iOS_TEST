@@ -1,5 +1,5 @@
 //
-//  OKBMenuViewController.h
+//  OKBMultiLevelDropDownMenuVC.h
 //  YLDropMenuTest
 //
 //  Created by fanyl on 2019/9/18.
@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OKBMenuViewController : UIViewController
-- (instancetype)initWithMenuItemControllers:(NSArray<UIViewController *> *)controllersArr;
+@interface OKBMultiLevelDropDownMenuVC : UIViewController
+- (instancetype)initWithMultiLevel:(NSInteger)levels;
 @end
 
 NS_ASSUME_NONNULL_END

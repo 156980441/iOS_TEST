@@ -13,7 +13,7 @@
 + (instancetype)defaultRootModel {
     OKBMultiLevelDropDownMenuRootModel *tmp = [[OKBMultiLevelDropDownMenuRootModel alloc] init];
     tmp.nodeId = -1;
-    tmp.parentId = -1;
+    tmp.parent = nil;
     tmp.nodeName = @"";
     tmp.array = nil;
     return tmp;
