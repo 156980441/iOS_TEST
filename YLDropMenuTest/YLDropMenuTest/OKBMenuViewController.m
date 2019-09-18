@@ -55,7 +55,13 @@
 }
 
 - (UIView *)menuView:(OKBMenuView *)menuView sourceViewInItemAtIndex:(NSInteger)index {
+    
     UIViewController *vc = [_controllersArr objectAtIndex:index];
+    
+    if (vc.view.superview) {
+        [vc removeFromParentViewController];
+    }
+    
     [self addChildViewController:vc];
     [self didMoveToParentViewController:self];
     return vc.view;

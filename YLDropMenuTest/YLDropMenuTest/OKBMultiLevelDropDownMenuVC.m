@@ -40,6 +40,7 @@
 - (OKBMultiLevelDropDownMenuView *)multiLeveldropDownMenuView {
     if (!_multiLeveldropDownMenuView) {
         OKBMultiLevelDropDownMenuView *tmp = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:_levels];
+        tmp.backgroundColor = [UIColor grayColor];
         _multiLeveldropDownMenuView = tmp;
     }
     return _multiLeveldropDownMenuView;
