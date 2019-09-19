@@ -13,9 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 @class OKBMultiLevelDropDownMenuRootModel;
 
 @interface DataSourceFactory : NSObject
-+ (OKBMultiLevelDropDownMenuRootModel *)level3DataSource;
+
 + (OKBMultiLevelDropDownMenuRootModel *)level1DataSource;
 + (OKBMultiLevelDropDownMenuRootModel *)level2DataSource;
++ (OKBMultiLevelDropDownMenuRootModel *)level3DataSource;
+
 @end
 
 NS_ASSUME_NONNULL_END

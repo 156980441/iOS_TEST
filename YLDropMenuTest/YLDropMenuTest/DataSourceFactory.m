@@ -117,7 +117,7 @@
     NSMutableArray *persons = NSMutableArray.new;
     for (int i = 0; i < 10; i++) {
         PersonModel *tmp = [[PersonModel alloc] init];
-        tmp.address = @"BeiJing";
+        tmp.address = @"北京";
         tmp.nodeName = tmp.address;
         [persons addObject:tmp];
     }
@@ -125,7 +125,7 @@
     NSMutableArray *companies = NSMutableArray.new;
     for (int i = 0; i < 3; i++) {
         CompanyModel *tmp = [[CompanyModel alloc] init];
-        tmp.bossName = @"MaYun";
+        tmp.bossName = @"马云";
         tmp.array = persons;
         tmp.nodeName = tmp.bossName;
         [companies addObject:tmp];

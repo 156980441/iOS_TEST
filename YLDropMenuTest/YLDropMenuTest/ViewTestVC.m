@@ -22,9 +22,7 @@
 @interface ViewTestVC () <OKBMenuViewDataSource, OKBMenuViewDelegate, OKBMultiLevelDropDownMenuViewDelegate>
 @property (nonatomic, strong) OKBMenuView *dropDownMenu;
 @property (nonatomic, strong) OKBMultiLevelDropDownMenuView *item1SoureView;
-@property (nonatomic, strong) OKBMultiLevelDropDownMenuRootModel *item1DataSource;
 @property (nonatomic, strong) OKBMultiLevelDropDownMenuView *item3SoureView;
-@property (nonatomic, strong) OKBMultiLevelDropDownMenuRootModel *item3DataSource;
 @end
 
 @implementation ViewTestVC
@@ -108,7 +106,7 @@
     [self.dropDownMenu dismissSourceViewWithAnimation:YES];
     if (model.nodeId == 3) {
         id<OKBMultiLevelMenuProtocol> original = model.parent.parent;
-        original.array = self.item3DataSource.array;
+        original.array = [DataSourceFactory level1DataSource].array;
     }
 }
 
@@ -144,7 +142,7 @@
     if (!_item1SoureView) {
         OKBMultiLevelDropDownMenuView *tmp = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:3];
         tmp.delegate = self;
-        [tmp reloadDataWithRootDataSource:self.item1DataSource];
+        [tmp reloadDataWithRootDataSource:[DataSourceFactory level3DataSource]];
         UITableView *firstTableView = [tmp tableViewAtIndex:1];
         firstTableView.backgroundColor = [UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1];
         _item1SoureView = tmp;
@@ -152,28 +150,13 @@
     return _item1SoureView;
 }
 
-- (OKBMultiLevelDropDownMenuRootModel *)item1DataSource {
-    if (!_item1DataSource) {
-        _item1DataSource = [DataSourceFactory level3DataSource];;
-    }
-    return _item1DataSource;
-}
-
 - (OKBMultiLevelDropDownMenuView *)item3SoureView {
     if (!_item3SoureView) {
         OKBMultiLevelDropDownMenuView *tmp = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:1];
-        [tmp reloadDataWithRootDataSource:self.item3DataSource];
+        [tmp reloadDataWithRootDataSource:[DataSourceFactory level1DataSource]];
         _item3SoureView = tmp;
     }
     return _item3SoureView;
 }
-
-- (OKBMultiLevelDropDownMenuRootModel *)item3DataSource {
-    if (!_item3DataSource) {
-        _item3DataSource = [DataSourceFactory level1DataSource];
-    }
-    return _item3DataSource;
-}
-
 
 @end
