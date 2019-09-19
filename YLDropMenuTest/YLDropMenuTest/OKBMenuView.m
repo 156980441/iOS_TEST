@@ -10,7 +10,6 @@
 #import "OKBMenuItemView.h"
 #import <Masonry/Masonry.h>
 
-
 @interface OKBMenuView ()
 {
     NSArray<OKBMenuItemView *> *_itemViewArr;

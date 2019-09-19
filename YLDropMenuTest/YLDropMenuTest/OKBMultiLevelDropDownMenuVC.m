@@ -8,21 +8,24 @@
 
 #import "OKBMultiLevelDropDownMenuVC.h"
 #import "OKBMultiLevelDropDownMenuView.h"
+#import "OKBMultiLevelDropDownMenuRootModel.h"
 #import <Masonry/Masonry.h>
 
-@interface OKBMultiLevelDropDownMenuVC ()
+@interface OKBMultiLevelDropDownMenuVC () <OKBMultiLevelDropDownMenuViewDelegate>
 {
     NSInteger _levels;
+    OKBMultiLevelDropDownMenuRootModel *_model;
 }
 @property (nonatomic, strong) OKBMultiLevelDropDownMenuView *multiLeveldropDownMenuView;
 @end
 
 @implementation OKBMultiLevelDropDownMenuVC
 
-- (instancetype)initWithMultiLevel:(NSInteger)levels {
+- (instancetype)initWithMultiLevel:(NSInteger)levels rootModel:(OKBMultiLevelDropDownMenuRootModel *)model {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _levels = levels;
+        _model = model;
     }
     return self;
 }
@@ -35,6 +38,7 @@
     [self.multiLeveldropDownMenuView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view).insets(UIEdgeInsetsZero);
     }];
+    [self.multiLeveldropDownMenuView reloadDataWithRootDataSource:_model];
 }
 
 
@@ -55,11 +59,11 @@
     tmp.textColor = [UIColor colorWithRed:153/255.f green:153/255.f blue:153/255.f alpha:1];
     tmp.backgroundColor = [UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1];
     if (index == 0) {
-        tmp.text = @"标的";
+        tmp.text = @"姓名";
     } else if (index == 1) {
-        tmp.text = @"到期时间";
+        tmp.text = @"班级";
     } else {
-        tmp.text = @"价格";
+        tmp.text = @"学校";
     }
     return tmp;
 }

@@ -17,6 +17,7 @@
     NSArray<UIViewController *> *_controllersArr;
 }
 @property (nonatomic, strong) OKBMenuView *menuView;
+
 @end
 
 @implementation OKBMenuViewController
@@ -88,6 +89,11 @@
         _menuView = tmp;
     }
     return _menuView;
+}
+
+- (void)updateMenuItemTitle:(NSString *)title atIndex:(NSInteger)index {
+    LabelImageView *itemView = (LabelImageView *)[self.menuView menuItemViewAtIndex:index];
+    itemView.textLbl.text = title;
 }
 
 @end
