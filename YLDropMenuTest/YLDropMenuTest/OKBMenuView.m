@@ -122,7 +122,7 @@ static UIWindow* window4Show (void) {
             
             tmp.alpha = 0.0f;
             
-            [self.superview addSubview:tmp];
+            [self.superview addSubview:tmp]; // 适配 VC 形式的调用
             [window addSubview:tmp];
             
             [UIView animateWithDuration:0.2f animations:^{
