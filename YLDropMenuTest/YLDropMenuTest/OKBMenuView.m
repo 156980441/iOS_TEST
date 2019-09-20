@@ -10,6 +10,21 @@
 #import "OKBMenuItemView.h"
 #import <Masonry/Masonry.h>
 
+static UIWindow* window4Show (void) {
+    NSEnumerator *frontToBackWindows = [UIApplication.sharedApplication.windows reverseObjectEnumerator];
+    for (UIWindow *window in frontToBackWindows) {
+        BOOL windowOnMainScreen = window.screen == UIScreen.mainScreen;
+        BOOL windowIsVisible = !window.hidden && window.alpha > 0;
+        BOOL windowLevelNormal = window.windowLevel == UIWindowLevelNormal;
+        
+        if (windowOnMainScreen && windowIsVisible && windowLevelNormal)
+        {
+            return window;
+        }
+    }
+    return nil;
+}
+
 @interface OKBMenuView ()
 {
     NSArray<OKBMenuItemView *> *_itemViewArr;
@@ -96,14 +111,19 @@
                 [self dismissSourceViewWithAnimation:NO];
             }
             
+            UIWindow *window = window4Show();
+            
+            CGPoint originInWindow = [self.superview convertPoint:self.frame.origin toView:window];
+            
             CGRect frame = CGRectZero;
-            frame.origin = CGPointMake(self.frame.origin.x, CGRectGetMaxY(self.frame));
+            frame.origin = CGPointMake(originInWindow.x, CGRectGetHeight(self.frame) + originInWindow.y);
             frame.size = CGSizeMake(CGRectGetWidth(self.frame), height);
             tmp.frame = frame;
             
             tmp.alpha = 0.0f;
             
             [self.superview addSubview:tmp];
+            [window addSubview:tmp];
             
             [UIView animateWithDuration:0.2f animations:^{
                 tmp.alpha = 1.0f;
