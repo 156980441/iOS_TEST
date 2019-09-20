@@ -15,6 +15,7 @@
 {
     NSInteger _levels;
     OKBMultiLevelDropDownMenuRootModel *_model;
+    NSString *_intColonInt;
 }
 @property (nonatomic, strong) OKBMultiLevelDropDownMenuView *multiLeveldropDownMenuView;
 
@@ -22,10 +23,14 @@
 
 @implementation OKBMultiLevelDropDownMenuVC
 
-- (instancetype)initWithMultiLevel:(NSInteger)levels rootModel:(OKBMultiLevelDropDownMenuRootModel *)model block:(nullable void (^)(id<OKBMultiLevelMenuProtocol> _Nonnull))block {
+- (instancetype)initWithMultiLevel:(NSInteger)levels
+                levelOfWidthWeight:(nullable NSString *)intColonInt
+                         rootModel:(OKBMultiLevelDropDownMenuRootModel *)model
+                             block:(nullable void (^)(id<OKBMultiLevelMenuProtocol> _Nonnull))block {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _levels = levels;
+        _intColonInt = intColonInt;
         _model = model;
         _selectedBlock = [block copy];
     }
@@ -74,7 +79,7 @@
 
 - (OKBMultiLevelDropDownMenuView *)multiLeveldropDownMenuView {
     if (!_multiLeveldropDownMenuView) {
-        OKBMultiLevelDropDownMenuView *tmp = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:_levels];
+        OKBMultiLevelDropDownMenuView *tmp = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:_levels widthWeight:_intColonInt];
         tmp.delegate = self;
         _multiLeveldropDownMenuView = tmp;
     }

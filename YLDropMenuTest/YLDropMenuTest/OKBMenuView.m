@@ -17,8 +17,7 @@ static UIWindow* window4Show (void) {
         BOOL windowIsVisible = !window.hidden && window.alpha > 0;
         BOOL windowLevelNormal = window.windowLevel == UIWindowLevelNormal;
         
-        if (windowOnMainScreen && windowIsVisible && windowLevelNormal)
-        {
+        if (windowOnMainScreen && windowIsVisible && windowLevelNormal) {
             return window;
         }
     }
@@ -115,7 +114,9 @@ static UIWindow* window4Show (void) {
                 [self dismissSourceViewWithAnimation:NO];
             }
             
+            // QUESTION : 是否要加到 window 上？
             UIWindow *window = window4Show();
+            NSAssert(window != nil, @"No window for add menu view");
             
             CGPoint originInWindow = [self.superview convertPoint:self.frame.origin toView:window];
             

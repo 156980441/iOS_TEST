@@ -16,7 +16,7 @@
 		8D8437BE23262F7F00D39438 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437BD23262F7F00D39438 /* main.m */; };
 		8D8437C92326490D00D39438 /* OKBMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437C82326490D00D39438 /* OKBMenuView.m */; };
 		8D8437CC23264A6B00D39438 /* OKBMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437CB23264A6B00D39438 /* OKBMenuItemView.m */; };
-		8D8437CF2326581E00D39438 /* LabelImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437CE2326581E00D39438 /* LabelImageView.m */; };
+		8D8437CF2326581E00D39438 /* OKBLabelImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437CE2326581E00D39438 /* OKBLabelImageView.m */; };
 		8D876FAE2333810100910B17 /* DataSourceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D876FAD2333810000910B17 /* DataSourceFactory.m */; };
 		8D876FB12333967B00910B17 /* ViewTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D876FB02333967B00910B17 /* ViewTestVC.m */; };
 		8D876FB4233397B300910B17 /* ViewControllerTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D876FB3233397B300910B17 /* ViewControllerTestVC.m */; };
@@ -49,8 +49,8 @@
 		8D8437C82326490D00D39438 /* OKBMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OKBMenuView.m; sourceTree = "<group>"; };
 		8D8437CA23264A6B00D39438 /* OKBMenuItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKBMenuItemView.h; sourceTree = "<group>"; };
 		8D8437CB23264A6B00D39438 /* OKBMenuItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OKBMenuItemView.m; sourceTree = "<group>"; };
-		8D8437CD2326581E00D39438 /* LabelImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LabelImageView.h; sourceTree = "<group>"; };
-		8D8437CE2326581E00D39438 /* LabelImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LabelImageView.m; sourceTree = "<group>"; };
+		8D8437CD2326581E00D39438 /* OKBLabelImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKBLabelImageView.h; sourceTree = "<group>"; };
+		8D8437CE2326581E00D39438 /* OKBLabelImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OKBLabelImageView.m; sourceTree = "<group>"; };
 		8D876FAC2333810000910B17 /* DataSourceFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataSourceFactory.h; sourceTree = "<group>"; };
 		8D876FAD2333810000910B17 /* DataSourceFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataSourceFactory.m; sourceTree = "<group>"; };
 		8D876FAF2333967B00910B17 /* ViewTestVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewTestVC.h; sourceTree = "<group>"; };
@@ -93,10 +93,12 @@
 		8D5B07CE2327867E00F48D91 /* base */ = {
 			isa = PBXGroup;
 			children = (
-				8D8437C72326490D00D39438 /* OKBMenuView.h */,
-				8D8437C82326490D00D39438 /* OKBMenuView.m */,
+				8D8437CD2326581E00D39438 /* OKBLabelImageView.h */,
+				8D8437CE2326581E00D39438 /* OKBLabelImageView.m */,
 				8D8437CA23264A6B00D39438 /* OKBMenuItemView.h */,
 				8D8437CB23264A6B00D39438 /* OKBMenuItemView.m */,
+				8D8437C72326490D00D39438 /* OKBMenuView.h */,
+				8D8437C82326490D00D39438 /* OKBMenuView.m */,
 				8D8B7DF92332234A00E4D4A1 /* OKBMenuViewController.h */,
 				8D8B7DFA2332234A00E4D4A1 /* OKBMenuViewController.m */,
 			);
@@ -110,13 +112,13 @@
 				8DAEF36B23308EA600A70C79 /* OKB1LabelTVCell.m */,
 				8DAEF367232F693C00A70C79 /* OKBMultiLevelDropDownMenuRootModel.h */,
 				8DAEF368232F693C00A70C79 /* OKBMultiLevelDropDownMenuRootModel.m */,
+				8D8B7DFC2332329400E4D4A1 /* OKBMultiLevelDropDownMenuVC.h */,
+				8D8B7DFD2332329400E4D4A1 /* OKBMultiLevelDropDownMenuVC.m */,
 				8D791F702328DD700005EC80 /* OKBMultiLevelDropDownMenuView.h */,
 				8D791F712328DD700005EC80 /* OKBMultiLevelDropDownMenuView.m */,
 				8D5B07CF2327993A00F48D91 /* OKBMultiLevelMenuProtocol.h */,
 				8D8B7DF6233205EC00E4D4A1 /* OKBMultiLevelMenuUtil.h */,
 				8D8B7DF7233205EC00E4D4A1 /* OKBMultiLevelMenuUtil.m */,
-				8D8B7DFC2332329400E4D4A1 /* OKBMultiLevelDropDownMenuVC.h */,
-				8D8B7DFD2332329400E4D4A1 /* OKBMultiLevelDropDownMenuVC.m */,
 			);
 			name = multiLevelMenu;
 			sourceTree = "<group>";
@@ -162,8 +164,6 @@
 				8D8437B223262F7800D39438 /* ViewController.m */,
 				8D876FAC2333810000910B17 /* DataSourceFactory.h */,
 				8D876FAD2333810000910B17 /* DataSourceFactory.m */,
-				8D8437CD2326581E00D39438 /* LabelImageView.h */,
-				8D8437CE2326581E00D39438 /* LabelImageView.m */,
 				8D791F7323290A990005EC80 /* PersonModel.h */,
 				8D791F7423290A990005EC80 /* PersonModel.m */,
 				8D8437B723262F7F00D39438 /* Assets.xcassets */,
@@ -302,7 +302,7 @@
 				8D791F722328DD700005EC80 /* OKBMultiLevelDropDownMenuView.m in Sources */,
 				8D8437C92326490D00D39438 /* OKBMenuView.m in Sources */,
 				8D8437CC23264A6B00D39438 /* OKBMenuItemView.m in Sources */,
-				8D8437CF2326581E00D39438 /* LabelImageView.m in Sources */,
+				8D8437CF2326581E00D39438 /* OKBLabelImageView.m in Sources */,
 				8D8B7DFE2332329400E4D4A1 /* OKBMultiLevelDropDownMenuVC.m in Sources */,
 				8D8437BE23262F7F00D39438 /* main.m in Sources */,
 				8D876FB4233397B300910B17 /* ViewControllerTestVC.m in Sources */,

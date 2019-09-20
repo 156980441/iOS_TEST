@@ -16,7 +16,7 @@
 #import "OKBMultiLevelDropDownMenuVC.h"
 
 #import "DataSourceFactory.h"
-#import "LabelImageView.h"
+#import "OKBLabelImageView.h"
 #import "PersonModel.h"
 
 #import <Masonry/Masonry.h>
@@ -49,8 +49,8 @@
 
 - (OKBMenuViewController *)menuVC {
     if (!_menuVC) {
-        OKBMultiLevelDropDownMenuVC *vc1 = [[OKBMultiLevelDropDownMenuVC alloc] initWithMultiLevel:1 rootModel:[DataSourceFactory level1DataSource] block:nil];
-        OKBMultiLevelDropDownMenuVC *vc2 = [[OKBMultiLevelDropDownMenuVC alloc] initWithMultiLevel:2 rootModel:[DataSourceFactory level2DataSource] block:nil];
+        OKBMultiLevelDropDownMenuVC *vc1 = [[OKBMultiLevelDropDownMenuVC alloc] initWithMultiLevel:1 levelOfWidthWeight:nil rootModel:[DataSourceFactory level1DataSource] block:nil];
+        OKBMultiLevelDropDownMenuVC *vc2 = [[OKBMultiLevelDropDownMenuVC alloc] initWithMultiLevel:2 levelOfWidthWeight:@"1:2" rootModel:[DataSourceFactory level2DataSource] block:nil];
         OKBMenuViewController *tmp = [[OKBMenuViewController alloc] initWithMenuItemControllers:@[vc1, vc2]];
         vc1.selectedBlock = ^(id<OKBMultiLevelMenuProtocol>  _Nonnull model) {
             [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];

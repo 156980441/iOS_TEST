@@ -17,12 +17,16 @@ NS_ASSUME_NONNULL_BEGIN
 // 服务器数据
 @property (nonatomic, copy) NSString *district;
 
+// 遵守协议
 @property (nonatomic, assign) NSInteger nodeId;
 @property (nonatomic, copy) NSString *nodeName;
 @property (nonatomic, strong) id<OKBMultiLevelMenuProtocol> parent;
 @property (nonatomic, strong) NSArray<id<OKBMultiLevelMenuProtocol>> *array;
 
 @end
+
+
+#pragma mark --
 
 @interface CompanyModel : NSObject <OKBMultiLevelMenuProtocol>
 
@@ -32,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *bossName;
 
 
-
+// 遵守协议
 @property (nonatomic, assign) NSInteger nodeId;
 @property (nonatomic, copy) NSString *nodeName;
 @property (nonatomic, strong) id<OKBMultiLevelMenuProtocol> parent;
@@ -40,6 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+#pragma mark --
 
 @interface PersonModel : NSObject <OKBMultiLevelMenuProtocol>
 
@@ -49,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *phone;
 
 
-
+// 遵守协议
 @property (nonatomic, assign) NSInteger nodeId;
 @property (nonatomic, copy) NSString *nodeName;
 @property (nonatomic, strong) id<OKBMultiLevelMenuProtocol> parent;

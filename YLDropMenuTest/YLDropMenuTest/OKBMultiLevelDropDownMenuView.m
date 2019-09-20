@@ -15,6 +15,7 @@
     NSInteger _tableViewNum;
     id<OKBMultiLevelMenuProtocol> _dataSource;
     NSInteger _selectedRow[3];
+    NSArray<NSString *> *_widthWeightArr;
 }
 @property (nonatomic, strong) NSArray<UITableView *> *tableViewArr;
 
@@ -22,11 +23,17 @@
 
 @implementation OKBMultiLevelDropDownMenuView
 
-- (instancetype)initWithFrame:(CGRect)frame tableViewNum:(NSInteger)num {
+- (instancetype)initWithFrame:(CGRect)frame tableViewNum:(NSInteger)num widthWeight:(nonnull NSString *)intColonInt {
     NSAssert(num < 4, @"OKBMultiLevelDropDownMenuView support 3 table views at most");
+    
     self = [super initWithFrame:frame];
     if (self) {
         _tableViewNum = num;
+        if (intColonInt) {
+            NSArray<NSString *> *arr = [intColonInt componentsSeparatedByString:@":"];
+            NSAssert(arr.count == num, @"OKBMultiLevelDropDownMenuView init parameter error");
+            _widthWeightArr = arr;
+        }
         [self p_resetSelectedRow];
         [self p_setupUI];
         [self p_layoutUI];
@@ -49,9 +56,14 @@
 
 - (void)p_layoutUI {
     UITableView *cursor = self.tableViewArr.firstObject;
+    NSArray<NSString *> *arr = _widthWeightArr;
+    NSNumber *sum = [arr valueForKeyPath:@"@sum.doubleValue"];
     [cursor mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self);
         make.bottom.top.equalTo(self);
+        if (sum.integerValue != 0) {
+            make.width.equalTo(self.mas_width).multipliedBy(arr.firstObject.integerValue / sum.doubleValue); // 强转成 double
+        }
     }];
     
     for (int i = 1; i < _tableViewNum; i++) {
@@ -59,7 +71,12 @@
         [tmp mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(cursor.mas_right);
             make.bottom.top.equalTo(self);
-            make.width.equalTo(cursor);
+            if (sum.integerValue != 0) {
+                make.width.equalTo(self.mas_width).multipliedBy(arr[i].integerValue / sum.doubleValue);
+            }
+            else {
+                make.width.equalTo(cursor);
+            }
         }];
         cursor = tmp;
     }

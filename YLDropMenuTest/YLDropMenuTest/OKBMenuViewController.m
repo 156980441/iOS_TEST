@@ -8,7 +8,7 @@
 
 #import "OKBMenuViewController.h"
 #import "OKBMenuView.h"
-#import "LabelImageView.h"
+#import "OKBLabelImageView.h"
 
 #import <Masonry/Masonry.h>
 
@@ -56,9 +56,11 @@
 }
 
 - (OKBMenuItemView *)menuView:(OKBMenuView *)menuView viewForItemAtIndex:(NSInteger)index {
-    LabelImageView *tmp = [[LabelImageView alloc] initWithFrame:CGRectZero];
+    OKBLabelImageView *tmp = [[OKBLabelImageView alloc] initWithFrame:CGRectZero];
+    tmp.textLbl.text = @"选择";
     if (index == 3) {
         tmp.image = [UIImage imageNamed:@"icon_setting"];
+        tmp.highlightedImage = [UIImage imageNamed:@"icon_setting_highlighted"];
     }
     return tmp;
 }
@@ -100,7 +102,7 @@
 }
 
 - (void)updateMenuItemTitle:(NSString *)title atIndex:(NSInteger)index {
-    LabelImageView *itemView = (LabelImageView *)[self.menuView menuItemViewAtIndex:index];
+    OKBLabelImageView *itemView = (OKBLabelImageView *)[self.menuView menuItemViewAtIndex:index];
     itemView.textLbl.text = title;
 }
 

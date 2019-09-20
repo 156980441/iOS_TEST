@@ -11,10 +11,15 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface OKBMenuViewController : UIViewController
+
 - (instancetype)initWithMenuItemControllers:(NSArray<UIViewController *> *)controllersArr;
-- (void)updateMenuItemTitle:(NSString *)title atIndex:(NSInteger)index;
+
 @property (nonatomic, assign) NSInteger selectedItemIndex;
+
+- (void)updateMenuItemTitle:(NSString *)title atIndex:(NSInteger)index;
+
 - (void)dismissSourceViewWithAnimation:(BOOL)animation;
+
 @end
 
 NS_ASSUME_NONNULL_END

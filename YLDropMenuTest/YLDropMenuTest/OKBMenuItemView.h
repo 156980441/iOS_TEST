@@ -10,9 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+/**
+ 类似 UITableViewCell 的封装
+ */
 @interface OKBMenuItemView : UIView
 
 @property (nonatomic, readonly) UIView *contentView;
+
+/**
+ default: NO
+ */
 @property (nonatomic, assign) BOOL selected;
 
 @end

@@ -9,13 +9,14 @@
 #import "PersonModel.h"
 
 @implementation PersonModel
-
 @end
+
+
 
 @implementation CompanyModel
-
 @end
 
-@implementation DistrictModel
 
+
+@implementation DistrictModel
 @end

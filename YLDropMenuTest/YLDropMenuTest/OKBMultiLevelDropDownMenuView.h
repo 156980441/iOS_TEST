@@ -27,13 +27,14 @@ NS_ASSUME_NONNULL_BEGIN
                    viewForHeaderInTableView:(UITableView *)tableView
                                     atIndex:(NSInteger)index;
 
-- (void)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu didSelectInTableView:(id<OKBMultiLevelMenuProtocol>)model;
+- (void)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu
+          didSelectInTableView:(id<OKBMultiLevelMenuProtocol>)model;
 
 @end
 
 @interface OKBMultiLevelDropDownMenuView : UIView
 
-- (instancetype)initWithFrame:(CGRect)frame tableViewNum:(NSInteger)num;
+- (instancetype)initWithFrame:(CGRect)frame tableViewNum:(NSInteger)num widthWeight:(NSString *)intColonInt;
 
 @property (nonatomic, strong) id<OKBMultiLevelDropDownMenuViewDelegate> delegate;
 

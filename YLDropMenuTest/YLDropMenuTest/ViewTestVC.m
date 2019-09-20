@@ -14,7 +14,7 @@
 #import "OKBMultiLevelDropDownMenuRootModel.h"
 
 #import "DataSourceFactory.h"
-#import "LabelImageView.h"
+#import "OKBLabelImageView.h"
 #import "PersonModel.h"
 
 #import <Masonry/Masonry.h>
@@ -56,9 +56,11 @@
 }
 
 - (OKBMenuItemView *)menuView:(OKBMenuView *)menuView viewForItemAtIndex:(NSInteger)index {
-    LabelImageView *tmp = [[LabelImageView alloc] initWithFrame:CGRectZero];
+    OKBLabelImageView *tmp = [[OKBLabelImageView alloc] initWithFrame:CGRectZero];
+    tmp.textLbl.text = @"选择";
     if (index == 3) {
         tmp.image = [UIImage imageNamed:@"icon_setting"];
+        tmp.highlightedImage = [UIImage imageNamed:@"icon_setting_highlighted"];
     }
     return tmp;
 }
@@ -69,7 +71,7 @@
     }
     else if (index == 1) {
         // 测试释放
-        OKBMultiLevelDropDownMenuView *view = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:2];
+        OKBMultiLevelDropDownMenuView *view = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:2 widthWeight:nil];
         [view reloadDataWithRootDataSource:[DataSourceFactory level2DataSource]];
         return view;
     } else if (index == 2) {
@@ -110,9 +112,11 @@
 }
 
 - (void)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)menuView didSelectInTableView:(nonnull id<OKBMultiLevelMenuProtocol>)model {
-    LabelImageView *tmp = (LabelImageView *)[self.menuView menuItemViewAtIndex:self.menuView.selectedItemIndex];
+    OKBLabelImageView *tmp = (OKBLabelImageView *)[self.menuView menuItemViewAtIndex:self.menuView.selectedItemIndex];
     tmp.textLbl.text = model.nodeName;
     [self.menuView dismissSourceViewWithAnimation:YES];
+    
+    // 可以更新数据源
     if (model.nodeId == 3) {
         id<OKBMultiLevelMenuProtocol> original = model.parent.parent;
         original.array = [DataSourceFactory level1DataSource].array;
@@ -149,7 +153,7 @@
 
 - (OKBMultiLevelDropDownMenuView *)item1SoureView {
     if (!_item1SoureView) {
-        OKBMultiLevelDropDownMenuView *tmp = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:3];
+        OKBMultiLevelDropDownMenuView *tmp = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:3 widthWeight:nil];
         tmp.delegate = self;
         [tmp reloadDataWithRootDataSource:[DataSourceFactory level3DataSource]];
         UITableView *firstTableView = [tmp tableViewAtIndex:1];
@@ -161,7 +165,7 @@
 
 - (OKBMultiLevelDropDownMenuView *)item3SoureView {
     if (!_item3SoureView) {
-        OKBMultiLevelDropDownMenuView *tmp = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:1];
+        OKBMultiLevelDropDownMenuView *tmp = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:1 widthWeight:nil];
         [tmp reloadDataWithRootDataSource:[DataSourceFactory level1DataSource]];
         _item3SoureView = tmp;
     }

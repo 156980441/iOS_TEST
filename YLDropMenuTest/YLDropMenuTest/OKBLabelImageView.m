@@ -6,20 +6,20 @@
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import "LabelImageView.h"
+#import "OKBLabelImageView.h"
 #import <Masonry/Masonry.h>
 
-@interface LabelImageView ()
+@interface OKBLabelImageView ()
 @property (nonatomic, strong) UIImageView *imageView;
 @end
 
-@implementation LabelImageView
+@implementation OKBLabelImageView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectZero];
-        tmp.text = @"BTC/USDT";
+        tmp.text = @"--";
         tmp.font = [UIFont systemFontOfSize:11];
         tmp.textColor = [UIColor colorWithRed:102/255.f green:102/255.f blue:102/255.f alpha:1];
         [self.contentView addSubview:tmp];
@@ -33,13 +33,20 @@
         _textLbl = tmp;
         
         UIImage *image = [UIImage imageNamed:@"icon_packdown"];
+        _image = image;
+        
+        UIImage *highlightedImage = [UIImage imageNamed:@"icon_packup"];
+        _highlightedImage = highlightedImage;
+        
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
         [self.contentView addSubview:imageView];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(tmp.mas_right).offset(5);
             make.centerY.equalTo(superView);
         }];
-        _image = image;
+        imageView.image = image;
+        imageView.highlightedImage = highlightedImage;
+        
         _imageView = imageView;
     }
     return self;
@@ -49,14 +56,17 @@
     _imageView.image = image;
 }
 
+- (void)setHighlightedImage:(UIImage *)highlightedImage {
+    _imageView.highlightedImage = highlightedImage;
+}
+
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
+    self.imageView.highlighted = selected;
     if (selected) {
-        [self setImage:[UIImage imageNamed:@"icon_packup"]];
         self.textLbl.textColor = [UIColor colorWithRed:48/255.f green:117/255.f blue:238/255.f alpha:1];
     }
     else {
-        [self setImage:[UIImage imageNamed:@"icon_packdown"]];
         self.textLbl.textColor = [UIColor colorWithRed:102/255.f green:102/255.f blue:102/255.f alpha:1];
     }
 }
