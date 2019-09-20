@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8D791F722328DD700005EC80 /* OKBMultiLevelDropDownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D791F712328DD700005EC80 /* OKBMultiLevelDropDownMenuView.m */; };
 		8D791F7523290A990005EC80 /* PersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D791F7423290A990005EC80 /* PersonModel.m */; };
-		8D7B5D612334BFFC0065CB8D /* OKBDropDownVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7B5D602334BFFC0065CB8D /* OKBDropDownVC.m */; };
 		8D8437B023262F7800D39438 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437AF23262F7800D39438 /* AppDelegate.m */; };
 		8D8437B323262F7800D39438 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D8437B223262F7800D39438 /* ViewController.m */; };
 		8D8437B823262F7F00D39438 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D8437B723262F7F00D39438 /* Assets.xcassets */; };
@@ -37,8 +36,6 @@
 		8D791F712328DD700005EC80 /* OKBMultiLevelDropDownMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OKBMultiLevelDropDownMenuView.m; sourceTree = "<group>"; };
 		8D791F7323290A990005EC80 /* PersonModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonModel.h; sourceTree = "<group>"; };
 		8D791F7423290A990005EC80 /* PersonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonModel.m; sourceTree = "<group>"; };
-		8D7B5D5F2334BFFC0065CB8D /* OKBDropDownVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKBDropDownVC.h; sourceTree = "<group>"; };
-		8D7B5D602334BFFC0065CB8D /* OKBDropDownVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OKBDropDownVC.m; sourceTree = "<group>"; };
 		8D8437AB23262F7800D39438 /* YLDropMenuTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YLDropMenuTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D8437AE23262F7800D39438 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8D8437AF23262F7800D39438 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -129,8 +126,6 @@
 			children = (
 				8D5B07CE2327867E00F48D91 /* base */,
 				8D5B07D02327A09D00F48D91 /* multiLevelMenu */,
-				8D7B5D5F2334BFFC0065CB8D /* OKBDropDownVC.h */,
-				8D7B5D602334BFFC0065CB8D /* OKBDropDownVC.m */,
 			);
 			name = OKBusiness;
 			sourceTree = "<group>";
@@ -310,7 +305,6 @@
 				8D8437CF2326581E00D39438 /* LabelImageView.m in Sources */,
 				8D8B7DFE2332329400E4D4A1 /* OKBMultiLevelDropDownMenuVC.m in Sources */,
 				8D8437BE23262F7F00D39438 /* main.m in Sources */,
-				8D7B5D612334BFFC0065CB8D /* OKBDropDownVC.m in Sources */,
 				8D876FB4233397B300910B17 /* ViewControllerTestVC.m in Sources */,
 				8D876FAE2333810100910B17 /* DataSourceFactory.m in Sources */,
 				8D8437B023262F7800D39438 /* AppDelegate.m in Sources */,

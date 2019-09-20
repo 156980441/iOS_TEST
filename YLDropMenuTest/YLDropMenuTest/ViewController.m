@@ -9,7 +9,6 @@
 #import "ViewController.h"
 
 #import "ViewTestVC.h"
-#import "OKBDropDownVC.h"
 #import "ViewControllerTestVC.h"
 
 #import <Masonry/Masonry.h>
@@ -41,8 +40,8 @@
     
     ViewTestVC *vc = [[ViewTestVC alloc] initWithNibName:nil bundle:nil];
     ViewControllerTestVC *vc2 = [[ViewControllerTestVC alloc] initWithNibName:nil bundle:nil];
-    OKBDropDownVC *vc3 = [[OKBDropDownVC alloc] initWithNibName:nil bundle:nil];
-    self.dataSource = @[@{@"View 形式调用" : vc}, @{@"ViewController 形式调用" : vc2}, @{@"OKBDropDownVC 形式调用" : vc3}];
+
+    self.dataSource = @[@{@"View 形式调用" : vc}, @{@"ViewController 形式调用" : vc2}];
     
 }
 

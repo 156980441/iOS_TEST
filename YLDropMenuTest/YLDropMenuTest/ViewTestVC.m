@@ -20,16 +20,12 @@
 #import <Masonry/Masonry.h>
 
 @interface ViewTestVC () <OKBMenuViewDataSource, OKBMenuViewDelegate, OKBMultiLevelDropDownMenuViewDelegate>
-@property (nonatomic, strong) OKBMenuView *dropDownMenu;
+@property (nonatomic, strong) OKBMenuView *menuView;
 @property (nonatomic, strong) OKBMultiLevelDropDownMenuView *item1SoureView;
 @property (nonatomic, strong) OKBMultiLevelDropDownMenuView *item3SoureView;
 @end
 
 @implementation ViewTestVC
-
-- (void)dealloc {
-    NSLog(@"%s", __func__);
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,14 +33,19 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self.view addSubview:self.dropDownMenu];
+    [self.view addSubview:self.menuView];
     
-    [self.dropDownMenu mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.menuView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(88);
         make.left.right.equalTo(self.view);
         make.height.mas_equalTo(30);
     }];
     
+}
+
+
+- (void)dealloc {
+    NSLog(@"%s", __func__);
 }
 
 
@@ -67,6 +68,7 @@
         return self.item1SoureView;
     }
     else if (index == 1) {
+        // 测试释放
         OKBMultiLevelDropDownMenuView *view = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:2];
         [view reloadDataWithRootDataSource:[DataSourceFactory level2DataSource]];
         return view;
@@ -97,7 +99,7 @@
 
 #pragma mark - OKBMultiLevelDropDownMenuViewDelegate
 
-- (CGFloat)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+- (CGFloat)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)menuView heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
     if (index == 0) {
         return 32;
     } else if (index == 1) {
@@ -107,17 +109,17 @@
     }
 }
 
-- (void)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu didSelectInTableView:(nonnull id<OKBMultiLevelMenuProtocol>)model {
-    LabelImageView *tmp = (LabelImageView *)[self.dropDownMenu menuItemViewAtIndex:self.dropDownMenu.selectedItemIndex];
+- (void)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)menuView didSelectInTableView:(nonnull id<OKBMultiLevelMenuProtocol>)model {
+    LabelImageView *tmp = (LabelImageView *)[self.menuView menuItemViewAtIndex:self.menuView.selectedItemIndex];
     tmp.textLbl.text = model.nodeName;
-    [self.dropDownMenu dismissSourceViewWithAnimation:YES];
+    [self.menuView dismissSourceViewWithAnimation:YES];
     if (model.nodeId == 3) {
         id<OKBMultiLevelMenuProtocol> original = model.parent.parent;
         original.array = [DataSourceFactory level1DataSource].array;
     }
 }
 
-- (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+- (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)menuView viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
     UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectZero];
     tmp.textAlignment = NSTextAlignmentCenter;
     tmp.font = [UIFont systemFontOfSize:12];
@@ -135,14 +137,14 @@
 
 #pragma mark - lazy load
 
-- (OKBMenuView *)dropDownMenu {
-    if (!_dropDownMenu) {
+- (OKBMenuView *)menuView {
+    if (!_menuView) {
         OKBMenuView *tmp = [[OKBMenuView alloc] initWithFrame:CGRectZero];
         tmp.delegate = self;
         tmp.dataSource = self;
-        _dropDownMenu = tmp;
+        _menuView = tmp;
     }
-    return _dropDownMenu;
+    return _menuView;
 }
 
 - (OKBMultiLevelDropDownMenuView *)item1SoureView {
