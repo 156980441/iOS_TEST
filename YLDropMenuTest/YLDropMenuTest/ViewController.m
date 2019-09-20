@@ -7,20 +7,12 @@
 //
 
 #import "ViewController.h"
-#import "OKBMenuView.h"
-#import "OKBMenuItemView.h"
-#import "LabelImageView.h"
-#import "PersonModel.h"
-#import "OKBMultiLevelDropDownMenuView.h"
-#import "OKBMultiLevelDropDownMenuRootModel.h"
-#import <Masonry/Masonry.h>
-#import "DataSourceFactory.h"
-
-#import "OKBMenuViewController.h"
-#import "OKBMultiLevelDropDownMenuVC.h"
 
 #import "ViewTestVC.h"
+#import "OKBDropDownVC.h"
 #import "ViewControllerTestVC.h"
+
+#import <Masonry/Masonry.h>
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -38,7 +30,7 @@
     
     ViewTestVC *vc = [[ViewTestVC alloc] initWithNibName:nil bundle:nil];
     ViewControllerTestVC *vc2 = [[ViewControllerTestVC alloc] initWithNibName:nil bundle:nil];
-    ViewControllerTestVC *vc3 = [[ViewControllerTestVC alloc] initWithNibName:nil bundle:nil];
+    OKBDropDownVC *vc3 = [[OKBDropDownVC alloc] initWithNibName:nil bundle:nil];
     self.dataSource = @[@{@"View" : vc}, @{@"Controller" : vc2}, @{@"控件" : vc3}];
     
     [self.view addSubview:self.tableView];
