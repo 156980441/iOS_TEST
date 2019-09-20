@@ -9,9 +9,18 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+
 @class OKBMultiLevelDropDownMenuRootModel;
+@protocol OKBMultiLevelMenuProtocol;
+
 @interface OKBMultiLevelDropDownMenuVC : UIViewController
-- (instancetype)initWithMultiLevel:(NSInteger)levels rootModel:(OKBMultiLevelDropDownMenuRootModel *)model;
+
+- (instancetype)initWithMultiLevel:(NSInteger)levels
+                         rootModel:(OKBMultiLevelDropDownMenuRootModel *)model
+                             block:(nullable void (^)(id<OKBMultiLevelMenuProtocol>model))block;
+
+@property (nonatomic, copy, nullable) void (^selectedBlock)(id<OKBMultiLevelMenuProtocol>model);
+
 @end
 
 NS_ASSUME_NONNULL_END

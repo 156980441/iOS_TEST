@@ -17,15 +17,17 @@
     OKBMultiLevelDropDownMenuRootModel *_model;
 }
 @property (nonatomic, strong) OKBMultiLevelDropDownMenuView *multiLeveldropDownMenuView;
+
 @end
 
 @implementation OKBMultiLevelDropDownMenuVC
 
-- (instancetype)initWithMultiLevel:(NSInteger)levels rootModel:(OKBMultiLevelDropDownMenuRootModel *)model {
+- (instancetype)initWithMultiLevel:(NSInteger)levels rootModel:(OKBMultiLevelDropDownMenuRootModel *)model block:(nullable void (^)(id<OKBMultiLevelMenuProtocol> _Nonnull))block {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _levels = levels;
         _model = model;
+        _selectedBlock = [block copy];
     }
     return self;
 }
@@ -49,7 +51,9 @@
 }
 
 - (void)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu didSelectInTableView:(nonnull id<OKBMultiLevelMenuProtocol>)model {
-
+    if (self.selectedBlock) {
+        self.selectedBlock(model);
+    }
 }
 
 - (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {

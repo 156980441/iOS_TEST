@@ -22,6 +22,10 @@
 
 @implementation OKBMenuViewController
 
+- (NSInteger)selectedItemIndex {
+    return self.menuView.selectedItemIndex;
+}
+
 - (instancetype)initWithMenuItemControllers:(NSArray<UIViewController *> *)controllersArr {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
