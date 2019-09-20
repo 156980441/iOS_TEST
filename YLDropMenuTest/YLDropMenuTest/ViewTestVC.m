@@ -27,6 +27,10 @@
 
 @implementation ViewTestVC
 
+- (void)dealloc {
+    NSLog(@"%s", __func__);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -59,7 +63,6 @@
 }
 
 - (UIView *)menuView:(OKBMenuView *)menuView sourceViewInItemAtIndex:(NSInteger)index {
-    UIView *tmp = [[UIView alloc] initWithFrame:CGRectZero];
     if (index == 0) {
         return self.item1SoureView;
     }
@@ -70,9 +73,13 @@
     } else if (index == 2) {
         return self.item3SoureView;
     } else if (index == 3) {
-        tmp.backgroundColor = [UIColor blueColor];
+        UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectZero];
+        tmp.backgroundColor = [UIColor grayColor];
+        tmp.text = @"自定义视图";
+        tmp.textAlignment = NSTextAlignmentCenter;
+        return tmp;
     }
-    return tmp;
+    return nil;
 }
 
 - (CGFloat)menuView:(OKBMenuView *)menuView heightForSourceViewAtIndexPath:(NSInteger)index {

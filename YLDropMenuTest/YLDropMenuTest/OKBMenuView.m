@@ -44,6 +44,10 @@ static UIWindow* window4Show (void) {
     return self;
 }
 
+- (void)dealloc {
+    NSLog(@"%s", __func__);
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     if ([self.dataSource respondsToSelector:@selector(numberOfItemsInMenuView:)]) {

@@ -28,16 +28,21 @@
     
     self.title = @"Demo";
     
-    ViewTestVC *vc = [[ViewTestVC alloc] initWithNibName:nil bundle:nil];
-    ViewControllerTestVC *vc2 = [[ViewControllerTestVC alloc] initWithNibName:nil bundle:nil];
-    OKBDropDownVC *vc3 = [[OKBDropDownVC alloc] initWithNibName:nil bundle:nil];
-    self.dataSource = @[@{@"View" : vc}, @{@"Controller" : vc2}, @{@"控件" : vc3}];
-    
     [self.view addSubview:self.tableView];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view).insets(UIEdgeInsetsZero);
     }];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    ViewTestVC *vc = [[ViewTestVC alloc] initWithNibName:nil bundle:nil];
+    ViewControllerTestVC *vc2 = [[ViewControllerTestVC alloc] initWithNibName:nil bundle:nil];
+    OKBDropDownVC *vc3 = [[OKBDropDownVC alloc] initWithNibName:nil bundle:nil];
+    self.dataSource = @[@{@"View 形式调用" : vc}, @{@"ViewController 形式调用" : vc2}, @{@"OKBDropDownVC 形式调用" : vc3}];
     
 }
 
