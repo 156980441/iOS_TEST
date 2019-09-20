@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithMenuItemControllers:(NSArray<UIViewController *> *)controllersArr;
 - (void)updateMenuItemTitle:(NSString *)title atIndex:(NSInteger)index;
 @property (nonatomic, assign) NSInteger selectedItemIndex;
+- (void)dismissSourceViewWithAnimation:(BOOL)animation;
 @end
 
 NS_ASSUME_NONNULL_END

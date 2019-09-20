@@ -26,6 +26,10 @@
     return self.menuView.selectedItemIndex;
 }
 
+- (void)dismissSourceViewWithAnimation:(BOOL)animation {
+    [self.menuView dismissSourceViewWithAnimation:animation];
+}
+
 - (instancetype)initWithMenuItemControllers:(NSArray<UIViewController *> *)controllersArr {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
