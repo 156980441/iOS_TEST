@@ -9,6 +9,7 @@
 #import "OKBMultiLevelDropDownMenuVC.h"
 #import "OKBMultiLevelDropDownMenuView.h"
 #import "OKBMultiLevelDropDownMenuRootModel.h"
+#import "OKBLabelImageView.h"
 #import <Masonry/Masonry.h>
 
 @interface OKBMultiLevelDropDownMenuVC () <OKBMultiLevelDropDownMenuViewDelegate>
@@ -48,6 +49,15 @@
     [self.multiLeveldropDownMenuView reloadDataWithRootDataSource:_model];
 }
 
+- (void)setMultLevelViewBackgroundColor:(UIColor *)color atIndex:(NSInteger)index {
+    NSAssert(index < _levels, @"OKBMultiLevelDropDownMenuVC is out of bounds");
+    UITableView *tmp = [self.multiLeveldropDownMenuView tableViewAtIndex:index];
+    tmp.backgroundColor = color;
+}
+
+- (UITableView *)tableViewAtIndex:(NSInteger)index {
+    return [self.multiLeveldropDownMenuView tableViewAtIndex:index];
+}
 
 #pragma mark - OKBMultiLevelDropDownMenuViewDelegate
 
@@ -77,6 +87,8 @@
     return tmp;
 }
 
+#pragma mark -- lazy load
+
 - (OKBMultiLevelDropDownMenuView *)multiLeveldropDownMenuView {
     if (!_multiLeveldropDownMenuView) {
         OKBMultiLevelDropDownMenuView *tmp = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:_levels widthWeight:_intColonInt];
@@ -84,6 +96,20 @@
         _multiLeveldropDownMenuView = tmp;
     }
     return _multiLeveldropDownMenuView;
+}
+
+- (CGFloat)soureViewHeight {
+    return 200.f;
+}
+
+- (UIView *)sourceView {
+    return self.view;
+}
+
+- (OKBMenuItemView *)menuItemView {
+    OKBLabelImageView *tmp = [[OKBLabelImageView alloc] initWithFrame:CGRectZero];
+    tmp.textLbl.text = @"选择";
+    return tmp;
 }
 
 @end

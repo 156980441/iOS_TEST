@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OKBMultiLevelDropDownMenuView : UIView
 
-- (instancetype)initWithFrame:(CGRect)frame tableViewNum:(NSInteger)num widthWeight:(NSString *)intColonInt;
+- (instancetype)initWithFrame:(CGRect)frame tableViewNum:(NSInteger)num widthWeight:(nullable NSString *)intColonInt;
 
 @property (nonatomic, strong) id<OKBMultiLevelDropDownMenuViewDelegate> delegate;
 

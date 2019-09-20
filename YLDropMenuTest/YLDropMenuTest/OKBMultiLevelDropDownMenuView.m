@@ -23,7 +23,9 @@
 
 @implementation OKBMultiLevelDropDownMenuView
 
-- (instancetype)initWithFrame:(CGRect)frame tableViewNum:(NSInteger)num widthWeight:(nonnull NSString *)intColonInt {
+- (instancetype)initWithFrame:(CGRect)frame
+                 tableViewNum:(NSInteger)num
+                  widthWeight:(nullable NSString *)intColonInt {
     NSAssert(num < 4, @"OKBMultiLevelDropDownMenuView support 3 table views at most");
     
     self = [super initWithFrame:frame];

@@ -7,6 +7,7 @@
 //
 
 #import "OKBMenuViewController.h"
+#import "OKBMenuItemViewController.h"
 #import "OKBMenuView.h"
 #import "OKBLabelImageView.h"
 
@@ -14,7 +15,7 @@
 
 @interface OKBMenuViewController () <OKBMenuViewDelegate, OKBMenuViewDataSource>
 {
-    NSArray<UIViewController *> *_controllersArr;
+    NSArray<OKBMenuItemViewController *> *_controllersArr;
 }
 @property (nonatomic, strong) OKBMenuView *menuView;
 
@@ -30,7 +31,7 @@
     [self.menuView dismissSourceViewWithAnimation:animation];
 }
 
-- (instancetype)initWithMenuItemControllers:(NSArray<UIViewController *> *)controllersArr {
+- (instancetype)initWithMenuItemControllers:(NSArray<OKBMenuItemViewController *> *)controllersArr {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _controllersArr = controllersArr;
@@ -56,18 +57,13 @@
 }
 
 - (OKBMenuItemView *)menuView:(OKBMenuView *)menuView viewForItemAtIndex:(NSInteger)index {
-    OKBLabelImageView *tmp = [[OKBLabelImageView alloc] initWithFrame:CGRectZero];
-    tmp.textLbl.text = @"选择";
-    if (index == 3) {
-        tmp.image = [UIImage imageNamed:@"icon_setting"];
-        tmp.highlightedImage = [UIImage imageNamed:@"icon_setting_highlighted"];
-    }
-    return tmp;
+    OKBMenuItemViewController *vc = [_controllersArr objectAtIndex:index];
+    return vc.menuItemView;
 }
 
 - (UIView *)menuView:(OKBMenuView *)menuView sourceViewInItemAtIndex:(NSInteger)index {
     
-    UIViewController *vc = [_controllersArr objectAtIndex:index];
+    OKBMenuItemViewController *vc = [_controllersArr objectAtIndex:index];
     
     if (vc.view.superview) {
         [vc removeFromParentViewController];
@@ -75,16 +71,13 @@
     
     [self addChildViewController:vc];
     [self didMoveToParentViewController:self];
-    return vc.view;
+    
+    return vc.sourceView;
 }
 
 - (CGFloat)menuView:(OKBMenuView *)menuView heightForSourceViewAtIndexPath:(NSInteger)index {
-    if (index == 0) {
-        return 260;
-    }
-    else {
-        return 160;
-    }
+    OKBMenuItemViewController *vc = [_controllersArr objectAtIndex:index];
+    return vc.soureViewHeight;
 }
 
 - (void)menuView:(OKBMenuView *)menuView didSelectItemAtIndexPath:(NSInteger)index {

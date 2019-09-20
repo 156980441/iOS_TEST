@@ -10,9 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class OKBMenuItemViewController;
+
 @interface OKBMenuViewController : UIViewController
 
-- (instancetype)initWithMenuItemControllers:(NSArray<UIViewController *> *)controllersArr;
+- (instancetype)initWithMenuItemControllers:(NSArray<OKBMenuItemViewController *> *)controllersArr;
 
 @property (nonatomic, assign) NSInteger selectedItemIndex;
 

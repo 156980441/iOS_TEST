@@ -51,6 +51,9 @@
     if (!_menuVC) {
         OKBMultiLevelDropDownMenuVC *vc1 = [[OKBMultiLevelDropDownMenuVC alloc] initWithMultiLevel:1 levelOfWidthWeight:nil rootModel:[DataSourceFactory level1DataSource] block:nil];
         OKBMultiLevelDropDownMenuVC *vc2 = [[OKBMultiLevelDropDownMenuVC alloc] initWithMultiLevel:2 levelOfWidthWeight:@"1:2" rootModel:[DataSourceFactory level2DataSource] block:nil];
+        [vc2 setMultLevelViewBackgroundColor:[UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1] atIndex:0];
+        
+        
         OKBMenuViewController *tmp = [[OKBMenuViewController alloc] initWithMenuItemControllers:@[vc1, vc2]];
         vc1.selectedBlock = ^(id<OKBMultiLevelMenuProtocol>  _Nonnull model) {
             [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];

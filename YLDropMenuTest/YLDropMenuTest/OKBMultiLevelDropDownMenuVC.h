@@ -6,14 +6,14 @@
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "OKBMenuItemViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class OKBMultiLevelDropDownMenuRootModel;
 @protocol OKBMultiLevelMenuProtocol;
 
-@interface OKBMultiLevelDropDownMenuVC : UIViewController
+@interface OKBMultiLevelDropDownMenuVC : OKBMenuItemViewController
 
 - (instancetype)initWithMultiLevel:(NSInteger)levels
                 levelOfWidthWeight:(nullable NSString *)intColonInt
@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
                              block:(nullable void (^)(id<OKBMultiLevelMenuProtocol>model))block;
 
 @property (nonatomic, copy, nullable) void (^selectedBlock)(id<OKBMultiLevelMenuProtocol>model);
+
+- (void)setMultLevelViewBackgroundColor:(UIColor *)color atIndex:(NSInteger)index;
 
 @end
 
