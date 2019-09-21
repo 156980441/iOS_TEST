@@ -66,13 +66,14 @@
     OKBMenuItemViewController *vc = [_controllersArr objectAtIndex:index];
     
     if (vc.view.superview) {
+        [vc willMoveToParentViewController:nil];
         [vc removeFromParentViewController];
     }
     
     [self addChildViewController:vc];
     [self didMoveToParentViewController:self];
     
-    return vc.sourceView;
+    return vc.view;
 }
 
 - (CGFloat)menuView:(OKBMenuView *)menuView heightForSourceViewAtIndexPath:(NSInteger)index {

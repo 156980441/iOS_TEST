@@ -14,7 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OKBMenuItemViewController : UIViewController
 @property (nonatomic, strong) OKBMenuItemView *menuItemView;
-@property (nonatomic, strong) UIView *sourceView;
 @property (nonatomic, assign) CGFloat soureViewHeight;
 @end
 

@@ -12,9 +12,9 @@
 #import "OKBMenuItemView.h"
 #import "OKBMultiLevelDropDownMenuView.h"
 #import "OKBMultiLevelDropDownMenuRootModel.h"
+#import "OKBLabelImageView.h"
 
 #import "DataSourceFactory.h"
-#import "OKBLabelImageView.h"
 #import "PersonModel.h"
 
 #import <Masonry/Masonry.h>
@@ -105,9 +105,9 @@
     if (index == 0) {
         return 32;
     } else if (index == 1) {
-        return 32;
+        return 40;
     } else {
-        return 32;
+        return 20;
     }
 }
 
@@ -130,11 +130,11 @@
     tmp.textColor = [UIColor colorWithRed:153/255.f green:153/255.f blue:153/255.f alpha:1];
     tmp.backgroundColor = [UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1];
     if (index == 0) {
-        tmp.text = @"标的";
+        tmp.text = @"标的（高度32）";
     } else if (index == 1) {
-        tmp.text = @"到期时间";
+        tmp.text = @"到期时间（高度40）";
     } else {
-        tmp.text = @"价格";
+        tmp.text = @"价格（高度20）";
     }
     return tmp;
 }

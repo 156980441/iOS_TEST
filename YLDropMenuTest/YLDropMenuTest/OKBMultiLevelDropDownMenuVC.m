@@ -102,10 +102,6 @@
     return 200.f;
 }
 
-- (UIView *)sourceView {
-    return self.view;
-}
-
 - (OKBMenuItemView *)menuItemView {
     OKBLabelImageView *tmp = [[OKBLabelImageView alloc] initWithFrame:CGRectZero];
     tmp.textLbl.text = @"选择";
