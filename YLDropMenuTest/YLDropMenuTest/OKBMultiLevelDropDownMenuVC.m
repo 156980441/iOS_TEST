@@ -8,6 +8,7 @@
 
 #import "OKBMultiLevelDropDownMenuVC.h"
 #import "OKBMultiLevelDropDownMenuView.h"
+#import "OKBMultiLevelDropMenuTVHeaderView.h"
 #import "OKBMultiLevelDropDownMenuRootModel.h"
 #import "OKBLabelImageView.h"
 #import <Masonry/Masonry.h>
@@ -17,6 +18,7 @@
     NSInteger _levels;
     OKBMultiLevelDropDownMenuRootModel *_model;
     NSString *_intColonInt;
+    NSArray<OKBMultiLevelDropMenuTVHeaderView *> *_headerViewArr;
 }
 @property (nonatomic, strong) OKBMultiLevelDropDownMenuView *multiLeveldropDownMenuView;
 
@@ -26,6 +28,7 @@
 
 - (instancetype)initWithMultiLevel:(NSInteger)levels
                 levelOfWidthWeight:(nullable NSString *)intColonInt
+                  tableViewHeaders:(nonnull NSArray<OKBMultiLevelDropMenuTVHeaderView *> *)headerViews
                          rootModel:(OKBMultiLevelDropDownMenuRootModel *)model
                              block:(nullable void (^)(id<OKBMultiLevelMenuProtocol> _Nonnull))block {
     self = [super initWithNibName:nil bundle:nil];
@@ -33,6 +36,7 @@
         _levels = levels;
         _intColonInt = intColonInt;
         _model = model;
+        _headerViewArr = headerViews;
         _selectedBlock = [block copy];
     }
     return self;
@@ -49,7 +53,7 @@
     [self.multiLeveldropDownMenuView reloadDataWithRootDataSource:_model];
 }
 
-- (void)setMultLevelViewBackgroundColor:(UIColor *)color atIndex:(NSInteger)index {
+- (void)setMultiLevelViewBackgroundColor:(UIColor *)color atIndex:(NSInteger)index {
     NSAssert(index < _levels, @"OKBMultiLevelDropDownMenuVC is out of bounds");
     UITableView *tmp = [self.multiLeveldropDownMenuView tableViewAtIndex:index];
     tmp.backgroundColor = color;
@@ -62,7 +66,7 @@
 #pragma mark - OKBMultiLevelDropDownMenuViewDelegate
 
 - (CGFloat)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
-    return 32;
+    return [_headerViewArr objectAtIndex:index].height;
 }
 
 - (void)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu didSelectInTableView:(nonnull id<OKBMultiLevelMenuProtocol>)model {
@@ -72,19 +76,7 @@
 }
 
 - (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
-    UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectZero];
-    tmp.textAlignment = NSTextAlignmentCenter;
-    tmp.font = [UIFont systemFontOfSize:12];
-    tmp.textColor = [UIColor colorWithRed:153/255.f green:153/255.f blue:153/255.f alpha:1];
-    tmp.backgroundColor = [UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1];
-    if (index == 0) {
-        tmp.text = @"姓名";
-    } else if (index == 1) {
-        tmp.text = @"班级";
-    } else {
-        tmp.text = @"学校";
-    }
-    return tmp;
+    return [_headerViewArr objectAtIndex:index];
 }
 
 #pragma mark -- lazy load

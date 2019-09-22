@@ -96,7 +96,7 @@
 }
 
 - (void)updateMenuItemTitle:(NSString *)title atIndex:(NSInteger)index {
-    OKBLabelImageView *itemView = (OKBLabelImageView *)[self.menuView menuItemViewAtIndex:index];
+    OKBLabelImageView *itemView = (OKBLabelImageView *)[_controllersArr objectAtIndex:index].menuItemView;
     itemView.textLbl.text = title;
 }
 
