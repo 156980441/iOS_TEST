@@ -43,6 +43,12 @@
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.menuView dismissSourceViewWithAnimation:YES];
+    self.menuView = nil;
+}
+
 
 - (void)dealloc {
     NSLog(@"%s", __func__);
@@ -117,10 +123,10 @@
     [self.menuView dismissSourceViewWithAnimation:YES];
     
     // 可以更新数据源
-//    if (model.nodeId == 3) {
-//        id<OKBMultiLevelMenuProtocol> original = model.par.parent;
-//        original.array = [DataSourceFactory level1DataSource].array;
-//    }
+    if (model.nodeId == 3) {
+        OKBMultiLevelMenuNode *original = model.parentNode.parentNode;
+        original.childNodes = [DataSourceFactory level1DataSource].childNodes;
+    }
 }
 
 - (nullable UIView *)multiLevelMenu:(OKBMultiLevelMenuView *)menuView viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {

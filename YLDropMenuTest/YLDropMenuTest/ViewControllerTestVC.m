@@ -47,6 +47,12 @@
     }];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.menuVC dismissSourceViewWithAnimation:YES];
+    self.menuVC = nil;
+}
+
 - (OKBMenuViewController *)menuVC {
     if (!_menuVC) {
         OKBMultiLevelMenuLabelTVHeader *header0 = OKBMultiLevelMenuLabelTVHeader.new;

@@ -15,9 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) OKBMultiLevelMenuNode *parentNode;
 @property (nonatomic, strong) id data;
 
-
 @property (nonatomic, copy) NSString *nodeName;
-@property (nonatomic, assign) NSInteger nodeId;
+@property (nonatomic, assign) NSInteger nodeId; // 目前没用
 @property (nonatomic, strong, nullable) NSArray<OKBMultiLevelMenuNode *> *childNodes;
 
 + (instancetype)defaultRootModel;

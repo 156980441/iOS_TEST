@@ -26,10 +26,12 @@
         PersonModel *tmp = [[PersonModel alloc] init];
         tmp.address = [NSString stringWithFormat:@"刘强东 %d", i];
         
+        // 构造 UI model
         OKBMultiLevelMenuNode *node = [[OKBMultiLevelMenuNode alloc] init];
         node.nodeName = tmp.address;
         node.data = tmp;
         node.childNodes = nil;
+        node.nodeId = i;
         [personsLevel3 addObject:node];
     }
     
@@ -41,6 +43,7 @@
         node.nodeName = tmp.address;
         node.data = tmp;
         node.childNodes = nil;
+        node.nodeId = i;
         [persons2Level3 addObject:node];
     }
     
@@ -53,6 +56,7 @@
         node.nodeName = tmp.bossName;
         node.data = tmp;
         node.childNodes = nil;
+        node.nodeId = i;
         
         if (i == 0) {
             node.childNodes = personsLevel3;
@@ -78,10 +82,9 @@
         OKBMultiLevelMenuNode *node = [[OKBMultiLevelMenuNode alloc] init];
         node.nodeName = tmp.bossName;
         node.data = tmp;
-        node.childNodes = nil;
-        
-        
+        node.nodeId = i;
         node.childNodes = persons2Level3;
+        
         for (OKBMultiLevelMenuNode *person in node.childNodes ) {
             person.parentNode = node;
         }
@@ -101,6 +104,7 @@
             node.nodeName = tmp.district;
             node.data = tmp;
             node.childNodes = companiesLevel2;
+            node.nodeId = i;
             
             for (OKBMultiLevelMenuNode *company in node.childNodes) {
                 company.parentNode = node;
@@ -141,6 +145,7 @@
         
         OKBMultiLevelMenuNode *node = [[OKBMultiLevelMenuNode alloc] init];
         node.nodeName = tmp.address;
+        node.nodeId = i;
         [persons addObject:node];
     }
     
@@ -160,7 +165,10 @@
         tmp.address = [NSString stringWithFormat:@"北京 %d", i];
         
         OKBMultiLevelMenuNode *node = [[OKBMultiLevelMenuNode alloc] init];
+        node.data = tmp;
         node.nodeName = tmp.address;
+        node.nodeId = i;
+        node.childNodes = nil; // 叶子
         [persons addObject:node];
     }
     
@@ -171,11 +179,20 @@
         
         OKBMultiLevelMenuNode *node = [[OKBMultiLevelMenuNode alloc] init];
         node.nodeName = tmp.bossName;
+        node.data = tmp;
         node.childNodes = persons;
+        node.nodeId = i;
+        for (OKBMultiLevelMenuNode *persons in node.childNodes) {
+            persons.parentNode = node;
+        }
+
         [companies addObject:node];
     }
     
     tmp.childNodes = companies;
+    for (OKBMultiLevelMenuNode *companies in tmp.childNodes) {
+        companies.parentNode = tmp;;
+    }
     
     return tmp;
 }

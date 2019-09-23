@@ -10,12 +10,12 @@
 
 @implementation OKBMultiLevelMenuNode
 
-
 + (instancetype)defaultRootModel {
     OKBMultiLevelMenuNode *tmp = [[OKBMultiLevelMenuNode alloc] init];
     tmp.parentNode = nil;
     tmp.nodeName = @"";
     tmp.childNodes = nil;
+    tmp.nodeId = -1;
     return tmp;
 }
 
