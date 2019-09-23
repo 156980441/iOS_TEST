@@ -10,14 +10,14 @@
 
 #import "OKBMenuView.h"
 #import "OKBMenuItemView.h"
-#import "OKBMultiLevelDropDownMenuView.h"
-#import "OKBMultiLevelDropMenuTVHeaderView.h"
+#import "OKBMultiLevelMenuView.h"
+#import "OKBMultiLevelMenuTVHeaderView.h"
 #import "OKBMultiLevelDropDownMenuLabelTVHeader.h"
 
 #import "OKBMultiLevelDropDownMenuRootModel.h"
 
 #import "OKBMenuViewController.h"
-#import "OKBMultiLevelDropDownMenuVC.h"
+#import "OKBMultiLevelMenuVC.h"
 
 #import "DataSourceFactory.h"
 #import "OKBLabelImageView.h"
@@ -57,8 +57,8 @@
         header2.textLbl.text = @"学校";
         NSArray *arr = @[header0, header1, header2];
         
-        OKBMultiLevelDropDownMenuVC *vc1 = [[OKBMultiLevelDropDownMenuVC alloc] initWithMultiLevel:1 levelOfWidthWeight:nil tableViewHeaders:arr rootModel:[DataSourceFactory level1DataSource] block:nil];
-        OKBMultiLevelDropDownMenuVC *vc2 = [[OKBMultiLevelDropDownMenuVC alloc] initWithMultiLevel:2 levelOfWidthWeight:@"1:2" tableViewHeaders:arr rootModel:[DataSourceFactory level2DataSource] block:nil];
+        OKBMultiLevelMenuVC *vc1 = [[OKBMultiLevelMenuVC alloc] initWithMultiLevel:1 levelOfWidthWeight:nil tableViewHeaders:arr rootModel:[DataSourceFactory level1DataSource] block:nil];
+        OKBMultiLevelMenuVC *vc2 = [[OKBMultiLevelMenuVC alloc] initWithMultiLevel:2 levelOfWidthWeight:@"1:2" tableViewHeaders:arr rootModel:[DataSourceFactory level2DataSource] block:nil];
         [vc2 setMultiLevelViewBackgroundColor:[UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1] atIndex:0];
         
         

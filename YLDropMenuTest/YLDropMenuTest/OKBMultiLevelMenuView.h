@@ -14,29 +14,29 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
-@class OKBMultiLevelDropDownMenuView;
+@class OKBMultiLevelMenuView;
 
-@protocol OKBMultiLevelDropDownMenuViewDelegate <NSObject>
+@protocol OKBMultiLevelMenuViewDelegate <NSObject>
 
 @optional
-- (CGFloat)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu
+- (CGFloat)multiLevelDropDownMenu:(OKBMultiLevelMenuView *)dropDownMenu
        heightForHeaderInTableView:(UITableView *)tableView
                           atIndex:(NSInteger)index;
 
-- (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu
+- (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelMenuView *)dropDownMenu
                    viewForHeaderInTableView:(UITableView *)tableView
                                     atIndex:(NSInteger)index;
 
-- (void)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)dropDownMenu
+- (void)multiLevelDropDownMenu:(OKBMultiLevelMenuView *)dropDownMenu
           didSelectInTableView:(id<OKBMultiLevelMenuProtocol>)model;
 
 @end
 
-@interface OKBMultiLevelDropDownMenuView : UIView
+@interface OKBMultiLevelMenuView : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame tableViewNum:(NSInteger)num widthWeight:(nullable NSString *)intColonInt;
 
-@property (nonatomic, strong) id<OKBMultiLevelDropDownMenuViewDelegate> delegate;
+@property (nonatomic, strong) id<OKBMultiLevelMenuViewDelegate> delegate;
 
 - (void)reloadDataWithRootDataSource:(id<OKBMultiLevelMenuProtocol>)rootDataSource;
 

@@ -6,11 +6,11 @@
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import "OKBMultiLevelDropDownMenuView.h"
+#import "OKBMultiLevelMenuView.h"
 #import "OKB1LabelTVCell.h"
 #import <Masonry/Masonry.h>
 
-@interface OKBMultiLevelDropDownMenuView () <UITableViewDelegate, UITableViewDataSource>
+@interface OKBMultiLevelMenuView () <UITableViewDelegate, UITableViewDataSource>
 {
     NSInteger _tableViewNum;
     id<OKBMultiLevelMenuProtocol> _dataSource;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation OKBMultiLevelDropDownMenuView
+@implementation OKBMultiLevelMenuView
 
 - (instancetype)initWithFrame:(CGRect)frame
                  tableViewNum:(NSInteger)num

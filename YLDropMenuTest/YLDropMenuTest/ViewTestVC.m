@@ -10,7 +10,7 @@
 
 #import "OKBMenuView.h"
 #import "OKBMenuItemView.h"
-#import "OKBMultiLevelDropDownMenuView.h"
+#import "OKBMultiLevelMenuView.h"
 #import "OKBMultiLevelDropDownMenuRootModel.h"
 #import "OKBLabelImageView.h"
 
@@ -19,10 +19,10 @@
 
 #import <Masonry/Masonry.h>
 
-@interface ViewTestVC () <OKBMenuViewDataSource, OKBMenuViewDelegate, OKBMultiLevelDropDownMenuViewDelegate>
+@interface ViewTestVC () <OKBMenuViewDataSource, OKBMenuViewDelegate, OKBMultiLevelMenuViewDelegate>
 @property (nonatomic, strong) OKBMenuView *menuView;
-@property (nonatomic, strong) OKBMultiLevelDropDownMenuView *item1SoureView;
-@property (nonatomic, strong) OKBMultiLevelDropDownMenuView *item3SoureView;
+@property (nonatomic, strong) OKBMultiLevelMenuView *item1SoureView;
+@property (nonatomic, strong) OKBMultiLevelMenuView *item3SoureView;
 @end
 
 @implementation ViewTestVC
@@ -71,7 +71,7 @@
     }
     else if (index == 1) {
         // 测试释放
-        OKBMultiLevelDropDownMenuView *view = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:2 widthWeight:nil];
+        OKBMultiLevelMenuView *view = [[OKBMultiLevelMenuView alloc] initWithFrame:CGRectZero tableViewNum:2 widthWeight:nil];
         [view reloadDataWithRootDataSource:[DataSourceFactory level2DataSource]];
         return view;
     } else if (index == 2) {
@@ -99,9 +99,9 @@
     
 }
 
-#pragma mark - OKBMultiLevelDropDownMenuViewDelegate
+#pragma mark - OKBMultiLevelMenuViewDelegate
 
-- (CGFloat)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)menuView heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+- (CGFloat)multiLevelDropDownMenu:(OKBMultiLevelMenuView *)menuView heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
     if (index == 0) {
         return 32;
     } else if (index == 1) {
@@ -111,7 +111,7 @@
     }
 }
 
-- (void)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)menuView didSelectInTableView:(nonnull id<OKBMultiLevelMenuProtocol>)model {
+- (void)multiLevelDropDownMenu:(OKBMultiLevelMenuView *)menuView didSelectInTableView:(nonnull id<OKBMultiLevelMenuProtocol>)model {
     OKBLabelImageView *tmp = (OKBLabelImageView *)[self.menuView menuItemViewAtIndex:self.menuView.selectedItemIndex];
     tmp.textLbl.text = model.nodeName;
     [self.menuView dismissSourceViewWithAnimation:YES];
@@ -123,7 +123,7 @@
     }
 }
 
-- (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelDropDownMenuView *)menuView viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+- (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelMenuView *)menuView viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
     UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectZero];
     tmp.textAlignment = NSTextAlignmentCenter;
     tmp.font = [UIFont systemFontOfSize:12];
@@ -151,9 +151,9 @@
     return _menuView;
 }
 
-- (OKBMultiLevelDropDownMenuView *)item1SoureView {
+- (OKBMultiLevelMenuView *)item1SoureView {
     if (!_item1SoureView) {
-        OKBMultiLevelDropDownMenuView *tmp = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:3 widthWeight:nil];
+        OKBMultiLevelMenuView *tmp = [[OKBMultiLevelMenuView alloc] initWithFrame:CGRectZero tableViewNum:3 widthWeight:nil];
         tmp.delegate = self;
         [tmp reloadDataWithRootDataSource:[DataSourceFactory level3DataSource]];
         UITableView *firstTableView = [tmp tableViewAtIndex:1];
@@ -163,9 +163,9 @@
     return _item1SoureView;
 }
 
-- (OKBMultiLevelDropDownMenuView *)item3SoureView {
+- (OKBMultiLevelMenuView *)item3SoureView {
     if (!_item3SoureView) {
-        OKBMultiLevelDropDownMenuView *tmp = [[OKBMultiLevelDropDownMenuView alloc] initWithFrame:CGRectZero tableViewNum:1 widthWeight:nil];
+        OKBMultiLevelMenuView *tmp = [[OKBMultiLevelMenuView alloc] initWithFrame:CGRectZero tableViewNum:1 widthWeight:nil];
         [tmp reloadDataWithRootDataSource:[DataSourceFactory level1DataSource]];
         _item3SoureView = tmp;
     }

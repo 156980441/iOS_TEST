@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OKBMultiLevelDropMenuTVHeaderView : UIView
+@interface OKBMultiLevelMenuTVHeaderView : UIView
 
 @property (nonatomic, readonly) UIView *contentView;
 
