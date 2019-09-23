@@ -33,6 +33,7 @@
                              block:(nullable void (^)(OKBMultiLevelMenuNode * _Nonnull))block {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
+        NSAssert(levels <= headerViews.count, @"levels must equal to or less than headerViews count");
         _levels = levels;
         _intColonInt = intColonInt;
         _model = model;
@@ -50,6 +51,7 @@
     [self.multiLeveldropDownMenuView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view).insets(UIEdgeInsetsZero);
     }];
+    
     [self.multiLeveldropDownMenuView reloadDataWithRootDataSource:_model];
 }
 

@@ -141,7 +141,7 @@
     NSMutableArray<OKBMultiLevelMenuNode *> *persons = NSMutableArray.new;
     for (int i = 0; i < 2; i++) {
         PersonModel *tmp = [[PersonModel alloc] init];
-        tmp.address = @"马云";
+        tmp.address = [NSString stringWithFormat:@"马云 %d", i];;
         
         OKBMultiLevelMenuNode *node = [[OKBMultiLevelMenuNode alloc] init];
         node.nodeName = tmp.address;

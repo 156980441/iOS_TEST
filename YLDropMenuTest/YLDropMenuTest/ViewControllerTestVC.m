@@ -65,8 +65,8 @@
         
         OKBMultiLevelMenuVC *vc1 = [[OKBMultiLevelMenuVC alloc] initWithMultiLevel:1 levelOfWidthWeight:nil tableViewHeaders:arr rootModel:[DataSourceFactory level1DataSource] block:nil];
         OKBMultiLevelMenuVC *vc2 = [[OKBMultiLevelMenuVC alloc] initWithMultiLevel:2 levelOfWidthWeight:@"1:2" tableViewHeaders:arr rootModel:[DataSourceFactory level2DataSource] block:nil];
-        [vc2 setMultiLevelViewBackgroundColor:[UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1] atIndex:0];
         
+        [vc2 setMultiLevelViewBackgroundColor:[UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1] atIndex:0];
         
         OKBMenuViewController *tmp = [[OKBMenuViewController alloc] initWithMenuItemControllers:@[vc1, vc2]];
         vc1.selectedBlock = ^(OKBMultiLevelMenuNode *model) {
