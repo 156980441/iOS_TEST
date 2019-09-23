@@ -108,13 +108,19 @@
 #pragma mark - OKBMultiLevelMenuViewDelegate
 
 - (CGFloat)multiLevelMenu:(OKBMultiLevelMenuView *)menuView heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
-    if (index == 0) {
-        return 32;
-    } else if (index == 1) {
-        return 40;
-    } else {
-        return 20;
+    if (menuView == self.item1SoureView) {
+        if (index == 0) {
+            return 32;
+        } else if (index == 1) {
+            return 40;
+        } else {
+            return 20;
+        }
     }
+    else if (menuView == self.item3SoureView) {
+        return 10;
+    }
+    return 0;
 }
 
 - (void)multiLevelMenu:(OKBMultiLevelMenuView *)menuView didSelectInTableView:(nonnull OKBMultiLevelMenuNode *)model {
@@ -135,13 +141,20 @@
     tmp.font = [UIFont systemFontOfSize:12];
     tmp.textColor = [UIColor colorWithRed:153/255.f green:153/255.f blue:153/255.f alpha:1];
     tmp.backgroundColor = [UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1];
-    if (index == 0) {
-        tmp.text = @"标的（高度32）";
-    } else if (index == 1) {
-        tmp.text = @"到期时间（高度40）";
-    } else {
-        tmp.text = @"价格（高度20）";
+    
+    if (menuView == self.item1SoureView) {
+        if (index == 0) {
+            tmp.text = @"标的（高度32）";
+        } else if (index == 1) {
+            tmp.text = @"到期时间（高度40）";
+        } else {
+            tmp.text = @"价格（高度20）";
+        }
     }
+    else if (menuView == self.item3SoureView) {
+        tmp.text = @"标的（高度10）";
+    }
+    
     return tmp;
 }
 
@@ -172,6 +185,7 @@
 - (OKBMultiLevelMenuView *)item3SoureView {
     if (!_item3SoureView) {
         OKBMultiLevelMenuView *tmp = [[OKBMultiLevelMenuView alloc] initWithFrame:CGRectZero tableViewNum:1 widthWeight:nil];
+        tmp.delegate = self;
         [tmp reloadDataWithRootDataSource:[DataSourceFactory level1DataSource]];
         _item3SoureView = tmp;
     }
