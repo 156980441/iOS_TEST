@@ -162,7 +162,7 @@
     
     for (int i = 0; i < 10; i++) {
         PersonModel *tmp = [[PersonModel alloc] init];
-        tmp.address = [NSString stringWithFormat:@"北京 %d", i];
+        tmp.address = [NSString stringWithFormat:@"北京-海淀-上地 %d 号院", i];
         
         OKBMultiLevelMenuNode *node = [[OKBMultiLevelMenuNode alloc] init];
         node.data = tmp;

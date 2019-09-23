@@ -66,7 +66,7 @@
         OKBMultiLevelMenuLabelTVHeader *header00 = OKBMultiLevelMenuLabelTVHeader.new;
         header00.textLbl.text = @"姓名";
         OKBMultiLevelMenuLabelTVHeader *header10 = OKBMultiLevelMenuLabelTVHeader.new;
-        header10.textLbl.text = @"班级";
+        header10.textLbl.text = @"地域";
         OKBMultiLevelMenuLabelTVHeader *header20 = OKBMultiLevelMenuLabelTVHeader.new;
         header20.textLbl.text = @"学校";
         NSArray *arr2 = @[header00, header10, header20];
