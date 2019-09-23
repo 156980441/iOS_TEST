@@ -14,7 +14,7 @@
 #import "OKBMultiLevelMenuTVHeaderView.h"
 #import "OKBMultiLevelMenuLabelTVHeader.h"
 
-#import "OKBMultiLevelMenuRootModel.h"
+#import "OKBMultiLevelMenuNode.h"
 
 #import "OKBMenuViewController.h"
 #import "OKBMultiLevelMenuVC.h"
@@ -63,11 +63,11 @@
         
         
         OKBMenuViewController *tmp = [[OKBMenuViewController alloc] initWithMenuItemControllers:@[vc1, vc2]];
-        vc1.selectedBlock = ^(id<OKBMultiLevelMenuProtocol>  _Nonnull model) {
+        vc1.selectedBlock = ^(OKBMultiLevelMenuNode *model) {
             [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];
             [tmp dismissSourceViewWithAnimation:YES];
         };
-        vc2.selectedBlock = ^(id<OKBMultiLevelMenuProtocol>  _Nonnull model) {
+        vc2.selectedBlock = ^(OKBMultiLevelMenuNode *model) {
             [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];
             [tmp dismissSourceViewWithAnimation:YES];
         };

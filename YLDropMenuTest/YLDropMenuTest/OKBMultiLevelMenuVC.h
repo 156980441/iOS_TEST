@@ -10,18 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class OKBMultiLevelMenuRootModel, OKBMultiLevelMenuTVHeaderView;
-@protocol OKBMultiLevelMenuProtocol;
+@class OKBMultiLevelMenuRootModel, OKBMultiLevelMenuTVHeaderView, OKBMultiLevelMenuNode;
 
 @interface OKBMultiLevelMenuVC : OKBMenuItemViewController
 
 - (instancetype)initWithMultiLevel:(NSInteger)levels
                 levelOfWidthWeight:(nullable NSString *)intColonInt
                   tableViewHeaders:(NSArray<OKBMultiLevelMenuTVHeaderView *> *)headerViews
-                         rootModel:(OKBMultiLevelMenuRootModel *)model
-                             block:(nullable void (^)(id<OKBMultiLevelMenuProtocol>model))block;
+                         rootModel:(OKBMultiLevelMenuNode *)model
+                             block:(nullable void (^)(OKBMultiLevelMenuNode *model))block;
 
-@property (nonatomic, copy, nullable) void (^selectedBlock)(id<OKBMultiLevelMenuProtocol>model);
+@property (nonatomic, copy, nullable) void (^selectedBlock)(OKBMultiLevelMenuNode *model);
 
 - (void)setMultiLevelViewBackgroundColor:(UIColor *)color atIndex:(NSInteger)index;
 

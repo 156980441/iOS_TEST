@@ -7,131 +7,175 @@
 //
 
 #import "DataSourceFactory.h"
-#import "OKBMultiLevelMenuRootModel.h"
+#import "OKBMultiLevelMenuNode.h"
 #import "PersonModel.h"
 
 @implementation DataSourceFactory
 
-+ (OKBMultiLevelMenuRootModel *)level3DataSource {
-    OKBMultiLevelMenuRootModel *tmp = [OKBMultiLevelMenuRootModel defaultRootModel];
++ (OKBMultiLevelMenuNode *)level3DataSource {
+    OKBMultiLevelMenuNode *tmp = [OKBMultiLevelMenuNode defaultRootModel];
     
-    NSMutableArray<PersonModel *> *personsLevel3 = NSMutableArray.new;
-    NSMutableArray<PersonModel *> *persons2Level3 = NSMutableArray.new;
-    NSMutableArray<CompanyModel *> *companiesLevel2 = NSMutableArray.new;
-    NSMutableArray<CompanyModel *> *companies2Level2 = NSMutableArray.new;
-    NSMutableArray<DistrictModel *> *districtLevel1 = NSMutableArray.new;
+    NSMutableArray<OKBMultiLevelMenuNode *> *personsLevel3 = NSMutableArray.new;
+    NSMutableArray<OKBMultiLevelMenuNode *> *persons2Level3 = NSMutableArray.new;
+    NSMutableArray<OKBMultiLevelMenuNode *> *companiesLevel2 = NSMutableArray.new;
+    NSMutableArray<OKBMultiLevelMenuNode *> *companies2Level2 = NSMutableArray.new;
+    NSMutableArray<OKBMultiLevelMenuNode *> *districtLevel1 = NSMutableArray.new;
     
     for (int i = 0; i < 5; i++) {
+        // 模拟服务器数据
         PersonModel *tmp = [[PersonModel alloc] init];
         tmp.address = [NSString stringWithFormat:@"刘强东 %d", i];
-        tmp.nodeName = tmp.address;
-        tmp.nodeId = i;
-        [personsLevel3 addObject:tmp];
+        
+        OKBMultiLevelMenuNode *node = [[OKBMultiLevelMenuNode alloc] init];
+        node.nodeName = tmp.address;
+        node.data = tmp;
+        node.childNodes = nil;
+        [personsLevel3 addObject:node];
     }
     
     for (int i = 0; i < 2; i++) {
         PersonModel *tmp = [[PersonModel alloc] init];
         tmp.address = [NSString stringWithFormat:@"李彦宏 %d", i];
-        tmp.nodeName = tmp.address;
-        [persons2Level3 addObject:tmp];
+        
+        OKBMultiLevelMenuNode *node = [[OKBMultiLevelMenuNode alloc] init];
+        node.nodeName = tmp.address;
+        node.data = tmp;
+        node.childNodes = nil;
+        [persons2Level3 addObject:node];
     }
     
     
     for (int i = 0; i < 3; i++) {
         CompanyModel *tmp = [[CompanyModel alloc] init];
-        tmp.bossName = [NSString stringWithFormat:@"京东 %d", i];;
+        tmp.bossName = [NSString stringWithFormat:@"京东 %d", i];
+        
+        OKBMultiLevelMenuNode *node = [[OKBMultiLevelMenuNode alloc] init];
+        node.nodeName = tmp.bossName;
+        node.data = tmp;
+        node.childNodes = nil;
+        
         if (i == 0) {
-            tmp.array = personsLevel3;
-            for (PersonModel *person in tmp.array) {
-                person.parent = tmp;
+            node.childNodes = personsLevel3;
+            for (OKBMultiLevelMenuNode *person in node.childNodes) {
+                person.parentNode = node;
             }
         }
         else {
-            tmp.array = personsLevel3;
-            for (PersonModel *person in tmp.array) {
-                person.parent = tmp;
+            node.childNodes = persons2Level3;
+            for (OKBMultiLevelMenuNode *person in node.childNodes) {
+                person.parentNode = node;
             }
         }
-        tmp.nodeName = tmp.bossName;
-        [companiesLevel2 addObject:tmp];
+        
+        [companiesLevel2 addObject:node];
     }
     
     
     for (int i = 0; i < 1; i++) {
         CompanyModel *tmp = [[CompanyModel alloc] init];
         tmp.bossName = [NSString stringWithFormat:@"百度 %d", i];;
-        tmp.array = persons2Level3;
-        for (PersonModel *person in tmp.array) {
-            person.parent = tmp;
+        
+        OKBMultiLevelMenuNode *node = [[OKBMultiLevelMenuNode alloc] init];
+        node.nodeName = tmp.bossName;
+        node.data = tmp;
+        node.childNodes = nil;
+        
+        
+        node.childNodes = persons2Level3;
+        for (OKBMultiLevelMenuNode *person in node.childNodes ) {
+            person.parentNode = node;
         }
-        tmp.nodeName = tmp.bossName;
-        [companies2Level2 addObject:tmp];
+        
+        [companies2Level2 addObject:node];
     }
     
     
     for (int i = 0; i < 2; i++) {
+        
         DistrictModel *tmp = [[DistrictModel alloc] init];
         if (i == 0) {
+            
             tmp.district = [NSString stringWithFormat:@"亦庄 %d", i];
-            tmp.array = companiesLevel2;
-            for (CompanyModel *company in tmp.array) {
-                company.parent = tmp;
+            
+            OKBMultiLevelMenuNode *node = [[OKBMultiLevelMenuNode alloc] init];
+            node.nodeName = tmp.district;
+            node.data = tmp;
+            node.childNodes = companiesLevel2;
+            
+            for (OKBMultiLevelMenuNode *company in node.childNodes) {
+                company.parentNode = node;
             }
+            [districtLevel1 addObject:node];
         }
         else {
+            
             tmp.district = [NSString stringWithFormat:@"海淀 %d", i];
-            tmp.array = companies2Level2;
-            for (CompanyModel *company in tmp.array) {
-                company.parent = tmp;
+            
+            OKBMultiLevelMenuNode *node = [[OKBMultiLevelMenuNode alloc] init];
+            node.nodeName = tmp.district;
+            node.data = tmp;
+            node.childNodes = companies2Level2;
+            
+            for (OKBMultiLevelMenuNode *company in node.childNodes) {
+                company.parentNode = node;
             }
+            [districtLevel1 addObject:node];
         }
-        tmp.nodeName = tmp.district;
-        [districtLevel1 addObject:tmp];
+        
+        
     }
     
-    tmp.array = districtLevel1;
+    tmp.childNodes = districtLevel1;
     
     return tmp;
 }
 
-+ (OKBMultiLevelMenuRootModel *)level1DataSource {
-    OKBMultiLevelMenuRootModel *tmp = [OKBMultiLevelMenuRootModel defaultRootModel];
++ (OKBMultiLevelMenuNode *)level1DataSource {
     
-    NSMutableArray *persons = NSMutableArray.new;
+    OKBMultiLevelMenuNode *tmp = [OKBMultiLevelMenuNode defaultRootModel];
+    
+    NSMutableArray<OKBMultiLevelMenuNode *> *persons = NSMutableArray.new;
     for (int i = 0; i < 2; i++) {
         PersonModel *tmp = [[PersonModel alloc] init];
         tmp.address = @"马云";
-        tmp.nodeName = tmp.address;
-        [persons addObject:tmp];
+        
+        OKBMultiLevelMenuNode *node = [[OKBMultiLevelMenuNode alloc] init];
+        node.nodeName = tmp.address;
+        [persons addObject:node];
     }
     
-    tmp.array = persons;
+    tmp.childNodes = persons;
     
     return tmp;
 }
 
-+ (OKBMultiLevelMenuRootModel *)level2DataSource {
++ (OKBMultiLevelMenuNode *)level2DataSource {
     
-    OKBMultiLevelMenuRootModel *tmp = [OKBMultiLevelMenuRootModel defaultRootModel];
+    OKBMultiLevelMenuNode *tmp = [OKBMultiLevelMenuNode defaultRootModel];
     
-    NSMutableArray *persons = NSMutableArray.new;
+    NSMutableArray<OKBMultiLevelMenuNode *> *persons = NSMutableArray.new;
+    
     for (int i = 0; i < 10; i++) {
         PersonModel *tmp = [[PersonModel alloc] init];
-        tmp.address = @"北京";
-        tmp.nodeName = tmp.address;
-        [persons addObject:tmp];
+        tmp.address = [NSString stringWithFormat:@"北京 %d", i];
+        
+        OKBMultiLevelMenuNode *node = [[OKBMultiLevelMenuNode alloc] init];
+        node.nodeName = tmp.address;
+        [persons addObject:node];
     }
     
-    NSMutableArray *companies = NSMutableArray.new;
+    NSMutableArray<OKBMultiLevelMenuNode *> *companies = NSMutableArray.new;
     for (int i = 0; i < 3; i++) {
         CompanyModel *tmp = [[CompanyModel alloc] init];
-        tmp.bossName = @"马云";
-        tmp.array = persons;
-        tmp.nodeName = tmp.bossName;
-        [companies addObject:tmp];
+        tmp.bossName = [NSString stringWithFormat:@"马云 %d", i];
+        
+        OKBMultiLevelMenuNode *node = [[OKBMultiLevelMenuNode alloc] init];
+        node.nodeName = tmp.bossName;
+        node.childNodes = persons;
+        [companies addObject:node];
     }
     
-    tmp.array = companies;
+    tmp.childNodes = companies;
     
     return tmp;
 }

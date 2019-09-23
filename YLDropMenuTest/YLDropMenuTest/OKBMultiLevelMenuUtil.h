@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OKBMultiLevelMenuProtocol.h"
+#import "OKBMultiLevelMenuNode.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface OKBMultiLevelMenuUtil : NSObject
-+ (id<OKBMultiLevelMenuProtocol>)search:(id<OKBMultiLevelMenuProtocol>)source withNodeId:(NSInteger)nodeId;
++ (OKBMultiLevelMenuNode *)search:(OKBMultiLevelMenuNode *)source withNodeId:(NSInteger)nodeId;
 
 @end
 

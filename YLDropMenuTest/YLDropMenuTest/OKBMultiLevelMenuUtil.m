@@ -10,18 +10,18 @@
 
 @implementation OKBMultiLevelMenuUtil
 
-+ (id<OKBMultiLevelMenuProtocol>)search:(id<OKBMultiLevelMenuProtocol>)source withNodeId:(NSInteger)nodeId {
++ (OKBMultiLevelMenuNode *)search:(OKBMultiLevelMenuNode *)source withNodeId:(NSInteger)nodeId {
     if (source.nodeId == nodeId) {
         return source;
     }
     else {
-        NSArray<id<OKBMultiLevelMenuProtocol>> *arr = source.array;
-        for (id<OKBMultiLevelMenuProtocol> tmp in arr) {
+        NSArray<OKBMultiLevelMenuNode *> *arr = source.childNodes;
+        for (OKBMultiLevelMenuNode *tmp in arr) {
             if (tmp.nodeId == nodeId) {
                 return tmp;
             }
             else {
-                id<OKBMultiLevelMenuProtocol> result = [self search:tmp withNodeId:nodeId];
+                OKBMultiLevelMenuNode *result = [self search:tmp withNodeId:nodeId];
                 if (result) {
                     return result;
                 }

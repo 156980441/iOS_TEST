@@ -11,11 +11,11 @@
 #import "OKBMenuView.h"
 #import "OKBMenuItemView.h"
 #import "OKBMultiLevelMenuView.h"
-#import "OKBMultiLevelMenuRootModel.h"
 #import "OKBLabelImageView.h"
 
 #import "DataSourceFactory.h"
 #import "PersonModel.h"
+#import "OKBMultiLevelMenuNode.h"
 
 #import <Masonry/Masonry.h>
 
@@ -111,16 +111,16 @@
     }
 }
 
-- (void)multiLevelMenu:(OKBMultiLevelMenuView *)menuView didSelectInTableView:(nonnull id<OKBMultiLevelMenuProtocol>)model {
+- (void)multiLevelMenu:(OKBMultiLevelMenuView *)menuView didSelectInTableView:(nonnull OKBMultiLevelMenuNode *)model {
     OKBLabelImageView *tmp = (OKBLabelImageView *)[self.menuView menuItemViewAtIndex:self.menuView.selectedItemIndex];
     tmp.textLbl.text = model.nodeName;
     [self.menuView dismissSourceViewWithAnimation:YES];
     
     // 可以更新数据源
-    if (model.nodeId == 3) {
-        id<OKBMultiLevelMenuProtocol> original = model.parent.parent;
-        original.array = [DataSourceFactory level1DataSource].array;
-    }
+//    if (model.nodeId == 3) {
+//        id<OKBMultiLevelMenuProtocol> original = model.par.parent;
+//        original.array = [DataSourceFactory level1DataSource].array;
+//    }
 }
 
 - (nullable UIView *)multiLevelMenu:(OKBMultiLevelMenuView *)menuView viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {

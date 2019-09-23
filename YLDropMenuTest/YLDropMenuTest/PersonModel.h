@@ -7,28 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OKBMultiLevelMenuProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 
-@interface DistrictModel : NSObject <OKBMultiLevelMenuProtocol>
+@interface DistrictModel : NSObject
 
 // 服务器数据
 @property (nonatomic, copy) NSString *district;
 
-// 遵守协议
-@property (nonatomic, assign) NSInteger nodeId;
-@property (nonatomic, copy) NSString *nodeName;
-@property (nonatomic, strong) id<OKBMultiLevelMenuProtocol> parent;
-@property (nonatomic, strong) NSArray<id<OKBMultiLevelMenuProtocol>> *array;
 
 @end
 
 
 #pragma mark --
 
-@interface CompanyModel : NSObject <OKBMultiLevelMenuProtocol>
+@interface CompanyModel : NSObject
 
 // 服务器数据
 @property (nonatomic, copy) NSString *timestamp;
@@ -36,29 +30,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *bossName;
 
 
-// 遵守协议
-@property (nonatomic, assign) NSInteger nodeId;
-@property (nonatomic, copy) NSString *nodeName;
-@property (nonatomic, strong) id<OKBMultiLevelMenuProtocol> parent;
-@property (nonatomic, strong) NSArray<id<OKBMultiLevelMenuProtocol>> *array;
 
 @end
 
 #pragma mark --
 
-@interface PersonModel : NSObject <OKBMultiLevelMenuProtocol>
+@interface PersonModel : NSObject
 
 // 服务器数据
 @property (nonatomic, copy) NSString *timestamp;
 @property (nonatomic, copy) NSString *address;
 @property (nonatomic, copy) NSString *phone;
 
-
-// 遵守协议
-@property (nonatomic, assign) NSInteger nodeId;
-@property (nonatomic, copy) NSString *nodeName;
-@property (nonatomic, strong) id<OKBMultiLevelMenuProtocol> parent;
-@property (nonatomic, strong) NSArray<id<OKBMultiLevelMenuProtocol>> *array;
 
 @end
 

@@ -8,13 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-#import "OKBMultiLevelMenuProtocol.h"
-
-
 NS_ASSUME_NONNULL_BEGIN
 
 
-@class OKBMultiLevelMenuView;
+@class OKBMultiLevelMenuView, OKBMultiLevelMenuNode;
 
 @protocol OKBMultiLevelMenuViewDelegate <NSObject>
 
@@ -28,7 +25,7 @@ heightForHeaderInTableView:(UITableView *)tableView
                             atIndex:(NSInteger)index;
 
 - (void)multiLevelMenu:(OKBMultiLevelMenuView *)dropDownMenu
-  didSelectInTableView:(id<OKBMultiLevelMenuProtocol>)model;
+  didSelectInTableView:(OKBMultiLevelMenuNode *)model;
 
 @end
 
@@ -38,7 +35,7 @@ heightForHeaderInTableView:(UITableView *)tableView
 
 @property (nonatomic, strong) id<OKBMultiLevelMenuViewDelegate> delegate;
 
-- (void)reloadDataWithRootDataSource:(id<OKBMultiLevelMenuProtocol>)rootDataSource;
+- (void)reloadDataWithRootDataSource:(OKBMultiLevelMenuNode *)rootDataSource;
 
 - (UITableView *)tableViewAtIndex:(NSInteger)index;
 
