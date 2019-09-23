@@ -12,9 +12,9 @@
 #import "OKBMenuItemView.h"
 #import "OKBMultiLevelMenuView.h"
 #import "OKBMultiLevelMenuTVHeaderView.h"
-#import "OKBMultiLevelDropDownMenuLabelTVHeader.h"
+#import "OKBMultiLevelMenuLabelTVHeader.h"
 
-#import "OKBMultiLevelDropDownMenuRootModel.h"
+#import "OKBMultiLevelMenuRootModel.h"
 
 #import "OKBMenuViewController.h"
 #import "OKBMultiLevelMenuVC.h"
@@ -49,11 +49,11 @@
 
 - (OKBMenuViewController *)menuVC {
     if (!_menuVC) {
-        OKBMultiLevelDropDownMenuLabelTVHeader *header0 = OKBMultiLevelDropDownMenuLabelTVHeader.new;
+        OKBMultiLevelMenuLabelTVHeader *header0 = OKBMultiLevelMenuLabelTVHeader.new;
         header0.textLbl.text = @"姓名";
-        OKBMultiLevelDropDownMenuLabelTVHeader *header1 = OKBMultiLevelDropDownMenuLabelTVHeader.new;
+        OKBMultiLevelMenuLabelTVHeader *header1 = OKBMultiLevelMenuLabelTVHeader.new;
         header1.textLbl.text = @"班级";
-        OKBMultiLevelDropDownMenuLabelTVHeader *header2 = OKBMultiLevelDropDownMenuLabelTVHeader.new;
+        OKBMultiLevelMenuLabelTVHeader *header2 = OKBMultiLevelMenuLabelTVHeader.new;
         header2.textLbl.text = @"学校";
         NSArray *arr = @[header0, header1, header2];
         

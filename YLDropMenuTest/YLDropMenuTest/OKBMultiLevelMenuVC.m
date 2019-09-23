@@ -9,14 +9,14 @@
 #import "OKBMultiLevelMenuVC.h"
 #import "OKBMultiLevelMenuView.h"
 #import "OKBMultiLevelMenuTVHeaderView.h"
-#import "OKBMultiLevelDropDownMenuRootModel.h"
+#import "OKBMultiLevelMenuRootModel.h"
 #import "OKBLabelImageView.h"
 #import <Masonry/Masonry.h>
 
 @interface OKBMultiLevelMenuVC () <OKBMultiLevelMenuViewDelegate>
 {
     NSInteger _levels;
-    OKBMultiLevelDropDownMenuRootModel *_model;
+    OKBMultiLevelMenuRootModel *_model;
     NSString *_intColonInt;
     NSArray<OKBMultiLevelMenuTVHeaderView *> *_headerViewArr;
 }
@@ -29,7 +29,7 @@
 - (instancetype)initWithMultiLevel:(NSInteger)levels
                 levelOfWidthWeight:(nullable NSString *)intColonInt
                   tableViewHeaders:(nonnull NSArray<OKBMultiLevelMenuTVHeaderView *> *)headerViews
-                         rootModel:(OKBMultiLevelDropDownMenuRootModel *)model
+                         rootModel:(OKBMultiLevelMenuRootModel *)model
                              block:(nullable void (^)(id<OKBMultiLevelMenuProtocol> _Nonnull))block {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {

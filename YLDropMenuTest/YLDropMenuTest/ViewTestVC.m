@@ -11,7 +11,7 @@
 #import "OKBMenuView.h"
 #import "OKBMenuItemView.h"
 #import "OKBMultiLevelMenuView.h"
-#import "OKBMultiLevelDropDownMenuRootModel.h"
+#import "OKBMultiLevelMenuRootModel.h"
 #import "OKBLabelImageView.h"
 
 #import "DataSourceFactory.h"

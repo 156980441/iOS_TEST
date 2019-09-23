@@ -6,12 +6,12 @@
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import "OKBMultiLevelDropDownMenuRootModel.h"
+#import "OKBMultiLevelMenuRootModel.h"
 
-@implementation OKBMultiLevelDropDownMenuRootModel
+@implementation OKBMultiLevelMenuRootModel
 
 + (instancetype)defaultRootModel {
-    OKBMultiLevelDropDownMenuRootModel *tmp = [[OKBMultiLevelDropDownMenuRootModel alloc] init];
+    OKBMultiLevelMenuRootModel *tmp = [[OKBMultiLevelMenuRootModel alloc] init];
     tmp.nodeId = -1;
     tmp.parent = nil;
     tmp.nodeName = @"";

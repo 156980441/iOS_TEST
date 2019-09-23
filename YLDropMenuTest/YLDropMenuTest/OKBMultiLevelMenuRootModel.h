@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OKBMultiLevelDropDownMenuRootModel : NSObject <OKBMultiLevelMenuProtocol>
+@interface OKBMultiLevelMenuRootModel : NSObject <OKBMultiLevelMenuProtocol>
 
 + (instancetype)defaultRootModel;
 

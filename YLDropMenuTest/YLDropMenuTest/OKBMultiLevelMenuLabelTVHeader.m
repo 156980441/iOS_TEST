@@ -6,10 +6,10 @@
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import "OKBMultiLevelDropDownMenuLabelTVHeader.h"
+#import "OKBMultiLevelMenuLabelTVHeader.h"
 #import <Masonry/Masonry.h>
 
-@implementation OKBMultiLevelDropDownMenuLabelTVHeader
+@implementation OKBMultiLevelMenuLabelTVHeader
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];

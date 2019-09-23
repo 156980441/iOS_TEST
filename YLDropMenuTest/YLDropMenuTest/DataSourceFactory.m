@@ -7,13 +7,13 @@
 //
 
 #import "DataSourceFactory.h"
-#import "OKBMultiLevelDropDownMenuRootModel.h"
+#import "OKBMultiLevelMenuRootModel.h"
 #import "PersonModel.h"
 
 @implementation DataSourceFactory
 
-+ (OKBMultiLevelDropDownMenuRootModel *)level3DataSource {
-    OKBMultiLevelDropDownMenuRootModel *tmp = [OKBMultiLevelDropDownMenuRootModel defaultRootModel];
++ (OKBMultiLevelMenuRootModel *)level3DataSource {
+    OKBMultiLevelMenuRootModel *tmp = [OKBMultiLevelMenuRootModel defaultRootModel];
     
     NSMutableArray<PersonModel *> *personsLevel3 = NSMutableArray.new;
     NSMutableArray<PersonModel *> *persons2Level3 = NSMutableArray.new;
@@ -94,8 +94,8 @@
     return tmp;
 }
 
-+ (OKBMultiLevelDropDownMenuRootModel *)level1DataSource {
-    OKBMultiLevelDropDownMenuRootModel *tmp = [OKBMultiLevelDropDownMenuRootModel defaultRootModel];
++ (OKBMultiLevelMenuRootModel *)level1DataSource {
+    OKBMultiLevelMenuRootModel *tmp = [OKBMultiLevelMenuRootModel defaultRootModel];
     
     NSMutableArray *persons = NSMutableArray.new;
     for (int i = 0; i < 2; i++) {
@@ -110,9 +110,9 @@
     return tmp;
 }
 
-+ (OKBMultiLevelDropDownMenuRootModel *)level2DataSource {
++ (OKBMultiLevelMenuRootModel *)level2DataSource {
     
-    OKBMultiLevelDropDownMenuRootModel *tmp = [OKBMultiLevelDropDownMenuRootModel defaultRootModel];
+    OKBMultiLevelMenuRootModel *tmp = [OKBMultiLevelMenuRootModel defaultRootModel];
     
     NSMutableArray *persons = NSMutableArray.new;
     for (int i = 0; i < 10; i++) {
