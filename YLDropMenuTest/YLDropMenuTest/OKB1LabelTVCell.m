@@ -9,7 +9,7 @@
 #import "OKB1LabelTVCell.h"
 #import <Masonry/Masonry.h>
 
-NSString* const g_1LabelViewTVCellId = @"1LabelViewTVCell";
+NSString* const g_OKB1LabelViewTVCellId = @"1LabelViewTVCell";
 
 @implementation OKB1LabelTVCell
 

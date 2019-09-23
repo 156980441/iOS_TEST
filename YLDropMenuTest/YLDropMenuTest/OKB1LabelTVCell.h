@@ -14,6 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel* innerLbl;
 @end
 
-FOUNDATION_EXPORT NSString* const g_1LabelViewTVCellId;
+FOUNDATION_EXPORT NSString* const g_OKB1LabelViewTVCellId;
 
 NS_ASSUME_NONNULL_END

@@ -207,7 +207,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    OKB1LabelTVCell *cell = [tableView dequeueReusableCellWithIdentifier:g_1LabelViewTVCellId forIndexPath:indexPath];
+    OKB1LabelTVCell *cell = [tableView dequeueReusableCellWithIdentifier:g_OKB1LabelViewTVCellId forIndexPath:indexPath];
     if (_tableViewNum == 1) {
         cell.innerLbl.text = _dataSource.childNodes[indexPath.row].nodeName;
     } else if (_tableViewNum == 2) {
@@ -248,7 +248,7 @@
         for (int i = 0; i < _tableViewNum; i++) {
             UITableView *tmp = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
             tmp.separatorStyle = UITableViewCellSeparatorStyleNone;
-            [tmp registerClass:OKB1LabelTVCell.class forCellReuseIdentifier:g_1LabelViewTVCellId];
+            [tmp registerClass:OKB1LabelTVCell.class forCellReuseIdentifier:g_OKB1LabelViewTVCellId];
             tmp.dataSource = self;
             tmp.delegate = self;
             tmp.rowHeight = 44.0f; // 默认高度
