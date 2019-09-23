@@ -12,7 +12,10 @@
 #import "OKBMenuItemView.h"
 #import "OKBMultiLevelDropDownMenuView.h"
 #import "OKBMultiLevelDropMenuTVHeaderView.h"
+#import "OKBMultiLevelDropDownMenuLabelTVHeader.h"
+
 #import "OKBMultiLevelDropDownMenuRootModel.h"
+
 #import "OKBMenuViewController.h"
 #import "OKBMultiLevelDropDownMenuVC.h"
 
@@ -21,39 +24,6 @@
 #import "PersonModel.h"
 
 #import <Masonry/Masonry.h>
-
-
-@interface OKBMultiLevelDropDownMenuLabelTVHeader : OKBMultiLevelDropMenuTVHeaderView
-@property (nonatomic, strong) UILabel *textLbl;
-@end
-
-@implementation OKBMultiLevelDropDownMenuLabelTVHeader
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectZero];
-        tmp.text = @"--";
-        tmp.font = [UIFont systemFontOfSize:11];
-        tmp.textAlignment = NSTextAlignmentCenter;
-        tmp.textColor = [UIColor colorWithRed:153/255.f green:153/255.f blue:153/255.f alpha:1];
-        tmp.backgroundColor = [UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1];
-        
-        [self.contentView addSubview:tmp];
-        UIView *superView = self.contentView;
-        [tmp mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(superView);
-        }];
-        _textLbl = tmp;
-    }
-    return self;
-}
-
-- (CGFloat)height {
-    return 30;
-}
-
-@end
 
 @interface ViewControllerTestVC ()
 @property (nonatomic, strong) OKBMenuViewController *menuVC;
@@ -86,6 +56,7 @@
         OKBMultiLevelDropDownMenuLabelTVHeader *header2 = OKBMultiLevelDropDownMenuLabelTVHeader.new;
         header2.textLbl.text = @"学校";
         NSArray *arr = @[header0, header1, header2];
+        
         OKBMultiLevelDropDownMenuVC *vc1 = [[OKBMultiLevelDropDownMenuVC alloc] initWithMultiLevel:1 levelOfWidthWeight:nil tableViewHeaders:arr rootModel:[DataSourceFactory level1DataSource] block:nil];
         OKBMultiLevelDropDownMenuVC *vc2 = [[OKBMultiLevelDropDownMenuVC alloc] initWithMultiLevel:2 levelOfWidthWeight:@"1:2" tableViewHeaders:arr rootModel:[DataSourceFactory level2DataSource] block:nil];
         [vc2 setMultiLevelViewBackgroundColor:[UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1] atIndex:0];
