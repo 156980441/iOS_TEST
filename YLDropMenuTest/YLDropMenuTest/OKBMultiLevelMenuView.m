@@ -119,9 +119,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     CGFloat height = 0;
-    if ([self.delegate respondsToSelector:@selector(multiLevelDropDownMenu:heightForHeaderInTableView:atIndex:)]) {
+    if ([self.delegate respondsToSelector:@selector(multiLevelMenu:heightForHeaderInTableView:atIndex:)]) {
         NSInteger index = [_tableViewArr indexOfObject:tableView];
-        height = [self.delegate multiLevelDropDownMenu:self heightForHeaderInTableView:tableView atIndex:index];
+        height = [self.delegate multiLevelMenu:self heightForHeaderInTableView:tableView atIndex:index];
     }
     return height;
 }
@@ -138,7 +138,7 @@
     [self p_saveSelectedRow];
     
     if (tableView == _tableViewArr.lastObject) {
-        if ([self.delegate respondsToSelector:@selector(multiLevelDropDownMenu:didSelectInTableView:)]) {
+        if ([self.delegate respondsToSelector:@selector(multiLevelMenu:didSelectInTableView:)]) {
             id<OKBMultiLevelMenuProtocol> model = nil;
             if (_tableViewNum == 1) {
                 model = _dataSource.array[indexPath.row];
@@ -155,16 +155,16 @@
                 NSArray<id<OKBMultiLevelMenuProtocol>> *arrLevel3 = arrLevel2[secondSelectRow].array;
                 model = arrLevel3[indexPath.row];
             }
-            [self.delegate multiLevelDropDownMenu:self didSelectInTableView:model];
+            [self.delegate multiLevelMenu:self didSelectInTableView:model];
         }
     }
 }
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *view = nil;
-    if ([self.delegate respondsToSelector:@selector(multiLevelDropDownMenu:viewForHeaderInTableView:atIndex:)]) {
+    if ([self.delegate respondsToSelector:@selector(multiLevelMenu:viewForHeaderInTableView:atIndex:)]) {
         NSInteger index = [_tableViewArr indexOfObject:tableView];
-        view = [self.delegate multiLevelDropDownMenu:self viewForHeaderInTableView:tableView atIndex:index];
+        view = [self.delegate multiLevelMenu:self viewForHeaderInTableView:tableView atIndex:index];
     }
     return view;
 }
@@ -182,7 +182,7 @@
             NSArray<id<OKBMultiLevelMenuProtocol>> *arr = _dataSource.array[0].array;
             count = arr.count;
         }
-    } else if (_tableViewNum == 3){
+    } else if (_tableViewNum == 3) {
         
         if (tableView == _tableViewArr[0]) {
             count = _dataSource.array.count;

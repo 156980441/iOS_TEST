@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithMultiLevel:(NSInteger)levels
                 levelOfWidthWeight:(nullable NSString *)intColonInt
-               tableViewHeaders:(NSArray<OKBMultiLevelMenuTVHeaderView *> *)headerViews
+                  tableViewHeaders:(NSArray<OKBMultiLevelMenuTVHeaderView *> *)headerViews
                          rootModel:(OKBMultiLevelMenuRootModel *)model
                              block:(nullable void (^)(id<OKBMultiLevelMenuProtocol>model))block;
 

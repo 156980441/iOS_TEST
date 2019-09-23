@@ -101,7 +101,7 @@
 
 #pragma mark - OKBMultiLevelMenuViewDelegate
 
-- (CGFloat)multiLevelDropDownMenu:(OKBMultiLevelMenuView *)menuView heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+- (CGFloat)multiLevelMenu:(OKBMultiLevelMenuView *)menuView heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
     if (index == 0) {
         return 32;
     } else if (index == 1) {
@@ -111,7 +111,7 @@
     }
 }
 
-- (void)multiLevelDropDownMenu:(OKBMultiLevelMenuView *)menuView didSelectInTableView:(nonnull id<OKBMultiLevelMenuProtocol>)model {
+- (void)multiLevelMenu:(OKBMultiLevelMenuView *)menuView didSelectInTableView:(nonnull id<OKBMultiLevelMenuProtocol>)model {
     OKBLabelImageView *tmp = (OKBLabelImageView *)[self.menuView menuItemViewAtIndex:self.menuView.selectedItemIndex];
     tmp.textLbl.text = model.nodeName;
     [self.menuView dismissSourceViewWithAnimation:YES];
@@ -123,7 +123,7 @@
     }
 }
 
-- (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelMenuView *)menuView viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+- (nullable UIView *)multiLevelMenu:(OKBMultiLevelMenuView *)menuView viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
     UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectZero];
     tmp.textAlignment = NSTextAlignmentCenter;
     tmp.font = [UIFont systemFontOfSize:12];

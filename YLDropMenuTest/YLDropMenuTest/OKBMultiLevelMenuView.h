@@ -1,5 +1,5 @@
 //
-//  OKBMultiLevelDropDownMenuView.h
+//  OKBMultiLevelMenuView.h
 //  YLDropMenuTest
 //
 //  Created by fanyl on 2019/9/11.
@@ -19,16 +19,16 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol OKBMultiLevelMenuViewDelegate <NSObject>
 
 @optional
-- (CGFloat)multiLevelDropDownMenu:(OKBMultiLevelMenuView *)dropDownMenu
-       heightForHeaderInTableView:(UITableView *)tableView
-                          atIndex:(NSInteger)index;
+- (CGFloat)multiLevelMenu:(OKBMultiLevelMenuView *)dropDownMenu
+heightForHeaderInTableView:(UITableView *)tableView
+                  atIndex:(NSInteger)index;
 
-- (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelMenuView *)dropDownMenu
-                   viewForHeaderInTableView:(UITableView *)tableView
-                                    atIndex:(NSInteger)index;
+- (nullable UIView *)multiLevelMenu:(OKBMultiLevelMenuView *)dropDownMenu
+           viewForHeaderInTableView:(UITableView *)tableView
+                            atIndex:(NSInteger)index;
 
-- (void)multiLevelDropDownMenu:(OKBMultiLevelMenuView *)dropDownMenu
-          didSelectInTableView:(id<OKBMultiLevelMenuProtocol>)model;
+- (void)multiLevelMenu:(OKBMultiLevelMenuView *)dropDownMenu
+  didSelectInTableView:(id<OKBMultiLevelMenuProtocol>)model;
 
 @end
 

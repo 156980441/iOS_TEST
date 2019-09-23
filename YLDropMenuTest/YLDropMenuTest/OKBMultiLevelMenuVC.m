@@ -65,17 +65,17 @@
 
 #pragma mark - OKBMultiLevelMenuViewDelegate
 
-- (CGFloat)multiLevelDropDownMenu:(OKBMultiLevelMenuView *)dropDownMenu heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+- (CGFloat)multiLevelMenu:(OKBMultiLevelMenuView *)dropDownMenu heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
     return [_headerViewArr objectAtIndex:index].height;
 }
 
-- (void)multiLevelDropDownMenu:(OKBMultiLevelMenuView *)dropDownMenu didSelectInTableView:(nonnull id<OKBMultiLevelMenuProtocol>)model {
+- (void)multiLevelMenu:(OKBMultiLevelMenuView *)dropDownMenu didSelectInTableView:(nonnull id<OKBMultiLevelMenuProtocol>)model {
     if (self.selectedBlock) {
         self.selectedBlock(model);
     }
 }
 
-- (nullable UIView *)multiLevelDropDownMenu:(OKBMultiLevelMenuView *)dropDownMenu viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+- (nullable UIView *)multiLevelMenu:(OKBMultiLevelMenuView *)dropDownMenu viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
     return [_headerViewArr objectAtIndex:index];
 }
 
