@@ -63,8 +63,17 @@
         header2.textLbl.text = @"学校";
         NSArray *arr = @[header0, header1, header2];
         
+        OKBMultiLevelMenuLabelTVHeader *header00 = OKBMultiLevelMenuLabelTVHeader.new;
+        header00.textLbl.text = @"姓名";
+        OKBMultiLevelMenuLabelTVHeader *header10 = OKBMultiLevelMenuLabelTVHeader.new;
+        header10.textLbl.text = @"班级";
+        OKBMultiLevelMenuLabelTVHeader *header20 = OKBMultiLevelMenuLabelTVHeader.new;
+        header20.textLbl.text = @"学校";
+        NSArray *arr2 = @[header00, header10, header20];
+        
+        // 这里要整两个arr，有没有方便的方法？
         OKBMultiLevelMenuVC *vc1 = [[OKBMultiLevelMenuVC alloc] initWithMultiLevel:1 levelOfWidthWeight:nil tableViewHeaders:arr rootModel:[DataSourceFactory level1DataSource] block:nil];
-        OKBMultiLevelMenuVC *vc2 = [[OKBMultiLevelMenuVC alloc] initWithMultiLevel:2 levelOfWidthWeight:@"1:2" tableViewHeaders:arr rootModel:[DataSourceFactory level2DataSource] block:nil];
+        OKBMultiLevelMenuVC *vc2 = [[OKBMultiLevelMenuVC alloc] initWithMultiLevel:2 levelOfWidthWeight:@"1:2" tableViewHeaders:arr2 rootModel:[DataSourceFactory level2DataSource] block:nil];
         
         [vc2 setMultiLevelViewBackgroundColor:[UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1] atIndex:0];
         
