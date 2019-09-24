@@ -12,14 +12,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OKBMultiLevelMenuNode : NSObject
 
-@property (nonatomic, strong, nullable) OKBMultiLevelMenuNode *parentNode;
+@property (nonatomic, strong, readonly, nullable) OKBMultiLevelMenuNode *parentNode;
 @property (nonatomic, strong) id data;
 
 @property (nonatomic, copy) NSString *nodeName;
 @property (nonatomic, assign) NSInteger nodeId;
-@property (nonatomic, strong, nullable) NSArray<OKBMultiLevelMenuNode *> *childNodes;
+@property (nonatomic, strong, readonly, nullable) NSArray<OKBMultiLevelMenuNode *> *childNodes;
 
 + (instancetype)defaultRootModel;
+
+- (void)insertChild:(OKBMultiLevelMenuNode *)childNode;
+- (void)deleteChild:(OKBMultiLevelMenuNode *)childNode;
 
 @end
 
