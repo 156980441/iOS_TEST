@@ -55,36 +55,33 @@
 
 - (OKBMenuViewController *)menuVC {
     if (!_menuVC) {
+        
         OKBMultiLevelListLabelTVHeader *header0 = OKBMultiLevelListLabelTVHeader.new;
         header0.textLbl.text = @"姓名";
-        OKBMultiLevelListLabelTVHeader *header1 = OKBMultiLevelListLabelTVHeader.new;
-        header1.textLbl.text = @"班级";
-        OKBMultiLevelListLabelTVHeader *header2 = OKBMultiLevelListLabelTVHeader.new;
-        header2.textLbl.text = @"学校";
-        NSArray *arr = @[header0, header1, header2];
         
-        OKBMultiLevelMenuViewConfig *config1 = [[OKBMultiLevelMenuViewConfig alloc] init];
-        config1.level = 1;
-        config1.widthWeight = nil;
-        config1.headerViews = arr;
+        OKBMultiLevelListColumnConfig *config0 = [[OKBMultiLevelListColumnConfig alloc] init];
+        config0.widthWeight = nil;
+        config0.headerViews = header0;
         
-        OKBMultiLevelListVC *vc1 = [[OKBMultiLevelListVC alloc] initWithConfig:config1 rootModel:[DataSourceFactory level1DataSource] block:nil];
+        
+        OKBMultiLevelListVC *vc1 = [[OKBMultiLevelListVC alloc] initWithConfig:@[config0] rootModel:[DataSourceFactory level1DataSource] block:nil];
         
         
         OKBMultiLevelListLabelTVHeader *header00 = OKBMultiLevelListLabelTVHeader.new;
         header00.textLbl.text = @"姓名";
         OKBMultiLevelListLabelTVHeader *header10 = OKBMultiLevelListLabelTVHeader.new;
         header10.textLbl.text = @"地域";
-        OKBMultiLevelListLabelTVHeader *header20 = OKBMultiLevelListLabelTVHeader.new;
-        header20.textLbl.text = @"学校";
-        NSArray *arr2 = @[header00, header10, header20];
         
-        OKBMultiLevelMenuViewConfig *config2 = [[OKBMultiLevelMenuViewConfig alloc] init];
-        config2.level = 2;
-        config2.widthWeight = nil;
-        config2.headerViews = arr2;
+        OKBMultiLevelListColumnConfig *config00 = [[OKBMultiLevelListColumnConfig alloc] init];
+        config00.widthWeight = @"1";
+        config00.headerViews = header00;
         
-        OKBMultiLevelListVC *vc2 = [[OKBMultiLevelListVC alloc] initWithConfig:config2 rootModel:[DataSourceFactory level2DataSource] block:nil];
+        OKBMultiLevelListColumnConfig *config10 = [[OKBMultiLevelListColumnConfig alloc] init];
+        config10.widthWeight = @"2";
+        config10.headerViews = header10;
+        
+        
+        OKBMultiLevelListVC *vc2 = [[OKBMultiLevelListVC alloc] initWithConfig:@[config00, config10] rootModel:[DataSourceFactory level2DataSource] block:nil];
         
         [vc2 setMultiLevelViewBackgroundColor:[UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1] atIndex:0];
         
