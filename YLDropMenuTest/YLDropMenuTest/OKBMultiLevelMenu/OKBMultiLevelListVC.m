@@ -10,7 +10,7 @@
 #import "OKBMultiLevelListView.h"
 #import "OKBMultiLevelListTVHeaderView.h"
 #import "OKBLabelImageView.h"
-#import "OKBMultiLevelMenuNode.h"
+#import "OKBMultiLevelListNode.h"
 #import <Masonry/Masonry.h>
 
 @implementation OKBMultiLevelMenuViewConfig
@@ -19,7 +19,7 @@
 @interface OKBMultiLevelListVC () <OKBMultiLevelMenuViewDelegate>
 {
     NSInteger _levels;
-    OKBMultiLevelMenuNode *_model;
+    OKBMultiLevelListNode *_model;
     NSString *_intColonInt;
     NSArray<OKBMultiLevelListTVHeaderView *> *_headerViewArr;
     OKBMultiLevelMenuViewConfig *_config;
@@ -31,8 +31,8 @@
 @implementation OKBMultiLevelListVC
 
 - (instancetype)initWithConfig:(OKBMultiLevelMenuViewConfig *)config
-                     rootModel:(OKBMultiLevelMenuNode *)model
-                         block:(nullable void (^)(OKBMultiLevelMenuNode *model))block {
+                     rootModel:(OKBMultiLevelListNode *)model
+                         block:(nullable void (^)(OKBMultiLevelListNode *model))block {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         NSAssert(config.level <= config.headerViews.count, @"levels must equal to or less than headerViews count");
@@ -74,7 +74,7 @@
     return [_headerViewArr objectAtIndex:index].height;
 }
 
-- (void)multiLevelList:(OKBMultiLevelListView *)dropDownMenu didSelectInTableView:(nonnull OKBMultiLevelMenuNode *)model {
+- (void)multiLevelList:(OKBMultiLevelListView *)dropDownMenu didSelectInTableView:(nonnull OKBMultiLevelListNode *)model {
     if (self.selectedBlock) {
         self.selectedBlock(model);
     }

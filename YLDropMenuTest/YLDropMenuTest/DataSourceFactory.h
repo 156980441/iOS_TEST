@@ -10,13 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class OKBMultiLevelMenuNode;
+@class OKBMultiLevelListNode;
 
 @interface DataSourceFactory : NSObject
 
-+ (OKBMultiLevelMenuNode *)level1DataSource;
-+ (OKBMultiLevelMenuNode *)level2DataSource;
-+ (OKBMultiLevelMenuNode *)level3DataSource;
++ (OKBMultiLevelListNode *)level1DataSource;
++ (OKBMultiLevelListNode *)level2DataSource;
++ (OKBMultiLevelListNode *)level3DataSource;
 
 @end
 

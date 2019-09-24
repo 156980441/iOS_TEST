@@ -15,7 +15,7 @@
 
 #import "DataSourceFactory.h"
 #import "PersonModel.h"
-#import "OKBMultiLevelMenuNode.h"
+#import "OKBMultiLevelListNode.h"
 
 #import <Masonry/Masonry.h>
 
@@ -123,14 +123,14 @@
     return 0;
 }
 
-- (void)multiLevelList:(OKBMultiLevelListView *)menuView didSelectInTableView:(nonnull OKBMultiLevelMenuNode *)model {
+- (void)multiLevelList:(OKBMultiLevelListView *)menuView didSelectInTableView:(nonnull OKBMultiLevelListNode *)model {
     OKBLabelImageView *tmp = (OKBLabelImageView *)[self.menuView menuItemViewAtIndex:self.menuView.selectedItemIndex];
     tmp.textLbl.text = model.nodeName;
     [self.menuView dismissSourceViewWithAnimation:YES];
     
     // 可以更新数据源
     if (model.nodeId == 3) {
-        OKBMultiLevelMenuNode *original = model.parentNode.parentNode;
+        OKBMultiLevelListNode *original = model.parentNode.parentNode;
 //        original.childNodes = [DataSourceFactory level1DataSource].childNodes;
     }
 }

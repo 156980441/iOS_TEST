@@ -12,9 +12,9 @@
 #import "OKBMenuItemView.h"
 #import "OKBMultiLevelListView.h"
 #import "OKBMultiLevelListTVHeaderView.h"
-#import "OKBMultiLevelMenuLabelTVHeader.h"
+#import "OKBMultiLevelListLabelTVHeader.h"
 
-#import "OKBMultiLevelMenuNode.h"
+#import "OKBMultiLevelListNode.h"
 
 #import "OKBMenuViewController.h"
 #import "OKBMultiLevelListVC.h"
@@ -55,11 +55,11 @@
 
 - (OKBMenuViewController *)menuVC {
     if (!_menuVC) {
-        OKBMultiLevelMenuLabelTVHeader *header0 = OKBMultiLevelMenuLabelTVHeader.new;
+        OKBMultiLevelListLabelTVHeader *header0 = OKBMultiLevelListLabelTVHeader.new;
         header0.textLbl.text = @"姓名";
-        OKBMultiLevelMenuLabelTVHeader *header1 = OKBMultiLevelMenuLabelTVHeader.new;
+        OKBMultiLevelListLabelTVHeader *header1 = OKBMultiLevelListLabelTVHeader.new;
         header1.textLbl.text = @"班级";
-        OKBMultiLevelMenuLabelTVHeader *header2 = OKBMultiLevelMenuLabelTVHeader.new;
+        OKBMultiLevelListLabelTVHeader *header2 = OKBMultiLevelListLabelTVHeader.new;
         header2.textLbl.text = @"学校";
         NSArray *arr = @[header0, header1, header2];
         
@@ -71,11 +71,11 @@
         OKBMultiLevelListVC *vc1 = [[OKBMultiLevelListVC alloc] initWithConfig:config1 rootModel:[DataSourceFactory level1DataSource] block:nil];
         
         
-        OKBMultiLevelMenuLabelTVHeader *header00 = OKBMultiLevelMenuLabelTVHeader.new;
+        OKBMultiLevelListLabelTVHeader *header00 = OKBMultiLevelListLabelTVHeader.new;
         header00.textLbl.text = @"姓名";
-        OKBMultiLevelMenuLabelTVHeader *header10 = OKBMultiLevelMenuLabelTVHeader.new;
+        OKBMultiLevelListLabelTVHeader *header10 = OKBMultiLevelListLabelTVHeader.new;
         header10.textLbl.text = @"地域";
-        OKBMultiLevelMenuLabelTVHeader *header20 = OKBMultiLevelMenuLabelTVHeader.new;
+        OKBMultiLevelListLabelTVHeader *header20 = OKBMultiLevelListLabelTVHeader.new;
         header20.textLbl.text = @"学校";
         NSArray *arr2 = @[header00, header10, header20];
         
@@ -90,11 +90,11 @@
         
         
         OKBMenuViewController *tmp = [[OKBMenuViewController alloc] initWithMenuItemControllers:@[vc1, vc2]];
-        vc1.selectedBlock = ^(OKBMultiLevelMenuNode *model) {
+        vc1.selectedBlock = ^(OKBMultiLevelListNode *model) {
             [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];
             [tmp dismissSourceViewWithAnimation:YES];
         };
-        vc2.selectedBlock = ^(OKBMultiLevelMenuNode *model) {
+        vc2.selectedBlock = ^(OKBMultiLevelListNode *model) {
             [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];
             [tmp dismissSourceViewWithAnimation:YES];
         };

@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OKBMultiLevelMenuLabelTVHeader : OKBMultiLevelListTVHeaderView
+@interface OKBMultiLevelListLabelTVHeader : OKBMultiLevelListTVHeaderView
 @property (nonatomic, strong) UILabel *textLbl;
 @end
 

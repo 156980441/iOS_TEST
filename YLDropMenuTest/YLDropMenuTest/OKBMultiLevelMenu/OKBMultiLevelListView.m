@@ -7,14 +7,14 @@
 //
 
 #import "OKBMultiLevelListView.h"
-#import "OKBMultiLevelMenuNode.h"
+#import "OKBMultiLevelListNode.h"
 #import "OKB1LabelTVCell.h"
 #import <Masonry/Masonry.h>
 
 @interface OKBMultiLevelListView () <UITableViewDelegate, UITableViewDataSource>
 {
     NSInteger _tableViewNum;
-    OKBMultiLevelMenuNode *_dataSource;
+    OKBMultiLevelListNode *_dataSource;
     NSInteger _selectedRow[3];
     NSArray<NSString *> *_widthWeightArr;
 }
@@ -112,7 +112,7 @@
     }];
 }
 
-- (void)reloadDataWithRootDataSource:(OKBMultiLevelMenuNode *)rootDataSource {
+- (void)reloadDataWithRootDataSource:(OKBMultiLevelListNode *)rootDataSource {
     _dataSource = rootDataSource;
     [self p_resetSelectedRow];
     [self p_loadSelectedRow];
@@ -140,20 +140,20 @@
     
     if (tableView == _tableViewArr.lastObject) {
         if ([self.delegate respondsToSelector:@selector(multiLevelList:didSelectInTableView:)]) {
-            OKBMultiLevelMenuNode *model = nil;
+            OKBMultiLevelListNode *model = nil;
             if (_tableViewNum == 1) {
                 model = _dataSource.childNodes[indexPath.row];
             } else if (_tableViewNum == 2) {
                NSInteger firstSelectRow = _tableViewArr[0].indexPathForSelectedRow.row;
-                    NSArray<OKBMultiLevelMenuNode *> *arr = _dataSource.childNodes[firstSelectRow].childNodes;
+                    NSArray<OKBMultiLevelListNode *> *arr = _dataSource.childNodes[firstSelectRow].childNodes;
                     model = arr[indexPath.row];
             } else if (_tableViewNum == 3) {
                 
                 NSInteger firstSelectRow = _tableViewArr[0].indexPathForSelectedRow.row;
                 NSInteger secondSelectRow = _tableViewArr[1].indexPathForSelectedRow.row;
                 
-                NSArray<OKBMultiLevelMenuNode *> *arrLevel2 = _dataSource.childNodes[firstSelectRow].childNodes;
-                NSArray<OKBMultiLevelMenuNode *> *arrLevel3 = arrLevel2[secondSelectRow].childNodes;
+                NSArray<OKBMultiLevelListNode *> *arrLevel2 = _dataSource.childNodes[firstSelectRow].childNodes;
+                NSArray<OKBMultiLevelListNode *> *arrLevel3 = arrLevel2[secondSelectRow].childNodes;
                 model = arrLevel3[indexPath.row];
             }
             [self.delegate multiLevelList:self didSelectInTableView:model];
@@ -180,7 +180,7 @@
             count = _dataSource.childNodes.count;
         }
         else if (tableView == _tableViewArr[1]) {
-            NSArray<OKBMultiLevelMenuNode *> *arr = _dataSource.childNodes[0].childNodes;
+            NSArray<OKBMultiLevelListNode *> *arr = _dataSource.childNodes[0].childNodes;
             count = arr.count;
         }
     } else if (_tableViewNum == 3) {
@@ -190,14 +190,14 @@
         }
         else if (tableView == _tableViewArr[1]) {
             NSInteger firstSelectRow = _tableViewArr[0].indexPathForSelectedRow.row;
-            NSArray<OKBMultiLevelMenuNode *> *arr = _dataSource.childNodes[firstSelectRow].childNodes;
+            NSArray<OKBMultiLevelListNode *> *arr = _dataSource.childNodes[firstSelectRow].childNodes;
             count = arr.count;
         }
         else if (tableView == _tableViewArr[2]) {
             NSInteger firstSelectRow = _tableViewArr[0].indexPathForSelectedRow.row;
             NSInteger secondSelectRow = _tableViewArr[1].indexPathForSelectedRow.row;
-            NSArray<OKBMultiLevelMenuNode *> *arrLevel2 = _dataSource.childNodes[firstSelectRow].childNodes;
-            NSArray<OKBMultiLevelMenuNode *> *arrLevel3 = arrLevel2[secondSelectRow].childNodes;
+            NSArray<OKBMultiLevelListNode *> *arrLevel2 = _dataSource.childNodes[firstSelectRow].childNodes;
+            NSArray<OKBMultiLevelListNode *> *arrLevel3 = arrLevel2[secondSelectRow].childNodes;
             count = arrLevel3.count;
         }
     }
@@ -215,7 +215,7 @@
             cell.innerLbl.text = _dataSource.childNodes[indexPath.row].nodeName;
         }
         else if (tableView == _tableViewArr[1]) {
-            NSArray<OKBMultiLevelMenuNode *> *arr = _dataSource.childNodes[0].childNodes;
+            NSArray<OKBMultiLevelListNode *> *arr = _dataSource.childNodes[0].childNodes;
             cell.innerLbl.text = arr[indexPath.row].nodeName;
         }
     } else if (_tableViewNum == 3) {
@@ -225,7 +225,7 @@
         }
         else if (tableView == _tableViewArr[1]) {
             NSInteger firstSelectRow = _tableViewArr[0].indexPathForSelectedRow.row;
-            NSArray<OKBMultiLevelMenuNode *> *arr = _dataSource.childNodes[firstSelectRow].childNodes;
+            NSArray<OKBMultiLevelListNode *> *arr = _dataSource.childNodes[firstSelectRow].childNodes;
             cell.innerLbl.text = arr[indexPath.row].nodeName;
         }
         else if (tableView == _tableViewArr[2]) {
@@ -233,8 +233,8 @@
             NSInteger firstSelectRow = _tableViewArr[0].indexPathForSelectedRow.row;
             NSInteger secondSelectRow = _tableViewArr[1].indexPathForSelectedRow.row;
             
-            NSArray<OKBMultiLevelMenuNode *> *arrLevel2 = _dataSource.childNodes[firstSelectRow].childNodes;
-            NSArray<OKBMultiLevelMenuNode *> *arrLevel3 = arrLevel2[secondSelectRow].childNodes;
+            NSArray<OKBMultiLevelListNode *> *arrLevel2 = _dataSource.childNodes[firstSelectRow].childNodes;
+            NSArray<OKBMultiLevelListNode *> *arrLevel3 = arrLevel2[secondSelectRow].childNodes;
             cell.innerLbl.text = arrLevel3[indexPath.row].nodeName;
         }
     }

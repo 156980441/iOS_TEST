@@ -6,17 +6,17 @@
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import "OKBMultiLevelMenuNode.h"
+#import "OKBMultiLevelListNode.h"
 
 
-@interface OKBMultiLevelMenuNode ()
+@interface OKBMultiLevelListNode ()
 {
-    NSMutableArray<OKBMultiLevelMenuNode *> *_childrenArr;
-    NSArray<OKBMultiLevelMenuNode *> *_childNodes;
+    NSMutableArray<OKBMultiLevelListNode *> *_childrenArr;
+    NSArray<OKBMultiLevelListNode *> *_childNodes;
 }
 @end
 
-@implementation OKBMultiLevelMenuNode
+@implementation OKBMultiLevelListNode
 
 + (instancetype)defaultRootModel {
     return [[self alloc] init];
@@ -34,25 +34,25 @@
     return self;
 }
 
-- (void)setChildNodes:(NSArray<OKBMultiLevelMenuNode *> * _Nullable)childNodes {
+- (void)setChildNodes:(NSArray<OKBMultiLevelListNode *> * _Nullable)childNodes {
     _childNodes = childNodes;
 }
 
-- (void)setParentNode:(OKBMultiLevelMenuNode * _Nullable)parentNode {
+- (void)setParentNode:(OKBMultiLevelListNode * _Nullable)parentNode {
     _parentNode = parentNode;
 }
 
-- (void)insertChild:(OKBMultiLevelMenuNode *)childNode {
+- (void)addChild:(OKBMultiLevelListNode *)childNode {
     [childNode setParentNode:self];
     [self->_childrenArr addObject:childNode];
 }
 
-- (void)deleteChild:(OKBMultiLevelMenuNode *)childNode {
+- (void)removeChild:(OKBMultiLevelListNode *)childNode {
     [childNode setParentNode:self];
     [self->_childrenArr removeObject:childNode];
 }
 
-- (NSArray<OKBMultiLevelMenuNode *> *)childNodes {
+- (NSArray<OKBMultiLevelListNode *> *)childNodes {
     _childNodes = [NSArray arrayWithArray:_childrenArr];
     if (_childNodes.count > 0) {
         return _childNodes;
