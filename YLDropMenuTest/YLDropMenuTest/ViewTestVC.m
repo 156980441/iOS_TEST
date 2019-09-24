@@ -79,7 +79,7 @@
     else if (index == 1) {
         // 测试释放
         OKBMultiLevelListView *view = [[OKBMultiLevelListView alloc] initWithFrame:CGRectZero
-                                                                    tableViewCells:@[]
+                                                                    tableViewCells:@[OKBMultiLevelListBaseTVCell.class, OKBMultiLevelListBaseTVCell.class]
                                                                        widthWeight:nil];
         [view reloadDataWithRootDataSource:[DataSourceFactory level2DataSource]];
         return view;
