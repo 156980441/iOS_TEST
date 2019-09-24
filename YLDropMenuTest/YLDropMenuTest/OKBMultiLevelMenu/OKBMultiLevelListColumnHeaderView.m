@@ -6,10 +6,10 @@
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import "OKBMultiLevelListTVHeaderView.h"
+#import "OKBMultiLevelListColumnHeaderView.h"
 #import <Masonry/Masonry.h>
 
-@implementation OKBMultiLevelListTVHeaderView
+@implementation OKBMultiLevelListColumnHeaderView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];

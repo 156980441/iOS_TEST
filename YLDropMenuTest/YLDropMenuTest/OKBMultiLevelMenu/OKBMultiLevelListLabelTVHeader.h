@@ -6,11 +6,11 @@
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import "OKBMultiLevelListTVHeaderView.h"
+#import "OKBMultiLevelListColumnHeaderView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OKBMultiLevelListLabelTVHeader : OKBMultiLevelListTVHeaderView
+@interface OKBMultiLevelListLabelTVHeader : OKBMultiLevelListColumnHeaderView
 @property (nonatomic, strong) UILabel *textLbl;
 @end
 

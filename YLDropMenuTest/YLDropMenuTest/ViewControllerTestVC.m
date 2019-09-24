@@ -11,7 +11,7 @@
 #import "OKBMenuView.h"
 #import "OKBMenuItemView.h"
 #import "OKBMultiLevelListView.h"
-#import "OKBMultiLevelListTVHeaderView.h"
+#import "OKBMultiLevelListColumnHeaderView.h"
 #import "OKBMultiLevelListLabelTVHeader.h"
 
 #import "OKBMultiLevelListNode.h"

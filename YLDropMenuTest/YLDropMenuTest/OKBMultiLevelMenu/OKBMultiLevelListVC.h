@@ -10,12 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class OKBMultiLevelMenuRootModel, OKBMultiLevelListTVHeaderView, OKBMultiLevelListNode;
+@class OKBMultiLevelMenuRootModel, OKBMultiLevelListColumnHeaderView, OKBMultiLevelListNode;
 
 @interface OKBMultiLevelListColumnConfig : NSObject
 
 @property (nonatomic, copy, nullable) NSString *widthWeight;
-@property (nonatomic, strong) OKBMultiLevelListTVHeaderView *headerViews;
+@property (nonatomic, strong) OKBMultiLevelListColumnHeaderView *headerViews;
 @property (nonatomic, strong) UITableViewCell *customTVCell;
 
 @end
