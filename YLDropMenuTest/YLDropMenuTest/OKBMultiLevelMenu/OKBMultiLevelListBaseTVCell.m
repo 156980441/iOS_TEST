@@ -9,8 +9,6 @@
 #import "OKBMultiLevelListBaseTVCell.h"
 #import <Masonry/Masonry.h>
 
-NSString* const g_OKBMultiLevelListBaseTVCellId = @"OKBMultiLevelListBaseTVCellId";
-
 @implementation OKBMultiLevelListBaseTVCell
 
 - (void)awakeFromNib {
@@ -62,6 +60,10 @@ NSString* const g_OKBMultiLevelListBaseTVCellId = @"OKBMultiLevelListBaseTVCellI
     else {
         self.innerLbl.textColor = [UIColor colorWithRed:92/255.f green:94/255.f blue:102/255.f alpha:1];
     }
+}
+
+- (void)renderCustomCell:(NSString*)item {
+    self.innerLbl.text = item;
 }
 
 @end

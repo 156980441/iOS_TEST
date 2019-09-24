@@ -8,7 +8,7 @@
 
 #import "OKBMultiLevelListView.h"
 #import "OKBMultiLevelListNode.h"
-#import "OKBMultiLevelListBaseTVCell.h"
+#import "OKBMultiLevelListAbsTVCell.h"
 #import "OKB1LabelTVCell.h"
 #import <Masonry/Masonry.h>
 
@@ -213,26 +213,25 @@ static NSString *okb_cellPrefix = @"OKBMultiLevelListView";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger index = [_tableViewArr indexOfObject:tableView];
     NSString *identifier = [NSString stringWithFormat:@"%@%@", okb_cellPrefix, NSStringFromClass([_cellArr objectAtIndex:index])];
-    OKBMultiLevelListBaseTVCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    OKBMultiLevelListAbsTVCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     if (_tableViewNum == 1) {
-        cell.innerLbl.text = _dataSource.childNodes[indexPath.row].nodeName;
+        [cell renderCustomCell:_dataSource.childNodes[indexPath.row].nodeName];
     } else if (_tableViewNum == 2) {
         if (tableView == _tableViewArr[0]) {
-            cell.innerLbl.text = _dataSource.childNodes[indexPath.row].nodeName;
+            [cell renderCustomCell:_dataSource.childNodes[indexPath.row].nodeName];
         }
         else if (tableView == _tableViewArr[1]) {
             NSArray<OKBMultiLevelListNode *> *arr = _dataSource.childNodes[0].childNodes;
-            cell.innerLbl.text = arr[indexPath.row].nodeName;
+            [cell renderCustomCell:arr[indexPath.row].nodeName];
         }
     } else if (_tableViewNum == 3) {
-        
         if (tableView == _tableViewArr[0]) {
-            cell.innerLbl.text = _dataSource.childNodes[indexPath.row].nodeName;
+            [cell renderCustomCell:_dataSource.childNodes[indexPath.row].nodeName];
         }
         else if (tableView == _tableViewArr[1]) {
             NSInteger firstSelectRow = _tableViewArr[0].indexPathForSelectedRow.row;
             NSArray<OKBMultiLevelListNode *> *arr = _dataSource.childNodes[firstSelectRow].childNodes;
-            cell.innerLbl.text = arr[indexPath.row].nodeName;
+            [cell renderCustomCell:arr[indexPath.row].nodeName];
         }
         else if (tableView == _tableViewArr[2]) {
             
@@ -241,7 +240,8 @@ static NSString *okb_cellPrefix = @"OKBMultiLevelListView";
             
             NSArray<OKBMultiLevelListNode *> *arrLevel2 = _dataSource.childNodes[firstSelectRow].childNodes;
             NSArray<OKBMultiLevelListNode *> *arrLevel3 = arrLevel2[secondSelectRow].childNodes;
-            cell.innerLbl.text = arrLevel3[indexPath.row].nodeName;
+            
+            [cell renderCustomCell:arrLevel3[indexPath.row].nodeName];
         }
     }
     

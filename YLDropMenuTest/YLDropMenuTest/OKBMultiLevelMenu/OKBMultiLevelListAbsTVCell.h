@@ -1,18 +1,16 @@
 //
-//  OKBMultiLevelListBaseTVCell.h
+//  OKBMultiLevelListAbsTVCell.h
 //  YLDropMenuTest
 //
 //  Created by fanyl on 2019/9/24.
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import "OKBMultiLevelListAbsTVCell.h"
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OKBMultiLevelListBaseTVCell : OKBMultiLevelListAbsTVCell
-
-@property (nonatomic, strong) UILabel *innerLbl;
+@interface OKBMultiLevelListAbsTVCell : UITableViewCell
 
 - (void)renderCustomCell:(NSString *)item;
 
