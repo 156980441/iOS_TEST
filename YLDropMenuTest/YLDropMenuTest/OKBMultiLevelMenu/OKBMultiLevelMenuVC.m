@@ -13,12 +13,16 @@
 #import "OKBMultiLevelMenuNode.h"
 #import <Masonry/Masonry.h>
 
+@implementation OKBMultiLevelMenuViewConfig
+@end
+
 @interface OKBMultiLevelMenuVC () <OKBMultiLevelMenuViewDelegate>
 {
     NSInteger _levels;
     OKBMultiLevelMenuNode *_model;
     NSString *_intColonInt;
     NSArray<OKBMultiLevelMenuTVHeaderView *> *_headerViewArr;
+    OKBMultiLevelMenuViewConfig *_config;
 }
 @property (nonatomic, strong) OKBMultiLevelMenuView *multiLeveldropDownMenuView;
 
@@ -26,19 +30,18 @@
 
 @implementation OKBMultiLevelMenuVC
 
-- (instancetype)initWithMultiLevel:(NSInteger)levels
-                levelOfWidthWeight:(nullable NSString *)intColonInt
-                  tableViewHeaders:(nonnull NSArray<OKBMultiLevelMenuTVHeaderView *> *)headerViews
-                         rootModel:(OKBMultiLevelMenuNode *)model
-                             block:(nullable void (^)(OKBMultiLevelMenuNode * _Nonnull))block {
+- (instancetype)initWithConfig:(OKBMultiLevelMenuViewConfig *)config
+                     rootModel:(OKBMultiLevelMenuNode *)model
+                         block:(nullable void (^)(OKBMultiLevelMenuNode *model))block {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
-        NSAssert(levels <= headerViews.count, @"levels must equal to or less than headerViews count");
-        _levels = levels;
-        _intColonInt = intColonInt;
+        NSAssert(config.level <= config.headerViews.count, @"levels must equal to or less than headerViews count");
+        _levels = config.level;
+        _intColonInt = config.widthWeight;
         _model = model;
-        _headerViewArr = headerViews;
+        _headerViewArr = config.headerViews;
         _selectedBlock = [block copy];
+        _config = config;
     }
     return self;
 }

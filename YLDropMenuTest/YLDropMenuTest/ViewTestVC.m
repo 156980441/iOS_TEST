@@ -131,7 +131,7 @@
     // 可以更新数据源
     if (model.nodeId == 3) {
         OKBMultiLevelMenuNode *original = model.parentNode.parentNode;
-        original.childNodes = [DataSourceFactory level1DataSource].childNodes;
+//        original.childNodes = [DataSourceFactory level1DataSource].childNodes;
     }
 }
 

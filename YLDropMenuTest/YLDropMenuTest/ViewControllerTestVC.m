@@ -71,9 +71,19 @@
         header20.textLbl.text = @"学校";
         NSArray *arr2 = @[header00, header10, header20];
         
+        OKBMultiLevelMenuViewConfig *config1 = [[OKBMultiLevelMenuViewConfig alloc] init];
+        config1.level = 1;
+        config1.widthWeight = nil;
+        config1.headerViews = arr;
+        
+        OKBMultiLevelMenuViewConfig *config2 = [[OKBMultiLevelMenuViewConfig alloc] init];
+        config2.level = 2;
+        config2.widthWeight = nil;
+        config2.headerViews = arr2;
+        
         // 这里要整两个arr，有没有方便的方法？
-        OKBMultiLevelMenuVC *vc1 = [[OKBMultiLevelMenuVC alloc] initWithMultiLevel:1 levelOfWidthWeight:nil tableViewHeaders:arr rootModel:[DataSourceFactory level1DataSource] block:nil];
-        OKBMultiLevelMenuVC *vc2 = [[OKBMultiLevelMenuVC alloc] initWithMultiLevel:2 levelOfWidthWeight:@"1:2" tableViewHeaders:arr2 rootModel:[DataSourceFactory level2DataSource] block:nil];
+        OKBMultiLevelMenuVC *vc1 = [[OKBMultiLevelMenuVC alloc] initWithConfig:config1 rootModel:[DataSourceFactory level1DataSource] block:nil];
+        OKBMultiLevelMenuVC *vc2 = [[OKBMultiLevelMenuVC alloc] initWithConfig:config2 rootModel:[DataSourceFactory level2DataSource] block:nil];
         
         [vc2 setMultiLevelViewBackgroundColor:[UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1] atIndex:0];
         
