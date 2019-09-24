@@ -10,7 +10,7 @@
 
 #import "OKBMenuView.h"
 #import "OKBMenuItemView.h"
-#import "OKBMultiLevelMenuView.h"
+#import "OKBMultiLevelListView.h"
 #import "OKBLabelImageView.h"
 
 #import "DataSourceFactory.h"
@@ -21,8 +21,8 @@
 
 @interface ViewTestVC () <OKBMenuViewDataSource, OKBMenuViewDelegate, OKBMultiLevelMenuViewDelegate>
 @property (nonatomic, strong) OKBMenuView *menuView;
-@property (nonatomic, strong) OKBMultiLevelMenuView *item1SoureView;
-@property (nonatomic, strong) OKBMultiLevelMenuView *item3SoureView;
+@property (nonatomic, strong) OKBMultiLevelListView *item1SoureView;
+@property (nonatomic, strong) OKBMultiLevelListView *item3SoureView;
 @end
 
 @implementation ViewTestVC
@@ -77,7 +77,7 @@
     }
     else if (index == 1) {
         // 测试释放
-        OKBMultiLevelMenuView *view = [[OKBMultiLevelMenuView alloc] initWithFrame:CGRectZero tableViewNum:2 widthWeight:nil];
+        OKBMultiLevelListView *view = [[OKBMultiLevelListView alloc] initWithFrame:CGRectZero tableViewNum:2 widthWeight:nil];
         [view reloadDataWithRootDataSource:[DataSourceFactory level2DataSource]];
         return view;
     } else if (index == 2) {
@@ -107,7 +107,7 @@
 
 #pragma mark - OKBMultiLevelMenuViewDelegate
 
-- (CGFloat)multiLevelMenu:(OKBMultiLevelMenuView *)menuView heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+- (CGFloat)multiLevelList:(OKBMultiLevelListView *)menuView heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
     if (menuView == self.item1SoureView) {
         if (index == 0) {
             return 32;
@@ -123,7 +123,7 @@
     return 0;
 }
 
-- (void)multiLevelMenu:(OKBMultiLevelMenuView *)menuView didSelectInTableView:(nonnull OKBMultiLevelMenuNode *)model {
+- (void)multiLevelList:(OKBMultiLevelListView *)menuView didSelectInTableView:(nonnull OKBMultiLevelMenuNode *)model {
     OKBLabelImageView *tmp = (OKBLabelImageView *)[self.menuView menuItemViewAtIndex:self.menuView.selectedItemIndex];
     tmp.textLbl.text = model.nodeName;
     [self.menuView dismissSourceViewWithAnimation:YES];
@@ -135,7 +135,7 @@
     }
 }
 
-- (nullable UIView *)multiLevelMenu:(OKBMultiLevelMenuView *)menuView viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+- (nullable UIView *)multiLevelList:(OKBMultiLevelListView *)menuView viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
     UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectZero];
     tmp.textAlignment = NSTextAlignmentCenter;
     tmp.font = [UIFont systemFontOfSize:12];
@@ -170,9 +170,9 @@
     return _menuView;
 }
 
-- (OKBMultiLevelMenuView *)item1SoureView {
+- (OKBMultiLevelListView *)item1SoureView {
     if (!_item1SoureView) {
-        OKBMultiLevelMenuView *tmp = [[OKBMultiLevelMenuView alloc] initWithFrame:CGRectZero tableViewNum:3 widthWeight:nil];
+        OKBMultiLevelListView *tmp = [[OKBMultiLevelListView alloc] initWithFrame:CGRectZero tableViewNum:3 widthWeight:nil];
         tmp.delegate = self;
         [tmp reloadDataWithRootDataSource:[DataSourceFactory level3DataSource]];
         UITableView *firstTableView = [tmp tableViewAtIndex:1];
@@ -182,9 +182,9 @@
     return _item1SoureView;
 }
 
-- (OKBMultiLevelMenuView *)item3SoureView {
+- (OKBMultiLevelListView *)item3SoureView {
     if (!_item3SoureView) {
-        OKBMultiLevelMenuView *tmp = [[OKBMultiLevelMenuView alloc] initWithFrame:CGRectZero tableViewNum:1 widthWeight:nil];
+        OKBMultiLevelListView *tmp = [[OKBMultiLevelListView alloc] initWithFrame:CGRectZero tableViewNum:1 widthWeight:nil];
         tmp.delegate = self;
         [tmp reloadDataWithRootDataSource:[DataSourceFactory level1DataSource]];
         _item3SoureView = tmp;

@@ -6,9 +6,9 @@
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import "OKBMultiLevelMenuVC.h"
-#import "OKBMultiLevelMenuView.h"
-#import "OKBMultiLevelMenuTVHeaderView.h"
+#import "OKBMultiLevelListVC.h"
+#import "OKBMultiLevelListView.h"
+#import "OKBMultiLevelListTVHeaderView.h"
 #import "OKBLabelImageView.h"
 #import "OKBMultiLevelMenuNode.h"
 #import <Masonry/Masonry.h>
@@ -16,19 +16,19 @@
 @implementation OKBMultiLevelMenuViewConfig
 @end
 
-@interface OKBMultiLevelMenuVC () <OKBMultiLevelMenuViewDelegate>
+@interface OKBMultiLevelListVC () <OKBMultiLevelMenuViewDelegate>
 {
     NSInteger _levels;
     OKBMultiLevelMenuNode *_model;
     NSString *_intColonInt;
-    NSArray<OKBMultiLevelMenuTVHeaderView *> *_headerViewArr;
+    NSArray<OKBMultiLevelListTVHeaderView *> *_headerViewArr;
     OKBMultiLevelMenuViewConfig *_config;
 }
-@property (nonatomic, strong) OKBMultiLevelMenuView *multiLeveldropDownMenuView;
+@property (nonatomic, strong) OKBMultiLevelListView *multiLeveldropDownMenuView;
 
 @end
 
-@implementation OKBMultiLevelMenuVC
+@implementation OKBMultiLevelListVC
 
 - (instancetype)initWithConfig:(OKBMultiLevelMenuViewConfig *)config
                      rootModel:(OKBMultiLevelMenuNode *)model
@@ -70,25 +70,25 @@
 
 #pragma mark - OKBMultiLevelMenuViewDelegate
 
-- (CGFloat)multiLevelMenu:(OKBMultiLevelMenuView *)dropDownMenu heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+- (CGFloat)multiLevelList:(OKBMultiLevelListView *)dropDownMenu heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
     return [_headerViewArr objectAtIndex:index].height;
 }
 
-- (void)multiLevelMenu:(OKBMultiLevelMenuView *)dropDownMenu didSelectInTableView:(nonnull OKBMultiLevelMenuNode *)model {
+- (void)multiLevelList:(OKBMultiLevelListView *)dropDownMenu didSelectInTableView:(nonnull OKBMultiLevelMenuNode *)model {
     if (self.selectedBlock) {
         self.selectedBlock(model);
     }
 }
 
-- (nullable UIView *)multiLevelMenu:(OKBMultiLevelMenuView *)dropDownMenu viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+- (nullable UIView *)multiLevelList:(OKBMultiLevelListView *)dropDownMenu viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
     return [_headerViewArr objectAtIndex:index];
 }
 
 #pragma mark -- lazy load
 
-- (OKBMultiLevelMenuView *)multiLeveldropDownMenuView {
+- (OKBMultiLevelListView *)multiLeveldropDownMenuView {
     if (!_multiLeveldropDownMenuView) {
-        OKBMultiLevelMenuView *tmp = [[OKBMultiLevelMenuView alloc] initWithFrame:CGRectZero tableViewNum:_levels widthWeight:_intColonInt];
+        OKBMultiLevelListView *tmp = [[OKBMultiLevelListView alloc] initWithFrame:CGRectZero tableViewNum:_levels widthWeight:_intColonInt];
         tmp.delegate = self;
         _multiLeveldropDownMenuView = tmp;
     }

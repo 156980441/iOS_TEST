@@ -6,12 +6,12 @@
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import "OKBMultiLevelMenuView.h"
+#import "OKBMultiLevelListView.h"
 #import "OKBMultiLevelMenuNode.h"
 #import "OKB1LabelTVCell.h"
 #import <Masonry/Masonry.h>
 
-@interface OKBMultiLevelMenuView () <UITableViewDelegate, UITableViewDataSource>
+@interface OKBMultiLevelListView () <UITableViewDelegate, UITableViewDataSource>
 {
     NSInteger _tableViewNum;
     OKBMultiLevelMenuNode *_dataSource;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation OKBMultiLevelMenuView
+@implementation OKBMultiLevelListView
 
 - (instancetype)initWithFrame:(CGRect)frame
                  tableViewNum:(NSInteger)num
@@ -120,9 +120,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     CGFloat height = 0;
-    if ([self.delegate respondsToSelector:@selector(multiLevelMenu:heightForHeaderInTableView:atIndex:)]) {
+    if ([self.delegate respondsToSelector:@selector(multiLevelList:heightForHeaderInTableView:atIndex:)]) {
         NSInteger index = [_tableViewArr indexOfObject:tableView];
-        height = [self.delegate multiLevelMenu:self heightForHeaderInTableView:tableView atIndex:index];
+        height = [self.delegate multiLevelList:self heightForHeaderInTableView:tableView atIndex:index];
     }
     return height;
 }
@@ -139,7 +139,7 @@
     [self p_saveSelectedRow];
     
     if (tableView == _tableViewArr.lastObject) {
-        if ([self.delegate respondsToSelector:@selector(multiLevelMenu:didSelectInTableView:)]) {
+        if ([self.delegate respondsToSelector:@selector(multiLevelList:didSelectInTableView:)]) {
             OKBMultiLevelMenuNode *model = nil;
             if (_tableViewNum == 1) {
                 model = _dataSource.childNodes[indexPath.row];
@@ -156,16 +156,16 @@
                 NSArray<OKBMultiLevelMenuNode *> *arrLevel3 = arrLevel2[secondSelectRow].childNodes;
                 model = arrLevel3[indexPath.row];
             }
-            [self.delegate multiLevelMenu:self didSelectInTableView:model];
+            [self.delegate multiLevelList:self didSelectInTableView:model];
         }
     }
 }
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *view = nil;
-    if ([self.delegate respondsToSelector:@selector(multiLevelMenu:viewForHeaderInTableView:atIndex:)]) {
+    if ([self.delegate respondsToSelector:@selector(multiLevelList:viewForHeaderInTableView:atIndex:)]) {
         NSInteger index = [_tableViewArr indexOfObject:tableView];
-        view = [self.delegate multiLevelMenu:self viewForHeaderInTableView:tableView atIndex:index];
+        view = [self.delegate multiLevelList:self viewForHeaderInTableView:tableView atIndex:index];
     }
     return view;
 }

@@ -11,25 +11,25 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
-@class OKBMultiLevelMenuView, OKBMultiLevelMenuNode;
+@class OKBMultiLevelListView, OKBMultiLevelMenuNode;
 
 @protocol OKBMultiLevelMenuViewDelegate <NSObject>
 
 @optional
-- (CGFloat)multiLevelMenu:(OKBMultiLevelMenuView *)dropDownMenu
+- (CGFloat)multiLevelList:(OKBMultiLevelListView *)dropDownMenu
 heightForHeaderInTableView:(UITableView *)tableView
                   atIndex:(NSInteger)index;
 
-- (nullable UIView *)multiLevelMenu:(OKBMultiLevelMenuView *)dropDownMenu
+- (nullable UIView *)multiLevelList:(OKBMultiLevelListView *)dropDownMenu
            viewForHeaderInTableView:(UITableView *)tableView
                             atIndex:(NSInteger)index;
 
-- (void)multiLevelMenu:(OKBMultiLevelMenuView *)dropDownMenu
+- (void)multiLevelList:(OKBMultiLevelListView *)dropDownMenu
   didSelectInTableView:(OKBMultiLevelMenuNode *)model;
 
 @end
 
-@interface OKBMultiLevelMenuView : UIView
+@interface OKBMultiLevelListView : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame tableViewNum:(NSInteger)num widthWeight:(nullable NSString *)intColonInt;
 

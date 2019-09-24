@@ -10,14 +10,14 @@
 
 #import "OKBMenuView.h"
 #import "OKBMenuItemView.h"
-#import "OKBMultiLevelMenuView.h"
-#import "OKBMultiLevelMenuTVHeaderView.h"
+#import "OKBMultiLevelListView.h"
+#import "OKBMultiLevelListTVHeaderView.h"
 #import "OKBMultiLevelMenuLabelTVHeader.h"
 
 #import "OKBMultiLevelMenuNode.h"
 
 #import "OKBMenuViewController.h"
-#import "OKBMultiLevelMenuVC.h"
+#import "OKBMultiLevelListVC.h"
 
 #import "DataSourceFactory.h"
 #import "OKBLabelImageView.h"
@@ -63,6 +63,14 @@
         header2.textLbl.text = @"学校";
         NSArray *arr = @[header0, header1, header2];
         
+        OKBMultiLevelMenuViewConfig *config1 = [[OKBMultiLevelMenuViewConfig alloc] init];
+        config1.level = 1;
+        config1.widthWeight = nil;
+        config1.headerViews = arr;
+        
+        OKBMultiLevelListVC *vc1 = [[OKBMultiLevelListVC alloc] initWithConfig:config1 rootModel:[DataSourceFactory level1DataSource] block:nil];
+        
+        
         OKBMultiLevelMenuLabelTVHeader *header00 = OKBMultiLevelMenuLabelTVHeader.new;
         header00.textLbl.text = @"姓名";
         OKBMultiLevelMenuLabelTVHeader *header10 = OKBMultiLevelMenuLabelTVHeader.new;
@@ -71,21 +79,15 @@
         header20.textLbl.text = @"学校";
         NSArray *arr2 = @[header00, header10, header20];
         
-        OKBMultiLevelMenuViewConfig *config1 = [[OKBMultiLevelMenuViewConfig alloc] init];
-        config1.level = 1;
-        config1.widthWeight = nil;
-        config1.headerViews = arr;
-        
         OKBMultiLevelMenuViewConfig *config2 = [[OKBMultiLevelMenuViewConfig alloc] init];
         config2.level = 2;
         config2.widthWeight = nil;
         config2.headerViews = arr2;
         
-        // 这里要整两个arr，有没有方便的方法？
-        OKBMultiLevelMenuVC *vc1 = [[OKBMultiLevelMenuVC alloc] initWithConfig:config1 rootModel:[DataSourceFactory level1DataSource] block:nil];
-        OKBMultiLevelMenuVC *vc2 = [[OKBMultiLevelMenuVC alloc] initWithConfig:config2 rootModel:[DataSourceFactory level2DataSource] block:nil];
+        OKBMultiLevelListVC *vc2 = [[OKBMultiLevelListVC alloc] initWithConfig:config2 rootModel:[DataSourceFactory level2DataSource] block:nil];
         
         [vc2 setMultiLevelViewBackgroundColor:[UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1] atIndex:0];
+        
         
         OKBMenuViewController *tmp = [[OKBMenuViewController alloc] initWithMenuItemControllers:@[vc1, vc2]];
         vc1.selectedBlock = ^(OKBMultiLevelMenuNode *model) {
@@ -96,6 +98,7 @@
             [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];
             [tmp dismissSourceViewWithAnimation:YES];
         };
+        
         _menuVC = tmp;
     }
     return _menuVC;
