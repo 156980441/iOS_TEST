@@ -8,8 +8,11 @@
 
 #import "OKBMultiLevelListView.h"
 #import "OKBMultiLevelListNode.h"
+#import "OKBMultiLevelListBaseTVCell.h"
 #import "OKB1LabelTVCell.h"
 #import <Masonry/Masonry.h>
+
+static NSString *okb_cellPrefix = @"OKBMultiLevelListView";
 
 @interface OKBMultiLevelListView () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -17,6 +20,7 @@
     OKBMultiLevelListNode *_dataSource;
     NSInteger _selectedRow[3];
     NSArray<NSString *> *_widthWeightArr;
+    NSArray<Class> *_cellArr;
 }
 @property (nonatomic, strong) NSArray<UITableView *> *tableViewArr;
 
@@ -25,16 +29,17 @@
 @implementation OKBMultiLevelListView
 
 - (instancetype)initWithFrame:(CGRect)frame
-                 tableViewNum:(NSInteger)num
+               tableViewCells:(NSArray<Class> *)cells
                   widthWeight:(nullable NSString *)intColonInt {
-    NSAssert(num < 4, @"OKBMultiLevelDropDownMenuView support 3 table views at most");
+    NSAssert(cells.count < 4, @"OKBMultiLevelDropDownMenuView support 3 table views at most");
     
     self = [super initWithFrame:frame];
     if (self) {
-        _tableViewNum = num;
+        _tableViewNum = cells.count;
+        _cellArr = cells;
         if (intColonInt) {
             NSArray<NSString *> *arr = [intColonInt componentsSeparatedByString:@":"];
-            NSAssert(arr.count == num, @"OKBMultiLevelDropDownMenuView init parameter error");
+            NSAssert(arr.count == _tableViewNum, @"OKBMultiLevelDropDownMenuView init parameter error");
             _widthWeightArr = arr;
         }
         [self p_resetSelectedRow];
@@ -206,8 +211,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    OKB1LabelTVCell *cell = [tableView dequeueReusableCellWithIdentifier:g_OKB1LabelViewTVCellId forIndexPath:indexPath];
+    NSInteger index = [_tableViewArr indexOfObject:tableView];
+    NSString *identifier = [NSString stringWithFormat:@"%@%@", okb_cellPrefix, NSStringFromClass([_cellArr objectAtIndex:index])];
+    OKBMultiLevelListBaseTVCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     if (_tableViewNum == 1) {
         cell.innerLbl.text = _dataSource.childNodes[indexPath.row].nodeName;
     } else if (_tableViewNum == 2) {
@@ -248,7 +254,7 @@
         for (int i = 0; i < _tableViewNum; i++) {
             UITableView *tmp = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
             tmp.separatorStyle = UITableViewCellSeparatorStyleNone;
-            [tmp registerClass:OKB1LabelTVCell.class forCellReuseIdentifier:g_OKB1LabelViewTVCellId];
+            [tmp registerClass:[_cellArr objectAtIndex:i].class forCellReuseIdentifier:[NSString stringWithFormat:@"%@%@", okb_cellPrefix, NSStringFromClass([_cellArr objectAtIndex:i])]];
             tmp.dataSource = self;
             tmp.delegate = self;
             tmp.rowHeight = 44.0f; // 默认高度

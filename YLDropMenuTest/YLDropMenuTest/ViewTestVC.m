@@ -12,6 +12,7 @@
 #import "OKBMenuItemView.h"
 #import "OKBMultiLevelListView.h"
 #import "OKBLabelImageView.h"
+#import "OKBMultiLevelListBaseTVCell.h"
 
 #import "DataSourceFactory.h"
 #import "PersonModel.h"
@@ -77,7 +78,9 @@
     }
     else if (index == 1) {
         // 测试释放
-        OKBMultiLevelListView *view = [[OKBMultiLevelListView alloc] initWithFrame:CGRectZero tableViewNum:2 widthWeight:nil];
+        OKBMultiLevelListView *view = [[OKBMultiLevelListView alloc] initWithFrame:CGRectZero
+                                                                    tableViewCells:@[]
+                                                                       widthWeight:nil];
         [view reloadDataWithRootDataSource:[DataSourceFactory level2DataSource]];
         return view;
     } else if (index == 2) {
@@ -172,7 +175,9 @@
 
 - (OKBMultiLevelListView *)item1SoureView {
     if (!_item1SoureView) {
-        OKBMultiLevelListView *tmp = [[OKBMultiLevelListView alloc] initWithFrame:CGRectZero tableViewNum:3 widthWeight:nil];
+        OKBMultiLevelListView *tmp = [[OKBMultiLevelListView alloc] initWithFrame:CGRectZero
+                                                                   tableViewCells:@[OKBMultiLevelListBaseTVCell.class, OKBMultiLevelListBaseTVCell.class, OKBMultiLevelListBaseTVCell.class]
+                                                                      widthWeight:nil];
         tmp.delegate = self;
         [tmp reloadDataWithRootDataSource:[DataSourceFactory level3DataSource]];
         UITableView *firstTableView = [tmp tableViewAtIndex:1];
@@ -184,7 +189,9 @@
 
 - (OKBMultiLevelListView *)item3SoureView {
     if (!_item3SoureView) {
-        OKBMultiLevelListView *tmp = [[OKBMultiLevelListView alloc] initWithFrame:CGRectZero tableViewNum:1 widthWeight:nil];
+        OKBMultiLevelListView *tmp = [[OKBMultiLevelListView alloc] initWithFrame:CGRectZero
+                                                                     tableViewCells:@[OKBMultiLevelListBaseTVCell.class]
+                                                                      widthWeight:nil];
         tmp.delegate = self;
         [tmp reloadDataWithRootDataSource:[DataSourceFactory level1DataSource]];
         _item3SoureView = tmp;

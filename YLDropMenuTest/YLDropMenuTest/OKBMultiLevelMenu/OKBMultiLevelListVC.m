@@ -82,7 +82,11 @@
 - (OKBMultiLevelListView *)multiLeveldropDownMenuView {
     if (!_multiLeveldropDownMenuView) {
         NSMutableString *intColonInt = [NSMutableString string];
+        NSMutableArray *cellArr = [NSMutableArray array];
         for (OKBMultiLevelListColumnConfig *config in _configs) {
+            
+            [cellArr addObject:config.customTVCellClass];
+            
             if (config.widthWeight == nil) {
                 [intColonInt appendString:@"1"];
             }
@@ -92,7 +96,11 @@
             [intColonInt appendString:@":"];
         }
         [intColonInt deleteCharactersInRange:NSMakeRange(intColonInt.length - 1, 1)];
-        OKBMultiLevelListView *tmp = [[OKBMultiLevelListView alloc] initWithFrame:CGRectZero tableViewNum:_configs.count widthWeight:intColonInt];
+        
+        
+        OKBMultiLevelListView *tmp = [[OKBMultiLevelListView alloc] initWithFrame:CGRectZero
+                                                                   tableViewCells:cellArr
+                                                                      widthWeight:intColonInt];
         tmp.delegate = self;
         _multiLeveldropDownMenuView = tmp;
     }

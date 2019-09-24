@@ -13,6 +13,7 @@
 #import "OKBMultiLevelListView.h"
 #import "OKBMultiLevelListColumnHeaderView.h"
 #import "OKBMultiLevelListLabelTVHeader.h"
+#import "OKBMultiLevelListBaseTVCell.h"
 
 #import "OKBMultiLevelListNode.h"
 
@@ -62,6 +63,7 @@
         OKBMultiLevelListColumnConfig *config0 = [[OKBMultiLevelListColumnConfig alloc] init];
         config0.widthWeight = nil;
         config0.headerViews = header0;
+        config0.customTVCellClass = OKBMultiLevelListBaseTVCell.class;
         
         
         OKBMultiLevelListVC *vc1 = [[OKBMultiLevelListVC alloc] initWithConfig:@[config0] rootModel:[DataSourceFactory level1DataSource] block:nil];
@@ -75,10 +77,12 @@
         OKBMultiLevelListColumnConfig *config00 = [[OKBMultiLevelListColumnConfig alloc] init];
         config00.widthWeight = @"1";
         config00.headerViews = header00;
+        config00.customTVCellClass = OKBMultiLevelListBaseTVCell.class;
         
         OKBMultiLevelListColumnConfig *config10 = [[OKBMultiLevelListColumnConfig alloc] init];
         config10.widthWeight = @"2";
         config10.headerViews = header10;
+        config10.customTVCellClass = OKBMultiLevelListBaseTVCell.class;
         
         
         OKBMultiLevelListVC *vc2 = [[OKBMultiLevelListVC alloc] initWithConfig:@[config00, config10] rootModel:[DataSourceFactory level2DataSource] block:nil];

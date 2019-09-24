@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy, nullable) NSString *widthWeight;
 @property (nonatomic, strong) OKBMultiLevelListColumnHeaderView *headerViews;
-@property (nonatomic, strong) UITableViewCell *customTVCell;
+@property (nonatomic, strong) Class customTVCellClass;
 
 @end
 

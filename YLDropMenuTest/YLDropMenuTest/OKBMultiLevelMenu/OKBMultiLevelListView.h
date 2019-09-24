@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
-@class OKBMultiLevelListView, OKBMultiLevelListNode;
+@class OKBMultiLevelListView, OKBMultiLevelListNode, OKBMultiLevelListBaseTVCell;
 
 @protocol OKBMultiLevelMenuViewDelegate <NSObject>
 
@@ -31,7 +31,9 @@ heightForHeaderInTableView:(UITableView *)tableView
 
 @interface OKBMultiLevelListView : UIView
 
-- (instancetype)initWithFrame:(CGRect)frame tableViewNum:(NSInteger)num widthWeight:(nullable NSString *)intColonInt;
+- (instancetype)initWithFrame:(CGRect)frame
+               tableViewCells:(NSArray<Class> *)cells
+                  widthWeight:(nullable NSString *)intColonInt;
 
 @property (nonatomic, strong) id<OKBMultiLevelMenuViewDelegate> delegate;
 
