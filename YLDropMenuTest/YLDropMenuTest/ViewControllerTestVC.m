@@ -57,26 +57,29 @@
 - (OKBMenuViewController *)menuVC {
     if (!_menuVC) {
         
+        // 一级
+        
+        // 一级列 header
         OKBMultiLevelListLabelTVHeader *header0 = OKBMultiLevelListLabelTVHeader.new;
         header0.textLbl.text = @"姓名";
         
+        // 一级列宽比例，列头视图，列内 cell 样式配置
         OKBMultiLevelListColumnConfig *config0 = [[OKBMultiLevelListColumnConfig alloc] init];
         config0.widthWeight = 0;
         config0.columnHeaderView = header0;
         config0.customTVCellClass = OKBMultiLevelListBaseTVCell.class;
         
-        
+        // 初始化一级下拉列表
         OKBMultiLevelListVC *vc1 = [[OKBMultiLevelListVC alloc] initWithConfig:@[config0] rootModel:[DataSourceFactory level1DataSource] block:nil];
         
         
-        OKBMultiLevelListLabelTVHeader *header00 = OKBMultiLevelListLabelTVHeader.new;
-        header00.textLbl.text = @"姓名";
+        // 二级
         OKBMultiLevelListLabelTVHeader *header10 = OKBMultiLevelListLabelTVHeader.new;
         header10.textLbl.text = @"地域";
         
         OKBMultiLevelListColumnConfig *config00 = [[OKBMultiLevelListColumnConfig alloc] init];
         config00.widthWeight = 1;
-        config00.columnHeaderView = header00;
+        config00.columnHeaderView = nil;
         config00.customTVCellClass = OKBMultiLevelListBaseTVCell.class;
         
         OKBMultiLevelListColumnConfig *config10 = [[OKBMultiLevelListColumnConfig alloc] init];
@@ -89,7 +92,7 @@
         
         [vc2 setMultiLevelViewBackgroundColor:[UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1] atIndex:0];
         
-        
+        // 将一级，二级列表插入菜单，成为下拉视图
         OKBMenuViewController *tmp = [[OKBMenuViewController alloc] initWithMenuItemControllers:@[vc1, vc2]];
         vc1.selectedBlock = ^(OKBMultiLevelListNode *model) {
             [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];

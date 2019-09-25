@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface OKBMultiLevelListColumnConfig : NSObject
 
 @property (nonatomic, assign) NSInteger widthWeight;
-@property (nonatomic, strong) OKBMultiLevelListColumnHeaderView *columnHeaderView;
+@property (nonatomic, strong, nullable) OKBMultiLevelListColumnHeaderView *columnHeaderView;
 @property (nonatomic, strong) Class customTVCellClass;
 
 @end
