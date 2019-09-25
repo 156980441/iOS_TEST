@@ -27,6 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
                      rootModel:(OKBMultiLevelListNode *)model
                          block:(nullable void (^)(OKBMultiLevelListNode *model))block;
 
+- (instancetype)initSingleListWithConfig:(OKBMultiLevelListColumnConfig *)config
+                               listNodes:(NSArray<OKBMultiLevelListNode *> *)nodes
+                                   block:(nullable void (^)(OKBMultiLevelListNode *model))block;
+
 @property (nonatomic, copy, nullable) void (^selectedBlock)(OKBMultiLevelListNode *model);
 
 - (void)setMultiLevelViewBackgroundColor:(UIColor *)color atIndex:(NSInteger)index;

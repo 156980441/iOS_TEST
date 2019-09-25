@@ -39,6 +39,18 @@
     return self;
 }
 
+
+- (instancetype)initSingleListWithConfig:(OKBMultiLevelListColumnConfig *)config
+                               listNodes:(NSArray<OKBMultiLevelListNode *> *)nodes
+                                   block:(nullable void (^)(OKBMultiLevelListNode *model))block {
+    OKBMultiLevelListNode *root = [[OKBMultiLevelListNode alloc] init];
+    for (OKBMultiLevelListNode *tmp in nodes) {
+        [root addChild:tmp];
+    }
+    return [self initWithConfig:@[config] rootModel:root block:block];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
