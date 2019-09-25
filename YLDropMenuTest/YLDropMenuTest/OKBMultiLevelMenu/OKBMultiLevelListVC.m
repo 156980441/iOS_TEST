@@ -69,7 +69,7 @@
 }
 
 - (void)setSelectedNode:(OKBMultiLevelListNode *)node {
-    
+    [self.multiLevelListView setSelectedNode:node];
 }
 
 - (UITableView *)tableViewAtIndex:(NSInteger)index {
