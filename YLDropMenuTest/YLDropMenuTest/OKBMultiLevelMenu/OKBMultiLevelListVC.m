@@ -87,11 +87,11 @@
             
             [cellArr addObject:config.customTVCellClass];
             
-            if (config.widthWeight == nil) {
+            if (config.widthWeight == 0) {
                 [intColonInt appendString:@"1"];
             }
             else {
-                [intColonInt appendString:config.widthWeight];
+                [intColonInt appendString:[NSString stringWithFormat:@"%ld", config.widthWeight]];
             }
             [intColonInt appendString:@":"];
         }

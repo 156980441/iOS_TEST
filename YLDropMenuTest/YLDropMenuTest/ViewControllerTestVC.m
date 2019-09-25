@@ -61,7 +61,7 @@
         header0.textLbl.text = @"姓名";
         
         OKBMultiLevelListColumnConfig *config0 = [[OKBMultiLevelListColumnConfig alloc] init];
-        config0.widthWeight = nil;
+        config0.widthWeight = 0;
         config0.columnHeaderView = header0;
         config0.customTVCellClass = OKBMultiLevelListBaseTVCell.class;
         
@@ -75,12 +75,12 @@
         header10.textLbl.text = @"地域";
         
         OKBMultiLevelListColumnConfig *config00 = [[OKBMultiLevelListColumnConfig alloc] init];
-        config00.widthWeight = @"1";
+        config00.widthWeight = 1;
         config00.columnHeaderView = header00;
         config00.customTVCellClass = OKBMultiLevelListBaseTVCell.class;
         
         OKBMultiLevelListColumnConfig *config10 = [[OKBMultiLevelListColumnConfig alloc] init];
-        config10.widthWeight = @"2";
+        config10.widthWeight = 2;
         config10.columnHeaderView = header10;
         config10.customTVCellClass = OKBMultiLevelListBaseTVCell.class;
         
