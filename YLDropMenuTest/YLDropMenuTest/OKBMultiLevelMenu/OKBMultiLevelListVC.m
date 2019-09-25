@@ -64,7 +64,7 @@
 #pragma mark - OKBMultiLevelMenuViewDelegate
 
 - (CGFloat)multiLevelList:(OKBMultiLevelListView *)dropDownMenu heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
-    return [_configs objectAtIndex:index].headerViews.height;
+    return [_configs objectAtIndex:index].columnHeaderView.height;
 }
 
 - (void)multiLevelList:(OKBMultiLevelListView *)dropDownMenu didSelectInTableView:(nonnull OKBMultiLevelListNode *)model {
@@ -74,7 +74,7 @@
 }
 
 - (nullable UIView *)multiLevelList:(OKBMultiLevelListView *)dropDownMenu viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
-    return [_configs objectAtIndex:index].headerViews;
+    return [_configs objectAtIndex:index].columnHeaderView;
 }
 
 #pragma mark -- lazy load

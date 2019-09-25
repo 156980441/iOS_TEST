@@ -22,7 +22,7 @@
 }
 
 - (void)renderCustomCell:(NSString *)item {
-    
+    NSAssert(0, @"renderCustomCell is abstract method. Please overriding it");
 }
 
 @end
