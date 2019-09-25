@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class OKBMultiLevelMenuRootModel, OKBMultiLevelListColumnHeaderView, OKBMultiLevelListNode;
+@class OKBMultiLevelListColumnHeaderView;
 
 @interface OKBMultiLevelListColumnConfig : NSObject
 
@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
+
+@class OKBMultiLevelMenuRootModel, OKBMultiLevelListNode;
 
 @interface OKBMultiLevelListVC : OKBMenuItemViewController
 
