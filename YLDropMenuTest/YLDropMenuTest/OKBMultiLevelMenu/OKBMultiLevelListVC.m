@@ -23,7 +23,7 @@
     OKBMultiLevelListNode *_model;
     NSArray<OKBMultiLevelListColumnConfig *> *_configs;
 }
-@property (nonatomic, strong) OKBMultiLevelListView *multiLeveldropDownMenuView;
+@property (nonatomic, strong) OKBMultiLevelListView *multiLevelListView;
 
 @end
 
@@ -42,7 +42,7 @@
 
 - (instancetype)initSingleListWithConfig:(OKBMultiLevelListColumnConfig *)config
                                listNodes:(NSArray<OKBMultiLevelListNode *> *)nodes {
-    OKBMultiLevelListNode *root = [[OKBMultiLevelListNode alloc] init];
+    OKBMultiLevelListNode *root = [OKBMultiLevelListNode defaultRootModel];
     for (OKBMultiLevelListNode *tmp in nodes) {
         [root addChild:tmp];
     }
@@ -54,44 +54,48 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.view addSubview:self.multiLeveldropDownMenuView];
-    [self.multiLeveldropDownMenuView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.view addSubview:self.multiLevelListView];
+    [self.multiLevelListView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view).insets(UIEdgeInsetsZero);
     }];
     
-    [self.multiLeveldropDownMenuView reloadDataWithRootDataSource:_model];
+    [self.multiLevelListView reloadDataWithRootDataSource:_model];
 }
 
 - (void)setMultiLevelViewBackgroundColor:(UIColor *)color atIndex:(NSInteger)index {
     NSAssert(index < _configs.count, @"OKBMultiLevelDropDownMenuVC is out of bounds");
-    UITableView *tmp = [self.multiLeveldropDownMenuView tableViewAtIndex:index];
+    UITableView *tmp = [self.multiLevelListView tableViewAtIndex:index];
     tmp.backgroundColor = color;
 }
 
+- (void)setSelectedNode:(OKBMultiLevelListNode *)node {
+    
+}
+
 - (UITableView *)tableViewAtIndex:(NSInteger)index {
-    return [self.multiLeveldropDownMenuView tableViewAtIndex:index];
+    return [self.multiLevelListView tableViewAtIndex:index];
 }
 
 #pragma mark - OKBMultiLevelMenuViewDelegate
 
-- (CGFloat)multiLevelList:(OKBMultiLevelListView *)dropDownMenu heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+- (CGFloat)multiLevelList:(OKBMultiLevelListView *)multiLevelListView heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
     return [_configs objectAtIndex:index].columnHeaderView.height;
 }
 
-- (void)multiLevelList:(OKBMultiLevelListView *)dropDownMenu didSelectInTableView:(nonnull OKBMultiLevelListNode *)model {
+- (void)multiLevelList:(OKBMultiLevelListView *)multiLevelListView didSelectInTableView:(nonnull OKBMultiLevelListNode *)model {
     if (self.selectedBlock) {
         self.selectedBlock(model);
     }
 }
 
-- (nullable UIView *)multiLevelList:(OKBMultiLevelListView *)dropDownMenu viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
+- (nullable UIView *)multiLevelList:(OKBMultiLevelListView *)multiLevelListView viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
     return [_configs objectAtIndex:index].columnHeaderView;
 }
 
 #pragma mark -- lazy load
 
-- (OKBMultiLevelListView *)multiLeveldropDownMenuView {
-    if (!_multiLeveldropDownMenuView) {
+- (OKBMultiLevelListView *)multiLevelListView {
+    if (!_multiLevelListView) {
         NSMutableString *intColonInt = [NSMutableString string];
         NSMutableArray *cellArr = [NSMutableArray array];
         for (OKBMultiLevelListColumnConfig *config in _configs) {
@@ -113,9 +117,9 @@
                                                                    tableViewCells:cellArr
                                                                       widthWeight:intColonInt];
         tmp.delegate = self;
-        _multiLeveldropDownMenuView = tmp;
+        _multiLevelListView = tmp;
     }
-    return _multiLeveldropDownMenuView;
+    return _multiLevelListView;
 }
 
 - (CGFloat)soureViewHeight {

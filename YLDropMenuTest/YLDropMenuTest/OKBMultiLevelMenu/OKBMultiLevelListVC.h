@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface OKBMultiLevelListVC : OKBMenuItemViewController
 
 - (instancetype)initWithConfigs:(NSArray<OKBMultiLevelListColumnConfig *> *)configs
-                     rootModel:(OKBMultiLevelListNode *)model;
+                      rootModel:(OKBMultiLevelListNode *)model;
 
 - (instancetype)initSingleListWithConfig:(OKBMultiLevelListColumnConfig *)config
                                listNodes:(NSArray<OKBMultiLevelListNode *> *)nodes;
@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) void (^selectedBlock)(OKBMultiLevelListNode *model);
 
 - (void)setMultiLevelViewBackgroundColor:(UIColor *)color atIndex:(NSInteger)index;
+
+- (void)setSelectedNode:(OKBMultiLevelListNode *)node;
 
 @end
 

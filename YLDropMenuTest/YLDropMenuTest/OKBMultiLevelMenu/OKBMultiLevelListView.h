@@ -16,15 +16,15 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol OKBMultiLevelMenuViewDelegate <NSObject>
 
 @optional
-- (CGFloat)multiLevelList:(OKBMultiLevelListView *)dropDownMenu
+- (CGFloat)multiLevelList:(OKBMultiLevelListView *)multiLevelListView
 heightForHeaderInTableView:(UITableView *)tableView
                   atIndex:(NSInteger)index;
 
-- (nullable UIView *)multiLevelList:(OKBMultiLevelListView *)dropDownMenu
+- (nullable UIView *)multiLevelList:(OKBMultiLevelListView *)multiLevelListView
            viewForHeaderInTableView:(UITableView *)tableView
                             atIndex:(NSInteger)index;
 
-- (void)multiLevelList:(OKBMultiLevelListView *)dropDownMenu
+- (void)multiLevelList:(OKBMultiLevelListView *)multiLevelListView
   didSelectInTableView:(OKBMultiLevelListNode *)model;
 
 @end
@@ -38,6 +38,8 @@ heightForHeaderInTableView:(UITableView *)tableView
 @property (nonatomic, strong) id<OKBMultiLevelMenuViewDelegate> delegate;
 
 - (void)reloadDataWithRootDataSource:(OKBMultiLevelListNode *)rootDataSource;
+
+- (void)setSelectedNode:(OKBMultiLevelListNode *)node;
 
 - (UITableView *)tableViewAtIndex:(NSInteger)index;
 

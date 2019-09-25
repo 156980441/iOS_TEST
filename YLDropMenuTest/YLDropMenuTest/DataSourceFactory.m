@@ -153,43 +153,33 @@
 
 + (OKBMultiLevelListNode *)level2DataSource {
     
-    OKBMultiLevelListNode *tmp = [OKBMultiLevelListNode defaultRootModel];
+    OKBMultiLevelListNode *root = [OKBMultiLevelListNode defaultRootModel]; // 根节点
     
-    NSMutableArray<OKBMultiLevelListNode *> *persons = NSMutableArray.new;
-    
-    for (int i = 0; i < 10; i++) {
-        PersonModel *tmp = [[PersonModel alloc] init];
-        tmp.address = [NSString stringWithFormat:@"北京-海淀-上地 %d 号院", i];
-        
-        OKBMultiLevelListNode *node = [[OKBMultiLevelListNode alloc] init];
-        node.data = tmp;
-        node.nodeName = tmp.address;
-        node.nodeId = i;
-        [persons addObject:node];
-    }
-    
-    NSMutableArray<OKBMultiLevelListNode *> *companies = NSMutableArray.new;
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 3; i++) { // 第一层
         CompanyModel *tmp = [[CompanyModel alloc] init];
         tmp.bossName = [NSString stringWithFormat:@"马云 %d", i];
         
-        OKBMultiLevelListNode *node = [[OKBMultiLevelListNode alloc] init];
-        node.nodeName = tmp.bossName;
-        node.data = tmp;
-        node.nodeId = i;
+        OKBMultiLevelListNode *c_node = [[OKBMultiLevelListNode alloc] init];
+        c_node.nodeName = tmp.bossName;
+        c_node.data = tmp;
+        c_node.nodeId = i;
         
-        for (OKBMultiLevelListNode *person in persons) {
-            [node addChild:person];
+        [root addChild:c_node];
+        
+        for (int i = 0; i < 10; i++) { // 第二层
+            PersonModel *person = [[PersonModel alloc] init];
+            person.address = [NSString stringWithFormat:@"北京-海淀-上地 %d 号院", i];
+            
+            OKBMultiLevelListNode *p_node = [[OKBMultiLevelListNode alloc] init];
+            p_node.data = tmp;
+            p_node.nodeName = person.address;
+            p_node.nodeId = i;
+            [c_node addChild:p_node];
         }
 
-        [companies addObject:node];
     }
     
-    for (OKBMultiLevelListNode *company in companies) {
-        [tmp addChild:company];
-    }
-    
-    return tmp;
+    return root;
 }
 
 

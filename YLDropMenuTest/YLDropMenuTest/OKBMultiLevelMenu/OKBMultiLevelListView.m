@@ -123,6 +123,10 @@ static NSString *okb_cellPrefix = @"OKBMultiLevelListView";
     [self p_loadSelectedRow];
 }
 
+- (void)setSelectedNode:(OKBMultiLevelListNode *)node {
+    
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     CGFloat height = 0;
     if ([self.delegate respondsToSelector:@selector(multiLevelList:heightForHeaderInTableView:atIndex:)]) {
