@@ -112,6 +112,10 @@
             [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];
             [tmp dismissSourceViewWithAnimation:YES];
         };
+        vc00.selectedBlock = ^(OKBMultiLevelListNode *model) {
+            [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];
+            [tmp dismissSourceViewWithAnimation:YES];
+        };
         
         _menuVC = tmp;
     }
