@@ -7,14 +7,16 @@
 //
 
 #import "OKBMultiLevelListVC.h"
+
 #import "OKBMultiLevelListView.h"
 #import "OKBMultiLevelListColumnHeaderView.h"
 #import "OKBLabelImageView.h"
+
 #import "OKBMultiLevelListNode.h"
+#import "OKBMultiLevelListColumnConfig.h"
+
 #import <Masonry/Masonry.h>
 
-@implementation OKBMultiLevelListColumnConfig
-@end
 
 @interface OKBMultiLevelListVC () <OKBMultiLevelMenuViewDelegate>
 {
@@ -27,13 +29,11 @@
 
 @implementation OKBMultiLevelListVC
 
-- (instancetype)initWithConfig:(NSArray<OKBMultiLevelListColumnConfig *> *)configs
-                     rootModel:(OKBMultiLevelListNode *)model
-                         block:(nullable void (^)(OKBMultiLevelListNode *model))block {
+- (instancetype)initWithConfigs:(NSArray<OKBMultiLevelListColumnConfig *> *)configs
+                     rootModel:(OKBMultiLevelListNode *)model {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _model = model;
-        _selectedBlock = [block copy];
         _configs = configs;
     }
     return self;
@@ -41,13 +41,12 @@
 
 
 - (instancetype)initSingleListWithConfig:(OKBMultiLevelListColumnConfig *)config
-                               listNodes:(NSArray<OKBMultiLevelListNode *> *)nodes
-                                   block:(nullable void (^)(OKBMultiLevelListNode *model))block {
+                               listNodes:(NSArray<OKBMultiLevelListNode *> *)nodes {
     OKBMultiLevelListNode *root = [[OKBMultiLevelListNode alloc] init];
     for (OKBMultiLevelListNode *tmp in nodes) {
         [root addChild:tmp];
     }
-    return [self initWithConfig:@[config] rootModel:root block:block];
+    return [self initWithConfigs:@[config] rootModel:root];
     
 }
 

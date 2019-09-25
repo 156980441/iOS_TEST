@@ -10,29 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class OKBMultiLevelListColumnHeaderView;
-
-@interface OKBMultiLevelListColumnConfig : NSObject
-
-@property (nonatomic, assign) NSInteger widthWeight;
-@property (nonatomic, strong, nullable) OKBMultiLevelListColumnHeaderView *columnHeaderView;
-@property (nonatomic, strong) Class customTVCellClass;
-
-@end
-
-
-
-@class OKBMultiLevelMenuRootModel, OKBMultiLevelListNode;
+@class OKBMultiLevelMenuRootModel, OKBMultiLevelListNode, OKBMultiLevelListColumnConfig;
 
 @interface OKBMultiLevelListVC : OKBMenuItemViewController
 
-- (instancetype)initWithConfig:(NSArray<OKBMultiLevelListColumnConfig *> *)configs
-                     rootModel:(OKBMultiLevelListNode *)model
-                         block:(nullable void (^)(OKBMultiLevelListNode *model))block;
+- (instancetype)initWithConfigs:(NSArray<OKBMultiLevelListColumnConfig *> *)configs
+                     rootModel:(OKBMultiLevelListNode *)model;
 
 - (instancetype)initSingleListWithConfig:(OKBMultiLevelListColumnConfig *)config
-                               listNodes:(NSArray<OKBMultiLevelListNode *> *)nodes
-                                   block:(nullable void (^)(OKBMultiLevelListNode *model))block;
+                               listNodes:(NSArray<OKBMultiLevelListNode *> *)nodes;
 
 @property (nonatomic, copy, nullable) void (^selectedBlock)(OKBMultiLevelListNode *model);
 

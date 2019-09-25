@@ -16,6 +16,7 @@
 #import "OKBMultiLevelListBaseTVCell.h"
 
 #import "OKBMultiLevelListNode.h"
+#import "OKBMultiLevelListColumnConfig.h"
 
 #import "OKBMenuViewController.h"
 #import "OKBMultiLevelListVC.h"
@@ -69,18 +70,10 @@
         config01.customTVCellClass = OKBMultiLevelListBaseTVCell.class;
         
         // 初始化一级下拉列表
-        OKBMultiLevelListVC *vc01 = [[OKBMultiLevelListVC alloc] initWithConfig:@[config01] rootModel:[DataSourceFactory level1DataSource] block:nil];
+        OKBMultiLevelListVC *vc01 = [[OKBMultiLevelListVC alloc] initWithConfigs:@[config01] rootModel:[DataSourceFactory level1DataSource]];
         
         // 便捷方法初始化一级
-        OKBMultiLevelListLabelTVHeader *header00 = OKBMultiLevelListLabelTVHeader.new;
-        header00.textLbl.text = @"姓名";
-        
-        OKBMultiLevelListColumnConfig *config00 = [[OKBMultiLevelListColumnConfig alloc] init];
-        config00.widthWeight = 0;
-        config00.columnHeaderView = header00;
-        config00.customTVCellClass = OKBMultiLevelListBaseTVCell.class;
-        
-        OKBMultiLevelListVC *vc00 = [[OKBMultiLevelListVC alloc] initSingleListWithConfig:config00 listNodes:[DataSourceFactory level1DataSource].childNodes block:nil];
+        OKBMultiLevelListVC *vc00 = [[OKBMultiLevelListVC alloc] initSingleListWithConfig:[OKBMultiLevelListColumnConfig defaultSingleColumnConfig] listNodes:[DataSourceFactory level1DataSource].childNodes];
         
         
         // 二级列表
@@ -97,8 +90,7 @@
         config03.columnHeaderView = header02;
         config03.customTVCellClass = OKBMultiLevelListBaseTVCell.class;
         
-        
-        OKBMultiLevelListVC *vc02 = [[OKBMultiLevelListVC alloc] initWithConfig:@[config02, config03] rootModel:[DataSourceFactory level2DataSource] block:nil];
+        OKBMultiLevelListVC *vc02 = [[OKBMultiLevelListVC alloc] initWithConfigs:@[config02, config03] rootModel:[DataSourceFactory level2DataSource]];
         
         [vc02 setMultiLevelViewBackgroundColor:[UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1] atIndex:0];
         
