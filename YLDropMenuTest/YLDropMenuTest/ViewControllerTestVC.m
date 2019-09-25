@@ -56,7 +56,7 @@
 
 - (OKBMenuViewController *)menuVC {
     if (!_menuVC) {
-        // 一级
+        // 一级列表
         
         // 一级列 header
         OKBMultiLevelListLabelTVHeader *header01 = OKBMultiLevelListLabelTVHeader.new;
@@ -83,7 +83,7 @@
         OKBMultiLevelListVC *vc00 = [[OKBMultiLevelListVC alloc] initSingleListWithConfig:config00 listNodes:[DataSourceFactory level1DataSource].childNodes block:nil];
         
         
-        // 二级
+        // 二级列表
         OKBMultiLevelListLabelTVHeader *header02 = OKBMultiLevelListLabelTVHeader.new;
         header02.textLbl.text = @"地域";
         
