@@ -10,17 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-
-/**
- 类似 UITableViewCell 的封装
- */
+/// 类似 UITableViewCell 的封装，菜单选项 UI，使用方法参考 OKBLabelImageView 类，客户端可以自定义菜单选项样式
 @interface OKBMenuItemView : UIView
 
+/// 菜单选项自定义视图
 @property (nonatomic, readonly) UIView *contentView;
 
-/**
- default: NO
- */
+/// default: NO
 @property (nonatomic, assign) BOOL selected;
 
 @end

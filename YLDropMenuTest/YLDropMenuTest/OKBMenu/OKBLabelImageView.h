@@ -11,9 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface OKBLabelImageView : OKBMenuItemView
+
 @property (nonatomic, strong) UILabel *textLbl;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) UIImage *highlightedImage;
+
 @end
 
 NS_ASSUME_NONNULL_END
