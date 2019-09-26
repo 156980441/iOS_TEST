@@ -121,18 +121,4 @@
     return _multiLevelListView;
 }
 
-- (CGFloat)soureViewHeight {
-    return 200.f;
-}
-
-- (OKBMenuItemView *)menuItemView {
-    if (!_menuItemView) {
-        OKBLabelImageView *tmp = [[OKBLabelImageView alloc] initWithFrame:CGRectZero];
-        tmp.textLbl.text = @"选择";
-        _menuItemView = tmp;
-    }
-    return _menuItemView;
-    
-}
-
 @end

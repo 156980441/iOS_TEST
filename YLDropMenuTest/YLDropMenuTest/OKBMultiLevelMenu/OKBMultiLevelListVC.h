@@ -6,7 +6,7 @@
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import "OKBMenuItemViewController.h"
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /// 多级列表 VC
-@interface OKBMultiLevelListVC : OKBMenuItemViewController
+@interface OKBMultiLevelListVC : UIViewController
 
 - (instancetype)initWithConfigs:(NSArray<OKBMultiLevelListColumnConfig *> *)configs
                       rootModel:(OKBMultiLevelListNode *)model;
