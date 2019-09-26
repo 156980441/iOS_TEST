@@ -10,6 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+/// 多级列表结点，理解成树
 @interface OKBMultiLevelListNode : NSObject
 
 @property (nonatomic, strong, readonly, nullable) OKBMultiLevelListNode *parentNode;

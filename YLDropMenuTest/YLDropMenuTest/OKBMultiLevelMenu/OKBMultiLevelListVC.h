@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class OKBMultiLevelMenuRootModel, OKBMultiLevelListNode, OKBMultiLevelListColumnConfig;
 
+
+/// 多级列表 VC
 @interface OKBMultiLevelListVC : OKBMenuItemViewController
 
 - (instancetype)initWithConfigs:(NSArray<OKBMultiLevelListColumnConfig *> *)configs

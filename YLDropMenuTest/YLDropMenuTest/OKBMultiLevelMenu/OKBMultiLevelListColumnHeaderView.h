@@ -10,6 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+/// 多级列表列的头部视图，使用方法参见子类 OKBMultiLevelListLabelTVHeader
 @interface OKBMultiLevelListColumnHeaderView : UIView
 
 @property (nonatomic, readonly) UIView *contentView;
