@@ -48,8 +48,10 @@
 }
 
 - (void)removeChild:(OKBMultiLevelListNode *)childNode {
-    [childNode setParentNode:self];
-    [self->_childrenArr removeObject:childNode];
+    if ([self->_childrenArr containsObject:childNode]) {
+        [self->_childrenArr removeObject:childNode];
+        childNode.parentNode = nil;
+    }
 }
 
 - (NSArray<OKBMultiLevelListNode *> *)childNodes {

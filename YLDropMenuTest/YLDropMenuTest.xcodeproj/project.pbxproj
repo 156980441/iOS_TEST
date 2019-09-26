@@ -177,6 +177,8 @@
 				8DC4E06D233A3FD700B7668B /* OKBMultiLevelListAbsTVCell.m */,
 				8DC4E069233A2B2400B7668B /* OKBMultiLevelListBaseTVCell.h */,
 				8DC4E06A233A2B2400B7668B /* OKBMultiLevelListBaseTVCell.m */,
+				8D3DECDF233B574E00B9CD82 /* OKBMultiLevelListColumnConfig.h */,
+				8D3DECE0233B574E00B9CD82 /* OKBMultiLevelListColumnConfig.m */,
 				8DB8CCBE2338D0D600CB133E /* OKBMultiLevelListLabelTVHeader.h */,
 				8DB8CCC42338D0D600CB133E /* OKBMultiLevelListLabelTVHeader.m */,
 				8DB8CCC32338D0D600CB133E /* OKBMultiLevelListNode.h */,
@@ -187,8 +189,6 @@
 				8DB8CCBC2338D0D600CB133E /* OKBMultiLevelListView.m */,
 				8DB8CCB92338D0D600CB133E /* OKBMultiLevelMenuUtil.h */,
 				8DB8CCBF2338D0D600CB133E /* OKBMultiLevelMenuUtil.m */,
-				8D3DECDF233B574E00B9CD82 /* OKBMultiLevelListColumnConfig.h */,
-				8D3DECE0233B574E00B9CD82 /* OKBMultiLevelListColumnConfig.m */,
 			);
 			path = OKBMultiLevelMenu;
 			sourceTree = "<group>";
