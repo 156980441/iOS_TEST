@@ -31,7 +31,7 @@
         OKBMultiLevelListNode *node = [[OKBMultiLevelListNode alloc] init];
         node.nodeName = tmp.address;
         node.data = tmp;
-        node.nodeId = i;
+//        node.nodeId = i;
         [personsLevel3 addObject:node];
     }
     
@@ -42,7 +42,7 @@
         OKBMultiLevelListNode *node = [[OKBMultiLevelListNode alloc] init];
         node.nodeName = tmp.address;
         node.data = tmp;
-        node.nodeId = i;
+//        node.nodeId = i;
         [persons2Level3 addObject:node];
     }
     
@@ -54,7 +54,7 @@
         OKBMultiLevelListNode *node = [[OKBMultiLevelListNode alloc] init];
         node.nodeName = tmp.bossName;
         node.data = tmp;
-        node.nodeId = i;
+//        node.nodeId = i;
         
         if (i == 0) {
             for (OKBMultiLevelListNode *person in personsLevel3) {
@@ -78,7 +78,7 @@
         OKBMultiLevelListNode *node = [[OKBMultiLevelListNode alloc] init];
         node.nodeName = tmp.bossName;
         node.data = tmp;
-        node.nodeId = i;
+//        node.nodeId = i;
         
         for (OKBMultiLevelListNode *person in persons2Level3 ) {
             [node addChild:person];
@@ -98,7 +98,7 @@
             OKBMultiLevelListNode *node = [[OKBMultiLevelListNode alloc] init];
             node.nodeName = tmp.district;
             node.data = tmp;
-            node.nodeId = i;
+//            node.nodeId = i;
             
             for (OKBMultiLevelListNode *company in companiesLevel2) {
                 [node addChild:company];
@@ -140,7 +140,7 @@
         
         OKBMultiLevelListNode *node = [[OKBMultiLevelListNode alloc] init];
         node.nodeName = tmp.address;
-        node.nodeId = i;
+//        node.nodeId = i;
         [persons addObject:node];
     }
     
@@ -162,7 +162,7 @@
         OKBMultiLevelListNode *c_node = [[OKBMultiLevelListNode alloc] init];
         c_node.nodeName = tmp.bossName;
         c_node.data = tmp;
-        c_node.nodeId = i;
+//        c_node.nodeId = i;
         
         [root addChild:c_node];
         
@@ -173,7 +173,7 @@
             OKBMultiLevelListNode *p_node = [[OKBMultiLevelListNode alloc] init];
             p_node.data = tmp;
             p_node.nodeName = person.address;
-            p_node.nodeId = i;
+//            p_node.nodeId = i;
             [c_node addChild:p_node];
         }
 

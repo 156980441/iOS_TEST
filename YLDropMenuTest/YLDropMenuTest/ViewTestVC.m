@@ -132,10 +132,10 @@
     [self.menuView dismissSourceViewWithAnimation:YES];
     
     // 可以更新数据源
-    if (model.nodeId == 3) {
-        OKBMultiLevelListNode *original = model.parentNode.parentNode;
+//    if (model.nodeId == 3) {
+//        OKBMultiLevelListNode *original = model.parentNode.parentNode;
 //        original.childNodes = [DataSourceFactory level1DataSource].childNodes;
-    }
+//    }
 }
 
 - (nullable UIView *)multiLevelList:(OKBMultiLevelListView *)menuView viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {

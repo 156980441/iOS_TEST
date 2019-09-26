@@ -28,7 +28,7 @@
         [self setParentNode:nil];
         [self setChildNodes:nil];
         _nodeName = @"";
-        _nodeId = -1;
+//        _nodeId = -1;
         _childrenArr = [NSMutableArray array];
     }
     return self;
