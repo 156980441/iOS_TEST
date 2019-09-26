@@ -10,6 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+/// 自定义的菜单选项视图
 @interface OKBLabelImageView : OKBMenuItemView
 
 @property (nonatomic, strong) UILabel *textLbl;
