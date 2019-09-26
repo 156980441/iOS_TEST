@@ -7,15 +7,16 @@
 //
 
 #import "OKBMenuViewController.h"
-#import "OKBMenuItemViewController.h"
 #import "OKBMenuView.h"
+#import "OKBMenuItem.h"
 #import "OKBLabelImageView.h"
+
 
 #import <Masonry/Masonry.h>
 
 @interface OKBMenuViewController () <OKBMenuViewDelegate, OKBMenuViewDataSource>
 {
-    NSArray<OKBMenuItemViewController *> *_controllersArr;
+    NSArray<OKBMenuItem *> *_items;
 }
 @property (nonatomic, strong) OKBMenuView *menuView;
 
@@ -31,10 +32,10 @@
     [self.menuView dismissSourceViewWithAnimation:animation];
 }
 
-- (instancetype)initWithMenuItemControllers:(NSArray<OKBMenuItemViewController *> *)controllersArr {
+- (instancetype)initWithMenuItems:(NSArray<OKBMenuItem *> *)items {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
-        _controllersArr = controllersArr;
+        _items = items;
     }
     return self;
 }
@@ -53,17 +54,16 @@
 #pragma mark - OKBMenuViewDataSource && OKBMenuViewDelegate
 
 - (NSInteger)numberOfItemsInMenuView:(OKBMenuView *)menuView {
-    return _controllersArr.count;
+    return _items.count;
 }
 
 - (OKBMenuItemView *)menuView:(OKBMenuView *)menuView viewForItemAtIndex:(NSInteger)index {
-    OKBMenuItemViewController *vc = [_controllersArr objectAtIndex:index];
-    return vc.menuItemView;
+    return [_items objectAtIndex:index].menuItemView;
 }
 
 - (UIView *)menuView:(OKBMenuView *)menuView sourceViewInItemAtIndex:(NSInteger)index {
     
-    OKBMenuItemViewController *vc = [_controllersArr objectAtIndex:index];
+    UIViewController *vc = [_items objectAtIndex:index].menuItemVC;
     
     if (vc.view.superview) {
         [vc willMoveToParentViewController:nil];
@@ -77,8 +77,7 @@
 }
 
 - (CGFloat)menuView:(OKBMenuView *)menuView heightForSourceViewAtIndexPath:(NSInteger)index {
-    OKBMenuItemViewController *vc = [_controllersArr objectAtIndex:index];
-    return vc.soureViewHeight;
+    return [_items objectAtIndex:index].soureViewHeight;
 }
 
 - (void)menuView:(OKBMenuView *)menuView didSelectItemAtIndexPath:(NSInteger)index {
@@ -96,7 +95,7 @@
 }
 
 - (void)updateMenuItemTitle:(NSString *)title atIndex:(NSInteger)index {
-    OKBLabelImageView *itemView = (OKBLabelImageView *)[_controllersArr objectAtIndex:index].menuItemView;
+    OKBLabelImageView *itemView = (OKBLabelImageView *)[_items objectAtIndex:index].menuItemView;
     itemView.textLbl.text = title;
 }
 

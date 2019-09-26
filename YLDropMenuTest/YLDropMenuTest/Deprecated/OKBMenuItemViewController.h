@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class OKBMenuItemView;
 
+// 干掉了一曾继承，采用组合大于继承的思想。构造了 OKBMenuItem。
 
 /// 菜单选项响应控制器，客户端自定义 VC 继承后，可以被加入到菜单中
 @interface OKBMenuItemViewController : UIViewController
@@ -21,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 }
 @property (nonatomic, strong) OKBMenuItemView *menuItemView;
 @property (nonatomic, assign) CGFloat soureViewHeight;
+
+
 @end
 
 NS_ASSUME_NONNULL_END
