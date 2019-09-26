@@ -119,12 +119,19 @@ static NSString *okb_cellPrefix = @"OKBMultiLevelListView";
 
 - (void)reloadDataWithRootDataSource:(OKBMultiLevelListNode *)rootDataSource {
     _dataSource = rootDataSource;
-    [self p_resetSelectedRow];
     [self p_loadSelectedRow];
 }
 
 - (void)setSelectedNode:(OKBMultiLevelListNode *)node {
-    
+    [self p_resetSelectedRow];
+    OKBMultiLevelListNode *preNode;
+    NSInteger i = 0;
+    for (preNode = node; preNode != nil; preNode = preNode.parentNode, i++) {
+        if (i < 3) { // 目前三层
+            _selectedRow[i] = [preNode.parentNode.childNodes indexOfObject:preNode];
+        }
+    }
+    [self p_loadSelectedRow];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

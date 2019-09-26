@@ -28,6 +28,10 @@
 #import <Masonry/Masonry.h>
 
 @interface ViewControllerTestVC ()
+{
+    OKBMultiLevelListNode *_selectedNode;
+    OKBMultiLevelListNode *_2LevelDataSource;
+}
 @property (nonatomic, strong) OKBMenuViewController *menuVC;
 @end
 
@@ -36,6 +40,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    _2LevelDataSource = [DataSourceFactory level2DataSource];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -47,6 +53,7 @@
         make.left.right.equalTo(self.view);
         make.height.mas_equalTo(30);
     }];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -90,7 +97,8 @@
         config03.columnHeaderView = header02;
         config03.customTVCellClass = OKBMultiLevelListBaseTVCell.class;
         
-        OKBMultiLevelListVC *vc02 = [[OKBMultiLevelListVC alloc] initWithConfigs:@[config02, config03] rootModel:[DataSourceFactory level2DataSource]];
+        OKBMultiLevelListVC *vc02 = [[OKBMultiLevelListVC alloc] initWithConfigs:@[config02, config03] rootModel:_2LevelDataSource];
+        [vc02 setSelectedNode:_selectedNode];
         
         [vc02 setMultiLevelViewBackgroundColor:[UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1] atIndex:0];
         
@@ -100,9 +108,12 @@
             [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];
             [tmp dismissSourceViewWithAnimation:YES];
         };
+        __weak typeof(self) w_self = self;
         vc02.selectedBlock = ^(OKBMultiLevelListNode *model) {
+            __strong typeof(self) s_self = w_self;
             [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];
             [tmp dismissSourceViewWithAnimation:YES];
+            s_self->_selectedNode = model;
         };
         vc00.selectedBlock = ^(OKBMultiLevelListNode *model) {
             [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];

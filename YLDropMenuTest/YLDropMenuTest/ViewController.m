@@ -14,6 +14,9 @@
 #import <Masonry/Masonry.h>
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
+{
+    ViewControllerTestVC *_vc2;
+}
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray<NSDictionary<NSString *, UIViewController *> *> *dataSource;
 
@@ -33,15 +36,16 @@
         make.edges.equalTo(self.view).insets(UIEdgeInsetsZero);
     }];
     
+    _vc2 = [[ViewControllerTestVC alloc] initWithNibName:nil bundle:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     ViewTestVC *vc = [[ViewTestVC alloc] initWithNibName:nil bundle:nil];
-    ViewControllerTestVC *vc2 = [[ViewControllerTestVC alloc] initWithNibName:nil bundle:nil];
+    
 
-    self.dataSource = @[@{@"View 形式调用" : vc}, @{@"ViewController 形式调用" : vc2}];
+    self.dataSource = @[@{@"View 形式调用" : vc}, @{@"ViewController 形式调用" : _vc2}];
     
 }
 
