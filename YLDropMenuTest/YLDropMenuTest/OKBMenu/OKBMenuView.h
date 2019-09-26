@@ -64,7 +64,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 当前选中的菜单项
 @property (nonatomic, assign) NSInteger selectedItemIndex;
 
-
 /// 根据菜单项索引获得响应的菜单项
 /// @param index 菜单项索引
 - (OKBMenuItemView *)menuItemViewAtIndex:(NSInteger)index;

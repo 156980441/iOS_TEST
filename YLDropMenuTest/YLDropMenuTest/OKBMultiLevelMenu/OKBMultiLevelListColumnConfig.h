@@ -6,12 +6,9 @@
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
-@class OKBMultiLevelListColumnHeaderView;
-
 
 /// 多级列表列的配置
 @interface OKBMultiLevelListColumnConfig : NSObject
@@ -19,7 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 单个列表的宽度权重
 @property (nonatomic, assign) NSInteger widthWeight;
 /// 单个列表的头部视图
-@property (nonatomic, strong, nullable) OKBMultiLevelListColumnHeaderView *columnHeaderView;
+@property (nonatomic, strong, nullable) UIView *columnHeaderView;
+@property (nonatomic, assign) CGFloat headerViewHeight;
 /// 单个列表内 Cell 样式
 @property (nonatomic, strong) Class customTVCellClass;
 

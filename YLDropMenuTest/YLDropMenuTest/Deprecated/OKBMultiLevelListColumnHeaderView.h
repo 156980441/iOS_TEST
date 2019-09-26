@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 干掉了一曾继承，放在了 OKBMultiLevelListColumnConfig
 
 /// 多级列表列的头部视图，使用方法参见子类 OKBMultiLevelListLabelTVHeader
 @interface OKBMultiLevelListColumnHeaderView : UIView

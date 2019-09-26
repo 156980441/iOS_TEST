@@ -9,7 +9,6 @@
 #import "OKBMultiLevelListVC.h"
 
 #import "OKBMultiLevelListView.h"
-#import "OKBMultiLevelListColumnHeaderView.h"
 #import "OKBLabelImageView.h"
 
 #import "OKBMultiLevelListNode.h"
@@ -79,7 +78,7 @@
 #pragma mark - OKBMultiLevelMenuViewDelegate
 
 - (CGFloat)multiLevelList:(OKBMultiLevelListView *)multiLevelListView heightForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {
-    return [_configs objectAtIndex:index].columnHeaderView.height;
+    return [_configs objectAtIndex:index].headerViewHeight;
 }
 
 - (void)multiLevelList:(OKBMultiLevelListView *)multiLevelListView didSelectInTableView:(nonnull OKBMultiLevelListNode *)model {
