@@ -74,6 +74,7 @@
         OKBMultiLevelListColumnConfig *config01 = [[OKBMultiLevelListColumnConfig alloc] init];
         config01.widthWeight = 0;
         config01.columnHeaderView = header01;
+        config01.headerViewHeight = 32;
         config01.customTVCellClass = OKBMultiLevelListBaseTVCell.class;
         
         // 初始化一级下拉列表
@@ -95,6 +96,7 @@
         OKBMultiLevelListColumnConfig *config03 = [[OKBMultiLevelListColumnConfig alloc] init];
         config03.widthWeight = 2;
         config03.columnHeaderView = header02;
+        config03.headerViewHeight = 32;
         config03.customTVCellClass = OKBMultiLevelListBaseTVCell.class;
         
         OKBMultiLevelListVC *vc02 = [[OKBMultiLevelListVC alloc] initWithConfigs:@[config02, config03] rootModel:_2LevelDataSource];
@@ -103,24 +105,24 @@
         [vc02 setMultiLevelViewBackgroundColor:[UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1] atIndex:0];
         
         
-        OKBLabelImageView *itemView00 = [[OKBLabelImageView alloc] initWithFrame:CGRectZero];
-        itemView00.textLbl.text = @"选择";
+//        OKBLabelImageView *itemView00 = [[OKBLabelImageView alloc] initWithFrame:CGRectZero];
+//        itemView00.textLbl.text = @"选择";
         
 //        OKBMenuItem *item00 = [[OKBMenuItem alloc] init];
 //        item00.menuItemVC = vc00;
 //        item00.menuItemView = itemView00;
 //        item00.soureViewHeight = 200;
         
-        OKBLabelImageView *itemView01 = [[OKBLabelImageView alloc] initWithFrame:CGRectZero];
-        itemView01.textLbl.text = @"选择";
+//        OKBLabelImageView *itemView01 = [[OKBLabelImageView alloc] initWithFrame:CGRectZero];
+//        itemView01.textLbl.text = @"选择";
         
 //        OKBMenuItem *item01 = [[OKBMenuItem alloc] init];
 //        item01.menuItemVC = vc01;
 //        item01.menuItemView = itemView01;
 //        item01.soureViewHeight = 200;
         
-        OKBLabelImageView *itemView02 = [[OKBLabelImageView alloc] initWithFrame:CGRectZero];
-        itemView02.textLbl.text = @"选择";
+//        OKBLabelImageView *itemView02 = [[OKBLabelImageView alloc] initWithFrame:CGRectZero];
+//        itemView02.textLbl.text = @"选择";
         
 //        OKBMenuItem *item02 = [[OKBMenuItem alloc] init];
 //        item02.menuItemVC = vc02;

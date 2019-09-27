@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (OKBMultiLevelListNode *)rootModel;
 
+- (void)updateMenuItemView:(OKBMenuItemView *)menuItemView;
+
 @end
 
 NS_ASSUME_NONNULL_END

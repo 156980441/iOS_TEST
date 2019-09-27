@@ -24,7 +24,7 @@
 {
     OKBMultiLevelListNode *_model;
     NSArray<OKBMultiLevelListColumnConfig *> *_configs;
-    OKBLabelImageView *_itemView;
+    OKBMenuItemView *_menuItemView;
 }
 @property (nonatomic, strong) OKBMultiLevelListView *multiLevelListView;
 
@@ -38,7 +38,9 @@
     if (self) {
         _model = model;
         _configs = configs;
-        _itemView = [[OKBLabelImageView alloc] init];
+        _menuItemView = [[OKBLabelImageView alloc] init];
+        OKBLabelImageView *tmp = (OKBLabelImageView *)_menuItemView;
+        tmp.textLbl.text = @"选择";
     }
     return self;
 }
@@ -80,6 +82,10 @@
     return _model;
 }
 
+- (void)updateMenuItemView:(OKBMenuItemView *)menuItemView {
+    _menuItemView = menuItemView;
+}
+
 - (UITableView *)tableViewAtIndex:(NSInteger)index {
     return [self.multiLevelListView tableViewAtIndex:index];
 }
@@ -91,7 +97,7 @@
 }
 
 - (void)multiLevelList:(OKBMultiLevelListView *)multiLevelListView didSelectInTableView:(nonnull OKBMultiLevelListNode *)model {
-    [_itemView renderMenuItemViewWithUserInfo:model.nodeName];
+    [_menuItemView renderMenuItemViewWithUserInfo:model.nodeName];
     
     if (self.selectedBlock) {
         self.selectedBlock(model);
@@ -136,7 +142,7 @@
 
 
 - (OKBMenuItemView *)menuItemView {
-    return _itemView;
+    return _menuItemView;
 }
 
 - (CGFloat)popViewHeight {
