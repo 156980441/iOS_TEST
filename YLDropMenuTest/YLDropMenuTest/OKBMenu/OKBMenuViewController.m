@@ -10,13 +10,14 @@
 #import "OKBMenuView.h"
 #import "OKBMenuItem.h"
 #import "OKBLabelImageView.h"
+#import "OKBMenuPopViewPrivateHeader.h"
 
 
 #import <Masonry/Masonry.h>
 
-@interface OKBMenuViewController () <OKBMenuViewDelegate, OKBMenuViewDataSource>
+@interface OKBMenuViewController () <OKBMenuViewDelegate, OKBMenuViewDataSource, OKBMenuPopViewControllerDelegate>
 {
-    NSArray<OKBMenuItem *> *_items;
+    NSArray<OKBMenuPopViewController *> *_items;
 }
 @property (nonatomic, strong) OKBMenuView *menuView;
 
@@ -32,12 +33,21 @@
     [self.menuView dismissSourceViewWithAnimation:animation];
 }
 
-- (instancetype)initWithMenuItems:(NSArray<OKBMenuItem *> *)items {
+- (instancetype)initWithMenuPopVCs:(NSArray<OKBMenuPopViewController *> *)items {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _items = items;
+        for (OKBMenuPopViewController *vc in items) {
+            [vc setMenuViewDelegate:self];
+        }
     }
     return self;
+}
+
+- (void)menuPopViewController:(OKBMenuPopViewController *)vc
+           renderMenuItemView:(OKBMenuItemView *)menuItemView
+                     userInfo:(id)userdata {
+    [menuItemView renderMenuItemViewWithUserInfo:userdata];
 }
 
 - (void)viewDidLoad {
@@ -63,7 +73,7 @@
 
 - (UIView *)menuView:(OKBMenuView *)menuView sourceViewInItemAtIndex:(NSInteger)index {
     
-    UIViewController *vc = [_items objectAtIndex:index].menuItemVC;
+    UIViewController *vc = [_items objectAtIndex:index];
     
     if (vc.view.superview) {
         [vc willMoveToParentViewController:nil];
@@ -77,7 +87,7 @@
 }
 
 - (CGFloat)menuView:(OKBMenuView *)menuView heightForSourceViewAtIndexPath:(NSInteger)index {
-    return [_items objectAtIndex:index].soureViewHeight;
+    return [_items objectAtIndex:index].popViewHeight;
 }
 
 - (void)menuView:(OKBMenuView *)menuView didSelectItemAtIndexPath:(NSInteger)index {

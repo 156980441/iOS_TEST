@@ -6,14 +6,14 @@
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "OKBMenuPopViewController.h"
 #import "OKBMultiLevelListColumnConfig.h"
 #import "OKBMultiLevelListNode.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /// 多级列表 VC
-@interface OKBMultiLevelListVC : UIViewController
+@interface OKBMultiLevelListVC : OKBMenuPopViewController
 
 - (instancetype)initWithConfigs:(NSArray<OKBMultiLevelListColumnConfig *> *)configs
                       rootModel:(OKBMultiLevelListNode *)model;

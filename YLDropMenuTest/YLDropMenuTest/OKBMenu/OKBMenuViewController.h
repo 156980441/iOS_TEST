@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "OKBMenuItem.h"
+#import "OKBMenuPopViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 菜单控制器初始化
 /// @param items 菜单项数组
-- (instancetype)initWithMenuItems:(NSArray<OKBMenuItem *> *)items;
+- (instancetype)initWithMenuPopVCs:(NSArray<OKBMenuPopViewController *> *)items;
 
 /// 当前选择的菜单项
 @property (nonatomic, readonly) NSInteger selectedItemIndex;

@@ -8,6 +8,8 @@
 
 #import "OKBMultiLevelListVC.h"
 
+#import "OKBMenuItemView.h"
+
 #import "OKBMultiLevelListView.h"
 #import "OKBLabelImageView.h"
 
@@ -21,6 +23,7 @@
 {
     OKBMultiLevelListNode *_model;
     NSArray<OKBMultiLevelListColumnConfig *> *_configs;
+    OKBMenuItemView *_itemView;
 }
 @property (nonatomic, strong) OKBMultiLevelListView *multiLevelListView;
 
@@ -34,6 +37,7 @@
     if (self) {
         _model = model;
         _configs = configs;
+        _itemView = [[OKBLabelImageView alloc] init];
     }
     return self;
 }
@@ -123,6 +127,15 @@
         _multiLevelListView = tmp;
     }
     return _multiLevelListView;
+}
+
+
+- (OKBMenuItemView *)menuItemView {
+    return _itemView;
+}
+
+- (CGFloat)popViewHeight {
+    return 300;
 }
 
 @end

@@ -106,33 +106,33 @@
         OKBLabelImageView *itemView00 = [[OKBLabelImageView alloc] initWithFrame:CGRectZero];
         itemView00.textLbl.text = @"选择";
         
-        OKBMenuItem *item00 = [[OKBMenuItem alloc] init];
-        item00.menuItemVC = vc00;
-        item00.menuItemView = itemView00;
-        item00.soureViewHeight = 200;
+//        OKBMenuItem *item00 = [[OKBMenuItem alloc] init];
+//        item00.menuItemVC = vc00;
+//        item00.menuItemView = itemView00;
+//        item00.soureViewHeight = 200;
         
         OKBLabelImageView *itemView01 = [[OKBLabelImageView alloc] initWithFrame:CGRectZero];
         itemView01.textLbl.text = @"选择";
         
-        OKBMenuItem *item01 = [[OKBMenuItem alloc] init];
-        item01.menuItemVC = vc01;
-        item01.menuItemView = itemView01;
-        item01.soureViewHeight = 200;
+//        OKBMenuItem *item01 = [[OKBMenuItem alloc] init];
+//        item01.menuItemVC = vc01;
+//        item01.menuItemView = itemView01;
+//        item01.soureViewHeight = 200;
         
         OKBLabelImageView *itemView02 = [[OKBLabelImageView alloc] initWithFrame:CGRectZero];
         itemView02.textLbl.text = @"选择";
         
-        OKBMenuItem *item02 = [[OKBMenuItem alloc] init];
-        item02.menuItemVC = vc02;
-        item02.menuItemView = itemView02;
-        item02.soureViewHeight = 200;
+//        OKBMenuItem *item02 = [[OKBMenuItem alloc] init];
+//        item02.menuItemVC = vc02;
+//        item02.menuItemView = itemView02;
+//        item02.soureViewHeight = 200;
         
         
         
         
         
         // 将一级，二级列表插入菜单，成为下拉视图
-        OKBMenuViewController *tmp = [[OKBMenuViewController alloc] initWithMenuItems:@[item00, item01, item02]];
+        OKBMenuViewController *tmp = [[OKBMenuViewController alloc] initWithMenuPopVCs:@[vc00, vc01, vc02]];
         vc01.selectedBlock = ^(OKBMultiLevelListNode *model) {
             [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];
             [tmp dismissSourceViewWithAnimation:YES];
