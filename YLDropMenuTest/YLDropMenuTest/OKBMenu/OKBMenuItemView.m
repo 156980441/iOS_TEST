@@ -27,7 +27,6 @@
 }
 
 - (void)renderMenuItemViewWithUserInfo:(id)userInfo {
-    
 }
 
 @end

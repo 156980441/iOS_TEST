@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OKBMenuItem.h"
 #import "OKBMenuPopViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN

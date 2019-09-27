@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) UIImage *highlightedImage;
 
+- (void)renderMenuItemViewWithUserInfo:(id)userInfo;
+
 @end
 
 NS_ASSUME_NONNULL_END

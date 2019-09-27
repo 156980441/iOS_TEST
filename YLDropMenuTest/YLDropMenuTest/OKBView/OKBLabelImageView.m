@@ -71,4 +71,9 @@
     }
 }
 
+- (void)renderMenuItemViewWithUserInfo:(id)userInfo {
+    NSString *str = (NSString *)userInfo;
+    self.textLbl.text = str;
+}
+
 @end

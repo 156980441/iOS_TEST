@@ -9,7 +9,8 @@
 #ifndef OKBMenuPopViewPrivateHeader_h
 #define OKBMenuPopViewPrivateHeader_h
 
-@class OKBMenuPopViewController, OKBMenuItemView;
+#import "OKBMenuPopViewController.h"
+#import "OKBMenuItemView.h"
 
 @protocol OKBMenuPopViewControllerDelegate <NSObject>
 
@@ -22,6 +23,7 @@
 
 @interface OKBMenuPopViewController (Private)
 - (void)setMenuViewDelegate:(id<OKBMenuPopViewControllerDelegate>)delegte;
+- (void)setBelongToMenuVC:(OKBMenuViewController *)menuVC;
 @end
 
 

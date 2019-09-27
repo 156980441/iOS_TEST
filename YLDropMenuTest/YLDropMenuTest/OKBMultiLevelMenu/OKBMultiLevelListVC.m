@@ -9,6 +9,7 @@
 #import "OKBMultiLevelListVC.h"
 
 #import "OKBMenuItemView.h"
+#import "OKBMenuViewController.h"
 
 #import "OKBMultiLevelListView.h"
 #import "OKBLabelImageView.h"
@@ -23,7 +24,7 @@
 {
     OKBMultiLevelListNode *_model;
     NSArray<OKBMultiLevelListColumnConfig *> *_configs;
-    OKBMenuItemView *_itemView;
+    OKBLabelImageView *_itemView;
 }
 @property (nonatomic, strong) OKBMultiLevelListView *multiLevelListView;
 
@@ -90,9 +91,13 @@
 }
 
 - (void)multiLevelList:(OKBMultiLevelListView *)multiLevelListView didSelectInTableView:(nonnull OKBMultiLevelListNode *)model {
+    [_itemView renderMenuItemViewWithUserInfo:model.nodeName];
+    
     if (self.selectedBlock) {
         self.selectedBlock(model);
     }
+    
+    [self.menuVC dismissSourceViewWithAnimation:YES];
 }
 
 - (nullable UIView *)multiLevelList:(OKBMultiLevelListView *)multiLevelListView viewForHeaderInTableView:(UITableView *)tableView atIndex:(NSInteger)index {

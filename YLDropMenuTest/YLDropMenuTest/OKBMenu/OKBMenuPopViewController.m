@@ -12,6 +12,7 @@
 @interface OKBMenuPopViewController ()
 {
     __weak id<OKBMenuPopViewControllerDelegate> _menuViewDelegate;
+    __weak OKBMenuViewController *_menuVC;
 }
 @end
 
@@ -24,6 +25,14 @@
 
 - (void)setMenuViewDelegate:(id<OKBMenuPopViewControllerDelegate>)delegte {
     _menuViewDelegate = delegte;
+}
+
+- (void)setBelongToMenuVC:(OKBMenuViewController *)menuVC {
+    _menuVC = menuVC;
+}
+
+- (OKBMenuViewController *)menuVC {
+    return _menuVC;
 }
 
 - (OKBMenuItemView *)menuItemView {

@@ -134,19 +134,15 @@
         // 将一级，二级列表插入菜单，成为下拉视图
         OKBMenuViewController *tmp = [[OKBMenuViewController alloc] initWithMenuPopVCs:@[vc00, vc01, vc02]];
         vc01.selectedBlock = ^(OKBMultiLevelListNode *model) {
-            [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];
-            [tmp dismissSourceViewWithAnimation:YES];
+            NSLog(@"做点啥");
         };
         __weak typeof(self) w_self = self;
         vc02.selectedBlock = ^(OKBMultiLevelListNode *model) {
             __strong typeof(self) s_self = w_self;
-            [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];
-            [tmp dismissSourceViewWithAnimation:YES];
             s_self->_selectedNode = model;
         };
         vc00.selectedBlock = ^(OKBMultiLevelListNode *model) {
-            [tmp updateMenuItemTitle:model.nodeName atIndex:tmp.selectedItemIndex];
-            [tmp dismissSourceViewWithAnimation:YES];
+            NSLog(@"啥都不做");
         };
         
         _menuVC = tmp;

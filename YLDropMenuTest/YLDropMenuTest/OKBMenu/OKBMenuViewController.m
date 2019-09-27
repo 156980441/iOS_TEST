@@ -39,6 +39,7 @@
         _items = items;
         for (OKBMenuPopViewController *vc in items) {
             [vc setMenuViewDelegate:self];
+            [vc setBelongToMenuVC:self];
         }
     }
     return self;

@@ -24,4 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@class OKBMenuViewController;
+
+@interface OKBMenuPopViewController (OKBMenuRelation)
+@property (nonatomic, readonly) OKBMenuViewController *menuVC;
+@end
+
 NS_ASSUME_NONNULL_END
