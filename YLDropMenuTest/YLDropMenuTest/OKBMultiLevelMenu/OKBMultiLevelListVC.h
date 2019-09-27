@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OKBMultiLevelListColumnConfig.h"
+#import "OKBMultiLevelListNode.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-@class OKBMultiLevelMenuRootModel, OKBMultiLevelListNode, OKBMultiLevelListColumnConfig;
-
 
 /// 多级列表 VC
 @interface OKBMultiLevelListVC : UIViewController
@@ -27,6 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setMultiLevelViewBackgroundColor:(UIColor *)color atIndex:(NSInteger)index;
 
 - (void)setSelectedNode:(OKBMultiLevelListNode *)node;
+
+- (OKBMultiLevelListNode *)rootModel;
 
 @end
 

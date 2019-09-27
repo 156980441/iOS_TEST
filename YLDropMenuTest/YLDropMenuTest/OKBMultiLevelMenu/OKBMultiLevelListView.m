@@ -9,7 +9,6 @@
 #import "OKBMultiLevelListView.h"
 #import "OKBMultiLevelListNode.h"
 #import "OKBMultiLevelListAbsTVCell.h"
-#import "OKB1LabelTVCell.h"
 #import <Masonry/Masonry.h>
 
 static NSString *okb_cellPrefix = @"OKBMultiLevelListView";

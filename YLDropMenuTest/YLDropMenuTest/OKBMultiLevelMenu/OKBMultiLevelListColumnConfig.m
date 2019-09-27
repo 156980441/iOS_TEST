@@ -11,7 +11,7 @@
 
 @implementation OKBMultiLevelListColumnConfig
 
-+ (instancetype)defaultSingleColumnConfig {
++ (instancetype)defaultColumnConfig {
     OKBMultiLevelListColumnConfig *config = [[OKBMultiLevelListColumnConfig alloc] init];
     config.widthWeight = 1;
     config.customTVCellClass = OKBMultiLevelListBaseTVCell.class;

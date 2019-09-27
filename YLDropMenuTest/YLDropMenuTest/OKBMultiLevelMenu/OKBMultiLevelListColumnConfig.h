@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) Class customTVCellClass;
 
 /// 默认单个列配置：单列铺满整个多级列表视图，没有列的头部视图，cell 样式 OKBMultiLevelListBaseTVCell
-+ (instancetype)defaultSingleColumnConfig;
++ (instancetype)defaultColumnConfig;
 
 @end
 

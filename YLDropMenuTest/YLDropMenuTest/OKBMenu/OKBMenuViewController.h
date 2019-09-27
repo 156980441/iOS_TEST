@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OKBMenuItem.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-@class OKBMenuItem;
 
 /// 菜单控制器
 @interface OKBMenuViewController : UIViewController

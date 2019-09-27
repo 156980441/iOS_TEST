@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OKBMultiLevelListNode.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 
-@class OKBMultiLevelListView, OKBMultiLevelListNode, OKBMultiLevelListBaseTVCell;
+@class OKBMultiLevelListView;
 
 @protocol OKBMultiLevelMenuViewDelegate <NSObject>
 

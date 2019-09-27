@@ -80,7 +80,7 @@
         OKBMultiLevelListVC *vc01 = [[OKBMultiLevelListVC alloc] initWithConfigs:@[config01] rootModel:[DataSourceFactory level1DataSource]];
         
         // 便捷方法初始化一级
-        OKBMultiLevelListVC *vc00 = [[OKBMultiLevelListVC alloc] initSingleListWithConfig:[OKBMultiLevelListColumnConfig defaultSingleColumnConfig] listNodes:[DataSourceFactory level1DataSource].childNodes];
+        OKBMultiLevelListVC *vc00 = [[OKBMultiLevelListVC alloc] initSingleListWithConfig:[OKBMultiLevelListColumnConfig defaultColumnConfig] listNodes:[DataSourceFactory level1DataSource].childNodes];
         
         
         // 二级列表

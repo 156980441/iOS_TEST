@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OKBMenuItemView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class OKBMenuView;
-@class OKBMenuItemView;
 
 @protocol OKBMenuViewDataSource <NSObject>
 

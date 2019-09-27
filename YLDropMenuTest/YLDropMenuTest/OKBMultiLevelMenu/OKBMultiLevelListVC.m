@@ -71,6 +71,10 @@
     [self.multiLevelListView setSelectedNode:node];
 }
 
+- (OKBMultiLevelListNode *)rootModel {
+    return _model;
+}
+
 - (UITableView *)tableViewAtIndex:(NSInteger)index {
     return [self.multiLevelListView tableViewAtIndex:index];
 }
