@@ -44,6 +44,10 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol OKBMenuViewDelegate <NSObject>
 
 @optional
+
+/// 菜单选项点击事件
+/// @param menuView 菜单
+/// @param index 菜单项索引
 - (void)menuView:(OKBMenuView *)menuView didSelectItemAtIndexPath:(NSInteger)index;
 
 @end

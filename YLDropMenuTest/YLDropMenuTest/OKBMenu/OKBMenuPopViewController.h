@@ -27,7 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 @class OKBMenuViewController;
 
 @interface OKBMenuPopViewController (OKBMenuRelation)
+
+/// 被加入到菜单的 VC 可以获取到该属性
 @property (nonatomic, readonly) OKBMenuViewController *menuVC;
+
 @end
 
 NS_ASSUME_NONNULL_END
