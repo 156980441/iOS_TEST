@@ -34,6 +34,29 @@
     return self;
 }
 
++ (OKBMultiLevelListNode *)searchNodeByNodeName:(NSString *)name rootNode:(OKBMultiLevelListNode *)rootNode {
+    if (name == nil) {
+        return nil;
+    }
+    OKBMultiLevelListNode *result = nil;
+    for (OKBMultiLevelListNode *tmp in rootNode.childNodes) {
+        if ([tmp.nodeName isEqualToString:name]) {
+            result = tmp;
+            break;
+        }
+        else {
+            OKBMultiLevelListNode *result = [self searchNodeByNodeName:name rootNode:tmp];
+            if (!result) {
+                continue;
+            }
+            else {
+                break;
+            }
+        }
+    }
+    return result;
+}
+
 - (void)setChildNodes:(NSArray<OKBMultiLevelListNode *> * _Nullable)childNodes {
     _childNodes = childNodes;
 }
