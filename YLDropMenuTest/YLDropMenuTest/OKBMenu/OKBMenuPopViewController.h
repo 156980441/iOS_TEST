@@ -15,8 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 抽象方法
 - (OKBMenuItemView *)menuItemView;
+
+- (UIView *)menuPopView;
 /// 默认 300
-- (CGFloat)popViewHeight;
+- (CGFloat)menuPopViewHeight;
 
 
 /// 子类可以随时调用

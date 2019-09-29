@@ -40,7 +40,12 @@
     return nil;
 }
 
-- (CGFloat)popViewHeight {
+- (UIView *)menuPopView {
+    NSAssert(0, @"implement");
+    return nil;
+}
+
+- (CGFloat)menuPopViewHeight {
     return 300;
 }
 
