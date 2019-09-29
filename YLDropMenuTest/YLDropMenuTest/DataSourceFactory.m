@@ -166,9 +166,9 @@
         
         [root addChild:c_node];
         
-        for (int i = 0; i < 10; i++) { // 第二层
+        for (int j = 0; j < 10; j++) { // 第二层
             PersonModel *person = [[PersonModel alloc] init];
-            person.address = [NSString stringWithFormat:@"北京-海淀-上地 %d 号院", i];
+            person.address = [NSString stringWithFormat:@"海淀-上地 %d 号院 %d 公寓", i, j];
             
             OKBMultiLevelListNode *p_node = [[OKBMultiLevelListNode alloc] init];
             p_node.data = tmp;
