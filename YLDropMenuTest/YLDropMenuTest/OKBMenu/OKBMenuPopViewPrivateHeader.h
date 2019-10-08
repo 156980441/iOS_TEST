@@ -22,8 +22,10 @@
 
 
 @interface OKBMenuPopViewController (Private)
+
 - (void)setMenuViewDelegate:(id<OKBMenuPopViewControllerDelegate>)delegte;
 - (void)setBelongToMenuVC:(OKBMenuViewController *)menuVC;
+
 @end
 
 

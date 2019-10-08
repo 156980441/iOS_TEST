@@ -13,15 +13,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OKBMenuPopViewController : UIViewController
 
-/// 抽象方法
+/// 抽象方法：菜单选项
 - (OKBMenuItemView *)menuItemView;
 
+/// 抽象方法：弹框视图
 - (UIView *)menuPopView;
+
 /// 默认 300
 - (CGFloat)menuPopViewHeight;
 
 /// 子类可以随时调用
-- (void)reloadMenuView:(id)userInfo;
+- (void)reloadMenuItemView:(id)userInfo;
 
 @end
 
