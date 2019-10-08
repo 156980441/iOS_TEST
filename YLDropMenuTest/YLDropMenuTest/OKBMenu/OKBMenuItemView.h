@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// default: NO
 @property (nonatomic, assign) BOOL selected;
 
+/// 抽象方法，子类实现
+/// @param userInfo 用户自定义参数
 - (void)renderMenuItemViewWithUserInfo:(id)userInfo;
 
 @end

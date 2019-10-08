@@ -7,7 +7,6 @@
 //
 
 #import "OKBMenuView.h"
-#import "OKBMenuItemView.h"
 #import <Masonry/Masonry.h>
 
 static UIWindow* window4Show (void) {
@@ -34,14 +33,6 @@ static UIWindow* window4Show (void) {
 @end
 
 @implementation OKBMenuView
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        
-    }
-    return self;
-}
 
 - (void)dealloc {
     NSLog(@"%s", __func__);

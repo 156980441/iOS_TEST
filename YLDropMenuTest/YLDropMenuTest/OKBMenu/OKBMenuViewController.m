@@ -44,12 +44,6 @@
     return self;
 }
 
-- (void)menuPopViewController:(OKBMenuPopViewController *)vc
-           renderMenuItemView:(OKBMenuItemView *)menuItemView
-                     userInfo:(id)userdata {
-    [menuItemView renderMenuItemViewWithUserInfo:userdata];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -60,6 +54,13 @@
     }];
 }
 
+#pragma mark - OKBMenuPopViewControllerDelegate
+
+- (void)menuPopViewController:(OKBMenuPopViewController *)vc
+           renderMenuItemView:(OKBMenuItemView *)menuItemView
+                     userInfo:(id)userdata {
+    [menuItemView renderMenuItemViewWithUserInfo:userdata];
+}
 
 #pragma mark - OKBMenuViewDataSource && OKBMenuViewDelegate
 
@@ -106,8 +107,7 @@
 }
 
 - (void)updateMenuItemTitle:(NSString *)title atIndex:(NSInteger)index {
-    OKBLabelImageView *itemView = (OKBLabelImageView *)[_items objectAtIndex:index].menuItemView;
-    itemView.textLbl.text = title;
+    [[_items objectAtIndex:index].menuItemView renderMenuItemViewWithUserInfo:title];;
 }
 
 - (void)dealloc {

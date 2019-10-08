@@ -57,8 +57,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 菜单视图
 @interface OKBMenuView : UIView
 
-- (instancetype)initWithFrame:(CGRect)frame;
-
 /// 菜单视图数据源委托
 @property (nonatomic, weak) id <OKBMenuViewDataSource> dataSource;
 
