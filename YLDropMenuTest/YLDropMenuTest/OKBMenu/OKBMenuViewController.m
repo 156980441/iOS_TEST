@@ -74,21 +74,22 @@
 
 - (UIView *)menuView:(OKBMenuView *)menuView sourceViewInItemAtIndex:(NSInteger)index {
     
-    UIViewController *vc = [_items objectAtIndex:index];
+    OKBMenuPopViewController *vc = [_items objectAtIndex:index];
     
-    if (vc.view.superview) {
+    if (vc.parentViewController) {
         [vc willMoveToParentViewController:nil];
         [vc removeFromParentViewController];
     }
     
     [self addChildViewController:vc];
     [self didMoveToParentViewController:self];
+    [self.view insertSubview:vc.view belowSubview:self.menuView];
     
-    return vc.view;
+    return vc.menuPopView;
 }
 
 - (CGFloat)menuView:(OKBMenuView *)menuView heightForSourceViewAtIndexPath:(NSInteger)index {
-    return [_items objectAtIndex:index].popViewHeight;
+    return [_items objectAtIndex:index].menuPopViewHeight;
 }
 
 - (void)menuView:(OKBMenuView *)menuView didSelectItemAtIndexPath:(NSInteger)index {

@@ -79,12 +79,10 @@ static UIWindow* window4Show (void) {
         } completion:^(BOOL finished) {
             __strong typeof(self) sSelf = wSelf;
             [sSelf->_sourceView removeFromSuperview];
-            sSelf->_sourceView = nil;
         }];
     }
     else {
         [_sourceView removeFromSuperview];
-        _sourceView = nil;
     }
     
     _lastSelectedItemView.selected = NO;
@@ -110,7 +108,7 @@ static UIWindow* window4Show (void) {
         }
         if (tmp && height) {
             
-            if (_sourceView) {
+            if (_sourceView.superview) {
                 [self dismissSourceViewWithAnimation:NO];
             }
             
@@ -127,7 +125,6 @@ static UIWindow* window4Show (void) {
             
             tmp.alpha = 0.0f;
             
-            [self.superview addSubview:tmp]; // 适配 VC 形式的调用
             [window addSubview:tmp];
             
             [UIView animateWithDuration:0.2f animations:^{

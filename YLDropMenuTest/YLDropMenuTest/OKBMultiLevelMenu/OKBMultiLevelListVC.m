@@ -60,10 +60,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.view addSubview:self.multiLevelListView];
-    [self.multiLevelListView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).insets(UIEdgeInsetsZero);
-    }];
+    if (!self.menuVC) {
+        [self.view addSubview:self.multiLevelListView];
+        [self.multiLevelListView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view).insets(UIEdgeInsetsZero);
+        }];
+    }
     
     [self.multiLevelListView reloadDataWithRootDataSource:_model];
 }
@@ -140,12 +142,15 @@
     return _multiLevelListView;
 }
 
+- (UIView *)menuPopView {
+    return self.multiLevelListView;
+}
 
 - (OKBMenuItemView *)menuItemView {
     return _menuItemView;
 }
 
-- (CGFloat)popViewHeight {
+- (CGFloat)menuPopViewHeight {
     return 300;
 }
 

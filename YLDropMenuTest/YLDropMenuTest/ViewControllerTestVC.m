@@ -30,7 +30,6 @@
 @interface ViewControllerTestVC ()
 {
     OKBMultiLevelListNode *_selectedNode;
-    OKBMultiLevelListNode *_2LevelDataSource;
 }
 @property (nonatomic, strong) OKBMenuViewController *menuVC;
 @end
@@ -40,8 +39,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    _2LevelDataSource = [DataSourceFactory level2DataSource];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -56,10 +53,18 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    OKBMultiLevelListNode *node = [OKBMultiLevelListNode searchNodeByNodeName:_selectedNode.nodeName rootNode:[DataSourceFactory level2DataSource]];
+    
+    NSLog(@"");
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.menuVC dismissSourceViewWithAnimation:YES];
-    self.menuVC = nil;
+//    [self.menuVC dismissSourceViewWithAnimation:YES];
+//    self.menuVC = nil;
 }
 
 - (OKBMenuViewController *)menuVC {
@@ -99,8 +104,9 @@
         config03.headerViewHeight = 32;
         config03.customTVCellClass = OKBMultiLevelListBaseTVCell.class;
         
-        OKBMultiLevelListVC *vc02 = [[OKBMultiLevelListVC alloc] initWithConfigs:@[config02, config03] rootModel:_2LevelDataSource];
-        [vc02 setSelectedNode:_selectedNode];
+        OKBMultiLevelListVC *vc02 = [[OKBMultiLevelListVC alloc] initWithConfigs:@[config02, config03] rootModel:[DataSourceFactory level2DataSource]];
+        OKBMultiLevelListNode *node = [OKBMultiLevelListNode searchNodeByNodeName:_selectedNode.nodeName rootNode:[vc02 rootModel]];
+        [vc02 setSelectedNode:node];
         
         [vc02 setMultiLevelViewBackgroundColor:[UIColor colorWithRed:247/255.f green:248/255.f blue:250/255.f alpha:1] atIndex:0];
         
