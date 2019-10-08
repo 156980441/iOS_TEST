@@ -33,7 +33,7 @@
 @implementation OKBMultiLevelListVC
 
 - (instancetype)initWithConfigs:(NSArray<OKBMultiLevelListColumnConfig *> *)configs
-                     rootModel:(OKBMultiLevelListNode *)model {
+                      rootModel:(OKBMultiLevelListNode *)model {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         _model = model;

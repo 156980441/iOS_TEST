@@ -39,21 +39,27 @@
         return nil;
     }
     OKBMultiLevelListNode *result = nil;
-    for (OKBMultiLevelListNode *tmp in rootNode.childNodes) {
-        if ([tmp.nodeName isEqualToString:name]) {
-            result = tmp;
-            break;
-        }
-        else {
-            OKBMultiLevelListNode *result = [self searchNodeByNodeName:name rootNode:tmp];
-            if (!result) {
-                continue;
+    if ([rootNode.nodeName isEqualToString:name]) {
+        result = rootNode;
+    }
+    else {
+        for (OKBMultiLevelListNode *tmp in rootNode.childNodes) {
+            if ([tmp.nodeName isEqualToString:name]) {
+                result = tmp;
+                break;
             }
             else {
-                break;
+                result = [self searchNodeByNodeName:name rootNode:tmp];
+                if (!result) {
+                    continue;
+                }
+                else {
+                    break;
+                }
             }
         }
     }
+    
     return result;
 }
 
