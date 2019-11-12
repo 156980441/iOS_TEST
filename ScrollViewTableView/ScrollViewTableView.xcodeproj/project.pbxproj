@@ -109,23 +109,23 @@
 			isa = PBXGroup;
 			children = (
 				8D33BD982369379E00606966 /* Masonry */,
+				8D33BD852368334B00606966 /* Assets.xcassets */,
 				8D33BD792368334300606966 /* AppDelegate.h */,
 				8D33BD7A2368334300606966 /* AppDelegate.m */,
-				8D33BD7F2368334300606966 /* ViewController.h */,
-				8D33BD802368334300606966 /* ViewController.m */,
+				8DE042D0237AA4AC005792F0 /* BottomVC.h */,
+				8DE042D1237AA4AC005792F0 /* BottomVC.m */,
+				8D33BD8A2368334B00606966 /* Info.plist */,
+				8D33BD872368334B00606966 /* LaunchScreen.storyboard */,
+				8D33BDC12369381500606966 /* LeftVC.h */,
+				8D33BDC22369381500606966 /* LeftVC.m */,
+				8D33BD8B2368334B00606966 /* main.m */,
 				8DE0437B237AC372005792F0 /* OKBScrollView.h */,
 				8DE0437C237AC372005792F0 /* OKBScrollView.m */,
 				8DE042D3237AA9E8005792F0 /* PrefixHeader.pch */,
-				8DE042D0237AA4AC005792F0 /* BottomVC.h */,
-				8DE042D1237AA4AC005792F0 /* BottomVC.m */,
-				8D33BDC12369381500606966 /* LeftVC.h */,
-				8D33BDC22369381500606966 /* LeftVC.m */,
 				8D33BDC42369382300606966 /* RightVC.h */,
 				8D33BDC52369382300606966 /* RightVC.m */,
-				8D33BD852368334B00606966 /* Assets.xcassets */,
-				8D33BD872368334B00606966 /* LaunchScreen.storyboard */,
-				8D33BD8A2368334B00606966 /* Info.plist */,
-				8D33BD8B2368334B00606966 /* main.m */,
+				8D33BD7F2368334300606966 /* ViewController.h */,
+				8D33BD802368334300606966 /* ViewController.m */,
 			);
 			path = ScrollViewTableView;
 			sourceTree = "<group>";

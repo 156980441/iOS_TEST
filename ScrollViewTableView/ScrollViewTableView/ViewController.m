@@ -11,12 +11,14 @@
 #import "RightVC.h"
 #import "BottomVC.h"
 #import "Masonry.h"
+#import "OKBScrollView.h"
 
 @interface ViewController () <UIScrollViewDelegate>
 {
     BOOL _scrollEnabled;
 }
-@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIScrollView *scrollView; // BottomVC 的 scrollview delegate 收不到回调
+//@property (nonatomic, strong) OKBScrollView *scrollView; // BottomVC 的 scrollview delegate 可以收到回调
 @property (nonatomic, strong) LeftVC *leftVC;
 @property (nonatomic, strong) RightVC *rightVC;
 @property (nonatomic, strong) BottomVC *bottomVC;
@@ -43,6 +45,7 @@
         self.view.backgroundColor = [UIColor orangeColor];
         
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
+//        _scrollView = [[OKBScrollView alloc] initWithFrame:CGRectZero];
         _scrollView.backgroundColor = [UIColor blueColor];
         _scrollView.delegate = self;
         [self.view addSubview:_scrollView];
