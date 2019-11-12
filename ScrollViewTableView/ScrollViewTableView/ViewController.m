@@ -12,7 +12,7 @@
 #import "BottomVC.h"
 #import "Masonry.h"
 
-@interface ViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface ViewController () <UIScrollViewDelegate>
 {
     BOOL _scrollEnabled;
 }
@@ -29,6 +29,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _scrollEnabled = YES;
+        // 接收底部视图离开顶端的通知
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(acceptMsg:)
+                                                     name:kHomeLeaveTopNotification
+                                                   object:nil];
         // 背景橘黄
         // scrollView 蓝色
         // 容器视图灰色
@@ -85,20 +90,38 @@
     return self;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - notification
+
+- (void)acceptMsg:(NSNotification *)notification {
+    NSDictionary *userInfo = notification.userInfo;
+    NSString *canScroll = userInfo[@"scrollEnabled"];
+    if ([canScroll isEqualToString:@"1"]) {
+        _scrollEnabled = YES;
+    }
+}
+
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat contentOffsetY = scrollView.contentOffset.y;
     NSLog(@"scrollView的偏移量：=== %f", contentOffsetY);
     CGFloat maxOffsetY = CGRectGetMaxY(self.leftVC.view.frame);
-    if (contentOffsetY > maxOffsetY) {
+    if (contentOffsetY > maxOffsetY) { // 滑到顶端了
         [scrollView setContentOffset:CGPointMake(0, maxOffsetY)]; // 设置最大偏移
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"contentCanMove" object:nil]; // 告诉底部      内容视图能进行滑动了
+        [[NSNotificationCenter defaultCenter] postNotificationName:kHomeGoTopNotification
+                                                            object:nil
+                                                          userInfo:@{@"scrollEnabled" : @"1"}]; // 告诉底部，内容视图能进行滑动了
         _scrollEnabled = NO;   // 自己不能滑动了
+    } else {
+        if (_scrollEnabled == NO) {
+            [scrollView setContentOffset:CGPointMake(0, maxOffsetY)];
+        }
     }
-    if (_scrollEnabled == NO) {
-        [scrollView setContentOffset:CGPointMake(0, maxOffsetY)];
-    }
+    
 }
 
 @end

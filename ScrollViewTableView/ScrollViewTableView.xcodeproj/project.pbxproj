@@ -72,6 +72,7 @@
 		8D33BDC52369382300606966 /* RightVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RightVC.m; sourceTree = "<group>"; };
 		8DE042D0237AA4AC005792F0 /* BottomVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomVC.h; sourceTree = "<group>"; };
 		8DE042D1237AA4AC005792F0 /* BottomVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomVC.m; sourceTree = "<group>"; };
+		8DE042D3237AA9E8005792F0 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +110,7 @@
 				8D33BD7A2368334300606966 /* AppDelegate.m */,
 				8D33BD7F2368334300606966 /* ViewController.h */,
 				8D33BD802368334300606966 /* ViewController.m */,
+				8DE042D3237AA9E8005792F0 /* PrefixHeader.pch */,
 				8DE042D0237AA4AC005792F0 /* BottomVC.h */,
 				8DE042D1237AA4AC005792F0 /* BottomVC.m */,
 				8D33BDC12369381500606966 /* LeftVC.h */,
@@ -385,6 +387,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CUT8ZP87C2;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ScrollViewTableView/PrefixHeader.pch";
 				INFOPLIST_FILE = ScrollViewTableView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -402,6 +406,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CUT8ZP87C2;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/ScrollViewTableView/PrefixHeader.pch";
 				INFOPLIST_FILE = ScrollViewTableView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

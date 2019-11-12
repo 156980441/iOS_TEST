@@ -9,7 +9,10 @@
 #import "BottomVC.h"
 #import "Masonry.h"
 
-@interface BottomVC ()
+@interface BottomVC () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+{
+    BOOL _scrollEnabled;
+}
 @property (nonatomic, strong) UITableView *tableView;
 @end
 
@@ -18,6 +21,7 @@
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        _scrollEnabled = NO;
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor greenColor];
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"CELL"];
@@ -31,8 +35,18 @@
         [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.view).insets(UIEdgeInsetsZero);
         }];
+        
+        // 进入置顶通知
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(acceptMsg:)
+                                                     name:kHomeGoTopNotification
+                                                   object:nil];
     }
     return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -49,6 +63,40 @@
                 make.height.mas_equalTo(self.tableView.contentSize.height);
             }];
         }
+    }
+}
+
+#pragma mark - notification
+
+- (void)acceptMsg:(NSNotification *)notification {
+    NSString *notificationName = notification.name;
+    if ([notificationName isEqualToString:kHomeGoTopNotification]) {
+        NSDictionary *userInfo = notification.userInfo;
+        NSString *canScroll = userInfo[@"scrollEnabled"];
+        if ([canScroll isEqualToString:@"1"]) {
+            _scrollEnabled = YES; // 如果滑动到了顶部TableView就能滑动了
+            self.tableView.showsVerticalScrollIndicator = YES;
+        }
+    }
+    else if ([notificationName isEqualToString:kHomeLeaveTopNotification]) {
+//        self.tableView.contentOffset = CGPointZero;
+        _scrollEnabled = NO; // 如果没有滑动到了顶部TableView就不能滑动了
+        self.tableView.showsVerticalScrollIndicator = NO;
+    }
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (_scrollEnabled == NO) {
+        [scrollView setContentOffset:CGPointZero];
+    }
+    CGFloat offsetY = scrollView.contentOffset.y;
+    NSLog(@"TableView的偏移量：%f", offsetY);
+    if (offsetY < 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kHomeLeaveTopNotification
+                                                            object:nil
+                                                          userInfo:@{@"scrollEnabled":@"1"}];
     }
 }
 
