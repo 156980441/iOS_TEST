@@ -27,6 +27,7 @@
 		8D33BDC32369381500606966 /* LeftVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D33BDC22369381500606966 /* LeftVC.m */; };
 		8D33BDC62369382300606966 /* RightVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D33BDC52369382300606966 /* RightVC.m */; };
 		8DE042D2237AA4AC005792F0 /* BottomVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE042D1237AA4AC005792F0 /* BottomVC.m */; };
+		8DE0437D237AC372005792F0 /* OKBScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE0437C237AC372005792F0 /* OKBScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,8 @@
 		8DE042D0237AA4AC005792F0 /* BottomVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomVC.h; sourceTree = "<group>"; };
 		8DE042D1237AA4AC005792F0 /* BottomVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomVC.m; sourceTree = "<group>"; };
 		8DE042D3237AA9E8005792F0 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		8DE0437B237AC372005792F0 /* OKBScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKBScrollView.h; sourceTree = "<group>"; };
+		8DE0437C237AC372005792F0 /* OKBScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OKBScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				8D33BD7A2368334300606966 /* AppDelegate.m */,
 				8D33BD7F2368334300606966 /* ViewController.h */,
 				8D33BD802368334300606966 /* ViewController.m */,
+				8DE0437B237AC372005792F0 /* OKBScrollView.h */,
+				8DE0437C237AC372005792F0 /* OKBScrollView.m */,
 				8DE042D3237AA9E8005792F0 /* PrefixHeader.pch */,
 				8DE042D0237AA4AC005792F0 /* BottomVC.h */,
 				8DE042D1237AA4AC005792F0 /* BottomVC.m */,
@@ -249,6 +254,7 @@
 				8D33BDB82369379E00606966 /* MASCompositeConstraint.m in Sources */,
 				8D33BD8C2368334B00606966 /* main.m in Sources */,
 				8D33BDBC2369379E00606966 /* View+MASAdditions.m in Sources */,
+				8DE0437D237AC372005792F0 /* OKBScrollView.m in Sources */,
 				8D33BDB92369379E00606966 /* MASConstraintMaker.m in Sources */,
 				8D33BDC62369382300606966 /* RightVC.m in Sources */,
 				8D33BDBD2369379E00606966 /* MASConstraint.m in Sources */,
