@@ -11,8 +11,10 @@
 #import "RightVC.h"
 #import "Masonry.h"
 
-@interface ViewController () <UITableViewDataSource>
-
+@interface ViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+{
+    BOOL _scrollEnabled;
+}
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) LeftVC *leftVC;
@@ -29,10 +31,13 @@
         // scrollView 蓝色
         // 容器视图灰色
         // tableview 绿色
+        // 子控制器左边黄色
+        // 子控制器左边红色
         self.view.backgroundColor = [UIColor orangeColor];
         
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
         _scrollView.backgroundColor = [UIColor blueColor];
+        _scrollView.delegate = self;
         [self.view addSubview:_scrollView];
         [_scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.view).insets(UIEdgeInsetsZero);
@@ -52,6 +57,7 @@
         _tableView.backgroundColor = [UIColor greenColor];
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"CELL"];
         _tableView.dataSource = self;
+        _tableView.delegate = self;
         [_tableView addObserver:self
                      forKeyPath:@"contentSize"
                         options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
@@ -128,6 +134,7 @@
 }
 
 #pragma mark - UIScrollViewDelegate
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat contentOffsetY = scrollView.contentOffset.y;
     NSLog(@"scrollView的偏移量：===%f", contentOffsetY);
@@ -135,9 +142,9 @@
     if (contentOffsetY > maxOffsetY) {
         [scrollView setContentOffset:CGPointMake(0, maxOffsetY)]; // 设置最大偏移
         [[NSNotificationCenter defaultCenter] postNotificationName:@"contentCanMove" object:nil]; // 告诉底部      内容视图能进行滑动了
-        canMove = NO;   // 自己不能滑动了
+        _scrollEnabled = NO;   // 自己不能滑动了
     }
-    if (canMove == NO) {
+    if (_scrollEnabled == NO) {
         [scrollView setContentOffset:CGPointMake(0, maxOffsetY)];
     }
 }
