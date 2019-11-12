@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "LeftVC.h"
 #import "RightVC.h"
+#import "BottomVC.h"
 #import "Masonry.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
@@ -16,9 +17,9 @@
     BOOL _scrollEnabled;
 }
 @property (nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) LeftVC *leftVC;
 @property (nonatomic, strong) RightVC *rightVC;
+@property (nonatomic, strong) BottomVC *bottomVC;
 
 @end
 
@@ -27,6 +28,7 @@
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        _scrollEnabled = YES;
         // 背景橘黄
         // scrollView 蓝色
         // 容器视图灰色
@@ -53,17 +55,10 @@
         
         _leftVC = [[LeftVC alloc] initWithNibName:nil bundle:nil];
         _rightVC = [[RightVC alloc] initWithNibName:nil bundle:nil];
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-        _tableView.backgroundColor = [UIColor greenColor];
-        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"CELL"];
-        _tableView.dataSource = self;
-        _tableView.delegate = self;
-        [_tableView addObserver:self
-                     forKeyPath:@"contentSize"
-                        options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
-                        context:NULL];
+        _bottomVC = [[BottomVC alloc] initWithNibName:nil bundle:nil];
         
-        [wrapper addSubview:_tableView]; // 相关视图放入容器
+        // 相关视图放入容器
+        [wrapper addSubview:_bottomVC.view];
         [wrapper addSubview:_leftVC.view];
         [wrapper addSubview:_rightVC.view];
         
@@ -78,67 +73,24 @@
             make.right.equalTo(wrapper);
             make.width.equalTo(wrapper.mas_width).multipliedBy(0.5);
         }];
-        [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [_bottomVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(_leftVC.view.mas_bottom);
             make.left.right.equalTo(wrapper);
-            make.height.equalTo(@0);
         }];
         
         [wrapper mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.equalTo(self.tableView.mas_bottom);
+            make.bottom.equalTo(self.bottomVC.view.mas_bottom);
         }];
     }
     return self;
-}
-
-
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context {
-    if ([keyPath isEqualToString:@"contentSize"] && object == _tableView) {
-        CGSize oldSize, newSize;
-        [change[@"new"] getValue:&newSize];
-        [change[@"old"] getValue:&oldSize];
-        if (oldSize.height != newSize.height) {
-            [_tableView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.height.mas_equalTo(self.tableView.contentSize.height);
-            }];
-        }
-    }
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CELL" forIndexPath:indexPath];
-    cell.textLabel.text = @"TEST";
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 20;
-}
-
-- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UILabel *tmp = [[UILabel alloc] initWithFrame:CGRectZero];
-    tmp.text = @"我要吸顶";
-    return tmp;
 }
 
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat contentOffsetY = scrollView.contentOffset.y;
-    NSLog(@"scrollView的偏移量：===%f", contentOffsetY);
-    CGFloat maxOffsetY = 200 - 64;  // 简单的代码，没有适配 iphoneX
+    NSLog(@"scrollView的偏移量：=== %f", contentOffsetY);
+    CGFloat maxOffsetY = CGRectGetMaxY(self.leftVC.view.frame);
     if (contentOffsetY > maxOffsetY) {
         [scrollView setContentOffset:CGPointMake(0, maxOffsetY)]; // 设置最大偏移
         [[NSNotificationCenter defaultCenter] postNotificationName:@"contentCanMove" object:nil]; // 告诉底部      内容视图能进行滑动了

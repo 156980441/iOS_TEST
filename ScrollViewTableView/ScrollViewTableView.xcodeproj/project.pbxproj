@@ -26,6 +26,7 @@
 		8D33BDC02369379E00606966 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8D33BDB42369379E00606966 /* README.md */; };
 		8D33BDC32369381500606966 /* LeftVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D33BDC22369381500606966 /* LeftVC.m */; };
 		8D33BDC62369382300606966 /* RightVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D33BDC52369382300606966 /* RightVC.m */; };
+		8DE042D2237AA4AC005792F0 /* BottomVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE042D1237AA4AC005792F0 /* BottomVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,8 @@
 		8D33BDC22369381500606966 /* LeftVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftVC.m; sourceTree = "<group>"; };
 		8D33BDC42369382300606966 /* RightVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RightVC.h; sourceTree = "<group>"; };
 		8D33BDC52369382300606966 /* RightVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RightVC.m; sourceTree = "<group>"; };
+		8DE042D0237AA4AC005792F0 /* BottomVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomVC.h; sourceTree = "<group>"; };
+		8DE042D1237AA4AC005792F0 /* BottomVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,8 @@
 				8D33BD7A2368334300606966 /* AppDelegate.m */,
 				8D33BD7F2368334300606966 /* ViewController.h */,
 				8D33BD802368334300606966 /* ViewController.m */,
+				8DE042D0237AA4AC005792F0 /* BottomVC.h */,
+				8DE042D1237AA4AC005792F0 /* BottomVC.m */,
 				8D33BDC12369381500606966 /* LeftVC.h */,
 				8D33BDC22369381500606966 /* LeftVC.m */,
 				8D33BDC42369382300606966 /* RightVC.h */,
@@ -234,6 +239,7 @@
 				8D33BDBE2369379E00606966 /* MASViewConstraint.m in Sources */,
 				8D33BDBF2369379E00606966 /* MASViewAttribute.m in Sources */,
 				8D33BD812368334300606966 /* ViewController.m in Sources */,
+				8DE042D2237AA4AC005792F0 /* BottomVC.m in Sources */,
 				8D33BDC32369381500606966 /* LeftVC.m in Sources */,
 				8D33BD7B2368334300606966 /* AppDelegate.m in Sources */,
 				8D33BDBB2369379E00606966 /* NSArray+MASAdditions.m in Sources */,
