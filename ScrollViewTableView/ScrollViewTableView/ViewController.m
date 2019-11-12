@@ -101,6 +101,7 @@
     NSString *canScroll = userInfo[@"scrollEnabled"];
     if ([canScroll isEqualToString:@"1"]) {
         _scrollEnabled = YES;
+        _scrollView.panGestureRecognizer.enabled = YES;
     }
 }
 
@@ -116,6 +117,7 @@
                                                             object:nil
                                                           userInfo:@{@"scrollEnabled" : @"1"}]; // 告诉底部，内容视图能进行滑动了
         _scrollEnabled = NO;   // 自己不能滑动了
+        scrollView.panGestureRecognizer.enabled = NO;
     } else {
         if (_scrollEnabled == NO) {
             [scrollView setContentOffset:CGPointMake(0, maxOffsetY)];
