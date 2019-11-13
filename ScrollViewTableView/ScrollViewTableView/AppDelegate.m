@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "RootVC.h"
-#import "ViewController.h"
+#import "ScrollVC.h"
 
 @interface AppDelegate ()
 

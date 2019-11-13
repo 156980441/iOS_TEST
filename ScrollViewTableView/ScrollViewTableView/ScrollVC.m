@@ -6,14 +6,14 @@
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ScrollVC.h"
 #import "LeftVC.h"
 #import "RightVC.h"
-#import "BottomVC.h"
+#import "ScrollViewBottomVC.h"
 
 #import "OKBScrollView.h"
 
-@interface ViewController () <UIScrollViewDelegate>
+@interface ScrollVC () <UIScrollViewDelegate>
 {
     BOOL _scrollEnabled;
 }
@@ -21,11 +21,11 @@
 @property (nonatomic, strong) OKBScrollView *scrollView; // BottomVC 的 scrollview delegate 可以收到回调
 @property (nonatomic, strong) LeftVC *leftVC;
 @property (nonatomic, strong) RightVC *rightVC;
-@property (nonatomic, strong) BottomVC *bottomVC;
+@property (nonatomic, strong) ScrollViewBottomVC *bottomVC;
 
 @end
 
-@implementation ViewController
+@implementation ScrollVC
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -63,7 +63,7 @@
         
         _leftVC = [[LeftVC alloc] initWithNibName:nil bundle:nil];
         _rightVC = [[RightVC alloc] initWithNibName:nil bundle:nil];
-        _bottomVC = [[BottomVC alloc] initWithNibName:nil bundle:nil];
+        _bottomVC = [[ScrollViewBottomVC alloc] initWithNibName:nil bundle:nil];
         
         // 相关视图放入容器
         [wrapper addSubview:_bottomVC.view];

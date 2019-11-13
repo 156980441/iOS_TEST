@@ -1,8 +1,8 @@
 //
-//  BottomVC.h
+//  BaseBottomVC.h
 //  ScrollViewTableView
 //
-//  Created by fanyl on 2019/11/12.
+//  Created by fanyl on 2019/11/13.
 //  Copyright © 2019 fanyl. All rights reserved.
 //
 
@@ -10,10 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BottomVC : UIViewController
-
-- (void)setHeaderView:(UIView *)view;
-
+@interface BaseBottomVC : UIViewController
+{
+    @protected
+    UITableView *_tableView;
+}
 @end
 
 NS_ASSUME_NONNULL_END

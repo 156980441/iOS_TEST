@@ -9,12 +9,12 @@
 #import "HeaderViewVC.h"
 #import "LeftVC.h"
 #import "RightVC.h"
-#import "BottomVC.h"
+#import "HeaderBottomVC.h"
 
 @interface HeaderViewVC ()
 @property (nonatomic, strong) LeftVC *leftVC;
 @property (nonatomic, strong) RightVC *rightVC;
-@property (nonatomic, strong) BottomVC *bottomVC;
+@property (nonatomic, strong) HeaderBottomVC *bottomVC;
 @end
 
 @implementation HeaderViewVC
@@ -36,7 +36,7 @@
         
         _leftVC = [[LeftVC alloc] initWithNibName:nil bundle:nil];
         _rightVC = [[RightVC alloc] initWithNibName:nil bundle:nil];
-        _bottomVC = [[BottomVC alloc] initWithNibName:nil bundle:nil];
+        _bottomVC = [[HeaderBottomVC alloc] initWithNibName:nil bundle:nil];
         
         [self.view addSubview:_bottomVC.view];
         [_bottomVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -55,12 +55,16 @@
             make.left.equalTo(wrapper);
             make.width.equalTo(wrapper.mas_width).multipliedBy(0.5);
             make.height.equalTo(@600);
-            make.bottom.equalTo(wrapper.mas_bottom);
         }];
         [_rightVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(wrapper);
             make.right.equalTo(wrapper);
             make.width.equalTo(wrapper.mas_width).multipliedBy(0.5);
+        }];
+        
+        [wrapper mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(_leftVC.view.mas_bottom);
+            make.width.mas_equalTo(CGRectGetWidth(_bottomVC.view.frame));
         }];
         
         [_bottomVC setHeaderView:wrapper];

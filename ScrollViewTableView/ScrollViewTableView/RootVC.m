@@ -7,7 +7,7 @@
 //
 
 #import "RootVC.h"
-#import "ViewController.h"
+#import "ScrollVC.h"
 #import "HeaderViewVC.h"
 
 @interface RootVC () <UICollectionViewDelegate, UICollectionViewDataSource>
@@ -46,7 +46,7 @@
         vc = [[HeaderViewVC alloc] init];
     }
     else {
-        vc = [[ViewController alloc] init];
+        vc = [[ScrollVC alloc] init];
     }
     [self.navigationController pushViewController:vc animated:YES];
 }
