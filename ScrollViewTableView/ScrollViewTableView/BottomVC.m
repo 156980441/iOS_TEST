@@ -78,16 +78,11 @@
             self.tableView.showsVerticalScrollIndicator = YES;
         }
     }
-    else if ([notificationName isEqualToString:kHomeLeaveTopNotification]) {
-//        self.tableView.contentOffset = CGPointZero;
-        _scrollEnabled = NO; // 如果没有滑动到了顶部TableView就不能滑动了
-        self.tableView.showsVerticalScrollIndicator = NO;
-    }
 }
 
 #pragma mark - UIScrollViewDelegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (_scrollEnabled == NO) {
         [scrollView setContentOffset:CGPointZero];
     }
@@ -97,6 +92,9 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:kHomeLeaveTopNotification
                                                             object:nil
                                                           userInfo:@{@"scrollEnabled":@"1"}];
+        //        self.tableView.contentOffset = CGPointZero;
+        _scrollEnabled = NO; // 如果没有滑动到了顶部TableView就不能滑动了
+        self.tableView.showsVerticalScrollIndicator = NO;
     }
 }
 
@@ -106,7 +104,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CELL" forIndexPath:indexPath];
-    cell.textLabel.text = @"TEST";
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld 行", indexPath.row];
     return cell;
 }
 

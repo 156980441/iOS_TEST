@@ -17,8 +17,8 @@
 {
     BOOL _scrollEnabled;
 }
-@property (nonatomic, strong) UIScrollView *scrollView; // BottomVC 的 scrollview delegate 收不到回调
-//@property (nonatomic, strong) OKBScrollView *scrollView; // BottomVC 的 scrollview delegate 可以收到回调
+//@property (nonatomic, strong) UIScrollView *scrollView; // BottomVC 的 scrollview delegate 收不到回调
+@property (nonatomic, strong) OKBScrollView *scrollView; // BottomVC 的 scrollview delegate 可以收到回调
 @property (nonatomic, strong) LeftVC *leftVC;
 @property (nonatomic, strong) RightVC *rightVC;
 @property (nonatomic, strong) BottomVC *bottomVC;
@@ -44,8 +44,8 @@
         // 子控制器左边红色
         self.view.backgroundColor = [UIColor orangeColor];
         
-        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
-//        _scrollView = [[OKBScrollView alloc] initWithFrame:CGRectZero];
+//        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
+        _scrollView = [[OKBScrollView alloc] initWithFrame:CGRectZero];
         _scrollView.backgroundColor = [UIColor blueColor];
         _scrollView.delegate = self;
         [self.view addSubview:_scrollView];
@@ -104,7 +104,6 @@
     NSString *canScroll = userInfo[@"scrollEnabled"];
     if ([canScroll isEqualToString:@"1"]) {
         _scrollEnabled = YES;
-        _scrollView.panGestureRecognizer.enabled = YES;
     }
 }
 
@@ -120,7 +119,6 @@
                                                             object:nil
                                                           userInfo:@{@"scrollEnabled" : @"1"}]; // 告诉底部，内容视图能进行滑动了
         _scrollEnabled = NO;   // 自己不能滑动了
-        scrollView.panGestureRecognizer.enabled = NO;
     } else {
         if (_scrollEnabled == NO) {
             [scrollView setContentOffset:CGPointMake(0, maxOffsetY)];
