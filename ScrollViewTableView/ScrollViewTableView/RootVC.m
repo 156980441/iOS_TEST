@@ -8,6 +8,7 @@
 
 #import "RootVC.h"
 #import "ViewController.h"
+#import "HeaderViewVC.h"
 
 @interface RootVC () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -40,9 +41,9 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    ViewController *vc;
+    UIViewController *vc;
     if (indexPath.row == 0) {
-        
+        vc = [[HeaderViewVC alloc] init];
     }
     else {
         vc = [[ViewController alloc] init];

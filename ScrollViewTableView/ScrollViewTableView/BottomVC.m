@@ -12,6 +12,7 @@
 @interface BottomVC () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 {
     BOOL _scrollEnabled;
+    UIView *_headerView;
 }
 @property (nonatomic, strong) UITableView *tableView;
 @end
@@ -47,6 +48,14 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)setHeaderView:(UIView *)view {
+    [view setNeedsLayout];
+    [view layoutIfNeeded];
+    _headerView = view;
+    self.tableView.tableHeaderView = view;
+    [self.tableView reloadData];
 }
 
 

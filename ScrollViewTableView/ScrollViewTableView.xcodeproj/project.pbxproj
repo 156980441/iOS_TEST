@@ -29,6 +29,7 @@
 		8DE042D2237AA4AC005792F0 /* BottomVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE042D1237AA4AC005792F0 /* BottomVC.m */; };
 		8DE0437D237AC372005792F0 /* OKBScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE0437C237AC372005792F0 /* OKBScrollView.m */; };
 		8DE04427237BD622005792F0 /* RootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE04426237BD622005792F0 /* RootVC.m */; };
+		8DE0442A237BDA24005792F0 /* HeaderViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE04429237BDA24005792F0 /* HeaderViewVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,8 @@
 		8DE0437C237AC372005792F0 /* OKBScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OKBScrollView.m; sourceTree = "<group>"; };
 		8DE04425237BD622005792F0 /* RootVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootVC.h; sourceTree = "<group>"; };
 		8DE04426237BD622005792F0 /* RootVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootVC.m; sourceTree = "<group>"; };
+		8DE04428237BDA24005792F0 /* HeaderViewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderViewVC.h; sourceTree = "<group>"; };
+		8DE04429237BDA24005792F0 /* HeaderViewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderViewVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,8 @@
 				8D33BD802368334300606966 /* ViewController.m */,
 				8DE04425237BD622005792F0 /* RootVC.h */,
 				8DE04426237BD622005792F0 /* RootVC.m */,
+				8DE04428237BDA24005792F0 /* HeaderViewVC.h */,
+				8DE04429237BDA24005792F0 /* HeaderViewVC.m */,
 			);
 			path = ScrollViewTableView;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 				8D33BDBB2369379E00606966 /* NSArray+MASAdditions.m in Sources */,
 				8D33BDB72369379E00606966 /* ViewController+MASAdditions.m in Sources */,
 				8D33BDB82369379E00606966 /* MASCompositeConstraint.m in Sources */,
+				8DE0442A237BDA24005792F0 /* HeaderViewVC.m in Sources */,
 				8D33BD8C2368334B00606966 /* main.m in Sources */,
 				8D33BDBC2369379E00606966 /* View+MASAdditions.m in Sources */,
 				8DE0437D237AC372005792F0 /* OKBScrollView.m in Sources */,
