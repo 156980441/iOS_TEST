@@ -7,7 +7,6 @@
 //
 
 #import "LeftVC.h"
-#import "Masonry.h"
 
 @interface LeftVC ()
 @property (nonatomic, strong) UILabel *textLbl;
@@ -15,18 +14,19 @@
 
 @implementation LeftVC
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor yellowColor];
-    
-    self.textLbl = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.textLbl.text = @"左边黄色";
-    [self.view addSubview:self.textLbl];
-    [self.textLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view).insets(UIEdgeInsetsZero);
-    }];
-    
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.view.backgroundColor = [UIColor yellowColor];
+        self.textLbl = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.textLbl.text = @"左边黄色";
+        [self.view addSubview:self.textLbl];
+        [self.textLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view).insets(UIEdgeInsetsZero);
+        }];
+    }
+    return self;
 }
 
 @end
