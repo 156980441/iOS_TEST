@@ -120,6 +120,7 @@
 		8D33BD782368334300606966 /* ScrollViewTableView */ = {
 			isa = PBXGroup;
 			children = (
+				8DE04432237BF4E9005792F0 /* VC */,
 				8DE04431237BF3ED005792F0 /* Bottom */,
 				8D33BD982369379E00606966 /* Masonry */,
 				8D33BD852368334B00606966 /* Assets.xcassets */,
@@ -127,20 +128,14 @@
 				8D33BD7A2368334300606966 /* AppDelegate.m */,
 				8D33BD8A2368334B00606966 /* Info.plist */,
 				8D33BD872368334B00606966 /* LaunchScreen.storyboard */,
+				8D33BD8B2368334B00606966 /* main.m */,
+				8DE042D3237AA9E8005792F0 /* PrefixHeader.pch */,
 				8D33BDC12369381500606966 /* LeftVC.h */,
 				8D33BDC22369381500606966 /* LeftVC.m */,
-				8D33BD8B2368334B00606966 /* main.m */,
-				8DE0437B237AC372005792F0 /* OKBScrollView.h */,
-				8DE0437C237AC372005792F0 /* OKBScrollView.m */,
-				8DE042D3237AA9E8005792F0 /* PrefixHeader.pch */,
 				8D33BDC42369382300606966 /* RightVC.h */,
 				8D33BDC52369382300606966 /* RightVC.m */,
-				8DE04425237BD622005792F0 /* RootVC.h */,
-				8DE04426237BD622005792F0 /* RootVC.m */,
-				8DE04428237BDA24005792F0 /* HeaderViewVC.h */,
-				8DE04429237BDA24005792F0 /* HeaderViewVC.m */,
-				8D33BD7F2368334300606966 /* ScrollVC.h */,
-				8D33BD802368334300606966 /* ScrollVC.m */,
+				8DE0437B237AC372005792F0 /* OKBScrollView.h */,
+				8DE0437C237AC372005792F0 /* OKBScrollView.m */,
 			);
 			path = ScrollViewTableView;
 			sourceTree = "<group>";
@@ -198,6 +193,19 @@
 				8DE0442F237BED44005792F0 /* HeaderBottomVC.m */,
 			);
 			name = Bottom;
+			sourceTree = "<group>";
+		};
+		8DE04432237BF4E9005792F0 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				8DE04425237BD622005792F0 /* RootVC.h */,
+				8DE04426237BD622005792F0 /* RootVC.m */,
+				8DE04428237BDA24005792F0 /* HeaderViewVC.h */,
+				8DE04429237BDA24005792F0 /* HeaderViewVC.m */,
+				8D33BD7F2368334300606966 /* ScrollVC.h */,
+				8D33BD802368334300606966 /* ScrollVC.m */,
+			);
+			name = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
