@@ -124,7 +124,6 @@
             [scrollView setContentOffset:CGPointMake(0, maxOffsetY)];
         }
     }
-    
 }
 
 @end

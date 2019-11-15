@@ -43,7 +43,7 @@
     
     //线程2
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        sleep(1);//以保证让线程2的代码后执行
+        sleep(1); // 以保证让线程2的代码后执行
         [lock lock];
         NSLog(@"线程2");
         [lock unlock];
@@ -175,7 +175,7 @@
 {
     dispatch_semaphore_t signal = dispatch_semaphore_create(1); // dispatch_semaphore_create(1) 方法可以创建一个 dispatch_semaphore_t 类型的信号量，设定信号量的初始值为 1。注意，这里的传入的参数必须大于或等于 0，否则 dispatch_semaphore_create 会返回 NULL。
     
-    dispatch_time_t overTime = dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC);
+    dispatch_time_t overTime = dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC); // 设置一个等待超时
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         

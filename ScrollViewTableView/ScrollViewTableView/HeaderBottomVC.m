@@ -18,10 +18,10 @@
 
 - (void)setHeaderView:(UIView *)view {
     _headerView = view;
-    _tableView.tableHeaderView = view;
+    _tableView.tableHeaderView = view; // 必须每次重新赋值
     
-    [_tableView setNeedsLayout];
-    [_tableView layoutIfNeeded];
+    [_tableView setNeedsLayout]; // 标记刷新
+    [_tableView layoutIfNeeded]; // 使布局立即生效
 }
 
 @end

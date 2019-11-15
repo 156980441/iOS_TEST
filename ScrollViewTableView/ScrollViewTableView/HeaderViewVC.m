@@ -59,7 +59,7 @@
         
         [wrapper mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(_leftVC.view.mas_bottom);
-            make.width.mas_equalTo(CGRectGetWidth(_bottomVC.view.frame));
+            make.width.mas_equalTo(CGRectGetWidth(_bottomVC.view.frame)); // 一定要给 width
         }];
         
         [_bottomVC setHeaderView:wrapper];
