@@ -8,8 +8,19 @@
 
 #import "Father.h"
 
-@implementation Father
+@implementation Father {
+    NSString *_name;
+}
 
+- (instancetype)initWithName:(NSString *)name {
+    self = [super init];
+    if (self) {
+        _name = name;
+    }
+    return self;
+}
+
+// 私有方法
 - (void)run:(NSString *)param {
     NSLog(@"Father run with %@", param);
 }

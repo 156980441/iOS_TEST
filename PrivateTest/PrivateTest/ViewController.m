@@ -10,7 +10,9 @@
 #import <objc/message.h>
 #import "Son.h"
 
-// 为什么说 Objective-C 没有私有方法和私有变量，参考文档：https://www.jianshu.com/p/ef25a31e3112
+// 为什么说 Objective-C 没有私有方法和私有变量，
+// 参考文档：https://www.jianshu.com/p/ef25a31e3112
+// 参考文档：https://www.jianshu.com/p/9e546521ac97
 
 // 我们声明了两个类，一个 MMFather 类，一个继承自 MMFather 的 MMSon 类。在 MMFather.m 中实现 run: 方法，但是并没有在 MMFather.h 中公开。如果我们直接使用 Son 实例调用 run 方法编译器会报错。
 
@@ -46,6 +48,12 @@
             }
     #pragma clang diagnostic pop
     
+    // 在 Son.m 中始终无法拿到父类 Father 的 _name 属性
+    Son *son2 = [[Son alloc] initWithName:@"Kate"];
+    Ivar nameIvar = class_getInstanceVariable([son2 class], "_name");
+    NSString *name = object_getIvar(son2, nameIvar);
+    NSLog(@"Son name: %@", name);
+    NSLog(@"Son name: %@", [son2 valueForKey:@"_name"]);
 }
 
 
