@@ -31,6 +31,7 @@
 		8DD067C423D5B38700DF27D9 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD067B823D5B38600DF27D9 /* MASViewConstraint.m */; };
 		8DD067C523D5B38700DF27D9 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD067B923D5B38600DF27D9 /* MASViewAttribute.m */; };
 		8DD067C623D5B38700DF27D9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8DD067BA23D5B38600DF27D9 /* README.md */; };
+		8DD067CA23D5B78D00DF27D9 /* LimitPriceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DD067C923D5B78D00DF27D9 /* LimitPriceView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,8 @@
 		8DD067B823D5B38600DF27D9 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
 		8DD067B923D5B38600DF27D9 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
 		8DD067BA23D5B38600DF27D9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8DD067C823D5B78D00DF27D9 /* LimitPriceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LimitPriceView.h; sourceTree = "<group>"; };
+		8DD067C923D5B78D00DF27D9 /* LimitPriceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LimitPriceView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,7 @@
 		8DD0676E23D5A6EA00DF27D9 /* TradeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				8DD067C723D5B77300DF27D9 /* LimitPrice */,
 				8DD0679A23D5B30900DF27D9 /* View */,
 				8DD0676F23D5A6EA00DF27D9 /* AppDelegate.h */,
 				8DD0677023D5A6EA00DF27D9 /* AppDelegate.m */,
@@ -189,6 +193,15 @@
 				8DD067B923D5B38600DF27D9 /* MASViewAttribute.m */,
 			);
 			path = Masonry;
+			sourceTree = "<group>";
+		};
+		8DD067C723D5B77300DF27D9 /* LimitPrice */ = {
+			isa = PBXGroup;
+			children = (
+				8DD067C823D5B78D00DF27D9 /* LimitPriceView.h */,
+				8DD067C923D5B78D00DF27D9 /* LimitPriceView.m */,
+			);
+			path = LimitPrice;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +284,7 @@
 				8DD067BC23D5B38700DF27D9 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				8DD067BE23D5B38700DF27D9 /* MASCompositeConstraint.m in Sources */,
 				8DD0677723D5A6EA00DF27D9 /* ViewController.m in Sources */,
+				8DD067CA23D5B78D00DF27D9 /* LimitPriceView.m in Sources */,
 				8DD067BD23D5B38700DF27D9 /* ViewController+MASAdditions.m in Sources */,
 				8DD067C523D5B38700DF27D9 /* MASViewAttribute.m in Sources */,
 				8DD067C423D5B38700DF27D9 /* MASViewConstraint.m in Sources */,
