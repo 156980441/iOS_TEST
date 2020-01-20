@@ -22,12 +22,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _limitPriceView = [[LimitPriceView alloc] initWithFrame:CGRectZero];
-        [self.view addSubview:_limitPriceView];
     }
     return self;
 }
 
 - (void)viewDidLoad {
+    [self.view addSubview:_limitPriceView];
     [_limitPriceView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view).insets(UIEdgeInsetsZero);
     }];

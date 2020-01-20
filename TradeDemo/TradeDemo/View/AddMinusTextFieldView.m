@@ -72,6 +72,7 @@
     _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _textField = [[UITextField alloc] initWithFrame:CGRectZero];
+    _textField.borderStyle = UITextBorderStyleLine;
     
     [_leftBtn setTitle:@"-" forState:UIControlStateNormal];
     [_rightBtn setTitle:@"+" forState:UIControlStateNormal];
@@ -82,6 +83,9 @@
     
     _leftLine = [[UIView alloc] initWithFrame:CGRectZero];
     _rightLine = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    _leftLine.backgroundColor = [UIColor colorWithRed:244/250.f green:244/250.f blue:230/250.f alpha:1];
+    _rightBtn.backgroundColor = [UIColor colorWithRed:244/250.f green:244/250.f blue:230/250.f alpha:1];
 
     [self addSubview:_leftBtn];
     [self addSubview:_rightBtn];

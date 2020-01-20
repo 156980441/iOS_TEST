@@ -43,11 +43,11 @@
         make.height.mas_equalTo(35);
     }];
     [_valueLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_priceView.mas_bottom);
+        make.top.equalTo(_priceView.mas_bottom).offset(2);
         make.left.and.right.equalTo(_priceView);
     }];
     [_amountView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_valueLbl.mas_bottom);
+        make.top.equalTo(_valueLbl.mas_bottom).offset(2);
         make.left.and.right.equalTo(_priceView);
         make.height.mas_equalTo(_priceView);
     }];
@@ -58,6 +58,7 @@
     _priceView = [[AddMinusTextFieldView alloc] initWithFrame:CGRectZero];
     _amountView = [[AddMinusTextFieldView alloc] initWithFrame:CGRectZero];
     _valueLbl = [[UILabel alloc] initWithFrame:CGRectZero];
+    _valueLbl.text = @"Value:";
     
     [self addSubview:_priceView];
     [self addSubview:_amountView];

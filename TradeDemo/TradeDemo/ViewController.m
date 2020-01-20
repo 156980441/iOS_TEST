@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "StrategyFactory.h"
+#import "Masonry.h"
 
 @interface ViewController ()
 
@@ -17,6 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    AbsStrategyVC *vc = [StrategyFactory createStrategyVC:StrategyVCTypeLimitPrice];
+    
+    [self addChildViewController:vc];
+    [self.view addSubview:vc.view];
+    [vc didMoveToParentViewController:self];
+    
 }
 
 
