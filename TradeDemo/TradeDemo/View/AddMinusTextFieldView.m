@@ -85,7 +85,7 @@
     _rightLine = [[UIView alloc] initWithFrame:CGRectZero];
     
     _leftLine.backgroundColor = [UIColor colorWithRed:244/250.f green:244/250.f blue:230/250.f alpha:1];
-    _rightBtn.backgroundColor = [UIColor colorWithRed:244/250.f green:244/250.f blue:230/250.f alpha:1];
+    _rightLine.backgroundColor = [UIColor colorWithRed:244/250.f green:244/250.f blue:230/250.f alpha:1];
 
     [self addSubview:_leftBtn];
     [self addSubview:_rightBtn];
