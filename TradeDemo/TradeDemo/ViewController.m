@@ -24,6 +24,15 @@
     
     [self addChildViewController:vc];
     [self.view addSubview:vc.view];
+    [vc.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        if (@available(iOS 11, *)) {
+            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
+        } else {
+            make.top.equalTo(self.mas_topLayoutGuide);
+        }
+        make.left.right.equalTo(self.view);
+        make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom);
+    }];
     [vc didMoveToParentViewController:self];
     
 }

@@ -72,7 +72,7 @@
     _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _textField = [[UITextField alloc] initWithFrame:CGRectZero];
-    _textField.borderStyle = UITextBorderStyleLine;
+    _textField.borderStyle = UITextBorderStyleRoundedRect;
     
     [_leftBtn setTitle:@"-" forState:UIControlStateNormal];
     [_rightBtn setTitle:@"+" forState:UIControlStateNormal];
