@@ -42,6 +42,7 @@
 		8D989FC02413675B00697D55 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D989FB42413675B00697D55 /* MASViewConstraint.m */; };
 		8D989FC12413675B00697D55 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D989FB52413675B00697D55 /* MASViewAttribute.m */; };
 		8D989FC22413675B00697D55 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8D989FB62413675B00697D55 /* README.md */; };
+		8D989FC52413A33E00697D55 /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D989FC42413A33E00697D55 /* SectionHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +116,8 @@
 		8D989FB42413675B00697D55 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
 		8D989FB52413675B00697D55 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
 		8D989FB62413675B00697D55 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8D989FC32413A33E00697D55 /* SectionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SectionHeaderView.h; sourceTree = "<group>"; };
+		8D989FC42413A33E00697D55 /* SectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +178,8 @@
 				8D989EBE24125CFA00697D55 /* FoldTableViewCtrler.m */,
 				8D989EF12413613400697D55 /* SelectTVCell.h */,
 				8D989EF22413613400697D55 /* SelectTVCell.m */,
+				8D989FC32413A33E00697D55 /* SectionHeaderView.h */,
+				8D989FC42413A33E00697D55 /* SectionHeaderView.m */,
 			);
 			path = FoldTableView;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 			files = (
 				8D989EF024126C5600697D55 /* MJFoundation.m in Sources */,
 				8D989FC12413675B00697D55 /* MASViewAttribute.m in Sources */,
+				8D989FC52413A33E00697D55 /* SectionHeaderView.m in Sources */,
 				8D989EE924126C5600697D55 /* MJProperty.mm in Sources */,
 				8D989EEB24126C5600697D55 /* MJExtensionConst.m in Sources */,
 				8D989EAB24125C1700697D55 /* ViewController.m in Sources */,

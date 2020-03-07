@@ -25,17 +25,18 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+        _label = [[UILabel alloc] initWithFrame:CGRectZero];
         UIImageView *rightImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_choose_blue"]];
         self.selectionStyle = UITableViewCellSelectionStyleNone; // 关闭点击效果
-        [self.contentView addSubview:label];
+        [self.contentView addSubview:_label];
         [self.contentView addSubview:rightImageView];
-        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        [_label mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.contentView.mas_left).offset(10);
             make.top.and.bottom.equalTo(self.contentView);
         }];
         [rightImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.contentView).offset(-10);
+            make.centerY.equalTo(self.contentView);
         }];
     }
     return self;

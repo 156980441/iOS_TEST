@@ -15,11 +15,13 @@
 #import "FoldTableViewCtrler.h"
 
 #import "SelectTVCell.h"
+#import "SectionHeaderView.h"
 
 @interface ViewController ()
 {
     NSArray<Currency *> *_currencies;
     NSArray<CurrencyPair *> *_currencyPairs;
+    FoldTableViewCtrler *_ctrler;
 }
 @end
 
@@ -35,13 +37,16 @@
     for (Currency *c in _currencies) {
         FoldTableViewDataSource *dataSource = [[FoldTableViewDataSource alloc] init];
         dataSource.cellClass = [SelectTVCell class];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-        label.text = c.groupName;
-        dataSource.sectionView = label;
+        SectionHeaderView *headerView = [[SectionHeaderView alloc] initWithFrame:CGRectZero];
+        headerView.label.text = c.groupName;
+        dataSource.sectionView = headerView;
         dataSource.cellId = @"cellId";
         dataSource.dataType = c;
         dataSource.items = c.filterWord;
-        dataSource.renderCell = ^{
+        dataSource.renderCell = ^(UITableViewCell * _Nonnull cell, NSIndexPath *indexPath, id dataType) {
+            SelectTVCell *selectCell = (SelectTVCell *)cell;
+            Currency *data = (Currency *)dataType;
+            selectCell.label.text = [data.filterWord objectAtIndex:indexPath.row];
         };
         dataSource.didSelectRow = ^(id _Nonnull item) {
             NSLog(@"aaa");
@@ -51,12 +56,14 @@
     
     FoldTableViewCtrlerParams *params = [[FoldTableViewCtrlerParams alloc] init];
     params.dataSource = arr;
-    params.style = UITableViewStylePlain;
+    params.style = UITableViewStyleGrouped;
     
     FoldTableViewCtrler *ctrler = [[FoldTableViewCtrler alloc] initWithParams:params];
     
     [self.view addSubview:ctrler.tableView];
     ctrler.tableView.frame = self.view.frame;
+    
+    _ctrler = ctrler;
 }
 
 // 读取本地JSON文件

@@ -1,5 +1,5 @@
 //
-//  SelectTVCell.h
+//  SectionHeaderView.h
 //  FoldTableViewDemo
 //
 //  Created by fanyl on 2020/3/7.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SelectTVCell : UITableViewCell
+@interface SectionHeaderView : UIView
 @property (nonatomic, strong) UILabel *label;
 @end
 

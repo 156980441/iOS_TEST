@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *cellId;
 @property (nonatomic, strong) id dataType;
 @property (nonatomic, assign) BOOL status; // 0 闭合，1打开
-@property (nonatomic, copy) dispatch_block_t renderCell;
+@property (nonatomic, copy) void (^renderCell)(UITableViewCell *cell, NSIndexPath *indexPath, id dataType);
 @property (nonatomic, copy) void (^didSelectRow)(id);
 @end
 

@@ -48,6 +48,8 @@
         _status = malloc(sizeof(BOOL) * num);
         memset(_status, 0, num);
         if (num > 0) _status[0] = 1;
+        
+        _tableView.tableFooterView = UIView.new; // 在 _status 之前会崩溃
     }
     return self;
 }
@@ -72,6 +74,18 @@
     return 44;
 }
 
+/// 如果不写以下两个方法会有默认值造成headerView之间有间隙
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0;
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return nil;
+}
+
+///
+
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *view = _params.dataSource[section].sectionView;
     view.tag = section;
@@ -85,7 +99,8 @@
     NSInteger section = view.tag;
     _status[section] = !_status[section];
     NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:section];
-    [_tableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
+    [_tableView reloadSections:indexSet
+              withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -101,7 +116,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FoldTableViewDataSource *tmp = _params.dataSource[indexPath.section];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tmp.cellId forIndexPath:indexPath];
-    [tmp renderCell];
+    tmp.renderCell(cell, indexPath, tmp.dataType);
     return cell;
 }
 
