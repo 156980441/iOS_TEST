@@ -1,0 +1,18 @@
+{
+    "data": [{
+        "filterWord": ["usd", "usb", "usa"],
+        "groupId": 1,
+        "groupName": "USD",
+        "sort": 1
+    }, {
+        "filterWord": ["ggg"],
+        "groupId": 3,
+        "groupName": "EUR",
+        "sort": 3
+    }, {
+        "filterWord": ["usdt", "bbb"],
+        "groupId": 2,
+        "groupName": "CRYPTO",
+        "sort": 5
+    }],
+}
