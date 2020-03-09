@@ -47,7 +47,6 @@
         unsigned long num = _params.dataSource.count;
         _status = malloc(sizeof(BOOL) * num);
         memset(_status, 0, num);
-        if (num > 0) _status[0] = 1;
         
         _tableView.tableFooterView = UIView.new; // 在 _status 之前会崩溃
     }
@@ -95,9 +94,10 @@
 }
 
 - (void)p_sectionAction:(UITapGestureRecognizer *)sender {
-    UIView *view = sender.view;
+    UIView<SectionHeaderViewProtocol> *view = (UIView<SectionHeaderViewProtocol> *)sender.view;
     NSInteger section = view.tag;
     _status[section] = !_status[section];
+    [view setHighlight:_status[section]];
     NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:section];
     [_tableView reloadSections:indexSet
               withRowAnimation:UITableViewRowAnimationFade];

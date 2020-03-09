@@ -48,8 +48,8 @@
             Currency *data = (Currency *)dataType;
             selectCell.label.text = [data.filterWord objectAtIndex:indexPath.row];
         };
-        dataSource.didSelectRow = ^(id _Nonnull item) {
-            NSLog(@"aaa");
+        dataSource.didSelectRow = ^(NSString *item) {
+            NSLog(@"点击了%@", item);
         };
         [arr addObject:dataSource];
     }

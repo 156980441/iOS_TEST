@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FoldTableViewCtrler.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SectionHeaderView : UIView
+@interface SectionHeaderView : UIView <SectionHeaderViewProtocol>
 @property (nonatomic, strong) UILabel *label;
+- (void)setHighlight:(BOOL)enable;
 @end
 
 NS_ASSUME_NONNULL_END

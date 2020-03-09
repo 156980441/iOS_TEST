@@ -10,9 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol SectionHeaderViewProtocol <NSObject>
+
+@required
+- (void)setHighlight:(BOOL)enable;
+
+@end
+
 @interface FoldTableViewDataSource : NSObject
 @property (nonatomic, strong) NSArray *items;
-@property (nonatomic, strong) UIView *sectionView;
+@property (nonatomic, strong) UIView <SectionHeaderViewProtocol> *sectionView;
 @property (nonatomic, strong) Class cellClass;
 @property (nonatomic, strong) NSString *cellId;
 @property (nonatomic, strong) id dataType;
@@ -28,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FoldTableViewCtrler : NSObject
 - (instancetype)initWithParams:(FoldTableViewCtrlerParams *)params;
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong, readonly) UITableView *tableView;
 @end
 
 NS_ASSUME_NONNULL_END
