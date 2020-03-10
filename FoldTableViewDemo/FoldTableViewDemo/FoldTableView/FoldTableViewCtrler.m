@@ -20,12 +20,6 @@
 
 #import "FoldTableViewCtrler.h"
 
-@implementation FoldTableViewDataSource
-@end
-
-@implementation FoldTableViewCtrlerParams
-@end
-
 @interface FoldTableViewCtrler () <UITableViewDelegate, UITableViewDataSource> {
     FoldTableViewCtrlerParams *_params;
     BOOL *_status; // YES 打开
@@ -73,18 +67,6 @@
     return 44;
 }
 
-/// 如果不写以下两个方法会有默认值造成headerView之间有间隙
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return CGFLOAT_MIN;
-}
-
-- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    return nil;
-}
-
-///
-
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *view = _params.dataSource[section].sectionView;
     view.tag = section;
@@ -131,4 +113,23 @@
     tmp.didSelectRow(item);
 }
 
+/// 如果不写以下两个方法会有默认值造成headerView之间有间隙
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return CGFLOAT_MIN;
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return nil;
+}
+
+///
+
+@end
+
+
+@implementation FoldTableViewDataSource
+@end
+
+@implementation FoldTableViewCtrlerParams
 @end
