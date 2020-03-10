@@ -56,7 +56,7 @@
 - (instancetype)init {
     FoldTableViewCtrlerParams *params = [[FoldTableViewCtrlerParams alloc] init];
     params.dataSource = nil;
-    params.style = UITableViewCellStyleSubtitle;
+    params.style = UITableViewStyleGrouped;
     return [self initWithParams:params];
 }
 
@@ -76,7 +76,7 @@
 /// 如果不写以下两个方法会有默认值造成headerView之间有间隙
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0;
+    return CGFLOAT_MIN;
 }
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
