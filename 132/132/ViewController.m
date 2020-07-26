@@ -18,52 +18,40 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    int a[] = {0,1,2,0,1,2,0};
-    int a[] = {1,2,3,4};
+    int a[] = {-2,1,2,-2,1,2};
     bool i = find132pattern(a, sizeof(a)/sizeof(int));
     printf("%d", i);
 }
 
 bool find132pattern(int* nums, int numsSize) {
+    
     if (numsSize == 0) {
         return false;
     }
-    int *curor, *last, tmp;
     
-    curor = last = &nums[numsSize - 1]; // 放最后一个
-    while (nums < curor) { // 把最后一个放在第二个，第一个是第一个，找到第一个和最后一个中间比最后一个打的
-        tmp = *(--curor);
-        if (*last < tmp && *nums < tmp && *nums < *last) {
-            return true;
-        }
-        else {
-            continue;
-        }
-    }
+    int *pcuror; // 移动游标
+    int *plast; // 最后一个元素指针
+    int tmp; // 中间变量
     
-    last--; // 把倒数第二个当做第二个，第一个是第一个，再次遍历一次
-    
-    
-    while (nums < last) {
-        curor = last;
-        while (nums < curor) {
-            tmp = *(--curor);
-            if (*last < tmp && *nums < tmp && *nums < *last) {
+    plast = &nums[numsSize - 1]; // 最后一个元素
+    while (nums < plast) {
+        pcuror = plast;
+        while (nums < pcuror) { // 第一个是第一个，最后一个放在第二个，之后寻找第一个和最后一个中间比最后一个大的
+            --pcuror;
+            tmp = *pcuror;
+            if (*plast < tmp && *nums < *plast) {
                 return true;
             }
             else {
                 continue;
             }
         }
-        last--;
+        plast--; // 把倒数第二个当做最后个，第一个是第一个，再次遍历一次
     }
     
-    
-    
-    
-    
-    curor = nums;
+    pcuror = nums;
     nums++;
-    return find132pattern(nums, numsSize - (int)(nums - curor));
+    return find132pattern(nums, numsSize - (int)(nums - pcuror));
 }
 
 
