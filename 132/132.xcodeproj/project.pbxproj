@@ -14,6 +14,7 @@
 		8DE9373124CDAD77003DABF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DE9373024CDAD77003DABF1 /* Assets.xcassets */; };
 		8DE9373424CDAD77003DABF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DE9373224CDAD77003DABF1 /* LaunchScreen.storyboard */; };
 		8DE9373724CDAD77003DABF1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE9373624CDAD77003DABF1 /* main.m */; };
+		8DEC3CA824CDE79100AF77BA /* 132_test.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8DEC3CA724CDE79100AF77BA /* 132_test.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		8DE9373324CDAD77003DABF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DE9373524CDAD77003DABF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DE9373624CDAD77003DABF1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8DEC3CA724CDE79100AF77BA /* 132_test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 132_test.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				8DE9372824CDAD68003DABF1 /* SceneDelegate.m */,
 				8DE9372A24CDAD68003DABF1 /* ViewController.h */,
 				8DE9372B24CDAD68003DABF1 /* ViewController.m */,
+				8DEC3CA724CDE79100AF77BA /* 132_test.txt */,
 				8DE9372D24CDAD68003DABF1 /* Main.storyboard */,
 				8DE9373024CDAD77003DABF1 /* Assets.xcassets */,
 				8DE9373224CDAD77003DABF1 /* LaunchScreen.storyboard */,
@@ -136,6 +139,7 @@
 				8DE9373424CDAD77003DABF1 /* LaunchScreen.storyboard in Resources */,
 				8DE9373124CDAD77003DABF1 /* Assets.xcassets in Resources */,
 				8DE9372F24CDAD68003DABF1 /* Main.storyboard in Resources */,
+				8DEC3CA824CDE79100AF77BA /* 132_test.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
