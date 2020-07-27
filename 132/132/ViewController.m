@@ -46,7 +46,7 @@ void chars2IntArr (const char* str, int *output, unsigned int length) {
     //    int a[] = {0,1,2,0,1,2,0};
     //    int arr[] = {-2,1,2,-2,1,2};
     //    bool i = find132pattern(arr, sizeof(arr)/sizeof(int));
-    bool i = find132pattern(arr, num2);
+    bool i = find132pattern2(arr, num2);
     printf("%d", i);
 }
 
@@ -83,6 +83,8 @@ bool find132patternRecursion(int* nums, int numsSize) {
     return find132patternRecursion(pfirst, numsSize - (int)(pfirst - pcuror));
 }
 
+
+// Fource n的3次方
 bool find132pattern(int* nums, int numsSize) {
     int *pcuror; // 移动游标
     int *pfirst; // 第一个元素指针
@@ -108,6 +110,36 @@ bool find132pattern(int* nums, int numsSize) {
         }
         
         plast = &nums[numsSize - 1];
+        pfirst++;
+    }
+    return false;
+}
+
+// 减少时间复杂度
+bool find132pattern2(int* nums, int numsSize) {
+    int *min; // 移动游标
+    int *pfirst; // 第一个元素指针
+    int *plast; // 最后一个元素指针
+    
+    pfirst = nums;
+    plast = nums + numsSize - 1; // 最后一个元素
+    min = pfirst;
+    
+    while (pfirst < plast) {
+        if (*min > *pfirst) {
+            min = pfirst; // min
+        }
+        if (min == pfirst) {
+            pfirst++;
+            continue;
+        }
+        int *j = plast;
+        while (pfirst < j) {
+            if (*min < *j && *j < *pfirst) {
+                return true;
+            }
+            j--;
+        }
         pfirst++;
     }
     return false;
