@@ -22,7 +22,7 @@ void chars2IntArr (const char* str, int *output, unsigned int length) {
     printf("\n======\n");
     
     for (int i = 0; i < length; i++) {
-        printf("%d,", output[i]);
+        //        printf("%d,", output[i]);
     }
 }
 
@@ -36,7 +36,7 @@ void chars2IntArr (const char* str, int *output, unsigned int length) {
     NSString *dataStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     const char *cStr = dataStr.UTF8String;
     size_t num = strlen(cStr);
-    NSLog(@"%s", cStr);
+    //    NSLog(@"%s", cStr);
     
     size_t num2 = ceil(strlen(cStr) / 2);
     int *arr = malloc(sizeof(int) * num2);
@@ -44,8 +44,8 @@ void chars2IntArr (const char* str, int *output, unsigned int length) {
     
     // Do any additional setup after loading the view.
     //    int a[] = {0,1,2,0,1,2,0};
-//    int arr[] = {-2,1,2,-2,1,2};
-//    bool i = find132pattern(arr, sizeof(arr)/sizeof(int));
+    //    int arr[] = {-2,1,2,-2,1,2};
+    //    bool i = find132pattern(arr, sizeof(arr)/sizeof(int));
     bool i = find132pattern(arr, num2);
     printf("%d", i);
 }
@@ -85,15 +85,9 @@ bool find132patternRecursion(int* nums, int numsSize) {
 
 
 bool find132pattern(int* nums, int numsSize) {
-    
-    if (numsSize == 0) {
-        return false;
-    }
-    
     int *pcuror; // 移动游标
     int *pfirst; // 第一个元素指针
     int *plast; // 最后一个元素指针
-    int tmp; // 中间变量
     
     pfirst = nums;
     plast = &nums[numsSize - 1]; // 最后一个元素
@@ -104,8 +98,7 @@ bool find132pattern(int* nums, int numsSize) {
             pcuror = plast;
             while (pfirst < pcuror) { // 第一个是第一个，最后一个放在第二个，之后寻找第一个和最后一个中间比最后一个大的
                 --pcuror;
-                tmp = *pcuror;
-                if (*plast < tmp && *nums < *plast) {
+                if (*pfirst < *plast && *plast < *pcuror ) {
                     return true;
                 }
                 else {
@@ -115,23 +108,8 @@ bool find132pattern(int* nums, int numsSize) {
             plast--; // 把倒数第二个当做最后个，第一个是第一个，再次遍历一次
         }
         
-        pcuror = pfirst;
+        plast = &nums[numsSize - 1];
         pfirst++;
-        
-        while (pfirst < plast) {
-            pcuror = plast;
-            while (pfirst < pcuror) { // 第一个是第一个，最后一个放在第二个，之后寻找第一个和最后一个中间比最后一个大的
-                --pcuror;
-                tmp = *pcuror;
-                if (*plast < tmp && *nums < *plast) {
-                    return true;
-                }
-                else {
-                    continue;
-                }
-            }
-            plast--; // 把倒数第二个当做最后个，第一个是第一个，再次遍历一次
-        }
     }
     return false;
 }
