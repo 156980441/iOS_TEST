@@ -83,7 +83,6 @@ bool find132patternRecursion(int* nums, int numsSize) {
     return find132patternRecursion(pfirst, numsSize - (int)(pfirst - pcuror));
 }
 
-
 bool find132pattern(int* nums, int numsSize) {
     int *pcuror; // 移动游标
     int *pfirst; // 第一个元素指针
@@ -97,7 +96,7 @@ bool find132pattern(int* nums, int numsSize) {
         while (pfirst < plast) {
             pcuror = plast;
             while (pfirst < pcuror) { // 第一个是第一个，最后一个放在第二个，之后寻找第一个和最后一个中间比最后一个大的
-                --pcuror;
+                pcuror--;
                 if (*pfirst < *plast && *plast < *pcuror ) {
                     return true;
                 }
