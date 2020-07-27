@@ -29,7 +29,6 @@ void chars2IntArr (const char* str, int *output, unsigned int length) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //获取视频播放路径
     NSString *str = [[NSBundle mainBundle] resourcePath];
     NSString *filePath = [NSString stringWithFormat:@"%@%@", str, @"/132_test.txt"];
     NSData *data = [NSData dataWithContentsOfFile:filePath];
@@ -42,10 +41,9 @@ void chars2IntArr (const char* str, int *output, unsigned int length) {
     int *arr = malloc(sizeof(int) * num2);
     chars2IntArr(cStr, arr, (unsigned int)num2);
     
-    // Do any additional setup after loading the view.
-    //    int a[] = {0,1,2,0,1,2,0};
     //    int arr[] = {-2,1,2,-2,1,2};
     //    bool i = find132pattern(arr, sizeof(arr)/sizeof(int));
+    
     bool i = find132pattern2(arr, num2);
     printf("%d", i);
 }
