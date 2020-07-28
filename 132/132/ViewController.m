@@ -131,12 +131,12 @@ bool find132pattern2(int* nums, int numsSize) {
             pfirst++;
             continue;
         }
-        int *j = plast;
-        while (pfirst < j) {
-            if (*min < *j && *j < *pfirst) {
+        int *k = plast;
+        while (pfirst < k) {
+            if (*min < *k && *k < *pfirst) {
                 return true;
             }
-            j--;
+            k--;
         }
         pfirst++;
     }
