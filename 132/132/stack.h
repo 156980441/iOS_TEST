@@ -31,7 +31,7 @@ typedef struct {
 Status initStack(Stack *s);
 Status emptyStack(Stack *s);
 Status pushStack(Stack *s, Element e);
-Status popStack(Stack *s, Element e);
+Status popStack(Stack *s, Element *e);
 Status topStack (Stack *s, Element *e);
 
 #endif /* stack_h */

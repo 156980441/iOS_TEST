@@ -43,11 +43,11 @@ Status pushStack(Stack *s, Element e) {
     return OK;
 }
 
-Status popStack(Stack *s, Element e) {
+Status popStack(Stack *s, Element *e) {
     if (s->top == s->base) {
         return ERROR;
     }
-    e = *--s->top;
+    *e = *--s->top;
     return OK;
 }
 
