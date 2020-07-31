@@ -8,7 +8,6 @@
 
 #include "find132WithStack.h"
 #include "stack.h"
-#include <stdbool.h> // C99
 #include <limits.h>
 
 bool find132patternStack(int* nums, int numsSize) {

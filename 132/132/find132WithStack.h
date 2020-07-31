@@ -10,5 +10,8 @@
 #define find132WithStack_h
 
 #include <stdio.h>
+#include <stdbool.h> // C99
+
+bool find132patternStack(int* nums, int numsSize);
 
 #endif /* find132WithStack_h */

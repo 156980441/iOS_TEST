@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D0AD42724D40E74007644B4 /* find132WithMin.c in Sources */ = {isa = PBXBuildFile; fileRef = 8D0AD42624D40E74007644B4 /* find132WithMin.c */; };
 		8DE9372624CDAD68003DABF1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE9372524CDAD68003DABF1 /* AppDelegate.m */; };
 		8DE9372924CDAD68003DABF1 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE9372824CDAD68003DABF1 /* SceneDelegate.m */; };
 		8DE9372C24CDAD68003DABF1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE9372B24CDAD68003DABF1 /* ViewController.m */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D0AD42524D40E74007644B4 /* find132WithMin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = find132WithMin.h; sourceTree = "<group>"; };
+		8D0AD42624D40E74007644B4 /* find132WithMin.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = find132WithMin.c; sourceTree = "<group>"; };
 		8DE9372124CDAD68003DABF1 /* 132.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 132.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DE9372424CDAD68003DABF1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8DE9372524CDAD68003DABF1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -75,6 +78,8 @@
 				8DE9372824CDAD68003DABF1 /* SceneDelegate.m */,
 				8DE9372A24CDAD68003DABF1 /* ViewController.h */,
 				8DE9372B24CDAD68003DABF1 /* ViewController.m */,
+				8D0AD42524D40E74007644B4 /* find132WithMin.h */,
+				8D0AD42624D40E74007644B4 /* find132WithMin.c */,
 				8DEB342624D18925004265D9 /* find132WithStack.h */,
 				8DEB342724D18925004265D9 /* find132WithStack.c */,
 				8DEB327D24D16B31004265D9 /* stack.h */,
@@ -160,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D0AD42724D40E74007644B4 /* find132WithMin.c in Sources */,
 				8DEB327F24D16B31004265D9 /* stack.c in Sources */,
 				8DE9372C24CDAD68003DABF1 /* ViewController.m in Sources */,
 				8DE9372624CDAD68003DABF1 /* AppDelegate.m in Sources */,
