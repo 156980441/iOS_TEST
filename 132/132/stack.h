@@ -13,7 +13,7 @@
 
 typedef int Element;
 
-#define STACK_SIZE 100
+#define STACK_SIZE 100000
 #define STACK_INCREMENT 10
 
 #define OK 1

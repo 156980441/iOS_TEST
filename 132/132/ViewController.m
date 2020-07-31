@@ -84,9 +84,9 @@ bool find132patternRecursion(int* nums, int numsSize) {
 
 // Fource n的3次方
 bool find132pattern(int* nums, int numsSize) {
-    int *pcuror; // 移动游标
-    int *pfirst; // 第一个元素指针
-    int *plast; // 最后一个元素指针
+    register int *pcuror; // 移动游标
+    register int *pfirst; // 第一个元素指针
+    register int *plast; // 最后一个元素指针
     
     pfirst = nums;
     plast = &nums[numsSize - 1]; // 最后一个元素
