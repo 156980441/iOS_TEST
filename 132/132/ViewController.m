@@ -7,6 +7,10 @@
 //
 
 #import "ViewController.h"
+#include "find132WithMin.h"
+#include "find132WithStack.h"
+#include "find132WithWhile.h"
+#include "find132WithRecursion.h"
 
 @interface ViewController ()
 
@@ -44,104 +48,10 @@ void chars2IntArr (const char* str, int *output, unsigned int length) {
     //    int arr[] = {-2,1,2,-2,1,2};
     //    bool i = find132pattern(arr, sizeof(arr)/sizeof(int));
     
-    bool i = find132pattern2(arr, num2);
-    printf("%d", i);
+    bool i = find132patternWithMin(arr, num2);
+    printf("min %d\n", i);
+    i = find132patternStack(arr, num2);
+    printf("stack %d\n", i);
 }
-
-bool find132patternRecursion(int* nums, int numsSize) {
-    
-    if (numsSize == 0) {
-        return false;
-    }
-    
-    int *pcuror; // 移动游标
-    int *pfirst; // 第一个元素指针
-    int *plast; // 最后一个元素指针
-    int tmp; // 中间变量
-    
-    pfirst = nums;
-    plast = &nums[numsSize - 1]; // 最后一个元素
-    while (pfirst < plast) {
-        pcuror = plast;
-        while (pfirst < pcuror) { // 第一个是第一个，最后一个放在第二个，之后寻找第一个和最后一个中间比最后一个大的
-            --pcuror;
-            tmp = *pcuror;
-            if (*plast < tmp && *nums < *plast) {
-                return true;
-            }
-            else {
-                continue;
-            }
-        }
-        plast--; // 把倒数第二个当做最后个，第一个是第一个，再次遍历一次
-    }
-    
-    pcuror = pfirst;
-    pfirst++;
-    return find132patternRecursion(pfirst, numsSize - (int)(pfirst - pcuror));
-}
-
-
-// Fource n的3次方
-bool find132pattern(int* nums, int numsSize) {
-    register int *pcuror; // 移动游标
-    register int *pfirst; // 第一个元素指针
-    register int *plast; // 最后一个元素指针
-    
-    pfirst = nums;
-    plast = &nums[numsSize - 1]; // 最后一个元素
-    
-    
-    while (pfirst < plast) {
-        while (pfirst < plast) {
-            pcuror = plast;
-            while (pfirst < pcuror) { // 第一个是第一个，最后一个放在第二个，之后寻找第一个和最后一个中间比最后一个大的
-                pcuror--;
-                if (*pfirst < *plast && *plast < *pcuror ) {
-                    return true;
-                }
-                else {
-                    continue;
-                }
-            }
-            plast--; // 把倒数第二个当做最后个，第一个是第一个，再次遍历一次
-        }
-        
-        plast = &nums[numsSize - 1];
-        pfirst++;
-    }
-    return false;
-}
-
-// 减少时间复杂度
-bool find132pattern2(int* nums, int numsSize) {
-    int *min; // 移动游标
-    int *pfirst; // 第一个元素指针
-    int *plast; // 最后一个元素指针
-    
-    pfirst = nums;
-    plast = nums + numsSize - 1; // 最后一个元素
-    min = pfirst;
-    
-    while (pfirst < plast) {
-        if (*min > *pfirst) {
-            min = pfirst; // min
-        }
-        if (min == pfirst) {
-            pfirst++;
-            continue;
-        }
-        int *k = plast;
-        while (pfirst < k) {
-            if (*min < *k && *k < *pfirst) {
-                return true;
-            }
-            k--;
-        }
-        pfirst++;
-    }
-    return false;
-}
-
 
 @end
