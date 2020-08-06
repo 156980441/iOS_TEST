@@ -12,6 +12,13 @@
 #include "find132WithWhile.h"
 #include "find132WithRecursion.h"
 
+/**
+ 
+ https://blog.csdn.net/qq_34446716/article/details/95465757
+ https://blog.csdn.net/frankguodongchen/article/details/105549186
+ https://www.jianshu.com/p/9aabe2a19582
+ */
+
 @interface ViewController ()
 
 @end

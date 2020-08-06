@@ -13,6 +13,11 @@
 
 @end
 
+/**
+ leetcode 34 Given a sorted array of integers, find the starting and ending position of a given target value
+ https://blog.csdn.net/hua111hua/article/details/87827645
+ */
+
 @implementation ViewController
 
 - (void)viewDidLoad {
