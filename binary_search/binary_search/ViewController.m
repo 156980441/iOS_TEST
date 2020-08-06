@@ -19,8 +19,54 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    int const arr[] = {1,2,3,4,5,6,7,8,9,10,11}; // 首先要对数组arr进行排序
-    printf("%d \n", binaySearch(arr, (sizeof(arr)/sizeof(arr[0])), 7));
+    // 二分法
+//    int const arr[] = {1,2,3,4,5,6,7,8,9,10,11}; // 首先要对数组arr进行排序
+//    printf("%d \n", binaySearch(arr, (sizeof(arr)/sizeof(arr[0])), 7));
+    
+    int arr2[] = {1};
+    int returnSize;
+    int *arr3 = searchRange(arr2, (sizeof(arr2)/sizeof(arr2[0])), 1, &returnSize);
+}
+
+int* searchRange(int* nums, int numsSize, int target, int* returnSize)
+{
+    int arrSize = 0;
+    int pre = 0;
+    int suf = 0;
+    int index = binaySearch(nums, numsSize, target);
+    if (index == -1) {
+        int *result = malloc(sizeof(int) * 2);
+        result[0] = -1;
+        result[1] = -1;
+        return result;
+    }
+    else {
+        arrSize = 1;
+        for (int i = index - 1; i > 0; i--) {
+            if (nums[index] == nums[i]) {
+                pre++;
+            }
+            else {
+                break;
+            }
+        }
+        for (int i = index + 1; i < numsSize; i++) {
+            if (nums[index] == nums[i]) {
+                suf++;
+            }
+            else {
+                break;
+            }
+        }
+        arrSize = arrSize + pre + suf;
+        int *result = malloc(sizeof(int) * arrSize);
+        int startIndex = index - pre;
+        for (int j = 0; j < arrSize; j ++) {
+            result[j] = startIndex + j;
+        }
+        *returnSize = arrSize;
+        return result;
+    }
 }
 
 
