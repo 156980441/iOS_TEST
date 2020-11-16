@@ -22,12 +22,12 @@
     UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectZero];
     [self.view addSubview:lbl];
     lbl.backgroundColor = [UIColor redColor];
-    lbl.text = @"大于20小于70";
+    lbl.text = @"大于20小于70 大于20小于70 大于20小于70";
     [lbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view.mas_centerX);
         make.centerY.equalTo(self.view.mas_centerY);
-        make.width.mas_greaterThanOrEqualTo(20);
-        make.width.mas_lessThanOrEqualTo(70);
+        make.width.mas_lessThanOrEqualTo(250).priority(800);
+        make.width.mas_equalTo(150).priority(400);
     }];
 }
 
