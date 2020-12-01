@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8D95454425763F6F00335E6C /* OKBNestedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D95454325763F6E00335E6C /* OKBNestedScrollView.m */; };
 		8D95454A257644EA00335E6C /* SV_TVVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D954549257644EA00335E6C /* SV_TVVC.m */; };
+		8D95454D257649AC00335E6C /* OKBSV_TVVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D95454C257649AC00335E6C /* OKBSV_TVVC.m */; };
+		8D95455025764AB800335E6C /* OnlySV_TVVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D95454F25764AB800335E6C /* OnlySV_TVVC.m */; };
 		8DA8988E256FAA260051B7A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8988D256FAA260051B7A6 /* AppDelegate.m */; };
 		8DA89894256FAA260051B7A6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA89893256FAA260051B7A6 /* ViewController.m */; };
 		8DA89899256FAA2B0051B7A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DA89898256FAA2B0051B7A6 /* Assets.xcassets */; };
@@ -21,6 +23,10 @@
 		8D95454325763F6E00335E6C /* OKBNestedScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OKBNestedScrollView.m; sourceTree = "<group>"; };
 		8D954548257644EA00335E6C /* SV_TVVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SV_TVVC.h; sourceTree = "<group>"; };
 		8D954549257644EA00335E6C /* SV_TVVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SV_TVVC.m; sourceTree = "<group>"; };
+		8D95454B257649AC00335E6C /* OKBSV_TVVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OKBSV_TVVC.h; sourceTree = "<group>"; };
+		8D95454C257649AC00335E6C /* OKBSV_TVVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OKBSV_TVVC.m; sourceTree = "<group>"; };
+		8D95454E25764AB800335E6C /* OnlySV_TVVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OnlySV_TVVC.h; sourceTree = "<group>"; };
+		8D95454F25764AB800335E6C /* OnlySV_TVVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OnlySV_TVVC.m; sourceTree = "<group>"; };
 		8DA89889256FAA260051B7A6 /* scrollview_tableview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scrollview_tableview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA8988C256FAA260051B7A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8DA8988D256FAA260051B7A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -66,8 +72,12 @@
 				8DA8988D256FAA260051B7A6 /* AppDelegate.m */,
 				8DA89892256FAA260051B7A6 /* ViewController.h */,
 				8DA89893256FAA260051B7A6 /* ViewController.m */,
+				8D95454B257649AC00335E6C /* OKBSV_TVVC.h */,
+				8D95454C257649AC00335E6C /* OKBSV_TVVC.m */,
 				8D954548257644EA00335E6C /* SV_TVVC.h */,
 				8D954549257644EA00335E6C /* SV_TVVC.m */,
+				8D95454E25764AB800335E6C /* OnlySV_TVVC.h */,
+				8D95454F25764AB800335E6C /* OnlySV_TVVC.m */,
 				8DA89898256FAA2B0051B7A6 /* Assets.xcassets */,
 				8DA8989A256FAA2B0051B7A6 /* LaunchScreen.storyboard */,
 				8DA8989D256FAA2B0051B7A6 /* Info.plist */,
@@ -147,8 +157,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D95455025764AB800335E6C /* OnlySV_TVVC.m in Sources */,
 				8DA89894256FAA260051B7A6 /* ViewController.m in Sources */,
 				8DA8988E256FAA260051B7A6 /* AppDelegate.m in Sources */,
+				8D95454D257649AC00335E6C /* OKBSV_TVVC.m in Sources */,
 				8DA8989F256FAA2B0051B7A6 /* main.m in Sources */,
 				8D95454A257644EA00335E6C /* SV_TVVC.m in Sources */,
 				8D95454425763F6F00335E6C /* OKBNestedScrollView.m in Sources */,

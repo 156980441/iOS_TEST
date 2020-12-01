@@ -11,19 +11,19 @@
 @interface SV_TVVC ()  <UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 {
     UIScrollView *_scrollView;
-       UIView *_headerView;
-       UIView *_centerView;
-       UITableView *_bottomTV;
-       
-       NSArray<NSString *> *_dataSource;
-       
-       BOOL _scrollViewCanScroll;
-       BOOL _tableViewCanScroll;
-       
-       CGFloat _currOffsetY;
-       
-       CGFloat _dragCriticalY;
-       CGFloat _lastPositionY;
+    UIView *_headerView;
+    UIView *_centerView;
+    UITableView *_bottomTV;
+    
+    NSArray<NSString *> *_dataSource;
+    
+    BOOL _scrollViewCanScroll;
+    BOOL _tableViewCanScroll;
+    
+    CGFloat _currOffsetY;
+    
+    CGFloat _dragCriticalY;
+    CGFloat _lastPositionY;
 }
 @end
 
@@ -33,7 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
-//    _scrollView.panGestureRecognizer.delegate = self;
+    //    _scrollView.panGestureRecognizer.delegate = self;
     _scrollView.delegate = self;
     [self.view addSubview:_scrollView];
     
@@ -55,7 +55,7 @@
     _dataSource = [NSArray arrayWithArray:arr];
     
     _bottomTV.delegate = self;
-//    _bottomTV.panGestureRecognizer.delegate = self;
+    //    _bottomTV.panGestureRecognizer.delegate = self;
     _bottomTV.dataSource = self;
     [_bottomTV registerClass:UITableViewCell.class forCellReuseIdentifier:@"id"];
     

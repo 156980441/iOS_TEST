@@ -17,6 +17,8 @@
 
 @implementation AppDelegate
 
+// https://www.jianshu.com/p/e255303d11b8?utm_campaign=shakespeare
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.

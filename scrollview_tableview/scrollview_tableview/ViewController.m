@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "SV_TVVC.h"
+#import "OKBSV_TVVC.h"
+#import "OnlySV_TVVC.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -64,8 +66,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"%ld", indexPath.row);
-    if (indexPath.row == 0) {
+    if (indexPath.row == 1) {
         SV_TVVC *vc = [[SV_TVVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (indexPath.row == 0) {
+        OnlySV_TVVC *vc = [[OnlySV_TVVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else {
+        OKBSV_TVVC *vc = [[OKBSV_TVVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
