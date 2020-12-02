@@ -90,7 +90,10 @@
     
     if (_scrollView == scrollView) {
         if (_pan.enabled) {
-            
+            // 存在 _pan.enabled 可用的时候， scrollview 的偏移量已经超过了阈值，比如在 tableview 猛地拖动，直接超过阈值，此时
+            if (svOffset > _threshhold) {
+                _scrollView.contentOffset = CGPointMake(0, _threshhold);
+            }
         } else {
             _scrollView.contentOffset = CGPointMake(0, _threshhold);
         }
@@ -111,6 +114,7 @@
     }
     // 如果 scrollview 的偏移量大于等于阈值，则 tableview 关闭手势，启用自带手势，同时关闭 scrollview 的滑动
     else {
+        _scrollView.contentOffset = CGPointMake(0, _threshhold);
         _pan.enabled = NO;
         _scrollView.scrollEnabled = NO;
     }
