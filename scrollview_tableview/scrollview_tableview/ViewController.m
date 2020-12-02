@@ -60,7 +60,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"%ld", indexPath.row);
     if (indexPath.row == 1) {
         SV_TVVC *vc = [[SV_TVVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
