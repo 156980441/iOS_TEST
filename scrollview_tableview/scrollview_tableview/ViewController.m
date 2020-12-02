@@ -31,11 +31,8 @@
     [self.view addSubview:_bottomTV];
     
     
-    NSMutableArray *arr = [NSMutableArray array];
-    for (int i = 0; i < 100; i ++) {
-        [arr addObject:[NSString stringWithFormat:@"%d", i]];
-    }
-    _dataSource = [NSArray arrayWithArray:arr];
+    
+    _dataSource = @[@"原始", @"其他", @"自定义scrollview"];
     
     
 }
@@ -44,8 +41,6 @@
     [super viewWillLayoutSubviews];
     CGFloat w = CGRectGetWidth(self.view.frame);
     CGFloat h = CGRectGetHeight(self.view.frame);
-    
-    
     
     _bottomTV.frame = CGRectMake(0, 0, w, h);
 }
