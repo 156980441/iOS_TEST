@@ -17,7 +17,6 @@
     UITableView *_bottomTV;
     
     NSArray<NSString *> *_dataSource;
-    
 }
 @end
 
@@ -51,12 +50,13 @@
     _bottomTV.delegate = self;
     _bottomTV.dataSource = self;
     [_bottomTV registerClass:UITableViewCell.class forCellReuseIdentifier:@"id"];
+    
+    
 }
 
 - (void)moreConfig {
     _scrollView.showsVerticalScrollIndicator = NO;
 }
-
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
@@ -68,6 +68,8 @@
     _bottomTV.frame = CGRectMake(CGRectGetMinX(_centerView.frame), CGRectGetMaxY(_centerView.frame), CGRectGetWidth(_centerView.frame), 800);
     
     _scrollView.contentSize = CGSizeMake(w, CGRectGetHeight(_headerView.frame) + CGRectGetHeight(_centerView.frame) + CGRectGetHeight(_bottomTV.frame));
+    
+    [self moreConfig];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -87,7 +89,5 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"%ld", indexPath.row);
 }
-
-
 
 @end
