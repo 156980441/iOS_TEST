@@ -18,7 +18,10 @@
     
     NSArray<NSString *> *_dataSource;
     
+    // 首先加一个手势，阻断 UITableView 自身的手势
     UIPanGestureRecognizer *_pan;
+    // 其次知道阈值，即 UIScrollView 可以滑动还是 UITableView 可以滑动的临界点
+    CGFloat _threshhold;
 }
 @end
 
@@ -29,6 +32,7 @@
     // Do any additional setup after loading the view.
     _scrollView = [[OKBNestedScrollView alloc] initWithFrame:CGRectZero];
     _scrollView.delegate = self;
+    _scrollView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:_scrollView];
     
     _bottomTV = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
@@ -52,46 +56,9 @@
     _bottomTV.dataSource = self;
     [_bottomTV registerClass:UITableViewCell.class forCellReuseIdentifier:@"id"];
     
-    // 这里加手势的目的是拦截 tableview 控件自带手势
+    // 1、这里加手势的目的是拦截 tableview 控件自带手势
     _pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(p_pan:)];
     [_bottomTV addGestureRecognizer:_pan];
-}
-
-- (void)p_pan:(UIPanGestureRecognizer *)pan {
-    CGFloat threshhold = CGRectGetMaxY(_headerView.frame) - 88;
-    CGFloat svOffset = _scrollView.contentOffset.y;
-    
-    // 如果 scrollview 的偏移量小于阈值，则 tableview 设置 contentOffset 使 tableview 始终不滑动
-    if (svOffset < threshhold) {
-        _bottomTV.contentOffset = CGPointZero;
-    }
-    // 如果 scrollview 的偏移量大于等于阈值，则 tableview 关闭手势，启用自带手势，同时关闭 scrollview 的滑动
-    else {
-        _pan.enabled = NO;
-        _scrollView.scrollEnabled = NO;
-    }
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-    CGFloat threshhold = CGRectGetMaxY(_headerView.frame) - 88;
-    CGFloat svOffset = _scrollView.contentOffset.y;
-    CGFloat tvOffset = _bottomTV.contentOffset.y;
-    NSLog(@"threshhold %f, sv offset %f, tv offset %f", threshhold, svOffset, tvOffset);
-    
-    if (_scrollView == scrollView) {
-        
-    }
-    else if (_bottomTV == scrollView) {
-        if (_bottomTV.contentOffset.y <= 0) {
-            _pan.enabled = YES;
-            _scrollView.scrollEnabled = YES;
-        }
-    }
-}
-
-- (void)moreConfig {
-    _scrollView.showsVerticalScrollIndicator = NO;
 }
 
 - (void)viewWillLayoutSubviews {
@@ -105,10 +72,51 @@
     
     _scrollView.contentSize = CGSizeMake(w, CGRectGetHeight(_headerView.frame) + CGRectGetHeight(_centerView.frame) + CGRectGetHeight(_bottomTV.frame));
     
-    [self moreConfig];
-    
-    NSLog(@"sv offset %f", _scrollView.contentOffset.y);
+    CGFloat offset = _scrollView.contentOffset.y;
+    if (offset < 0) {
+        offset = -offset; // 转成正数
+    }
+    _threshhold = CGRectGetMaxY(_headerView.frame) - offset;
+    NSLog(@"最初的 scrollview offset %f，以及阈值 %f", _scrollView.contentOffset.y, _threshhold);
 }
+
+#pragma mark -
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
+    CGFloat svOffset = _scrollView.contentOffset.y;
+    CGFloat tvOffset = _bottomTV.contentOffset.y;
+    NSLog(@"threshhold %f, sv offset %f, tv offset %f", _threshhold, svOffset, tvOffset);
+    
+    if (_scrollView == scrollView) {
+        if (_pan.enabled) {
+            
+        } else {
+            _scrollView.contentOffset = CGPointMake(0, _threshhold);
+        }
+    }
+    else if (_bottomTV == scrollView) {
+        if (_bottomTV.contentOffset.y <= 0) {
+            _pan.enabled = YES;
+            _scrollView.scrollEnabled = YES;
+        }
+    }
+}
+
+- (void)p_pan:(UIPanGestureRecognizer *)pan {
+    CGFloat svOffset = _scrollView.contentOffset.y;
+    // 如果 scrollview 的偏移量小于阈值，则 tableview 设置 contentOffset 使 tableview 始终不滑动
+    if (svOffset < _threshhold) {
+        _bottomTV.contentOffset = CGPointZero;
+    }
+    // 如果 scrollview 的偏移量大于等于阈值，则 tableview 关闭手势，启用自带手势，同时关闭 scrollview 的滑动
+    else {
+        _pan.enabled = NO;
+        _scrollView.scrollEnabled = NO;
+    }
+}
+
+#pragma mark -
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
