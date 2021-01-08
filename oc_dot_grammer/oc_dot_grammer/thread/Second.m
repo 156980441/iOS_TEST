@@ -20,6 +20,8 @@
 
 - (void)start {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // 这里子线程休眠，为了让主线程把 self 释放掉
+        sleep(10);
         NSLog(@"Second %p http start", self);
         sleep(5); // 5秒
         NSLog(@"Second %p name %@", self, self.name);

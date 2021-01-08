@@ -24,8 +24,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    [self advantagesOfDot];
-//    [self weaknessOfUnderlineSelf];
-    [self weaknessOfUnderlineCrash];
+    [self weaknessOfUnderlineSelf];
+//    [self weaknessOfUnderlineCrash]; // 会崩溃
 }
 
 - (void)advantagesOfDot {
@@ -38,6 +38,7 @@
     [f underlineMultithreadingSelf];
 }
 
+// 验证崩溃
 - (void)weaknessOfUnderlineCrash {
     First *f = [[First alloc] init];
     [f underlineMultithreadingWeakSelf];
