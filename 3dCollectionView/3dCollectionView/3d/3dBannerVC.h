@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface _dBannerVC : UIViewController
 - (void)updateData:(NSArray *)data;
+- (instancetype)initWithLayout:(UICollectionViewLayout *)layout;
 @end
 
 NS_ASSUME_NONNULL_END

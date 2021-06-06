@@ -17,6 +17,7 @@ UICollectionViewDataSource>
 {
     UICollectionView *_cv;
     NSArray *_ds;
+    UICollectionViewLayout *_layout;
 }
 @end
 
@@ -31,15 +32,21 @@ UICollectionViewDataSource>
     [_cv reloadData];
 }
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (instancetype)initWithLayout:(UICollectionViewLayout *)layout {
+    self = [super initWithNibName:nil bundle:nil];
     if (self) {
-        _dLayout *layout = [[_dLayout alloc] init];
-        layout.itemSize = CGSizeMake(327, 532);
-        layout.minimumLineSpacing = 10;
-        layout.sectionInset = UIEdgeInsetsMake(0, 17, 0, 17);
+        if (!layout) {
+            _dLayout *layout = [[_dLayout alloc] init];
+            layout.itemSize = CGSizeMake(327, 532);
+            layout.minimumLineSpacing = 10;
+            layout.sectionInset = UIEdgeInsetsMake(0, 17, 0, 17);
+            _layout = layout;
+        }
+        else {
+            _layout = layout;
+        }
         
-        _cv = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        _cv = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:_layout];
         [_cv registerClass:[BannerCVCell class] forCellWithReuseIdentifier:@"BannerCVCellID"];
         _cv.delegate = self;
         _cv.dataSource = self;
@@ -52,7 +59,6 @@ UICollectionViewDataSource>
                 //计算frame，确保Item居中
 //                [_cv setContentOffset:CGPointMake((kItemWidth+kSpace)*kSectionCount/2-kItemSpace, 0)];
         [_cv setContentOffset:CGPointMake(0, 0)];
-        
     }
     return self;
 }
