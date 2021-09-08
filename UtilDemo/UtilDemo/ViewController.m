@@ -9,6 +9,7 @@
 
 // 取整 https://blog.csdn.net/aouixh/article/details/53483556
 // 计算文本高 https://www.jianshu.com/p/c26c168efe45
+// 计算文本高 https://www.jianshu.com/p/7388ef05f32c
 
 @interface ViewController ()
 
@@ -24,9 +25,12 @@
     UIFont *font = [UIFont systemFontOfSize:12];
     CGFloat h1 = [ViewController getSpaceLabelHeight:str withFont:font withWidth:100];
     CGFloat h2 = [ViewController getHeightByWidth:100 title:str font:font];
-    NSLog(@"h1:%f,h2:%f", h1, h2);
+    CGFloat w1 = [ViewController getWidthByString:str font:font];
+    CGFloat w2 = [ViewController getWidthByTitle:str font:font];
+    NSLog(@"h1:%f,h2:%f,w1:%f,w2:%f", h1, h2, w1, w2);
 }
 
+// 使用场景:计算文本的高度，改变 UITableViewCell 的高度
 
 /// 根据字符串的所占宽度计算高度
 /// @param str 字符串
@@ -72,5 +76,31 @@
     return ceil(height);
 }
 
+// 单行文本
+// 使用场景:根据文本的长度，设置UILabel的长度，然后UILabel后面跟着其他的UI
++ (CGFloat)getWidthByString:(NSString *)string
+                       font:(UIFont *)font
+{
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.text = string;
+    label.font = font;
+    label.numberOfLines = 1;
+    [label sizeToFit];
+    CGFloat width = label.frame.size.width;
+    return ceil(width);
+}
+
++ (CGFloat)getWidthByTitle:(NSString *)string
+                       font:(UIFont *)font
+{
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.text = string;
+    label.font = font;
+    label.numberOfLines = 1;
+    CGSize size = [label.text sizeWithAttributes:@{NSFontAttributeName:font}];
+    return ceil(size.width);
+}
 
 @end
