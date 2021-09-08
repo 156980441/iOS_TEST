@@ -10,6 +10,7 @@
 // 取整 https://blog.csdn.net/aouixh/article/details/53483556
 // 计算文本高 https://www.jianshu.com/p/c26c168efe45
 // 计算文本高 https://www.jianshu.com/p/7388ef05f32c
+// 计算文本宽 https://my.oschina.net/huqiji/blog/961856
 
 @interface ViewController ()
 
@@ -92,7 +93,7 @@
 }
 
 + (CGFloat)getWidthByTitle:(NSString *)string
-                       font:(UIFont *)font
+                      font:(UIFont *)font
 {
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
