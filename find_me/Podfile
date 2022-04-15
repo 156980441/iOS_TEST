@@ -1,0 +1,9 @@
+platform :ios,"11.0"
+inhibit_all_warnings!
+target 'find_me' do
+
+  pod 'YYKit'
+  pod 'Masonry'
+  pod 'AFNetworking'
+
+end
