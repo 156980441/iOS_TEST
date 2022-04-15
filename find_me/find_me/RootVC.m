@@ -18,6 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = @"Find Me";
+    
     // Do any additional setup after loading the view.
     self.tv = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     self.tv.dataSource = self;
