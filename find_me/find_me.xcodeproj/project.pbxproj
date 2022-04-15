@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D7666FCE280959F4002A410B /* table_view_data_source.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7666FCD280959F4002A410B /* table_view_data_source.plist */; };
 		D7E50C8027FDA4F6000BAEC5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E50C7F27FDA4F6000BAEC5 /* AppDelegate.m */; };
 		D7E50C8327FDA4F6000BAEC5 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E50C8227FDA4F6000BAEC5 /* SceneDelegate.m */; };
 		D7E50C8627FDA4F6000BAEC5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E50C8527FDA4F6000BAEC5 /* ViewController.m */; };
@@ -21,6 +22,7 @@
 		421C2E0A184AE9146CC3FBB3 /* Pods-find_me.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-find_me.release.xcconfig"; path = "Target Support Files/Pods-find_me/Pods-find_me.release.xcconfig"; sourceTree = "<group>"; };
 		459BFFC76687D8D661B02A0F /* Pods-find_me.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-find_me.debug.xcconfig"; path = "Target Support Files/Pods-find_me/Pods-find_me.debug.xcconfig"; sourceTree = "<group>"; };
 		7815E2E03861368715B1DD8E /* libPods-find_me.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-find_me.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7666FCD280959F4002A410B /* table_view_data_source.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = table_view_data_source.plist; sourceTree = "<group>"; };
 		D7E50C7B27FDA4F6000BAEC5 /* find_me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = find_me.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E50C7E27FDA4F6000BAEC5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D7E50C7F27FDA4F6000BAEC5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -47,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D7666FCF28095B54002A410B /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				D7666FCD280959F4002A410B /* table_view_data_source.plist */,
+			);
+			path = plist;
+			sourceTree = "<group>";
+		};
 		D7E50C7227FDA4F6000BAEC5 = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +78,7 @@
 		D7E50C7D27FDA4F6000BAEC5 /* find_me */ = {
 			isa = PBXGroup;
 			children = (
+				D7666FCF28095B54002A410B /* plist */,
 				D7E50C7E27FDA4F6000BAEC5 /* AppDelegate.h */,
 				D7E50C7F27FDA4F6000BAEC5 /* AppDelegate.m */,
 				D7E50C8127FDA4F6000BAEC5 /* SceneDelegate.h */,
@@ -97,7 +108,6 @@
 				459BFFC76687D8D661B02A0F /* Pods-find_me.debug.xcconfig */,
 				421C2E0A184AE9146CC3FBB3 /* Pods-find_me.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -160,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7E50C8E27FDA4F9000BAEC5 /* LaunchScreen.storyboard in Resources */,
+				D7666FCE280959F4002A410B /* table_view_data_source.plist in Resources */,
 				D7E50C8B27FDA4F9000BAEC5 /* Assets.xcassets in Resources */,
 				D7E50C8927FDA4F6000BAEC5 /* Main.storyboard in Resources */,
 			);
