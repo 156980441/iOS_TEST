@@ -6,6 +6,7 @@
 //
 
 #import "RootVC.h"
+#import "NavBarVC.h"
 
 #define TABLEVIEWCELLID @"TABLEVIEWCELLID"
 
@@ -37,7 +38,10 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (indexPath.row == 0) {
+        NavBarVC *vc = [[NavBarVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark - UITableViewDataSource
