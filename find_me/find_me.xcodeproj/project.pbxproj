@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D737E3F7280D32F000C14731 /* SubLabelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D737E3F6280D32F000C14731 /* SubLabelVC.m */; };
+		D737E3FA280D330100C14731 /* SubLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D737E3F9280D330100C14731 /* SubLabel.m */; };
 		D7666FCE280959F4002A410B /* table_view_data_source.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7666FCD280959F4002A410B /* table_view_data_source.plist */; };
 		D7666FD32809612B002A410B /* RootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7666FD22809612B002A410B /* RootVC.m */; };
 		D7666FD728096566002A410B /* NavBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7666FD628096566002A410B /* NavBarVC.m */; };
@@ -21,6 +23,10 @@
 		421C2E0A184AE9146CC3FBB3 /* Pods-find_me.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-find_me.release.xcconfig"; path = "Target Support Files/Pods-find_me/Pods-find_me.release.xcconfig"; sourceTree = "<group>"; };
 		459BFFC76687D8D661B02A0F /* Pods-find_me.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-find_me.debug.xcconfig"; path = "Target Support Files/Pods-find_me/Pods-find_me.debug.xcconfig"; sourceTree = "<group>"; };
 		7815E2E03861368715B1DD8E /* libPods-find_me.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-find_me.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D737E3F5280D32F000C14731 /* SubLabelVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubLabelVC.h; sourceTree = "<group>"; };
+		D737E3F6280D32F000C14731 /* SubLabelVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubLabelVC.m; sourceTree = "<group>"; };
+		D737E3F8280D330100C14731 /* SubLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubLabel.h; sourceTree = "<group>"; };
+		D737E3F9280D330100C14731 /* SubLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubLabel.m; sourceTree = "<group>"; };
 		D7666FCD280959F4002A410B /* table_view_data_source.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = table_view_data_source.plist; sourceTree = "<group>"; };
 		D7666FD12809612B002A410B /* RootVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootVC.h; sourceTree = "<group>"; };
 		D7666FD22809612B002A410B /* RootVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootVC.m; sourceTree = "<group>"; };
@@ -47,6 +53,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D737E3F4280D32BD00C14731 /* sublabel */ = {
+			isa = PBXGroup;
+			children = (
+				D737E3F5280D32F000C14731 /* SubLabelVC.h */,
+				D737E3F6280D32F000C14731 /* SubLabelVC.m */,
+				D737E3F8280D330100C14731 /* SubLabel.h */,
+				D737E3F9280D330100C14731 /* SubLabel.m */,
+			);
+			path = sublabel;
+			sourceTree = "<group>";
+		};
 		D7666FCF28095B54002A410B /* plist */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +109,7 @@
 		D7E50C7D27FDA4F6000BAEC5 /* find_me */ = {
 			isa = PBXGroup;
 			children = (
+				D737E3F4280D32BD00C14731 /* sublabel */,
 				D7666FD428096524002A410B /* navigationbar */,
 				D7666FD028095B87002A410B /* search_group_tableview */,
 				D7666FCF28095B54002A410B /* plist */,
@@ -222,8 +240,10 @@
 			files = (
 				D7666FD728096566002A410B /* NavBarVC.m in Sources */,
 				D7E50C8027FDA4F6000BAEC5 /* AppDelegate.m in Sources */,
+				D737E3F7280D32F000C14731 /* SubLabelVC.m in Sources */,
 				D7E50C9127FDA4F9000BAEC5 /* main.m in Sources */,
 				D7666FD32809612B002A410B /* RootVC.m in Sources */,
+				D737E3FA280D330100C14731 /* SubLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

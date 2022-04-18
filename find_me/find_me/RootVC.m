@@ -7,6 +7,7 @@
 
 #import "RootVC.h"
 #import "NavBarVC.h"
+#import "SubLabelVC.h"
 
 #define TABLEVIEWCELLID @"TABLEVIEWCELLID"
 
@@ -40,6 +41,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         NavBarVC *vc = [[NavBarVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (indexPath.row == 2) {
+        SubLabelVC *vc = [[SubLabelVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
