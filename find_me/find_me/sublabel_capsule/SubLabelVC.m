@@ -8,6 +8,7 @@
 #import "SubLabelVC.h"
 #import <Masonry/Masonry.h>
 #import "SubLabel.h"
+#import "CapsuleView.h"
 
 @interface SubLabelVC ()
 
@@ -58,6 +59,16 @@
     sublabel2.backgroundColor = [UIColor grayColor];
     
     sublabel2.textAlignment = NSTextAlignmentCenter;
+    
+    CapsuleView *capsule = [[CapsuleView alloc] initWithFrame:CGRectZero];
+    capsule.text = @"Capsule View";
+    [self.view addSubview:capsule];
+    [capsule mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).offset(10);
+        make.top.equalTo(sublabel2.mas_bottom).offset(10);
+        make.right.equalTo(self.view).offset(-10);
+        make.height.mas_equalTo(60);
+    }];
 }
 
 @end

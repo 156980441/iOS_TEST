@@ -4,6 +4,6 @@
 <array>
 	<string>设置UINavitationBar</string>
 	<string>带搜索框的分组UITableView</string>
-	<string>左上角开始的UILabel</string>
+	<string>左上角开始的UILabel以及胶囊样式文本</string>
 </array>
 </plist>
