@@ -62,6 +62,8 @@
     
     CapsuleView *capsule = [[CapsuleView alloc] initWithFrame:CGRectZero];
     capsule.text = @"Capsule View";
+    capsule.label.backgroundColor = [UIColor whiteColor];
+    capsule.insets = UIEdgeInsetsMake(10, 20, 10, 20);
     [self.view addSubview:capsule];
     [capsule mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(10);
