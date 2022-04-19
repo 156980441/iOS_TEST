@@ -2,8 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<string>设置UINavitationBar</string>
+	<string>设置UINavitationBar样式以及返回按钮</string>
 	<string>带搜索框的分组UITableView</string>
 	<string>左上角开始的UILabel以及胶囊样式文本</string>
+	<string>密码强度</string>
 </array>
 </plist>
