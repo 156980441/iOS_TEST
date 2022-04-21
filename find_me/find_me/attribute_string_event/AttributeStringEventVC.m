@@ -18,6 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     self.label = [[YYLabel alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.label];
     [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
