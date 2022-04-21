@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D737E3F7280D32F000C14731 /* SubLabelVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D737E3F6280D32F000C14731 /* SubLabelVC.m */; };
 		D737E3FA280D330100C14731 /* SubLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D737E3F9280D330100C14731 /* SubLabel.m */; };
+		D75D9B99281169A000E253E7 /* AttributeStringEventVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D75D9B98281169A000E253E7 /* AttributeStringEventVC.m */; };
 		D7666FCE280959F4002A410B /* table_view_data_source.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7666FCD280959F4002A410B /* table_view_data_source.plist */; };
 		D7666FD32809612B002A410B /* RootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7666FD22809612B002A410B /* RootVC.m */; };
 		D7666FD728096566002A410B /* NavBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7666FD628096566002A410B /* NavBarVC.m */; };
@@ -29,6 +30,8 @@
 		D737E3F6280D32F000C14731 /* SubLabelVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubLabelVC.m; sourceTree = "<group>"; };
 		D737E3F8280D330100C14731 /* SubLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubLabel.h; sourceTree = "<group>"; };
 		D737E3F9280D330100C14731 /* SubLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubLabel.m; sourceTree = "<group>"; };
+		D75D9B97281169A000E253E7 /* AttributeStringEventVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttributeStringEventVC.h; sourceTree = "<group>"; };
+		D75D9B98281169A000E253E7 /* AttributeStringEventVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttributeStringEventVC.m; sourceTree = "<group>"; };
 		D7666FCD280959F4002A410B /* table_view_data_source.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = table_view_data_source.plist; sourceTree = "<group>"; };
 		D7666FD12809612B002A410B /* RootVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootVC.h; sourceTree = "<group>"; };
 		D7666FD22809612B002A410B /* RootVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootVC.m; sourceTree = "<group>"; };
@@ -70,6 +73,15 @@
 				D7AA497D280DBC1600F8B2E1 /* CapsuleView.m */,
 			);
 			path = sublabel_capsule;
+			sourceTree = "<group>";
+		};
+		D75D9B962811691C00E253E7 /* attribute_string_event */ = {
+			isa = PBXGroup;
+			children = (
+				D75D9B97281169A000E253E7 /* AttributeStringEventVC.h */,
+				D75D9B98281169A000E253E7 /* AttributeStringEventVC.m */,
+			);
+			path = attribute_string_event;
 			sourceTree = "<group>";
 		};
 		D7666FCF28095B54002A410B /* plist */ = {
@@ -126,6 +138,7 @@
 		D7E50C7D27FDA4F6000BAEC5 /* find_me */ = {
 			isa = PBXGroup;
 			children = (
+				D75D9B962811691C00E253E7 /* attribute_string_event */,
 				D7AA5C67280EAFA500F8B2E1 /* password_strength */,
 				D737E3F4280D32BD00C14731 /* sublabel_capsule */,
 				D7666FD428096524002A410B /* navigationbar */,
@@ -257,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7AA497E280DBC1600F8B2E1 /* CapsuleView.m in Sources */,
+				D75D9B99281169A000E253E7 /* AttributeStringEventVC.m in Sources */,
 				D7666FD728096566002A410B /* NavBarVC.m in Sources */,
 				D7E50C8027FDA4F6000BAEC5 /* AppDelegate.m in Sources */,
 				D737E3F7280D32F000C14731 /* SubLabelVC.m in Sources */,

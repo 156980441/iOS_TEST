@@ -8,6 +8,7 @@
 #import "RootVC.h"
 #import "NavBarVC.h"
 #import "SubLabelVC.h"
+#import "AttributeStringEventVC.h"
 
 #define TABLEVIEWCELLID @"TABLEVIEWCELLID"
 
@@ -45,6 +46,10 @@
     }
     if (indexPath.row == 2) {
         SubLabelVC *vc = [[SubLabelVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (indexPath.row == 4) {
+        AttributeStringEventVC *vc = [[AttributeStringEventVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
