@@ -25,7 +25,7 @@
         UINavigationBarAppearance *navBarAppearance = [UINavigationBarAppearance new];
         navBarAppearance.backgroundColor = [UIColor yellowColor];
         navBarAppearance.shadowColor = [UIColor greenColor];
-        [navBarAppearance setTitleTextAttributes:textAttributes];
+        
         [navBarAppearance setTitleTextAttributes:textAttributes];
         
         self.navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance;
