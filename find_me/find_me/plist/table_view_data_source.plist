@@ -7,5 +7,6 @@
 	<string>左上角开始的UILabel以及胶囊样式文本</string>
 	<string>密码强度</string>
 	<string>富文本增加点击事件</string>
+	<string>UICollectionView增加Header</string>
 </array>
 </plist>

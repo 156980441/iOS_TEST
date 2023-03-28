@@ -13,6 +13,7 @@
 		D7666FCE280959F4002A410B /* table_view_data_source.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7666FCD280959F4002A410B /* table_view_data_source.plist */; };
 		D7666FD32809612B002A410B /* RootVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7666FD22809612B002A410B /* RootVC.m */; };
 		D7666FD728096566002A410B /* NavBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D7666FD628096566002A410B /* NavBarVC.m */; };
+		D76C24DA29D2DE87009EE424 /* CollectionHeaderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D76C24D929D2DE87009EE424 /* CollectionHeaderVC.m */; };
 		D7AA497E280DBC1600F8B2E1 /* CapsuleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AA497D280DBC1600F8B2E1 /* CapsuleView.m */; };
 		D7AA5C6A280EAFC400F8B2E1 /* PasswordStrength.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AA5C69280EAFC400F8B2E1 /* PasswordStrength.m */; };
 		D7B548F12816421100E61F12 /* countrylist.json in Resources */ = {isa = PBXBuildFile; fileRef = D7B548F02816421100E61F12 /* countrylist.json */; };
@@ -41,6 +42,8 @@
 		D7666FD22809612B002A410B /* RootVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootVC.m; sourceTree = "<group>"; };
 		D7666FD528096566002A410B /* NavBarVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavBarVC.h; sourceTree = "<group>"; };
 		D7666FD628096566002A410B /* NavBarVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavBarVC.m; sourceTree = "<group>"; };
+		D76C24D829D2DE87009EE424 /* CollectionHeaderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionHeaderVC.h; sourceTree = "<group>"; };
+		D76C24D929D2DE87009EE424 /* CollectionHeaderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionHeaderVC.m; sourceTree = "<group>"; };
 		D7AA497C280DBC1600F8B2E1 /* CapsuleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapsuleView.h; sourceTree = "<group>"; };
 		D7AA497D280DBC1600F8B2E1 /* CapsuleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CapsuleView.m; sourceTree = "<group>"; };
 		D7AA5C68280EAFC400F8B2E1 /* PasswordStrength.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordStrength.h; sourceTree = "<group>"; };
@@ -126,6 +129,15 @@
 			path = navigationbar;
 			sourceTree = "<group>";
 		};
+		D76C24D729D2DDC3009EE424 /* collection_view_header */ = {
+			isa = PBXGroup;
+			children = (
+				D76C24D829D2DE87009EE424 /* CollectionHeaderVC.h */,
+				D76C24D929D2DE87009EE424 /* CollectionHeaderVC.m */,
+			);
+			path = collection_view_header;
+			sourceTree = "<group>";
+		};
 		D7AA5C67280EAFA500F8B2E1 /* password_strength */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +168,7 @@
 		D7E50C7D27FDA4F6000BAEC5 /* find_me */ = {
 			isa = PBXGroup;
 			children = (
+				D76C24D729D2DDC3009EE424 /* collection_view_header */,
 				D75D9B962811691C00E253E7 /* attribute_string_event */,
 				D7AA5C67280EAFA500F8B2E1 /* password_strength */,
 				D737E3F4280D32BD00C14731 /* sublabel_capsule */,
@@ -298,6 +311,7 @@
 				D7E50C9127FDA4F9000BAEC5 /* main.m in Sources */,
 				D7666FD32809612B002A410B /* RootVC.m in Sources */,
 				D737E3FA280D330100C14731 /* SubLabel.m in Sources */,
+				D76C24DA29D2DE87009EE424 /* CollectionHeaderVC.m in Sources */,
 				D7AA5C6A280EAFC400F8B2E1 /* PasswordStrength.m in Sources */,
 				D7B54C36281642BF00E61F12 /* CountryVC.m in Sources */,
 			);

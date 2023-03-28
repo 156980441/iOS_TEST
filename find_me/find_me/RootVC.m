@@ -9,6 +9,7 @@
 #import "NavBarVC.h"
 #import "SubLabelVC.h"
 #import "AttributeStringEventVC.h"
+#import "CollectionHeaderVC.h"
 
 #define TABLEVIEWCELLID @"TABLEVIEWCELLID"
 
@@ -52,6 +53,11 @@
         AttributeStringEventVC *vc = [[AttributeStringEventVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
+    if (indexPath.row == 5) {
+        CollectionHeaderVC *vc = [[CollectionHeaderVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
 }
 
 #pragma mark - UITableViewDataSource
