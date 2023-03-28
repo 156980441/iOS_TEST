@@ -19,11 +19,15 @@
     if (self) {
         _lb = [[UILabel alloc] initWithFrame:CGRectZero];
         _lb.text = @"Test";
+        _lb.textColor = [UIColor whiteColor];
+        _lb.backgroundColor = [UIColor yellowColor];
         
         [self.contentView addSubview:self.lb];
         [self.lb mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(0, 0, 0, 0));
+            make.edges.equalTo(self.contentView).insets(UIEdgeInsetsMake(3, 3, 3, 3));
         }];
+        
+        self.contentView.backgroundColor = [UIColor grayColor];
     }
     return self;
 }
@@ -42,6 +46,7 @@
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.itemSize = CGSizeMake(100, 50);
         layout.minimumLineSpacing = 8;
+        layout.minimumInteritemSpacing = 18;
         layout.sectionInset = UIEdgeInsetsMake(0, 20, 0, 20);
         _cv = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
     }
@@ -51,6 +56,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.view.backgroundColor = [UIColor redColor];
+    self.cv.backgroundColor = [UIColor orangeColor];
+    
     
     self.cv.delegate = self;
     self.cv.dataSource = self;
