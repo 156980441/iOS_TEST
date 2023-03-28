@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HeaderVC : UIViewController
 
+@property (nonatomic, readonly) CGFloat VCHeight;
+
 @end
 
 NS_ASSUME_NONNULL_END

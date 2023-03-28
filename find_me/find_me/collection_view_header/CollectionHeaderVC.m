@@ -6,6 +6,7 @@
 //
 
 #import "CollectionHeaderVC.h"
+#import "HeaderVC.h"
 #import <Masonry/Masonry.h>
 
 @interface CVCell : UICollectionViewCell
@@ -36,6 +37,7 @@
 
 @interface CollectionHeaderVC () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *cv;
+@property (nonatomic, strong) HeaderVC *headVC;
 @end
 
 @implementation CollectionHeaderVC
@@ -49,6 +51,7 @@
         layout.minimumInteritemSpacing = 18;
         layout.sectionInset = UIEdgeInsetsMake(0, 20, 0, 20);
         _cv = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+        _headVC = [[HeaderVC alloc] init];
     }
     return self;
 }
@@ -70,6 +73,25 @@
     [self.cv mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view).insets(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
+    
+    
+    CGFloat h = self.headVC.VCHeight;
+    
+    self.cv.contentInset = UIEdgeInsetsMake(h, 0, 0, 0);
+    
+    [self addChildViewController:self.headVC];
+    [self.cv addSubview:self.headVC.view];
+    
+    
+    NSLog(@"Header viewDidLoad %f", h);
+}
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    [self.cv layoutIfNeeded];
+    CGFloat h = self.headVC.VCHeight;
+    self.headVC.view.frame = CGRectMake(0, -h, CGRectGetWidth(self.cv.frame), h);
+    NSLog(@"Header viewWillLayoutSubviews %f", h);
 }
 
 

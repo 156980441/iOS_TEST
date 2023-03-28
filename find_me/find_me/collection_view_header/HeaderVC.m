@@ -29,6 +29,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.view.backgroundColor = [UIColor grayColor];
+    
     self.lb.text = @"Title";
     self.lb.textColor = [UIColor whiteColor];
     self.lb.backgroundColor = [UIColor yellowColor];
@@ -37,8 +39,11 @@
     self.content.textColor = [UIColor whiteColor];
     self.content.backgroundColor = [UIColor yellowColor];
     
+    self.lb.numberOfLines = self.content.numberOfLines = 0;
+    
     
     [self.view addSubview:self.lb];
+    [self.view addSubview:self.content];
     [self.lb mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top).offset(16);
         make.left.equalTo(self.view.mas_left).offset(16);
@@ -54,6 +59,16 @@
         make.bottom.equalTo(self.view.mas_bottom).offset(-16);
     }];
     
+    NSLog(@"Header self viewDidLoad %f", CGRectGetHeight(self.view.frame));
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSLog(@"Header self viewWillAppear %f", CGRectGetHeight(self.view.frame));
+}
+
+- (CGFloat)VCHeight {
+    return 16 + 40 + 5 + 90 + 16;
 }
 
 @end
