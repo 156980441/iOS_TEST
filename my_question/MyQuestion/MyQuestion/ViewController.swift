@@ -23,8 +23,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let nav = UINavigationController(rootViewController: <#T##UIViewController#>)
-        
         view.addSubview(tableview)
         tableview.snp.makeConstraints { make in
             make.edges.equalTo(view)
@@ -47,7 +45,7 @@ extension ViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             let vc = LabelImageVC.init()
-            
+            self.navigationController?.pushViewController(vc, animated: false)
         }
         if indexPath.row == 1 {
             
