@@ -1,0 +1,12 @@
+platform :ios,"12.0"
+inhibit_all_warnings!
+target 'MyQuestion' do
+
+  pod 'YYKit'
+  pod 'Masonry'
+  pod 'SnapKit'
+  pod 'Reachability'
+  pod 'AFNetworking'
+  pod 'MJExtension'
+
+end
