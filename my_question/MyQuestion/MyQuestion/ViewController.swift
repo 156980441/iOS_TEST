@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return tmp
     }()
     
-    private let dataSource = ["文字+图片样式，可折行，图片左贴文字", "UITableView 在顶部加入View，利用偏移"]
+    private let dataSource = ["文字+图片样式，可折行，图片左贴文字", "UITableView 在顶部加入View，利用偏移", "顶部视图包含左右两个视图，顶部视图的高度取决于左右视图的大者"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +48,10 @@ extension ViewController {
         }
         if indexPath.row == 1 {
             let vc = TopViewTableViewVC.init()
+            self.navigationController?.pushViewController(vc, animated: false)
+        }
+        if indexPath.row == 2 {
+            let vc = TopViewVC.init()
             self.navigationController?.pushViewController(vc, animated: false)
         }
     }
