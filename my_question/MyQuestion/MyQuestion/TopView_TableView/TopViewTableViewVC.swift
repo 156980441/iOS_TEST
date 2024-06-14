@@ -1,13 +1,14 @@
 //
-//  ViewController.swift
+//  TopViewTableViewVC.swift
 //  MyQuestion
 //
-//  Created by oker on 2024/5/11.
+//  Created by oker on 2024/6/14.
 //
 
 import UIKit
+import SnapKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TopViewTableViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private lazy var tableview: UITableView = {
         var tmp = UITableView(frame: .zero, style: .plain)
         tmp.delegate = self
@@ -16,7 +17,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return tmp
     }()
     
-    private let dataSource = ["文字+图片样式，可折行，图片左贴文字", "UITableView 在顶部加入View，利用偏移"]
+    private let dataSource = ["订单1", "订单2", "订单3"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 }
 
-extension ViewController {
+extension TopViewTableViewVC {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
@@ -42,14 +43,5 @@ extension ViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            let vc = LabelImageVC.init()
-            self.navigationController?.pushViewController(vc, animated: false)
-        }
-        if indexPath.row == 1 {
-            let vc = TopViewTableViewVC.init()
-            self.navigationController?.pushViewController(vc, animated: false)
-        }
     }
 }
-

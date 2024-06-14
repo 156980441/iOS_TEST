@@ -56,7 +56,7 @@ class LabelImageVC: UIViewController {
             make.size.equalTo(CGSizeMake(200, 200))
         }
         
-        let lbl2 = getLabel("长文字折行-------------------------------------------")
+        let lbl2 = getLabel("长文字折行长文字折行长文字折行长文字折行长文字折行长文字折行长文字折行长文字折行")
         let imageV2 = getImageView()
         view2.addSubview(lbl2)
         view2.addSubview(imageV2)
